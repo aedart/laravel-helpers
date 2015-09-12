@@ -20,6 +20,7 @@
     "illuminate/support": "~5.1"
   },
   "require-dev": {
+    "aedart/testing-laravel": "~1.1",
     "aedart/license": "1.*",
     "aedart/license-file-manager": "1.*",
     "codeception/codeception": "~2.1",
@@ -31,6 +32,11 @@
     "psr-4": {
       "Aedart\\Facade\\Helpers\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/unit/testCases"
+    ]
   },
   "minimum-stability": "stable",
   "scripts": {
