@@ -37,6 +37,18 @@ class BladeTraitTest extends TraitTestCase{
 
     /**
      * @test
+     * @covers ::getDefaultBlade
+     */
+    public function returnsNullWhenNoDefaultAvailable() {
+        $this->stopLaravel();
+
+        $mock = $this->getTraitMock();
+
+        $this->assertNull($mock->getDefaultBlade(), 'No default instance should be available');
+    }
+
+    /**
+     * @test
      * @covers ::getBlade
      * @covers ::hasBlade
      * @covers ::hasDefaultBlade

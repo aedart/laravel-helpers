@@ -37,6 +37,18 @@ class AuthTraitTest extends TraitTestCase{
 
     /**
      * @test
+     * @covers ::getDefaultAuth
+     */
+    public function returnsNullWhenNoDefaultAvailable() {
+        $this->stopLaravel();
+
+        $mock = $this->getTraitMock();
+
+        $this->assertNull($mock->getDefaultAuth(), 'No default instance should be available');
+    }
+
+    /**
+     * @test
      * @covers ::getAuth
      * @covers ::hasAuth
      * @covers ::hasDefaultAuth

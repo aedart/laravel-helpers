@@ -37,6 +37,18 @@ class CacheTraitTest extends TraitTestCase{
 
     /**
      * @test
+     * @covers ::getDefaultCache
+     */
+    public function returnsNullWhenNoDefaultAvailable() {
+        $this->stopLaravel();
+
+        $mock = $this->getTraitMock();
+
+        $this->assertNull($mock->getDefaultCache(), 'No default instance should be available');
+    }
+
+    /**
+     * @test
      * @covers ::getCache
      * @covers ::hasCache
      * @covers ::hasDefaultCache
