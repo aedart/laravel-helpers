@@ -38,9 +38,6 @@
       "tests/unit/testCases"
     ]
   },
-  "suggest": {
-    "illuminate/view": "If you need to use the BladeTrait (Blade Facade / BladeCompiler), outside a Laravel application"
-  },
   "minimum-stability": "stable",
   "scripts": {
     "post-update-cmd": "vendor/bin/license-manager license:copy vendor/aedart/license/aedart/BSD-3-Clause"
