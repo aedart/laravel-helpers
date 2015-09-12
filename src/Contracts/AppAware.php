@@ -7,7 +7,7 @@ use Illuminate\Contracts\Foundation\Application;
  *
  * Components are able to specify and obtain an application instance
  *
- * @see \Illuminate\Foundation\Application
+ * @see \Illuminate\Contracts\Foundation\Application
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
