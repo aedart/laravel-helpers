@@ -43,7 +43,7 @@ class BusTraitTest extends TraitTestCase{
      * @covers ::setBus
      * @covers ::getDefaultBus
      */
-    public function canObtainCommandBusDispatcherGuard()
+    public function canObtainCommandBusDispatcher()
     {
         $mock = $this->getTraitMock();
 
