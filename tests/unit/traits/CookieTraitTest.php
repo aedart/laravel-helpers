@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Facade\Helpers\Traits\CookieTrait;
+use Aedart\Laravel\Helpers\Traits\CookieTrait;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as RequestFacade;

@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Facade\Helpers\Traits\CacheTrait;
+use Aedart\Laravel\Helpers\Traits\CacheTrait;
 use Illuminate\Contracts\Cache\Repository;
 
 /**

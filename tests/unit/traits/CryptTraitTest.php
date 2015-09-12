@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Facade\Helpers\Traits\CryptTrait;
+use Aedart\Laravel\Helpers\Traits\CryptTrait;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;

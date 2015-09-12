@@ -1,5 +1,5 @@
 {
-  "name": "aedart/dto",
+  "name": "aedart/laravel-helpers",
   "description": "TODO",
   "keywords": [
     "Facade",
@@ -30,7 +30,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Aedart\\Facade\\Helpers\\": "src/"
+      "Aedart\\Laravel\\Helpers\\": "src/"
     }
   },
   "autoload-dev": {

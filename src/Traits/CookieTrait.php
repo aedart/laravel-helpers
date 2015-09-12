@@ -1,4 +1,4 @@
-<?php namespace Aedart\Facade\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits;
 
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Support\Facades\Cookie;

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Contracts\Config\Repository;
-use Aedart\Facade\Helpers\Traits\ConfigTrait;
+use Aedart\Laravel\Helpers\Traits\ConfigTrait;
 
 /**
  * Class ConfigTraitTest

@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Facade\Helpers\Traits\AuthTrait;
+use Aedart\Laravel\Helpers\Traits\AuthTrait;
 use Illuminate\Contracts\Auth\Guard;
 
 /**

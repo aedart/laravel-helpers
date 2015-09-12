@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Facade\Helpers\Traits\ArtisanTrait;
+use Aedart\Laravel\Helpers\Traits\ArtisanTrait;
 use Illuminate\Contracts\Console\Kernel;
 
 /**

@@ -1,4 +1,4 @@
-<?php  namespace Aedart\Facade\Helpers\Contracts;
+<?php  namespace Aedart\Laravel\Helpers\Contracts;
 
 use Illuminate\Auth\AuthManager;
 

@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Facade\Helpers\Traits\BusTrait;
+use Aedart\Laravel\Helpers\Traits\BusTrait;
 use Illuminate\Contracts\Bus\Dispatcher;
 
 /**

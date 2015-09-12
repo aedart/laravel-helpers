@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Facade\Helpers\Traits\AuthManagerTrait;
+use Aedart\Laravel\Helpers\Traits\AuthManagerTrait;
 use Illuminate\Auth\AuthManager;
 
 /**

@@ -1,4 +1,4 @@
-<?php namespace Aedart\Facade\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits;
 
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Cache;

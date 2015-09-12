@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Facade\Helpers\Traits\BladeTrait;
+use Aedart\Laravel\Helpers\Traits\BladeTrait;
 use Illuminate\View\Compilers\BladeCompiler;
 
 /**

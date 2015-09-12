@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Facade\Helpers\Traits\AppTrait;
+use Aedart\Laravel\Helpers\Traits\AppTrait;
 use Illuminate\Contracts\Foundation\Application;
 
 /**
