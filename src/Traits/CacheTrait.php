@@ -59,7 +59,7 @@ trait CacheTrait {
         // any actual cache repository, but rather an
         // instance of \Illuminate\Cache\CacheManager.
         // Therefore, we make sure only to obtain its
-        // "store", to make sure that its only the guard
+        // "store", to make sure that its only the cache repository
         // instance that we obtain.
         $manager = Cache::getFacadeRoot();
         if(!is_null($manager)){
