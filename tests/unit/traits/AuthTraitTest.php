@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\Guard;
 /**
  * Class AuthTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\AuthTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\AuthTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

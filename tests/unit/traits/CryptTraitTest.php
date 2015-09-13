@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 /**
  * Class CryptTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\CryptTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\CryptTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

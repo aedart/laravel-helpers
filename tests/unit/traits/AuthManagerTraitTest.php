@@ -6,7 +6,7 @@ use Illuminate\Auth\AuthManager;
 /**
  * Class AuthManagerTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\AuthManagerTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\AuthManagerTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

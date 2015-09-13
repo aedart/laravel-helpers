@@ -6,7 +6,7 @@ use Aedart\Laravel\Helpers\Traits\ConfigTrait;
 /**
  * Class ConfigTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\ConfigTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\ConfigTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

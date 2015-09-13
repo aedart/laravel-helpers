@@ -6,7 +6,7 @@ use Illuminate\Contracts\Console\Kernel;
 /**
  * Class ArtisanTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\ArtisanTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\ArtisanTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

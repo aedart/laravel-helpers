@@ -6,7 +6,7 @@ use Illuminate\View\Compilers\BladeCompiler;
 /**
  * Class BladeTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\BladeTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\BladeTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

@@ -6,7 +6,7 @@ use Illuminate\Contracts\Bus\Dispatcher;
 /**
  * Class BusTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\BusTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\BusTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

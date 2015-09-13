@@ -10,7 +10,7 @@ use Faker\Factory;
 /**
  * Class CookieTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\CookieTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\CookieTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

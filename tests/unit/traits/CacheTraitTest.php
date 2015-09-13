@@ -6,7 +6,7 @@ use Illuminate\Contracts\Cache\Repository;
 /**
  * Class CacheTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\CacheTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\CacheTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

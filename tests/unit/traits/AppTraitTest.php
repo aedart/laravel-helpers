@@ -6,7 +6,7 @@ use Illuminate\Contracts\Foundation\Application;
 /**
  * Class AppTraitTest
  *
- * @coversDefaultClass Aedart\Facade\Helpers\Traits\AppTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\AppTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
