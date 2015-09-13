@@ -49,7 +49,7 @@ class AuthManagerTraitTest extends TraitTestCase{
 
         $config = $mock->getAuthManager();
 
-        $this->assertTrue($mock->hasAuthManager(), 'The authentication manager kernel should have been set');
+        $this->assertTrue($mock->hasAuthManager(), 'The authentication manager should have been set');
         $this->assertInstanceOf(AuthManager::class, $config);
     }
 }
