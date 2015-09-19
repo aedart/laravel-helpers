@@ -27,7 +27,7 @@ trait LangTranslatorTrait{
      *
      * @return void
      */
-    public function setLangTranslator($translator) {
+    public function setLangTranslator(TranslatorInterface $translator) {
         $this->langTranslator = $translator;
     }
 

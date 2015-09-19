@@ -27,7 +27,7 @@ trait LangTrait {
      *
      * @return void
      */
-    public function setLang($translator) {
+    public function setLang(Translator $translator) {
         $this->lang = $translator;
     }
 
