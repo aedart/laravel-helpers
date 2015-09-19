@@ -26,7 +26,7 @@ class GateTraitTest extends TraitTestCase{
      * @covers ::hasGate
      * @covers ::hasDefaultGate
      */
-    public function hasNoDefaultLaravelAccessGateOutsideLaravel() {
+    public function hasNoDefaultAccessGateOutsideLaravel() {
         $this->stopLaravel();
 
         $mock = $this->getTraitMock();
@@ -43,7 +43,7 @@ class GateTraitTest extends TraitTestCase{
      * @covers ::setGate
      * @covers ::getDefaultGate
      */
-    public function canObtainLaravelAccessGate()
+    public function canObtainAccessGate()
     {
         $mock = $this->getTraitMock();
 

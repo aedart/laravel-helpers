@@ -27,7 +27,7 @@ class HashTraitTest extends TraitTestCase{
      * @covers ::hasHash
      * @covers ::hasDefaultHash
      */
-    public function hasNoDefaultLaravelHasherOutsideLaravel() {
+    public function hasNoDefaultHasherOutsideLaravel() {
         $this->stopLaravel();
 
         $mock = $this->getTraitMock();
@@ -44,7 +44,7 @@ class HashTraitTest extends TraitTestCase{
      * @covers ::setHash
      * @covers ::getDefaultHash
      */
-    public function canObtainLaravelHasher()
+    public function canObtainHasher()
     {
         $mock = $this->getTraitMock();
 
