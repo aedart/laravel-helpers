@@ -1,24 +1,18 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php  namespace Aedart\Laravel\Helpers\Contracts\Config;
 
 use Illuminate\Contracts\Config\Repository;
-use Illuminate\Support\Facades\Config;
 
 /**
- * <h1>Config Trait</h1>
+ * <h1>Config Aware</h1>
  *
- * @see \Aedart\Facade\Helpers\Contracts\ConfigAware
+ * Components are able to specify and obtain a configuration repository
+ *
+ * @see \Illuminate\Contracts\Config\Repository
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait ConfigTrait {
-
-    /**
-     * Instance of the Configuration Repository
-     *
-     * @var Repository|null
-     */
-    protected $config = null;
+interface ConfigAware {
 
     /**
      * Set the given config
@@ -27,9 +21,7 @@ trait ConfigTrait {
      *
      * @return void
      */
-    public function setConfig(Repository $repository) {
-        $this->config = $repository;
-    }
+    public function setConfig(Repository $repository);
 
     /**
      * Get the given config
@@ -42,43 +34,26 @@ trait ConfigTrait {
      *
      * @return Repository|null config or null if none config has been set
      */
-    public function getConfig() {
-        if (!$this->hasConfig() && $this->hasDefaultConfig()) {
-            $this->setConfig($this->getDefaultConfig());
-        }
-        return $this->config;
-    }
+    public function getConfig();
 
     /**
      * Get a default config value, if any is available
      *
      * @return Repository|null A default config value or Null if no default value is available
      */
-    public function getDefaultConfig() {
-        return Config::getFacadeRoot();
-    }
+    public function getDefaultConfig();
 
     /**
      * Check if config has been set
      *
      * @return bool True if config has been set, false if not
      */
-    public function hasConfig() {
-        if (!is_null($this->config)) {
-            return true;
-        }
-        return false;
-    }
+    public function hasConfig();
 
     /**
      * Check if a default config is available or not
      *
      * @return bool True of a default config is available, false if not
      */
-    public function hasDefaultConfig() {
-        if (!is_null($this->getDefaultConfig())) {
-            return true;
-        }
-        return false;
-    }
+    public function hasDefaultConfig();
 }

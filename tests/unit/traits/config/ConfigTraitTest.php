@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Contracts\Config\Repository;
-use Aedart\Laravel\Helpers\Traits\ConfigTrait;
+use Aedart\Laravel\Helpers\Traits\Config\ConfigTrait;
 
 /**
  * Class ConfigTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\ConfigTrait
+ * @group traits
+ * @group config
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Config\ConfigTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
