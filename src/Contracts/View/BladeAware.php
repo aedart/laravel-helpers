@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Contracts\View;
 
 use Illuminate\View\Compilers\BladeCompiler;
 

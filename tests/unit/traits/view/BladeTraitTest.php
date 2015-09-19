@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\BladeTrait;
+use Aedart\Laravel\Helpers\Traits\View\BladeTrait;
 use Illuminate\View\Compilers\BladeCompiler;
 
 /**
  * Class BladeTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\BladeTrait
+ * @group traits
+ * @group view
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\View\BladeTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

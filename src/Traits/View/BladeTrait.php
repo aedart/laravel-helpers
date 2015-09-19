@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\View;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
@@ -7,7 +7,7 @@ use Illuminate\View\Compilers\BladeCompiler;
 /**
  * <h1>Blade Trait</h1>
  *
- * @see \Aedart\Facade\Helpers\Contracts\BladeAware
+ * @see \Aedart\Laravel\Helpers\Contracts\View\BladeAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
