@@ -5,7 +5,6 @@ use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as RequestFacade;
 use \Mockery as m;
-use Faker\Factory;
 
 /**
  * Class CookieTraitTest
@@ -15,16 +14,9 @@ use Faker\Factory;
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
 class CookieTraitTest extends TraitTestCase{
-
-    /**
-     * @var Faker\Generator
-     */
-    protected $faker;
-
+    
     protected function _before() {
         parent::_before();
-
-        $this->faker = Factory::create();
     }
 
 

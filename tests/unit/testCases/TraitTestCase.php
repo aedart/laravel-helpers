@@ -2,6 +2,7 @@
 
 use Aedart\Testing\Laravel\Traits\TestHelperTrait;
 use Codeception\TestCase\Test;
+use Faker\Factory;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -21,8 +22,15 @@ abstract class TraitTestCase extends Test{
      */
     protected $tester;
 
+    /**
+     * @var Faker\Generator
+     */
+    protected $faker = null;
+
     protected function _before()
     {
+        $this->faker = Factory::create();
+
         $this->startApplication();
     }
 
