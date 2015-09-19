@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\AppTrait;
+use Aedart\Laravel\Helpers\Traits\Foundation\AppTrait;
 use Illuminate\Contracts\Foundation\Application;
 
 /**
  * Class AppTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\AppTrait
+ * @group traits
+ * @group foundation
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Foundation\AppTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
