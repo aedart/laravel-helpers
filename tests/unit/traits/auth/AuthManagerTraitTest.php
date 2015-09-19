@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\AuthManagerTrait;
+use Aedart\Laravel\Helpers\Traits\Auth\AuthManagerTrait;
 use Illuminate\Auth\AuthManager;
 
 /**
  * Class AuthManagerTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\AuthManagerTrait
+ * @group traits
+ * @group auth
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Auth\AuthManagerTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

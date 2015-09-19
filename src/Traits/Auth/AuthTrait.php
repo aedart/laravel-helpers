@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Auth;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * <h1>Auth Trait</h1>
  *
- * @see \Aedart\Facade\Helpers\Contracts\AuthAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Auth\AuthAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits

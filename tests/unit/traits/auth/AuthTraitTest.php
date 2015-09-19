@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\AuthTrait;
+use Aedart\Laravel\Helpers\Traits\Auth\AuthTrait;
 use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Class AuthTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\AuthTrait
+ * @group traits
+ * @group auth
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Auth\AuthTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
