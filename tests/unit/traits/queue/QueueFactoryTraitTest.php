@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\QueueFactoryTrait;
+use Aedart\Laravel\Helpers\Traits\Queue\QueueFactoryTrait;
 use Illuminate\Contracts\Queue\Factory;
 
 /**
  * Class QueueFactoryTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\QueueFactoryTrait
+ * @group traits
+ * @group queue
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Queue\QueueFactoryTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

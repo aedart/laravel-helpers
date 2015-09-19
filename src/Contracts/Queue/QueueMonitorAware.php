@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Contracts\Queue;
 
 use Illuminate\Contracts\Queue\Monitor;
 

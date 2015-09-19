@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\QueueMonitorTrait;
+use Aedart\Laravel\Helpers\Traits\Queue\QueueMonitorTrait;
 use Illuminate\Contracts\Queue\Monitor;
 
 /**
  * Class QueueMonitorTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\QueueMonitorTrait
+ * @group traits
+ * @group queue
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Queue\QueueMonitorTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

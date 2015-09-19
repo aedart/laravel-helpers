@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Queue;
 
 use Illuminate\Queue\Queue;
 use Illuminate\Support\Facades\Queue as QueueFacade;
@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Queue as QueueFacade;
 /**
  * <h1>Base Queue Trait</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\BaseQueueAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Queue\BaseQueueAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits

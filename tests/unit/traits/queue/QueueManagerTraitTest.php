@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\QueueManagerTrait;
+use Aedart\Laravel\Helpers\Traits\Queue\QueueManagerTrait;
 use Illuminate\Queue\QueueManager;
 
 /**
  * Class QueueManagerTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\QueueManagerTrait
+ * @group traits
+ * @group queue
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Queue\QueueManagerTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Queue;
 
 use Illuminate\Contracts\Queue\Monitor;
 use Illuminate\Support\Facades\Queue;
@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Queue;
 /**
  * <h1>Queue Monitor Trait</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\QueueMonitorAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Queue\QueueMonitorAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits

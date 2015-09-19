@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\BaseQueueTrait;
+use Aedart\Laravel\Helpers\Traits\Queue\BaseQueueTrait;
 use Illuminate\Queue\Queue;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 /**
  * Class BaseQueueTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\BaseQueueTrait
+ * @group traits
+ * @group queue
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Queue\BaseQueueTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
