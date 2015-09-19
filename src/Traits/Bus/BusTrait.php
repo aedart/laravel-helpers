@@ -1,19 +1,24 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Traits\Bus;
 
 use Illuminate\Contracts\Bus\Dispatcher;
-
+use Illuminate\Support\Facades\Bus;
 
 /**
- * <h1>Bus Aware</h1>
+ * <h1>Bus Trait</h1>
  *
- * Components are able to specify and obtain a Command Bus Dispatcher
- *
- * @see \Illuminate\Contracts\Bus\Dispatcher
+ * @see \Aedart\Laravel\Helpers\Contracts\Bus\BusAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface BusAware {
+trait BusTrait {
+
+    /**
+     * Instance of a Command Bus Dispatcher
+     *
+     * @var Dispatcher|null
+     */
+    protected $bus = null;
 
     /**
      * Set the given bus
@@ -22,7 +27,9 @@ interface BusAware {
      *
      * @return void
      */
-    public function setBus(Dispatcher $dispatcher);
+    public function setBus(Dispatcher $dispatcher) {
+        $this->bus = $dispatcher;
+    }
 
     /**
      * Get the given bus
@@ -35,26 +42,43 @@ interface BusAware {
      *
      * @return Dispatcher|null bus or null if none bus has been set
      */
-    public function getBus();
+    public function getBus() {
+        if (!$this->hasBus() && $this->hasDefaultBus()) {
+            $this->setBus($this->getDefaultBus());
+        }
+        return $this->bus;
+    }
 
     /**
      * Get a default bus value, if any is available
      *
      * @return Dispatcher|null A default bus value or Null if no default value is available
      */
-    public function getDefaultBus();
+    public function getDefaultBus() {
+        return Bus::getFacadeRoot();
+    }
 
     /**
      * Check if bus has been set
      *
      * @return bool True if bus has been set, false if not
      */
-    public function hasBus();
+    public function hasBus() {
+        if (!is_null($this->bus)) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Check if a default bus is available or not
      *
      * @return bool True of a default bus is available, false if not
      */
-    public function hasDefaultBus();
+    public function hasDefaultBus() {
+        if (!is_null($this->getDefaultBus())) {
+            return true;
+        }
+        return false;
+    }
 }

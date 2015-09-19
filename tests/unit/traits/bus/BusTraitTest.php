@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\BusTrait;
+use Aedart\Laravel\Helpers\Traits\Bus\BusTrait;
 use Illuminate\Contracts\Bus\Dispatcher;
 
 /**
  * Class BusTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\BusTrait
+ * @group traits
+ * @group bus
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Bus\BusTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
