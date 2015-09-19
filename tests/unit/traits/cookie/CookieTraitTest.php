@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\CookieTrait;
+use Aedart\Laravel\Helpers\Traits\Cookie\CookieTrait;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as RequestFacade;
@@ -9,7 +9,9 @@ use \Mockery as m;
 /**
  * Class CookieTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\CookieTrait
+ * @group traits
+ * @group cookie
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Cookie\CookieTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

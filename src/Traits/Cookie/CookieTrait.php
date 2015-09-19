@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Cookie;
 
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Support\Facades\Cookie;
@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Request;
 /**
  * <h1>Cookie Trait</h1>
  *
- * @see \Aedart\Facade\Helpers\Contracts\CookieAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Cookie\CookieAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits

@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Contracts\Cookie;
 
 use Illuminate\Cookie\CookieJar;
 
