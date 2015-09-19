@@ -26,7 +26,7 @@ class QueueManagerTraitTest extends TraitTestCase{
      * @covers ::hasQueueManager
      * @covers ::hasDefaultQueueManager
      */
-    public function hasNoDefaultPsrLoggerOutsideLaravel() {
+    public function hasNoDefaultQueueManagerOutsideLaravel() {
         $this->stopLaravel();
 
         $mock = $this->getTraitMock();
@@ -43,7 +43,7 @@ class QueueManagerTraitTest extends TraitTestCase{
      * @covers ::setQueueManager
      * @covers ::getDefaultQueueManager
      */
-    public function canObtainPsrLogger()
+    public function canObtainQueueManager()
     {
         $mock = $this->getTraitMock();
 
