@@ -1,24 +1,18 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Contracts\Console;
 
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Support\Facades\Artisan;
 
 /**
- * <h1>Artisan Trait</h1>
+ * <h1>Artisan Aware</h1>
  *
- * @see \Aedart\Facade\Helpers\Contracts\ArtisanAware
+ * Components are able to specify and obtain an artisan console kernel instance
+ *
+ * @see \Illuminate\Contracts\Console\Kernel
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait ArtisanTrait {
-
-    /**
-     * Instance of Artisan
-     *
-     * @var Kernel|null
-     */
-    protected $artisan = null;
+interface ArtisanAware {
 
     /**
      * Set the given artisan
@@ -27,9 +21,7 @@ trait ArtisanTrait {
      *
      * @return void
      */
-    public function setArtisan(Kernel $artisan) {
-        $this->artisan = $artisan;
-    }
+    public function setArtisan(Kernel $artisan);
 
     /**
      * Get the given artisan
@@ -42,44 +34,26 @@ trait ArtisanTrait {
      *
      * @return Kernel|null artisan or null if none artisan has been set
      */
-    public function getArtisan() {
-        if (!$this->hasArtisan() && $this->hasDefaultArtisan()) {
-            $this->setArtisan($this->getDefaultArtisan());
-        }
-        return $this->artisan;
-    }
+    public function getArtisan();
 
     /**
      * Get a default artisan value, if any is available
      *
      * @return Kernel|null A default artisan value or Null if no default value is available
      */
-    public function getDefaultArtisan() {
-        return Artisan::getFacadeRoot();
-    }
+    public function getDefaultArtisan();
 
     /**
      * Check if artisan has been set
      *
      * @return bool True if artisan has been set, false if not
      */
-    public function hasArtisan() {
-        if (!is_null($this->artisan)) {
-            return true;
-        }
-        return false;
-    }
+    public function hasArtisan();
 
     /**
      * Check if a default artisan is available or not
      *
      * @return bool True of a default artisan is available, false if not
      */
-    public function hasDefaultArtisan() {
-        if (!is_null($this->getDefaultArtisan())) {
-            return true;
-        }
-        return false;
-    }
-
+    public function hasDefaultArtisan();
 }

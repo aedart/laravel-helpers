@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\ArtisanTrait;
+use Aedart\Laravel\Helpers\Traits\Console\ArtisanTrait;
 use Illuminate\Contracts\Console\Kernel;
 
 /**
  * Class ArtisanTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\ArtisanTrait
+ * @group traits
+ * @group console
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Console\ArtisanTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
