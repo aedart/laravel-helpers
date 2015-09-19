@@ -27,7 +27,7 @@ trait HashTrait {
      *
      * @return void
      */
-    public function setHash($hasher) {
+    public function setHash(Hasher $hasher) {
         $this->hash = $hasher;
     }
 
