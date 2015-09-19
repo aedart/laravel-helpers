@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\Access\Gate;
 /**
  * Class GateTraitTest
  *
- * @group traits
  * @coversDefaultClass Aedart\Laravel\Helpers\Traits\GateTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
