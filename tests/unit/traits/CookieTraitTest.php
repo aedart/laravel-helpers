@@ -14,7 +14,7 @@ use \Mockery as m;
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
 class CookieTraitTest extends TraitTestCase{
-    
+
     protected function _before() {
         parent::_before();
     }
