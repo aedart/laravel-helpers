@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Cache;
 
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Cache;
@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Cache;
 /**
  * <h1>Cache Trait</h1>
  *
- * @see \Aedart\Facade\Helpers\Contracts\CacheAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Cache\CacheAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits

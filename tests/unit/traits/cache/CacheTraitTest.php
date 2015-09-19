@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\CacheTrait;
+use Aedart\Laravel\Helpers\Traits\Cache\CacheTrait;
 use Illuminate\Contracts\Cache\Repository;
 
 /**
  * Class CacheTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\CacheTrait
+ * @group traits
+ * @group cache
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Cache\CacheTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

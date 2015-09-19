@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\CacheFactoryTrait;
+use Aedart\Laravel\Helpers\Traits\Cache\CacheFactoryTrait;
 use Illuminate\Contracts\Cache\Factory;
 
 /**
  * Class CacheFactoryTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\CacheFactoryTrait
+ * @group traits
+ * @group cache
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Cache\CacheFactoryTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
