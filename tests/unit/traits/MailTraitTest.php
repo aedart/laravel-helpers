@@ -56,7 +56,7 @@ class MailTraitTest extends TraitTestCase{
 
         $config = $mock->getMail();
 
-        $this->assertTrue($mock->hasMail(), 'A mail-sender writer should have been set');
+        $this->assertTrue($mock->hasMail(), 'A mail-sender should have been set');
         $this->assertInstanceOf(Mailer::class, $config);
     }
 }

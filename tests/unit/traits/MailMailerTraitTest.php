@@ -56,7 +56,7 @@ class MailMailerTraitTest extends TraitTestCase{
 
         $config = $mock->getMailMailer();
 
-        $this->assertTrue($mock->hasMailMailer(), 'A laravel mailer writer should have been set');
+        $this->assertTrue($mock->hasMailMailer(), 'A laravel mailer should have been set');
         $this->assertInstanceOf(Mailer::class, $config);
     }
 }

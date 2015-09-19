@@ -56,7 +56,7 @@ class MailQueueTraitTest extends TraitTestCase{
 
         $config = $mock->getMailQueue();
 
-        $this->assertTrue($mock->hasMailQueue(), 'A mail queue writer should have been set');
+        $this->assertTrue($mock->hasMailQueue(), 'A mail queue should have been set');
         $this->assertInstanceOf(MailQueue::class, $config);
     }
 }
