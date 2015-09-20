@@ -22,7 +22,7 @@ interface HashAware {
      *
      * @return void
      */
-    public function setHash($hasher);
+    public function setHash(Hasher $hasher);
 
     /**
      * Get the given hash
