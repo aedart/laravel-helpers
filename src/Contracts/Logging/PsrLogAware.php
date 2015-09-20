@@ -1,24 +1,19 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Contracts\Logging;
 
-use Illuminate\Support\Facades\Log;
 use Psr\Log\LoggerInterface;
 
 /**
- * <h1>Psr Log Trait</h1>
+ * <h1>Psr Log Aware</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\PsrLogAware
+ * Components are able to specify and obtain a Psr logger
+ * utility component.
+ *
+ * @see \Psr\Log\LoggerInterface
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait PsrLogTrait {
-
-    /**
-     * Instance of a Psr Logger
-     *
-     * @var LoggerInterface|null
-     */
-    protected $psrLog = null;
+interface PsrLogAware {
 
     /**
      * Set the given psr log
@@ -27,9 +22,7 @@ trait PsrLogTrait {
      *
      * @return void
      */
-    public function setPsrLog(LoggerInterface $logger) {
-        $this->psrLog = $logger;
-    }
+    public function setPsrLog(LoggerInterface $logger);
 
     /**
      * Get the given psr log
@@ -42,43 +35,26 @@ trait PsrLogTrait {
      *
      * @return LoggerInterface|null psr log or null if none psr log has been set
      */
-    public function getPsrLog() {
-        if (!$this->hasPsrLog() && $this->hasDefaultPsrLog()) {
-            $this->setPsrLog($this->getDefaultPsrLog());
-        }
-        return $this->psrLog;
-    }
+    public function getPsrLog();
 
     /**
      * Get a default psr log value, if any is available
      *
      * @return LoggerInterface|null A default psr log value or Null if no default value is available
      */
-    public function getDefaultPsrLog() {
-        return Log::getFacadeRoot();
-    }
+    public function getDefaultPsrLog();
 
     /**
      * Check if psr log has been set
      *
      * @return bool True if psr log has been set, false if not
      */
-    public function hasPsrLog() {
-        if (!is_null($this->psrLog)) {
-            return true;
-        }
-        return false;
-    }
+    public function hasPsrLog();
 
     /**
      * Check if a default psr log is available or not
      *
      * @return bool True of a default psr log is available, false if not
      */
-    public function hasDefaultPsrLog() {
-        if (!is_null($this->getDefaultPsrLog())) {
-            return true;
-        }
-        return false;
-    }
+    public function hasDefaultPsrLog();
 }

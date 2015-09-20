@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\PsrLogTrait;
+use Aedart\Laravel\Helpers\Traits\Logging\PsrLogTrait;
 use Psr\Log\LoggerInterface;
 
 /**
  * Class PsrLogTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\PsrLogTrait
+ * @group traits
+ * @group logging
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Logging\PsrLogTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
