@@ -1,20 +1,24 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Traits\Translation;
 
+use Illuminate\Support\Facades\Lang;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * <h1>Lang Translator Aware</h1>
+ * <h1>Lang Translator Trait</h1>
  *
- * Components are able to specify and obtain a Symfony Translator
- * utility component.
- *
- * @see \Aedart\Laravel\Helpers\Contracts\LangAware
- * @see \Symfony\Component\Translation\TranslatorInterface
+ * @see \Aedart\Laravel\Helpers\Contracts\Translation\LangTranslatorAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface LangTranslatorAware {
+trait LangTranslatorTrait{
+
+    /**
+     * Instance of a translator
+     *
+     * @var TranslatorInterface|null
+     */
+    protected $langTranslator = null;
 
     /**
      * Set the given lang translator
@@ -23,7 +27,9 @@ interface LangTranslatorAware {
      *
      * @return void
      */
-    public function setLangTranslator($translator);
+    public function setLangTranslator(TranslatorInterface $translator) {
+        $this->langTranslator = $translator;
+    }
 
     /**
      * Get the given lang translator
@@ -36,26 +42,43 @@ interface LangTranslatorAware {
      *
      * @return TranslatorInterface|null lang translator or null if none lang translator has been set
      */
-    public function getLangTranslator();
+    public function getLangTranslator() {
+        if (!$this->hasLangTranslator() && $this->hasDefaultLangTranslator()) {
+            $this->setLangTranslator($this->getDefaultLangTranslator());
+        }
+        return $this->langTranslator;
+    }
 
     /**
      * Get a default lang translator value, if any is available
      *
      * @return TranslatorInterface|null A default lang translator value or Null if no default value is available
      */
-    public function getDefaultLangTranslator();
+    public function getDefaultLangTranslator() {
+        return Lang::getFacadeRoot();
+    }
 
     /**
      * Check if lang translator has been set
      *
      * @return bool True if lang translator has been set, false if not
      */
-    public function hasLangTranslator();
+    public function hasLangTranslator() {
+        if (!is_null($this->langTranslator)) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Check if a default lang translator is available or not
      *
      * @return bool True of a default lang translator is available, false if not
      */
-    public function hasDefaultLangTranslator();
+    public function hasDefaultLangTranslator() {
+        if (!is_null($this->getDefaultLangTranslator())) {
+            return true;
+        }
+        return false;
+    }
 }

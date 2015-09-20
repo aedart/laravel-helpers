@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\LangTrait;
+use Aedart\Laravel\Helpers\Traits\Translation\LangTrait;
 use Illuminate\Translation\Translator;
 
 /**
  * Class LangTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\LangTrait
+ * @group traits
+ * @group translation
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Translation\LangTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

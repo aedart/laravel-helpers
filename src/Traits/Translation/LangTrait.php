@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Translation;
 
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Translation\Translator;
@@ -6,7 +6,7 @@ use Illuminate\Translation\Translator;
 /**
  * <h1>Lang Trait</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\LangAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Translation\LangAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits

@@ -1,12 +1,12 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\LangTranslatorTrait;
+use Aedart\Laravel\Helpers\Traits\Translation\LangTranslatorTrait;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class LangTranslatorTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\LangTranslatorTrait
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Translation\LangTranslatorTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
