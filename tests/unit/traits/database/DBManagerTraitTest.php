@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\DBManagerTrait;
+use Aedart\Laravel\Helpers\Traits\Database\DBManagerTrait;
 use Illuminate\Database\DatabaseManager;
 
 /**
  * Class DBManagerTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\DBManagerTrait
+ * @group traits
+ * @group database
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Database\DBManagerTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\DBTrait;
+use Aedart\Laravel\Helpers\Traits\Database\DBTrait;
 use Illuminate\Database\ConnectionInterface;
 
 /**
  * Class DBTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\DBTrait
+ * @group traits
+ * @group database
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Database\DBTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

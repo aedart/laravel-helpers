@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Database;
 
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\Facades\DB;
@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 /**
  * <h1>DB Manager Trait</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\DBManagerAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Database\DBManagerAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits

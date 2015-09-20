@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Database;
 
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Facades\DB;
@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 /**
  * <h1>DB Trait</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\DBAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Database\DBAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
