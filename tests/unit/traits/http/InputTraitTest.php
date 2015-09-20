@@ -1,14 +1,15 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\InputTrait;
+use Aedart\Laravel\Helpers\Traits\Http\InputTrait;
 use Illuminate\Http\Request;
 use \Mockery as m;
-use Faker\Factory;
 
 /**
  * Class InputTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\InputTrait
+ * @group traits
+ * @group http
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Http\InputTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

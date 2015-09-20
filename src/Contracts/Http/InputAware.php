@@ -1,24 +1,19 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Contracts\Http;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 /**
- * <h1>Input Trait</h1>
+ * <h1>Input Aware</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\InputAware;
+ * Components are able to specify and obtain a request (input)
+ * utility component.
+ *
+ * @see \Illuminate\Http\Request
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait InputTrait {
-
-    /**
-     * Instance of a request (input)
-     *
-     * @var Request|null
-     */
-    protected $input = null;
+interface InputAware {
 
     /**
      * Set the given input
@@ -27,9 +22,7 @@ trait InputTrait {
      *
      * @return void
      */
-    public function setInput(Request $request) {
-        $this->input = $request;
-    }
+    public function setInput(Request $request);
 
     /**
      * Get the given input
@@ -42,45 +35,28 @@ trait InputTrait {
      *
      * @return Request|null input or null if none input has been set
      */
-    public function getInput() {
-        if (!$this->hasInput() && $this->hasDefaultInput()) {
-            $this->setInput($this->getDefaultInput());
-        }
-        return $this->input;
-    }
+    public function getInput();
 
     /**
      * Get a default input value, if any is available
      *
      * @return Request|null A default input value or Null if no default value is available
      */
-    public function getDefaultInput() {
-        return Input::getFacadeRoot();
-    }
+    public function getDefaultInput();
 
     /**
      * Check if input has been set
      *
      * @return bool True if input has been set, false if not
      */
-    public function hasInput() {
-        if (!is_null($this->input)) {
-            return true;
-        }
-        return false;
-    }
+    public function hasInput();
 
     /**
      * Check if a default input is available or not
      *
      * @return bool True of a default input is available, false if not
      */
-    public function hasDefaultInput() {
-        if (!is_null($this->getDefaultInput())) {
-            return true;
-        }
-        return false;
-    }
+    public function hasDefaultInput();
 
     /**
      * Get an item from the input
@@ -92,7 +68,5 @@ trait InputTrait {
      *
      * @return mixed
      */
-    public function get($key = null, $default = null){
-        return $this->getInput()->input($key, $default);
-    }
+    public function get($key = null, $default = null);
 }
