@@ -1,18 +1,24 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Traits\Encryption;
 
 use Illuminate\Contracts\Encryption\Encrypter;
+use Illuminate\Support\Facades\Crypt;
 
 /**
- * <h1>Crypt Aware</h1>
+ * <h1>Crypt Trait</h1>
  *
- * Components are able to specify and obtain an encrypter
- *
- * @see \Illuminate\Contracts\Encryption\Encrypter
+ * @see \Aedart\Laravel\Helpers\Contracts\Encryption\CryptAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface CryptAware {
+trait CryptTrait {
+
+    /**
+     * Instance of an encrypter
+     *
+     * @var Encrypter|null
+     */
+    protected $crypt = null;
 
     /**
      * Set the given crypt
@@ -21,7 +27,9 @@ interface CryptAware {
      *
      * @return void
      */
-    public function setCrypt(Encrypter $encrypter);
+    public function setCrypt(Encrypter $encrypter) {
+        $this->crypt = $encrypter;
+    }
 
     /**
      * Get the given crypt
@@ -34,26 +42,43 @@ interface CryptAware {
      *
      * @return Encrypter|null crypt or null if none crypt has been set
      */
-    public function getCrypt();
+    public function getCrypt() {
+        if (!$this->hasCrypt() && $this->hasDefaultCrypt()) {
+            $this->setCrypt($this->getDefaultCrypt());
+        }
+        return $this->crypt;
+    }
 
     /**
      * Get a default crypt value, if any is available
      *
      * @return Encrypter|null A default crypt value or Null if no default value is available
      */
-    public function getDefaultCrypt();
+    public function getDefaultCrypt() {
+        return Crypt::getFacadeRoot();
+    }
 
     /**
      * Check if crypt has been set
      *
      * @return bool True if crypt has been set, false if not
      */
-    public function hasCrypt();
+    public function hasCrypt() {
+        if (!is_null($this->crypt)) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Check if a default crypt is available or not
      *
      * @return bool True of a default crypt is available, false if not
      */
-    public function hasDefaultCrypt();
+    public function hasDefaultCrypt() {
+        if (!is_null($this->getDefaultCrypt())) {
+            return true;
+        }
+        return false;
+    }
 }

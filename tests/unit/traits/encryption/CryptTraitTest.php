@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\CryptTrait;
+use Aedart\Laravel\Helpers\Traits\Encryption\CryptTrait;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 /**
  * Class CryptTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\CryptTrait
+ * @group traits
+ * @group encryption
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Encryption\CryptTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
