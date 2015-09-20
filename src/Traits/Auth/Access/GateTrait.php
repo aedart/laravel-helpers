@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Auth\Access;
 
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\Gate as GateFacade;
@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Gate as GateFacade;
 /**
  * <h1>Gate Trait</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\GateAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Auth\Access\GateAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits

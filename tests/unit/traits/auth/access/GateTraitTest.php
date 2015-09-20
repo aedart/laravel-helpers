@@ -1,12 +1,15 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\GateTrait;
+use Aedart\Laravel\Helpers\Traits\Auth\Access\GateTrait;
 use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
  * Class GateTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\GateTrait
+ * @group traits
+ * @group auth
+ * @group auth-access
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Auth\Access\GateTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

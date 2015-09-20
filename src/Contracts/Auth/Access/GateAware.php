@@ -1,7 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Contracts\Auth\Access;
 
 use Illuminate\Contracts\Auth\Access\Gate;
-
 
 /**
  * <h1>Gate Aware</h1>
