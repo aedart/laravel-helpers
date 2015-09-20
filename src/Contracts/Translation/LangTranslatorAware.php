@@ -23,7 +23,7 @@ interface LangTranslatorAware {
      *
      * @return void
      */
-    public function setLangTranslator($translator);
+    public function setLangTranslator(TranslatorInterface $translator);
 
     /**
      * Get the given lang translator
