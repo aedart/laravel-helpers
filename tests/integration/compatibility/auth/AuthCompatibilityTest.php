@@ -6,6 +6,7 @@ use Aedart\Laravel\Helpers\Traits\Auth\AuthTrait;
 /**
  * Class AuthAndTraitCompatibilityTest
  *
+ * @group compatibility
  * @group auth
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
