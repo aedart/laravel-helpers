@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Mail;
 
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Facades\Mail;
@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Mail;
 /**
  * <h1>Mail Trait</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\MailAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Mail\MailAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits

@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\MailTrait;
+use Aedart\Laravel\Helpers\Traits\Mail\MailTrait;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 /**
  * Class MailTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\MailTrait
+ * @group traits
+ * @group mail
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Mail\MailTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

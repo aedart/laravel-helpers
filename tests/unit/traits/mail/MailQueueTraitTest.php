@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\MailQueueTrait;
+use Aedart\Laravel\Helpers\Traits\Mail\MailQueueTrait;
 use Illuminate\Contracts\Mail\MailQueue;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 /**
  * Class MailQueueTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\MailQueueTrait
+ * @group traits
+ * @group mail
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Mail\MailQueueTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

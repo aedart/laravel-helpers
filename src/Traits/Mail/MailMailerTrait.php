@@ -1,19 +1,24 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Traits\Mail;
 
 use Illuminate\Mail\Mailer;
+use Illuminate\Support\Facades\Mail;
 
 /**
- * <h1>Mail Mailer Aware</h1>
+ * <h1>Mail Mailer Trait</h1>
  *
- * Components are able to specify and obtain a Laravel Mailer
- * utility component.
- *
- * @see \Illuminate\Mail\Mailer
+ * @see \Aedart\Laravel\Helpers\Contracts\Mail\MailMailerAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface MailMailerAware {
+trait MailMailerTrait{
+
+    /**
+     * Instance of a Laravel Mailer
+     *
+     * @var Mailer|null
+     */
+    protected $mailMailer = null;
 
     /**
      * Set the given mail mailer
@@ -22,7 +27,9 @@ interface MailMailerAware {
      *
      * @return void
      */
-    public function setMailMailer(Mailer $mailer);
+    public function setMailMailer(Mailer $mailer) {
+        $this->mailMailer = $mailer;
+    }
 
     /**
      * Get the given mail mailer
@@ -35,26 +42,43 @@ interface MailMailerAware {
      *
      * @return Mailer|null mail mailer or null if none mail mailer has been set
      */
-    public function getMailMailer();
+    public function getMailMailer() {
+        if (!$this->hasMailMailer() && $this->hasDefaultMailMailer()) {
+            $this->setMailMailer($this->getDefaultMailMailer());
+        }
+        return $this->mailMailer;
+    }
 
     /**
      * Get a default mail mailer value, if any is available
      *
      * @return Mailer|null A default mail mailer value or Null if no default value is available
      */
-    public function getDefaultMailMailer();
+    public function getDefaultMailMailer() {
+        return Mail::getFacadeRoot();
+    }
 
     /**
      * Check if mail mailer has been set
      *
      * @return bool True if mail mailer has been set, false if not
      */
-    public function hasMailMailer();
+    public function hasMailMailer() {
+        if (!is_null($this->mailMailer)) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Check if a default mail mailer is available or not
      *
      * @return bool True of a default mail mailer is available, false if not
      */
-    public function hasDefaultMailMailer();
+    public function hasDefaultMailMailer() {
+        if (!is_null($this->getDefaultMailMailer())) {
+            return true;
+        }
+        return false;
+    }
 }

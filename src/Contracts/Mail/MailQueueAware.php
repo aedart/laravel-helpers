@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Contracts\Mail;
 
 use Illuminate\Contracts\Mail\MailQueue;
 
