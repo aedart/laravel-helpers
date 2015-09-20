@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\FileTrait;
+use Aedart\Laravel\Helpers\Traits\Filesystem\FileTrait;
 use Illuminate\Filesystem\Filesystem;
 
 /**
  * Class FileTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\FileTrait
+ * @group traits
+ * @group filesystem
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Filesystem\FileTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

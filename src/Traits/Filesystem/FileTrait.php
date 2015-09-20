@@ -1,25 +1,24 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Traits\Filesystem;
 
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 
 /**
- * <h1>File Aware</h1>
+ * <h1>File Trait</h1>
  *
- * Components are able to specify and obtain Laravel's native Filesystem
- * utility component.
- *
- * <br />
- *
- * Please do review the `Storage` Facade, if you need to work with multiple
- * storage units.
- *
- * @see \Illuminate\Filesystem\Filesystem
- * @see \Illuminate\Support\Facades\Storage
+ * @see \Aedart\Laravel\Helpers\Contracts\Filesystem\FileAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface FileAware {
+trait FileTrait {
+
+    /**
+     * Instance of the filesystem utility
+     *
+     * @var Filesystem|null
+     */
+    protected $file = null;
 
     /**
      * Set the given file
@@ -28,7 +27,9 @@ interface FileAware {
      *
      * @return void
      */
-    public function setFile(Filesystem $filesystem);
+    public function setFile(Filesystem $filesystem) {
+        $this->file = $filesystem;
+    }
 
     /**
      * Get the given file
@@ -41,26 +42,43 @@ interface FileAware {
      *
      * @return Filesystem|null file or null if none file has been set
      */
-    public function getFile();
+    public function getFile() {
+        if (!$this->hasFile() && $this->hasDefaultFile()) {
+            $this->setFile($this->getDefaultFile());
+        }
+        return $this->file;
+    }
 
     /**
      * Get a default file value, if any is available
      *
      * @return Filesystem|null A default file value or Null if no default value is available
      */
-    public function getDefaultFile();
+    public function getDefaultFile() {
+        return File::getFacadeRoot();
+    }
 
     /**
      * Check if file has been set
      *
      * @return bool True if file has been set, false if not
      */
-    public function hasFile();
+    public function hasFile() {
+        if (!is_null($this->file)) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Check if a default file is available or not
      *
      * @return bool True of a default file is available, false if not
      */
-    public function hasDefaultFile();
+    public function hasDefaultFile() {
+        if (!is_null($this->getDefaultFile())) {
+            return true;
+        }
+        return false;
+    }
 }
