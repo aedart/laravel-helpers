@@ -4,13 +4,13 @@ use Aedart\Laravel\Helpers\Contracts\Auth\AuthAware;
 use Aedart\Laravel\Helpers\Traits\Auth\AuthTrait;
 
 /**
- * Class AuthCompatibilityTest
+ * Class AuthAndTraitCompatibilityTest
  *
  * @group auth
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-class AuthCompatibilityTest extends InterfaceCompatibilityTestCase{
+class AuthAndTraitCompatibilityTest extends CompatibilityTestCase{
 
     /**
      * Returns the class path to a class that implements the
@@ -19,7 +19,7 @@ class AuthCompatibilityTest extends InterfaceCompatibilityTestCase{
      *
      * @return string
      */
-    public function getDummyClassPath() {
+    public function dummyClassPath() {
         return DummyAuthContainer::class;
     }
 
