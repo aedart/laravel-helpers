@@ -22,7 +22,7 @@ interface QueueMonitorAware {
      *
      * @return void
      */
-    public function setQueueMonitor($monitor);
+    public function setQueueMonitor(Monitor $monitor);
 
     /**
      * Get the given queue monitor

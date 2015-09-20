@@ -27,7 +27,7 @@ trait QueueMonitorTrait {
      *
      * @return void
      */
-    public function setQueueMonitor($monitor) {
+    public function setQueueMonitor(Monitor $monitor) {
         $this->queueMonitor = $monitor;
     }
 
