@@ -20,13 +20,9 @@
     "illuminate/support": "~5.1"
   },
   "require-dev": {
-    "aedart/testing-laravel": "~1.1",
+    "aedart/testing-laravel": "~1.2",
     "aedart/license": "1.*",
-    "aedart/license-file-manager": "1.*",
-    "codeception/codeception": "~2.1",
-    "symfony/var-dumper": "~2.7",
-    "fzaninotto/faker": "~1.5",
-    "mockery/mockery": "~0.9"
+    "aedart/license-file-manager": "1.*"
   },
   "autoload": {
     "psr-4": {
