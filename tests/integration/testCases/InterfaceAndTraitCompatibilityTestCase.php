@@ -30,7 +30,7 @@ use Codeception\TestCase\Test;
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-abstract class InterfaceCompatibilityTestCase extends Test
+abstract class InterfaceAndTraitCompatibilityTestCase extends Test
 {
     /**
      * @var \IntegrationTester
