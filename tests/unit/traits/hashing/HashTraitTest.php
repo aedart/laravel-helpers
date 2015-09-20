@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\HashTrait;
+use Aedart\Laravel\Helpers\Traits\Hashing\HashTrait;
 use Illuminate\Contracts\Hashing\Hasher;
 
 /**
  * Class HashTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\HashTrait
+ * @group traits
+ * @group hashing
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Hashing\HashTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package unit\traits
