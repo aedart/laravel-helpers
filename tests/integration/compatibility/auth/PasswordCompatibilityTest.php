@@ -6,6 +6,9 @@ use Aedart\Laravel\Helpers\Traits\Auth\PasswordTrait;
 /**
  * Class PasswordCompatibilityTest
  *
+ * @group compatibility
+ * @group auth
+ *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
 class PasswordCompatibilityTest extends CompatibilityTestCase{
