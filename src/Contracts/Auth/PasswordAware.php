@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Contracts\Auth;
 
 use Illuminate\Contracts\Auth\PasswordBroker;
 

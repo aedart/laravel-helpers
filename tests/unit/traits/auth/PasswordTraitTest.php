@@ -1,6 +1,6 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\PasswordTrait;
+use Aedart\Laravel\Helpers\Traits\Auth\PasswordTrait;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 /**
  * Class PasswordTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\PasswordTrait
+ * @group traits
+ * @group auth
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Auth\PasswordTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

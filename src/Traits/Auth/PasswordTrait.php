@@ -1,4 +1,4 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Traits\Auth;
 
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Support\Facades\Password;
@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Password;
 /**
  * <h1>Password Trait</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\PasswordAware
+ * @see \Aedart\Laravel\Helpers\Contracts\Auth\PasswordAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
