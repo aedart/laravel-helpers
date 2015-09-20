@@ -1,24 +1,18 @@
-<?php namespace Aedart\Laravel\Helpers\Traits;
+<?php namespace Aedart\Laravel\Helpers\Contracts\Events;
 
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Support\Facades\Event;
 
 /**
- * <h1>Event Trait</h1>
+ * <h1>Event Aware</h1>
  *
- * @see \Aedart\Laravel\Helpers\Contracts\EventAware
+ * Components are able to specify and obtain an event dispatcher
+ *
+ * @see \Illuminate\Contracts\Events\Dispatcher
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait EventTrait {
-
-    /**
-     * Instance of a event dispatcher
-     *
-     * @var Dispatcher|null
-     */
-    protected $event = null;
+interface EventAware {
 
     /**
      * Set the given event
@@ -27,9 +21,7 @@ trait EventTrait {
      *
      * @return void
      */
-    public function setEvent(Dispatcher $dispatcher) {
-        $this->event = $dispatcher;
-    }
+    public function setEvent(Dispatcher $dispatcher);
 
     /**
      * Get the given event
@@ -42,43 +34,26 @@ trait EventTrait {
      *
      * @return Dispatcher|null event or null if none event has been set
      */
-    public function getEvent() {
-        if (!$this->hasEvent() && $this->hasDefaultEvent()) {
-            $this->setEvent($this->getDefaultEvent());
-        }
-        return $this->event;
-    }
+    public function getEvent();
 
     /**
      * Get a default event value, if any is available
      *
      * @return Dispatcher|null A default event value or Null if no default value is available
      */
-    public function getDefaultEvent() {
-        return Event::getFacadeRoot();
-    }
+    public function getDefaultEvent();
 
     /**
      * Check if event has been set
      *
      * @return bool True if event has been set, false if not
      */
-    public function hasEvent() {
-        if (!is_null($this->event)) {
-            return true;
-        }
-        return false;
-    }
+    public function hasEvent();
 
     /**
      * Check if a default event is available or not
      *
      * @return bool True of a default event is available, false if not
      */
-    public function hasDefaultEvent() {
-        if (!is_null($this->getDefaultEvent())) {
-            return true;
-        }
-        return false;
-    }
+    public function hasDefaultEvent();
 }

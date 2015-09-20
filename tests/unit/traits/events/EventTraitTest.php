@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\EventTrait;
+use Aedart\Laravel\Helpers\Traits\Events\EventTrait;
 use Illuminate\Contracts\Events\Dispatcher;
 
 /**
  * Class EventTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\EventTrait
+ * @group traits
+ * @group events
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Events\EventTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
