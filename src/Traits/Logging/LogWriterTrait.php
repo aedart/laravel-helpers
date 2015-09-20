@@ -1,19 +1,24 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Traits\Logging;
 
 use Illuminate\Log\Writer;
+use Illuminate\Support\Facades\Log;
 
 /**
- * <h1>Log Writer Aware</h1>
+ * <h1>Log Writer Trait</h1>
  *
- * Components are able to specify and obtain a laravel log-writer
- * utility component.
- *
- * @see \Illuminate\Log\Writer
+ * @see \Aedart\Laravel\Helpers\Contracts\Logging\LogWriterAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface LogWriterAware {
+trait LogWriterTrait {
+
+    /**
+     * Instance of the Laravel Log Writer
+     *
+     * @var Writer|null
+     */
+    protected $logWriter = null;
 
     /**
      * Set the given log writer
@@ -22,7 +27,9 @@ interface LogWriterAware {
      *
      * @return void
      */
-    public function setLogWriter(Writer $writer);
+    public function setLogWriter(Writer $writer) {
+        $this->logWriter = $writer;
+    }
 
     /**
      * Get the given log writer
@@ -35,26 +42,43 @@ interface LogWriterAware {
      *
      * @return Writer|null log writer or null if none log writer has been set
      */
-    public function getLogWriter();
+    public function getLogWriter() {
+        if (!$this->hasLogWriter() && $this->hasDefaultLogWriter()) {
+            $this->setLogWriter($this->getDefaultLogWriter());
+        }
+        return $this->logWriter;
+    }
 
     /**
      * Get a default log writer value, if any is available
      *
      * @return Writer|null A default log writer value or Null if no default value is available
      */
-    public function getDefaultLogWriter();
+    public function getDefaultLogWriter() {
+        return Log::getFacadeRoot();
+    }
 
     /**
      * Check if log writer has been set
      *
      * @return bool True if log writer has been set, false if not
      */
-    public function hasLogWriter();
+    public function hasLogWriter() {
+        if (!is_null($this->logWriter)) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Check if a default log writer is available or not
      *
      * @return bool True of a default log writer is available, false if not
      */
-    public function hasDefaultLogWriter();
+    public function hasDefaultLogWriter() {
+        if (!is_null($this->getDefaultLogWriter())) {
+            return true;
+        }
+        return false;
+    }
 }

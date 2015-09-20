@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\LogWriterTrait;
+use Aedart\Laravel\Helpers\Traits\Logging\LogWriterTrait;
 use Illuminate\Log\Writer;
 
 /**
  * Class LogWriterTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\LogWriterTrait
+ * @group traits
+ * @group logging
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Logging\LogWriterTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */

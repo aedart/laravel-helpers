@@ -1,19 +1,24 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts;
+<?php namespace Aedart\Laravel\Helpers\Traits\Logging;
 
 use Illuminate\Contracts\Logging\Log;
+use Illuminate\Support\Facades\Log as LogFacade;
 
 /**
- * <h1>Log Aware</h1>
+ * <h1>Log Trait</h1>
  *
- * Components are able to specify and obtain a laravel logger
- * utility component.
- *
- * @see \Illuminate\Contracts\Logging\Log
+ * @see \Aedart\Laravel\Helpers\Contracts\Logging\LogAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface LogAware {
+trait LogTrait{
+
+    /**
+     * Instance of the Laravel Logger
+     *
+     * @var Log|null
+     */
+    protected $log = null;
 
     /**
      * Set the given log
@@ -22,7 +27,9 @@ interface LogAware {
      *
      * @return void
      */
-    public function setLog(Log $logger);
+    public function setLog(Log $logger) {
+        $this->log = $logger;
+    }
 
     /**
      * Get the given log
@@ -35,26 +42,43 @@ interface LogAware {
      *
      * @return Log|null log or null if none log has been set
      */
-    public function getLog();
+    public function getLog() {
+        if (!$this->hasLog() && $this->hasDefaultLog()) {
+            $this->setLog($this->getDefaultLog());
+        }
+        return $this->log;
+    }
 
     /**
      * Get a default log value, if any is available
      *
      * @return Log|null A default log value or Null if no default value is available
      */
-    public function getDefaultLog();
+    public function getDefaultLog() {
+        return LogFacade::getFacadeRoot();
+    }
 
     /**
      * Check if log has been set
      *
      * @return bool True if log has been set, false if not
      */
-    public function hasLog();
+    public function hasLog() {
+        if (!is_null($this->log)) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Check if a default log is available or not
      *
      * @return bool True of a default log is available, false if not
      */
-    public function hasDefaultLog();
+    public function hasDefaultLog() {
+        if (!is_null($this->getDefaultLog())) {
+            return true;
+        }
+        return false;
+    }
 }

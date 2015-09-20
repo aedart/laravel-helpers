@@ -1,12 +1,14 @@
 <?php
 
-use Aedart\Laravel\Helpers\Traits\LogTrait;
+use Aedart\Laravel\Helpers\Traits\Logging\LogTrait;
 use Illuminate\Contracts\Logging\Log;
 
 /**
  * Class LogTraitTest
  *
- * @coversDefaultClass Aedart\Laravel\Helpers\Traits\LogTrait
+ * @group traits
+ * @group logging
+ * @coversDefaultClass Aedart\Laravel\Helpers\Traits\Logging\LogTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
