@@ -1,8 +1,6 @@
 <?php
 
-use Aedart\Testing\Laravel\Traits\TestHelperTrait;
-use Codeception\TestCase\Test;
-use Faker\Factory;
+use Aedart\Testing\Laravel\TestCases\unit\UnitWithLaravelTestCase;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -13,31 +11,7 @@ use Illuminate\Support\Facades\Facade;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package unit\testCases
  */
-abstract class TraitTestCase extends Test{
-
-    use TestHelperTrait;
-
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
-    /**
-     * @var Faker\Generator
-     */
-    protected $faker = null;
-
-    protected function _before()
-    {
-        $this->faker = Factory::create();
-
-        $this->startApplication();
-    }
-
-    protected function _after()
-    {
-        $this->stopLaravel();
-    }
+abstract class TraitTestCase extends UnitWithLaravelTestCase{
 
     /***********************************************************
      * Helpers and utilities
