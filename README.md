@@ -19,13 +19,13 @@ This package make use of Laravel's native [Facades](http://laravel.com/docs/5.1/
 
 * When your component depends on one or several of Laravel's native components
 * When there is a strong need to interface such dependencies 
-* When you need to be able to set a different instance, of a given native component, e.g. your implemented version
+* When you need to be able to set a different instance of a given native Laravel component, e.g. your implemented version of a Configuration Repository
 
 ## When not to use this ##
 
 If you are using a modern [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment), then the added [PHPDoc](http://www.phpdoc.org/) will ensure code-hinting of
-the various method's return type. However, you shouldn't blindly use these helpers, just for the sake of gaining code-hinting, for Laravel's Facades. If you are just seeking that,
-then perhaps Barry vd. Heuvel's [Laravel IDE Helper Generator](https://github.com/barryvdh/laravel-ide-helper) package is a far better solution for you.
+the various methods' return type. However, you shouldn't blindly use these helpers, just for the sake of gaining code-hinting, for Laravel's Facades. If you are just seeking that,
+then perhaps Barry vd. Heuvel's [Laravel IDE Helper Generator](https://github.com/barryvdh/laravel-ide-helper) package, is a far better solution for you.
 
 
 ## How to install ##
@@ -42,8 +42,8 @@ This package uses [composer](https://getcomposer.org/). If you do not know what 
 
 ### Component-aware interface, and component-trait ###
 
-Lets imagine that you have some kind of component, that needs to be aware of a configuration repository. You can ensure such, by implementing the `\Aedart\Laravel\Helpers\Contracts\Config\ConfigAware` interface.
-Furthermore, a default implementation is available, via the `\Aedart\Laravel\Helpers\Traits\Config\ConfigTrait` trait.
+Lets imagine that you have some kind of component, that needs to be aware of a configuration repository. You can ensure such, by implementing the `ConfigAware` interface.
+Furthermore, a default implementation is available, via the `ConfigTrait` trait.
 
 ```
 #!php
@@ -56,7 +56,7 @@ class MyComponent implements ConfigAware {
 }
 ```
 
-Now, you component is able to set and get an instance of Laravel's `\Illuminate\Contracts\Config\Repository`. This means that, if you have a custom implementation of such a repository, then
+Now, your component is able to set and get an instance, of Laravel's `\Illuminate\Contracts\Config\Repository`. This means that, if you have a custom implementation of such a repository, then
 you can specify it on the component;
 
 ```
@@ -77,7 +77,7 @@ All traits have a default fallback method, which invokes Laravel's corresponding
 #!php
 <?php
 
-// When no custom configuration repository has been specified... Laravel's default configuration 
+// When no custom configuration repository has been specified... 
 $myComponent = new MyComponent();
 $configRepository = $myComponent->getConfig(); // Uses fallback, invokes the `\Illuminate\Support\Facades\Config`, which is then resolved from the IoC Service Container 
 
@@ -85,7 +85,7 @@ $configRepository = $myComponent->getConfig(); // Uses fallback, invokes the `\I
 
 ### Usage inside a Laravel application ###
 
-You do not need any special configuration, service provides, or any of this sort. Just ensure that you have required this package as a dependency, and you are good to go.
+You do not need any special configuration or service provides. Just ensure that you have required this package as a dependency, and you are good to go.
 
 ### Outside a Laravel application ###
 
@@ -103,8 +103,8 @@ composer require illuminate/filesystem
 
 #### IoC Service Container - no fallback ####
 
-If this package is used outside Laravel, then implemented traits cannot provide any fallback, in case a given instance was not set. If you wish to provide a default fallback, then
-you can simple overwrite the `getDefaultXZY` methods, in your component.
+Fallback is not available, for any of the implemented traits, if this package is used outside a Laravel Application. It is up to you, to provide a fallback, if such is needed.
+Should that be the case, then you can overwrite the `getDefaultXZY` methods, in your component.
 
 ```
 #!php
@@ -122,7 +122,7 @@ class MyComponent implements ConfigAware {
 }
 ```
 
-As an alternative, you can also bind your dependencies. Read more about Laravel's [IoC Service Container](http://laravel.com/docs/5.1/container), in order to learn more about this.
+As an alternative, you can also bind your dependencies and still use the facades. Read more about Laravel's [IoC Service Container](http://laravel.com/docs/5.1/container), in order to learn more about this.
 
 ## Contribution ##
 
