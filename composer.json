@@ -1,12 +1,14 @@
 {
   "name": "aedart/laravel-helpers",
-  "description": "TODO",
+  "description": "Getters and Setters utility package for some of Laravel's core package. This package make use of Laravel's native Facades, as a fallback, when no custom instances are provided.",
   "keywords": [
     "Facade",
     "helpers",
-    "Laravel"
+    "Laravel",
+    "Getters",
+    "Setters"
   ],
-  "homepage": "https://bitbucket.org/aedart/data-transfer-object-dto",
+  "homepage": "https://bitbucket.org/aedart/laravel-helpers",
   "license": "BSD-3-Clause",
   "type": "library",
   "authors": [
