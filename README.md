@@ -157,7 +157,7 @@ As soon as I receive the pull-request (_and have time for it_), I will review yo
 ## Acknowledgement ##
 
 * [Taylor Otwell](https://github.com/taylorotwell), for creating [Laravel](http://laravel.com) and especially the [Service Container](http://laravel.com/docs/5.1/container), that I'm using daily
-* [Jeffrey Way](https://github.com/JeffreyWay), for creating [Laracasts](https://laracasts.com/) - a great place to learn new things... And where I finally understood some of the principles of IoC!
+* [Jeffrey Way](https://github.com/JeffreyWay), for creating [Laracasts](https://laracasts.com/) - a great place to learn new things... E.g. how facades work!
 
 ## Versioning ##
 
