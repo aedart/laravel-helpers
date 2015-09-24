@@ -1,6 +1,6 @@
 {
   "name": "aedart/laravel-helpers",
-  "description": "Getters and Setters utility package for some of Laravel's core package. This package make use of Laravel's native Facades, as a fallback, when no custom instances are provided.",
+  "description": "Getters and Setters utility package for some of Laravel's core packages. This package make use of Laravel's native Facades, as a fallback, when no custom instances are provided.",
   "keywords": [
     "Facade",
     "helpers",

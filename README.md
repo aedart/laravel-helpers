@@ -7,7 +7,7 @@
 
 ## Laravel Helpers ##
 
-[Getters and Setters](https://en.wikipedia.org/wiki/Mutator_method) utility package for some of [Laravel's](http://laravel.com/) core package. 
+[Getters and Setters](https://en.wikipedia.org/wiki/Mutator_method) utility package for some of [Laravel's](http://laravel.com/) core packages. 
 
 This package make use of Laravel's native [Facades](http://laravel.com/docs/5.1/facades), as a fallback, when no custom instances are provided.
 
