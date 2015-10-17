@@ -12,6 +12,7 @@ This package make use of Laravel's native [Facades](http://laravel.com/docs/5.1/
 ## Contents
 
 * [When to use this](#when-to-use-this)
+* [When not to use this](#when-not-to-use-this)
 * [How to install](#how-to-install)
 * [Quick start](#quick-start)
 * [Contribution](#contribution)
