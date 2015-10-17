@@ -34,8 +34,7 @@ then perhaps Barry vd. Heuvel's [Laravel IDE Helper Generator](https://github.co
 
 ## How to install
 
-```
-#!console
+```console
 
 composer require aedart/laravel-helpers
 ```
@@ -49,8 +48,7 @@ This package uses [composer](https://getcomposer.org/). If you do not know what 
 Lets imagine that you have some kind of component, that needs to be aware of a configuration repository. You can ensure such, by implementing the `ConfigAware` interface.
 Furthermore, a default implementation is available, via the `ConfigTrait` trait.
 
-```
-#!php
+```php
 <?php
 use Aedart\Laravel\Helpers\Contracts\Config\ConfigAware;
 use Aedart\Laravel\Helpers\Traits\Config\ConfigTrait;
@@ -63,8 +61,7 @@ class MyComponent implements ConfigAware {
 Now, your component is able to set and get an instance, of Laravel's `\Illuminate\Contracts\Config\Repository`. This means that, if you have a custom implementation of such a repository, then
 you can specify it on the component;
 
-```
-#!php
+```php
 <?php
 
 // Somewhere in you application...
@@ -77,8 +74,7 @@ $myComponent->setConfig($myCustomConfigRepository);
 
 All traits have a default fallback method, which invokes Laravel's corresponding facades, ensuring that even if you do not specify an instance, a given component is returned;
 
-```
-#!php
+```php
 <?php
 
 // When no custom configuration repository has been specified... 
@@ -99,8 +95,7 @@ If you plan to use this package outside a Laravel application, then you might re
 
 If you need to work with the filesystem components, then you must require Laravel's filesystem package;
 
-```
-#!console
+```console
 
 composer require illuminate/filesystem
 ```
@@ -110,8 +105,7 @@ composer require illuminate/filesystem
 Fallback is not available, for any of the implemented traits, if this package is used outside a Laravel Application. It is up to you, to provide a fallback, if such is needed.
 Should that be the case, then you can overwrite the `getDefaultXZY` methods, in your component.
 
-```
-#!php
+```php
 <?php
 use Aedart\Laravel\Helpers\Contracts\Config\ConfigAware;
 use Aedart\Laravel\Helpers\Traits\Config\ConfigTrait;
