@@ -8,7 +8,7 @@
     "Getters",
     "Setters"
   ],
-  "homepage": "https://bitbucket.org/aedart/laravel-helpers",
+  "homepage": "https://github.com/aedart/laravel-helpers",
   "license": "BSD-3-Clause",
   "type": "library",
   "authors": [
@@ -24,7 +24,7 @@
   "require-dev": {
     "aedart/testing-laravel": "~1.2",
     "aedart/license": "1.*",
-    "aedart/license-file-manager": "1.*",
+    "aedart/license-file-manager": "~1.4",
     "predis/predis": "~1.0"
   },
   "autoload": {

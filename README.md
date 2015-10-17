@@ -2,33 +2,37 @@
 [![Total Downloads](https://poser.pugx.org/aedart/laravel-helpers/downloads)](https://packagist.org/packages/aedart/laravel-helpers)
 [![Latest Unstable Version](https://poser.pugx.org/aedart/laravel-helpers/v/unstable)](https://packagist.org/packages/aedart/laravel-helpers)
 [![License](https://poser.pugx.org/aedart/laravel-helpers/license)](https://packagist.org/packages/aedart/laravel-helpers)
-[![Monthly Downloads](https://poser.pugx.org/aedart/laravel-helpers/d/monthly)](https://packagist.org/packages/aedart/laravel-helpers)
-[![Daily Downloads](https://poser.pugx.org/aedart/laravel-helpers/d/daily)](https://packagist.org/packages/aedart/laravel-helpers)
 
-## Laravel Helpers ##
+# Laravel Helpers
 
 [Getters and Setters](https://en.wikipedia.org/wiki/Mutator_method) utility package for some of [Laravel's](http://laravel.com/) core packages. 
 
 This package make use of Laravel's native [Facades](http://laravel.com/docs/5.1/facades), as a fallback, when no custom instances are provided.
 
-## Contents ##
+## Contents
 
-[TOC]
+* [When to use this](#when-to-use-this)
+* [How to install](#how-to-install)
+* [Quick start](#quick-start)
+* [Contribution](#contribution)
+* [Acknowledgement](#acknowledgement)
+* [Versioning](#versioning)
+* [License](#license)
 
-## When to use this ##
+## When to use this
 
 * When your component depends on one or several of Laravel's native components
 * When there is a strong need to interface such dependencies 
 * When you need to be able to set a different instance of a given native Laravel component, e.g. your implemented version of a Configuration Repository
 
-## When not to use this ##
+## When not to use this
 
 If you are using a modern [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment), then the added [PHPDoc](http://www.phpdoc.org/) will ensure code-hinting of
 the various methods' return type. However, you shouldn't blindly use these helpers, just for the sake of gaining code-hinting, for Laravel's Facades. If you are just seeking that,
 then perhaps Barry vd. Heuvel's [Laravel IDE Helper Generator](https://github.com/barryvdh/laravel-ide-helper) package, is a far better solution for you.
 
 
-## How to install ##
+## How to install
 
 ```
 #!console
@@ -38,9 +42,9 @@ composer require aedart/laravel-helpers
 
 This package uses [composer](https://getcomposer.org/). If you do not know what that is or how it works, I recommend that you read a little about, before attempting to use this package.
 
-## Quick start ##
+## Quick start
 
-### Component-aware interface, and component-trait ###
+### Component-aware interface, and component-trait
 
 Lets imagine that you have some kind of component, that needs to be aware of a configuration repository. You can ensure such, by implementing the `ConfigAware` interface.
 Furthermore, a default implementation is available, via the `ConfigTrait` trait.
@@ -69,7 +73,7 @@ $myComponent->setConfig($myCustomConfigRepository);
 
 ```
 
-### Default fallback to Laravel's Facades ###
+### Default fallback to Laravel's Facades
 
 All traits have a default fallback method, which invokes Laravel's corresponding facades, ensuring that even if you do not specify an instance, a given component is returned;
 
@@ -83,11 +87,11 @@ $configRepository = $myComponent->getConfig(); // Uses fallback, invokes the `\I
 
 ```
 
-### Usage inside a Laravel application ###
+### Usage inside a Laravel application
 
 You do not need any special configuration or service provides. Just ensure that you have required this package as a dependency, and you are good to go.
 
-### Outside a Laravel application ###
+### Outside a Laravel application
 
 If you plan to use this package outside a Laravel application, then you might require additional dependencies.
 
@@ -101,7 +105,7 @@ If you need to work with the filesystem components, then you must require Larave
 composer require illuminate/filesystem
 ```
 
-#### IoC Service Container - no fallback ####
+#### IoC Service Container - no fallback
 
 Fallback is not available, for any of the implemented traits, if this package is used outside a Laravel Application. It is up to you, to provide a fallback, if such is needed.
 Should that be the case, then you can overwrite the `getDefaultXZY` methods, in your component.
@@ -124,12 +128,12 @@ class MyComponent implements ConfigAware {
 
 As an alternative, you can also bind your dependencies and still use the facades. Read more about Laravel's [IoC Service Container](http://laravel.com/docs/5.1/container), in order to learn more about this.
 
-## Contribution ##
+## Contribution
 
 Have you found a defect ( [bug or design flaw](https://en.wikipedia.org/wiki/Software_bug) ), or do you wish improvements? In the following sections, you might find some useful information
 on how you can help this project. In any case, I thank you for taking the time to help me improve this project's deliverables and overall quality.
 
-### Bug Report ###
+### Bug Report
 
 If you are convinced that you have found a bug, then at the very least you should create a new issue. In that given issue, you should as a minimum describe the following;
 
@@ -140,7 +144,7 @@ If you are convinced that you have found a bug, then at the very least you shoul
 
 When time permits it, I will review your issue and take action upon it.
 
-### Fork, code and send pull-request ###
+### Fork, code and send pull-request
 
 A good and well written bug report can help me a lot. Nevertheless, if you can or wish to resolve the defect by yourself, here is how you can do so;
 
@@ -154,15 +158,15 @@ A good and well written bug report can help me a lot. Nevertheless, if you can o
 
 As soon as I receive the pull-request (_and have time for it_), I will review your changes and merge them into this project. If not, I will inform you why I choose not to.
 
-## Acknowledgement ##
+## Acknowledgement
 
 * [Taylor Otwell](https://github.com/taylorotwell), for creating [Laravel](http://laravel.com) and especially the [Service Container](http://laravel.com/docs/5.1/container), that I'm using daily
 * [Jeffrey Way](https://github.com/JeffreyWay), for creating [Laracasts](https://laracasts.com/) - a great place to learn new things... E.g. how facades work!
 
-## Versioning ##
+## Versioning
 
 This package uses [Semantic Versioning 2.0.0](http://semver.org/)
 
-## License ##
+## License
 
 [BSD-3-Clause](http://spdx.org/licenses/BSD-3-Clause), Read the LICENSE file included in this package
