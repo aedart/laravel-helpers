@@ -55,7 +55,17 @@ trait PasswordTrait {
      * @return PasswordBroker|null A default password value or Null if no default value is available
      */
     public function getDefaultPassword() {
-        return Password::getFacadeRoot();
+        // By default, the Password Facade does not return the
+        // any actual password broker, but rather an
+        // instance of \Illuminate\Auth\Passwords\PasswordBrokerManager.
+        // Therefore, we make sure only to obtain its
+        // "default broker", to make sure that its only the guard
+        // instance that we obtain.
+        $manager = Password::getFacadeRoot();
+        if(!is_null($manager)){
+            return $manager->broker();
+        }
+        return $manager;
     }
 
     /**

@@ -56,9 +56,9 @@ class PasswordTraitTest extends TraitTestCase {
 
         $mock = $this->getTraitMock();
 
-        $config = $mock->getPassword();
+        $broker = $mock->getPassword();
 
         $this->assertTrue($mock->hasPassword(), 'A password broker should have been set');
-        $this->assertInstanceOf(PasswordBroker::class, $config);
+        $this->assertInstanceOf(PasswordBroker::class, $broker);
     }
 }
