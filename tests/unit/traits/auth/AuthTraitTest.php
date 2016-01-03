@@ -61,10 +61,10 @@ class AuthTraitTest extends TraitTestCase{
     {
         $mock = $this->getTraitMock();
 
-        $config = $mock->getAuth();
+        $guard = $mock->getAuth();
 
         $this->assertTrue($mock->hasAuth(), 'An authentication guard should have been set');
-        $this->assertInstanceOf(Guard::class, $config);
+        $this->assertInstanceOf(Guard::class, $guard);
     }
 
 }

@@ -59,11 +59,11 @@ trait AuthTrait {
         // any actual authentication guard, but rather an
         // instance of \Illuminate\Auth\AuthManager.
         // Therefore, we make sure only to obtain its
-        // "driver", to make sure that its only the guard
+        // "default guard", to make sure that its only the guard
         // instance that we obtain.
         $manager = Auth::getFacadeRoot();
         if(!is_null($manager)){
-            return $manager->driver();
+            return $manager->guard();
         }
         return $manager;
     }
