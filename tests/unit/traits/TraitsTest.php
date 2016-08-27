@@ -31,6 +31,7 @@ use Aedart\Laravel\Helpers\Traits\Logging\PsrLogTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailMailerTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailQueueTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailTrait;
+use Aedart\Laravel\Helpers\Traits\Notifications\NotificationFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\BaseQueueTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueManagerTrait;
@@ -70,6 +71,7 @@ use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Contracts\Mail\Mailer as MailerInterface;
 use Illuminate\Contracts\Mail\MailQueue;
+use Illuminate\Contracts\Notifications\Factory as NotificationFactory;
 use Illuminate\Contracts\Queue\Factory as QueueFactory;
 use Illuminate\Contracts\Queue\Monitor;
 use Illuminate\Contracts\Queue\Queue as QueueInterface;
@@ -126,6 +128,13 @@ class TraitsTest extends TraitTestCase
             ConfigFacade::set('broadcasting.connections.null', [
                 'driver' => 'null'
             ]);
+        }
+
+        // HOTFIX, see https://github.com/orchestral/testbench/pull/129
+        // This can be removed again, when fixed by author
+        $providers = ConfigFacade::get('app.providers');
+        if(!in_array(\Illuminate\Notifications\NotificationServiceProvider::class, $providers)){
+            App::register(\Illuminate\Notifications\NotificationServiceProvider::class);
         }
     }
 
@@ -199,6 +208,9 @@ class TraitsTest extends TraitTestCase
             'MailMailerTrait'               => [MailMailerTrait::class, Mailer::class, Mailer::class],
             'MailQueueTrait'                => [MailQueueTrait::class, MailQueue::class, MailQueue::class],
             'MailTrait'                     => [MailTrait::class, MailerInterface::class, MailerInterface::class],
+
+            // Notifications
+            'NotificationFactoryTrait'      => [NotificationFactoryTrait::class, NotificationFactory::class, NotificationFactory::class],
 
             // Queue
             'BaseQueueTrait'                => [BaseQueueTrait::class, Queue::class, Queue::class],
