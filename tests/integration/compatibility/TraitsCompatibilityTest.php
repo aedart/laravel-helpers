@@ -5,6 +5,7 @@ use Aedart\Laravel\Helpers\Contracts\Auth\AuthManagerAware;
 use Aedart\Laravel\Helpers\Contracts\Auth\PasswordAware;
 use Aedart\Laravel\Helpers\Contracts\Auth\PasswordBrokerFactoryAware;
 use Aedart\Laravel\Helpers\Contracts\Auth\PasswordBrokerManagerAware;
+use Aedart\Laravel\Helpers\Contracts\Broadcast\BroadcastAware;
 use Aedart\Laravel\Helpers\Contracts\Bus\BusAware;
 use Aedart\Laravel\Helpers\Contracts\Cache\CacheAware;
 use Aedart\Laravel\Helpers\Contracts\Cache\CacheFactoryAware;
@@ -52,6 +53,7 @@ use Aedart\Laravel\Helpers\Traits\Auth\AuthTrait;
 use Aedart\Laravel\Helpers\Traits\Auth\PasswordBrokerFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Auth\PasswordBrokerManagerTrait;
 use Aedart\Laravel\Helpers\Traits\Auth\PasswordTrait;
+use Aedart\Laravel\Helpers\Traits\Broadcast\BroadcastTrait;
 use Aedart\Laravel\Helpers\Traits\Bus\BusTrait;
 use Aedart\Laravel\Helpers\Traits\Cache\CacheFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Cache\CacheTrait;
@@ -120,6 +122,9 @@ class TraitsCompatibilityTest extends CompatibilityTestCase
             'PasswordBrokerManagerTrait / PasswordBrokerManagerAware'      => [PasswordBrokerManagerTrait::class, PasswordBrokerManagerAware::class],
             'PasswordTrait / PasswordAware'                                => [PasswordTrait::class, PasswordAware::class],
 
+            // Broadcast
+            'BroadcastTrait / BroadcastAware'                               => [BroadcastTrait::class, BroadcastAware::class],
+            
             // Bus
             'BusTrait / BusAware'                                => [BusTrait::class, BusAware::class],
 
