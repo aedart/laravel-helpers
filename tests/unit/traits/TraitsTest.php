@@ -5,6 +5,7 @@ use Aedart\Laravel\Helpers\Traits\Auth\AuthTrait;
 use Aedart\Laravel\Helpers\Traits\Auth\PasswordBrokerFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Auth\PasswordBrokerManagerTrait;
 use Aedart\Laravel\Helpers\Traits\Auth\PasswordTrait;
+use Aedart\Laravel\Helpers\Traits\Broadcasting\BroadcastTrait;
 use Aedart\Laravel\Helpers\Traits\Bus\BusTrait;
 use Aedart\Laravel\Helpers\Traits\Cache\CacheFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Cache\CacheTrait;
@@ -52,6 +53,7 @@ use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Contracts\Auth\PasswordBrokerFactory;
+use Illuminate\Contracts\Broadcasting\Broadcaster;
 use Illuminate\Contracts\Bus\Dispatcher as BusDispatcher;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
@@ -115,6 +117,14 @@ class TraitsTest extends TraitTestCase
         // because the test-fixtures in Orchestra doesn't contain it.
         // We are generating it here, more or less just like Laravel
         ConfigFacade::set('app.key', Str::random(32));
+
+        // HOTFIX, see https://github.com/orchestral/testbench/pull/128
+        // This can be removed again, when fixed by author
+        if(!ConfigFacade::has('broadcasting.connections.null')){
+            ConfigFacade::set('broadcasting.connections.null', [
+                'driver' => 'null'
+            ]);
+        }
     }
 
     /************************************************************************
@@ -133,7 +143,7 @@ class TraitsTest extends TraitTestCase
             'PasswordTrait'                 => [PasswordTrait::class, PasswordBroker::class, PasswordBroker::class],
 
             // Broadcasting
-            //'BroadcastTrait'                => [BroadcastTrait::class, BroadcastFactory::class, BroadcastFactory::class],
+            'BroadcastTrait'                => [BroadcastTrait::class, Broadcaster::class, Broadcaster::class],
 
             // Bus
             'BusTrait'                      => [BusTrait::class, BusDispatcher::class, BusDispatcher::class],
