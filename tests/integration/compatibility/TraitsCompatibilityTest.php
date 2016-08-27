@@ -31,6 +31,7 @@ use Aedart\Laravel\Helpers\Contracts\Logging\PsrLogAware;
 use Aedart\Laravel\Helpers\Contracts\Mail\MailAware;
 use Aedart\Laravel\Helpers\Contracts\Mail\MailMailerAware;
 use Aedart\Laravel\Helpers\Contracts\Mail\MailQueueAware;
+use Aedart\Laravel\Helpers\Contracts\Notifications\NotificationDispatcherAware;
 use Aedart\Laravel\Helpers\Contracts\Notifications\NotificationFactoryAware;
 use Aedart\Laravel\Helpers\Contracts\Queue\BaseQueueAware;
 use Aedart\Laravel\Helpers\Contracts\Queue\QueueAware;
@@ -81,6 +82,7 @@ use Aedart\Laravel\Helpers\Traits\Logging\PsrLogTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailMailerTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailQueueTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailTrait;
+use Aedart\Laravel\Helpers\Traits\Notifications\NotificationDispatcherTrait;
 use Aedart\Laravel\Helpers\Traits\Notifications\NotificationFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\BaseQueueTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueFactoryTrait;
@@ -183,7 +185,8 @@ class TraitsCompatibilityTest extends CompatibilityTestCase
             'MailQueueTrait / MailQueueAware'                       => [MailQueueTrait::class, MailQueueAware::class],
 
             // Notifications
-            'NotificationFactoryTrait / NotificationFactoryAware'   => [NotificationFactoryTrait::class, NotificationFactoryAware::class],
+            'NotificationFactoryTrait / NotificationFactoryAware'       => [NotificationFactoryTrait::class, NotificationFactoryAware::class],
+            'NotificationDispatcherTrait / NotificationFactoryAware'    => [NotificationDispatcherTrait::class, NotificationDispatcherAware::class],
 
             // Queue
             'BaseQueueTrait / BaseQueueAware'                       => [BaseQueueTrait::class, BaseQueueAware::class],

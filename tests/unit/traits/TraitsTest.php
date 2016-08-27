@@ -31,6 +31,7 @@ use Aedart\Laravel\Helpers\Traits\Logging\PsrLogTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailMailerTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailQueueTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailTrait;
+use Aedart\Laravel\Helpers\Traits\Notifications\NotificationDispatcherTrait;
 use Aedart\Laravel\Helpers\Traits\Notifications\NotificationFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\BaseQueueTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueFactoryTrait;
@@ -71,6 +72,7 @@ use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Contracts\Mail\Mailer as MailerInterface;
 use Illuminate\Contracts\Mail\MailQueue;
+use Illuminate\Contracts\Notifications\Dispatcher as NotificaitonDispatcher;
 use Illuminate\Contracts\Notifications\Factory as NotificationFactory;
 use Illuminate\Contracts\Queue\Factory as QueueFactory;
 use Illuminate\Contracts\Queue\Monitor;
@@ -211,6 +213,7 @@ class TraitsTest extends TraitTestCase
 
             // Notifications
             'NotificationFactoryTrait'      => [NotificationFactoryTrait::class, NotificationFactory::class, NotificationFactory::class],
+            'NotificationDispatcherTrait'   => [NotificationDispatcherTrait::class, NotificaitonDispatcher::class, NotificaitonDispatcher::class],
 
             // Queue
             'BaseQueueTrait'                => [BaseQueueTrait::class, Queue::class, Queue::class],
