@@ -5,7 +5,7 @@ use Aedart\Laravel\Helpers\Traits\Auth\AuthTrait;
 use Aedart\Laravel\Helpers\Traits\Auth\PasswordBrokerFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Auth\PasswordBrokerManagerTrait;
 use Aedart\Laravel\Helpers\Traits\Auth\PasswordTrait;
-use Aedart\Laravel\Helpers\Traits\Broadcast\BroadcastTrait;
+use Aedart\Laravel\Helpers\Traits\Broadcasting\BroadcastTrait;
 use Aedart\Laravel\Helpers\Traits\Bus\BusTrait;
 use Aedart\Laravel\Helpers\Traits\Cache\CacheFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Cache\CacheTrait;
@@ -134,7 +134,7 @@ class TraitsTest extends TraitTestCase
             'PasswordBrokerManagerTrait'    => [PasswordBrokerManagerTrait::class, PasswordBrokerManager::class, PasswordBrokerManager::class],
             'PasswordTrait'                 => [PasswordTrait::class, PasswordBroker::class, PasswordBroker::class],
 
-            // Broadcast
+            // Broadcasting
             'BroadcastTrait'                => [BroadcastTrait::class, BroadcastFactory::class, BroadcastFactory::class],
 
             // Bus

@@ -1,20 +1,26 @@
 <?php
-namespace Aedart\Laravel\Helpers\Contracts\Broadcast;
+namespace Aedart\Laravel\Helpers\Traits\Broadcasting;
 
 use Illuminate\Contracts\Broadcasting\Factory;
+use Illuminate\Support\Facades\Broadcast;
 
 /**
- * <h1>Broadcast Aware</h1>
+ * <h1>Broadcast Trait</h1>
  *
- * Components are able to specify and obtain a broadcast factory
- *
- * @see \Illuminate\Contracts\Broadcasting\Factory
+ * @see \Aedart\Laravel\Helpers\Contracts\Broadcasting\BroadcastAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Contracts\Broadcast
+ * @package Aedart\Laravel\Helpers\Traits\Broadcasting
  */
-interface BroadcastAware
+trait BroadcastTrait
 {
+    /**
+     * Instance of the broadcast factory
+     *
+     * @var Factory|null
+     */
+    protected $broadcast = null;
+
     /**
      * Set the given broadcast
      *
@@ -22,7 +28,10 @@ interface BroadcastAware
      *
      * @return void
      */
-    public function setBroadcast(Factory $factory);
+    public function setBroadcast(Factory $factory)
+    {
+        $this->broadcast = $factory;
+    }
 
     /**
      * Get the given broadcast
@@ -35,26 +44,41 @@ interface BroadcastAware
      *
      * @return Factory|null broadcast or null if none broadcast has been set
      */
-    public function getBroadcast();
+    public function getBroadcast()
+    {
+        if (!$this->hasBroadcast() && $this->hasDefaultBroadcast()) {
+            $this->setBroadcast($this->getDefaultBroadcast());
+        }
+        return $this->broadcast;
+    }
 
     /**
      * Get a default broadcast value, if any is available
      *
      * @return Factory|null A default broadcast value or Null if no default value is available
      */
-    public function getDefaultBroadcast();
+    public function getDefaultBroadcast()
+    {
+        return Broadcast::getFacadeRoot();
+    }
 
     /**
      * Check if broadcast has been set
      *
      * @return bool True if broadcast has been set, false if not
      */
-    public function hasBroadcast();
+    public function hasBroadcast()
+    {
+        return !is_null($this->broadcast);
+    }
 
     /**
      * Check if a default broadcast is available or not
      *
      * @return bool True of a default broadcast is available, false if not
      */
-    public function hasDefaultBroadcast();
+    public function hasDefaultBroadcast()
+    {
+        return !is_null($this->getDefaultBroadcast());
+    }
 }
