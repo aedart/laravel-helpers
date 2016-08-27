@@ -1,12 +1,16 @@
 <?php
 
-use Aedart\Testing\Laravel\TestCases\Integration\InterfaceAndTraitCompatibilityTestCase;
+use Aedart\Testing\GST\GetterSetterTraitTester;
+use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
  * Class CompatibilityTestCase
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-abstract class CompatibilityTestCase extends InterfaceAndTraitCompatibilityTestCase{
+abstract class CompatibilityTestCase extends UnitTestCase {
+
+    use GetterSetterTraitTester;
+
 
 }
