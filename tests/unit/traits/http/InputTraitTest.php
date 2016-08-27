@@ -26,38 +26,6 @@ class InputTraitTest extends TraitTestCase{
 
     /**
      * @test
-     * @covers ::hasInput
-     * @covers ::hasDefaultInput
-     */
-    public function hasNoDefaultLaravelRequestInputOutsideLaravel() {
-        $this->stopLaravel();
-
-        $mock = $this->getTraitMock();
-
-        $this->assertFalse($mock->hasInput(), 'Should no have request set');
-        $this->assertFalse($mock->hasDefaultInput(), 'Should no have a default request (input) set');
-    }
-
-    /**
-     * @test
-     * @covers ::getInput
-     * @covers ::hasInput
-     * @covers ::hasDefaultInput
-     * @covers ::setInput
-     * @covers ::getDefaultInput
-     */
-    public function canObtainLaravelRequestInput()
-    {
-        $mock = $this->getTraitMock();
-
-        $config = $mock->getInput();
-
-        $this->assertTrue($mock->hasInput(), 'A request (input) should have been set');
-        $this->assertInstanceOf(Request::class, $config);
-    }
-
-    /**
-     * @test
      * @covers ::get
      */
     public function canObtainValueFromInput() {

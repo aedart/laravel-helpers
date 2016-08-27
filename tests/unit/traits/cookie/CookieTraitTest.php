@@ -33,38 +33,6 @@ class CookieTraitTest extends TraitTestCase{
 
     /**
      * @test
-     * @covers ::hasCookie
-     * @covers ::hasDefaultCookie
-     */
-    public function hasNoDefaultCookieJarOutsideLaravel() {
-        $this->stopLaravel();
-
-        $mock = $this->getTraitMock();
-
-        $this->assertFalse($mock->hasCookie(), 'Should no have a cookie jar set');
-        $this->assertFalse($mock->hasDefaultCookie(), 'Should no have a default cookie jar set');
-    }
-
-    /**
-     * @test
-     * @covers ::getCookie
-     * @covers ::hasCookie
-     * @covers ::hasDefaultCookie
-     * @covers ::setCookie
-     * @covers ::getDefaultCookie
-     */
-    public function canObtainCookieJar()
-    {
-        $mock = $this->getTraitMock();
-
-        $config = $mock->getCookie();
-
-        $this->assertTrue($mock->hasCookie(), 'A cookie jar should have been set');
-        $this->assertInstanceOf(CookieJar::class, $config);
-    }
-
-    /**
-     * @test
      * @covers ::hasRequest
      */
     public function hasNotRequestInstanceOutsideLaravel() {
