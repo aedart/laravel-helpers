@@ -19,10 +19,10 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "illuminate/support": "~5.2"
+    "illuminate/support": "5.2.*"
   },
   "require-dev": {
-    "aedart/testing-laravel": "~1.6",
+    "aedart/testing-laravel": "1.7.*",
     "aedart/license": "1.*",
     "aedart/license-file-manager": "~1.4",
     "predis/predis": "~1.0"
