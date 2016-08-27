@@ -34,8 +34,7 @@
   },
   "autoload-dev": {
     "classmap": [
-      "tests/unit/testCases",
-      "tests/integration/testCases"
+      "tests/testCases"
     ]
   },
   "minimum-stability": "stable",
