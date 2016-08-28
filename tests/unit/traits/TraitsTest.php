@@ -96,6 +96,7 @@ use Illuminate\Queue\QueueManager;
 use Illuminate\Routing\Redirector;
 use Illuminate\Session\SessionInterface;
 use Illuminate\Session\SessionManager;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config as ConfigFacade;
 use Illuminate\Support\Str;
 use Illuminate\Translation\Translator;
@@ -104,6 +105,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Faker\Factory as FakerFactory;
 use \Mockery as m;
+
 /**
  * TraitsTest
  *
