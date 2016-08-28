@@ -28,9 +28,6 @@ abstract class TraitTestCase extends UnitWithLaravelTestCase{
      */
     protected function stopLaravel(){
         $this->stopApplication();
-
-        Facade::clearResolvedInstances();
-        Facade::setFacadeApplication(null);
     }
 
     /**
