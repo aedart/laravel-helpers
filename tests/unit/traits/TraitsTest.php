@@ -102,7 +102,8 @@ use Illuminate\Translation\Translator;
 use Illuminate\View\Compilers\BladeCompiler;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
-
+use Faker\Factory as FakerFactory;
+use \Mockery as m;
 /**
  * TraitsTest
  *
@@ -117,7 +118,23 @@ class TraitsTest extends TraitTestCase
 
     public function _before()
     {
-        parent::_before();
+        // We have a problem here in that foreach fixture,
+        // from the traitsProvider() method, the _before()
+        // and _after() method are invoked. This is painfully
+        // slow.
+
+        // Avoid traditional startup...
+        //parent::_before();
+
+        // Create faker if needed
+        if(!isset($this->faker)){
+            $this->faker = FakerFactory::create();
+        }
+
+        // Start Laravel app.
+        if(!$this->hasApplicationBeenStarted()){
+            $this->startApplication();
+        }
 
         // Before we obtain it - we need to make a small configuration
         // because the test-fixtures in Orchestra doesn't contain it.
@@ -138,6 +155,13 @@ class TraitsTest extends TraitTestCase
         if(!in_array(\Illuminate\Notifications\NotificationServiceProvider::class, $providers)){
             App::register(\Illuminate\Notifications\NotificationServiceProvider::class);
         }
+    }
+
+    public function _after()
+    {
+        // Prevent laravel from stopping, as this just increases
+        // the time it takes to execute
+        // @see cleanup() inside this test
     }
 
     /************************************************************************
@@ -260,6 +284,15 @@ class TraitsTest extends TraitTestCase
     public function canInvokeTraitMethods($trait, $expectedDefault, $customDefault)
     {
         $this->assertTrait($trait, $expectedDefault, $customDefault);
+    }
+
+    /**
+     * @test
+     */
+    public function cleanup()
+    {
+        $this->stopApplication();
+        m::close();
     }
 
 }
