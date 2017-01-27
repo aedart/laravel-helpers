@@ -82,6 +82,7 @@ use Illuminate\Contracts\Redis\Factory as RedisFactory;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\Routing\UrlGenerator;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Cookie\CookieJar;
@@ -96,7 +97,6 @@ use Illuminate\Queue\Queue;
 use Illuminate\Queue\QueueManager;
 use Illuminate\Redis\Connections\Connection;
 use Illuminate\Routing\Redirector;
-use Illuminate\Session\SessionInterface;
 use Illuminate\Session\SessionManager;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config as ConfigFacade;
@@ -262,7 +262,7 @@ class TraitsTest extends TraitTestCase
 
             // Session
             'SessionManagerTrait'           => [SessionManagerTrait::class, SessionManager::class, SessionManager::class],
-            'SessionTrait'                  => [SessionTrait::class, SessionInterface::class, SessionInterface::class],
+            'SessionTrait'                  => [SessionTrait::class, Session::class, Session::class],
 
             // Translation
             'LangTrait'                     => [LangTrait::class, Translator::class, Translator::class],

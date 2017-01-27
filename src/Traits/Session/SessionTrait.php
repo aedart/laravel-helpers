@@ -1,7 +1,8 @@
 <?php namespace Aedart\Laravel\Helpers\Traits\Session;
 
-use Illuminate\Session\SessionInterface;
-use Illuminate\Support\Facades\Session;
+use Aedart\Laravel\Helpers\Contracts\Session\SessionAware;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session as SessionFacade;
 
 /**
  * <h1>Session Trait</h1>
@@ -11,23 +12,24 @@ use Illuminate\Support\Facades\Session;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Session
  */
-trait SessionTrait {
+class SessionTrait implements SessionAware
+{
 
     /**
      * Instance of a Session
      *
-     * @var SessionInterface|null
+     * @var Session|null
      */
     protected $session = null;
 
     /**
      * Set the given session
      *
-     * @param SessionInterface $session Instance of a Session
+     * @param Session $session Instance of a Session
      *
      * @return void
      */
-    public function setSession(SessionInterface $session) {
+    public function setSession(Session $session) {
         $this->session = $session;
     }
 
@@ -40,7 +42,7 @@ trait SessionTrait {
      *
      * @see getDefaultSession()
      *
-     * @return SessionInterface|null session or null if none session has been set
+     * @return Session|null session or null if none session has been set
      */
     public function getSession() {
         if (!$this->hasSession() && $this->hasDefaultSession()) {
@@ -52,7 +54,7 @@ trait SessionTrait {
     /**
      * Get a default session value, if any is available
      *
-     * @return SessionInterface|null A default session value or Null if no default value is available
+     * @return Session|null A default session value or Null if no default value is available
      */
     public function getDefaultSession() {
         // By default, the Session Facade does not return the
@@ -61,7 +63,7 @@ trait SessionTrait {
         // Therefore, we make sure only to obtain its
         // "driver", to make sure that its only the connection
         // instance that we obtain.
-        $manager = Session::getFacadeRoot();
+        $manager = SessionFacade::getFacadeRoot();
         if(!is_null($manager)){
             return $manager->driver();
         }

@@ -1,27 +1,29 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Session;
+<?php
 
-use Illuminate\Session\SessionInterface;
+namespace Aedart\Laravel\Helpers\Contracts\Session;
+
+use Illuminate\Contracts\Session\Session;
 
 /**
  * <h1>Session Aware</h1>
  *
  * Components are able to specify and obtain a session instance
  *
- * @see \Illuminate\Session\SessionInterface
+ * @see \Illuminate\Contracts\Session\Session
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Session
  */
-interface SessionAware {
-
+interface SessionAware
+{
     /**
      * Set the given session
      *
-     * @param SessionInterface $session Instance of a Session
+     * @param Session $session Instance of a Session
      *
      * @return void
      */
-    public function setSession(SessionInterface $session);
+    public function setSession(Session $session);
 
     /**
      * Get the given session
@@ -32,14 +34,14 @@ interface SessionAware {
      *
      * @see getDefaultSession()
      *
-     * @return SessionInterface|null session or null if none session has been set
+     * @return Session|null session or null if none session has been set
      */
     public function getSession();
 
     /**
      * Get a default session value, if any is available
      *
-     * @return SessionInterface|null A default session value or Null if no default value is available
+     * @return Session|null A default session value or Null if no default value is available
      */
     public function getDefaultSession();
 
