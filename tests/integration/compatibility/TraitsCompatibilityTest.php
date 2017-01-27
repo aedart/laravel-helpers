@@ -39,6 +39,7 @@ use Aedart\Laravel\Helpers\Contracts\Queue\QueueFactoryAware;
 use Aedart\Laravel\Helpers\Contracts\Queue\QueueManagerAware;
 use Aedart\Laravel\Helpers\Contracts\Queue\QueueMonitorAware;
 use Aedart\Laravel\Helpers\Contracts\Redis\RedisAware;
+use Aedart\Laravel\Helpers\Contracts\Redis\RedisFactoryAware;
 use Aedart\Laravel\Helpers\Contracts\Routing\RedirectAware;
 use Aedart\Laravel\Helpers\Contracts\Routing\ResponseAware;
 use Aedart\Laravel\Helpers\Contracts\Routing\RouteAware;
@@ -89,6 +90,7 @@ use Aedart\Laravel\Helpers\Traits\Queue\QueueFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueManagerTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueMonitorTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueTrait;
+use Aedart\Laravel\Helpers\Traits\Redis\RedisFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Redis\RedisTrait;
 use Aedart\Laravel\Helpers\Traits\Routing\RedirectTrait;
 use Aedart\Laravel\Helpers\Traits\Routing\ResponseTrait;
@@ -196,7 +198,8 @@ class TraitsCompatibilityTest extends CompatibilityTestCase
             'QueueMonitorTrait / QueueMonitorAware'                 => [QueueMonitorTrait::class, QueueMonitorAware::class],
 
             // Redis
-            'RedisTrait / RedisAware'                 => [RedisTrait::class, RedisAware::class],
+            'RedisTrait / RedisAware'                               => [RedisTrait::class, RedisAware::class],
+            'RedisFactoryTrait / RedisFactoryAware'                 => [RedisFactoryTrait::class, RedisFactoryAware::class],
 
             // Routing
             'RedirectTrait / RedirectAware'                 => [RedirectTrait::class, RedirectAware::class],

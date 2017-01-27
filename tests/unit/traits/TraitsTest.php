@@ -38,6 +38,7 @@ use Aedart\Laravel\Helpers\Traits\Queue\QueueFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueManagerTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueMonitorTrait;
 use Aedart\Laravel\Helpers\Traits\Queue\QueueTrait;
+use Aedart\Laravel\Helpers\Traits\Redis\RedisFactoryTrait;
 use Aedart\Laravel\Helpers\Traits\Redis\RedisTrait;
 use Aedart\Laravel\Helpers\Traits\Routing\RedirectTrait;
 use Aedart\Laravel\Helpers\Traits\Routing\ResponseTrait;
@@ -77,6 +78,7 @@ use Illuminate\Contracts\Notifications\Factory as NotificationFactory;
 use Illuminate\Contracts\Queue\Factory as QueueFactory;
 use Illuminate\Contracts\Queue\Monitor;
 use Illuminate\Contracts\Queue\Queue as QueueInterface;
+use Illuminate\Contracts\Redis\Factory as RedisFactory;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\Routing\UrlGenerator;
@@ -250,6 +252,7 @@ class TraitsTest extends TraitTestCase
 
             // Redis
             'RedisTrait'                    => [RedisTrait::class, Connection::class, Connection::class],
+            'RedisFactoryTrait'             => [RedisFactoryTrait::class, RedisFactory::class, RedisFactory::class],
 
             // Routing
             'RedirectTrait'                 => [RedirectTrait::class, Redirector::class, Redirector::class],
