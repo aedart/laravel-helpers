@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/aedart/laravel-helpers.svg?branch=master)](https://travis-ci.org/aedart/laravel-helpers)
 [![Latest Stable Version](https://poser.pugx.org/aedart/laravel-helpers/v/stable)](https://packagist.org/packages/aedart/laravel-helpers)
 [![Total Downloads](https://poser.pugx.org/aedart/laravel-helpers/downloads)](https://packagist.org/packages/aedart/laravel-helpers)
 [![Latest Unstable Version](https://poser.pugx.org/aedart/laravel-helpers/v/unstable)](https://packagist.org/packages/aedart/laravel-helpers)
