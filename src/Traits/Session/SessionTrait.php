@@ -1,6 +1,7 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Session;
+<?php
 
-use Aedart\Laravel\Helpers\Contracts\Session\SessionAware;
+namespace Aedart\Laravel\Helpers\Traits\Session;
+
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Session as SessionFacade;
 
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Session as SessionFacade;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Session
  */
-class SessionTrait implements SessionAware
+trait SessionTrait
 {
 
     /**
