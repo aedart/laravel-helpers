@@ -70,10 +70,7 @@ trait FileTrait
      */
     public function hasFile()
     {
-        if (!is_null($this->file)) {
-            return true;
-        }
-        return false;
+        return isset($this->file);
     }
 
     /**
@@ -83,9 +80,7 @@ trait FileTrait
      */
     public function hasDefaultFile()
     {
-        if (!is_null($this->getDefaultFile())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultFile();
+        return isset($default);
     }
 }

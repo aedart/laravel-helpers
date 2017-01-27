@@ -70,10 +70,7 @@ trait MailMailerTrait
      */
     public function hasMailMailer()
     {
-        if (!is_null($this->mailMailer)) {
-            return true;
-        }
-        return false;
+        return isset($this->mailMailer);
     }
 
     /**
@@ -83,9 +80,7 @@ trait MailMailerTrait
      */
     public function hasDefaultMailMailer()
     {
-        if (!is_null($this->getDefaultMailMailer())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultMailMailer();
+        return isset($default);
     }
 }

@@ -70,10 +70,7 @@ trait CryptTrait
      */
     public function hasCrypt()
     {
-        if (!is_null($this->crypt)) {
-            return true;
-        }
-        return false;
+        return isset($this->crypt);
     }
 
     /**
@@ -83,9 +80,7 @@ trait CryptTrait
      */
     public function hasDefaultCrypt()
     {
-        if (!is_null($this->getDefaultCrypt())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultCrypt();
+        return isset($default);
     }
 }

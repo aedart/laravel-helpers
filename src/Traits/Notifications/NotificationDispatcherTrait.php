@@ -69,7 +69,7 @@ trait NotificationDispatcherTrait
      */
     public function hasNotificationDispatcher()
     {
-        return !is_null($this->notificationDispatcher);
+        return isset($this->notificationDispatcher);
     }
 
     /**
@@ -79,6 +79,7 @@ trait NotificationDispatcherTrait
      */
     public function hasDefaultNotificationDispatcher()
     {
-        return !is_null($this->getDefaultNotificationDispatcher());
+        $default = $this->getDefaultNotificationDispatcher();
+        return isset($default);
     }
 }

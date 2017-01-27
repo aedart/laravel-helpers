@@ -69,7 +69,7 @@ trait NotificationFactoryTrait
      */
     public function hasNotificationFactory()
     {
-        return !is_null($this->notificationFactory);
+        return isset($this->notificationFactory);
     }
 
     /**
@@ -79,6 +79,7 @@ trait NotificationFactoryTrait
      */
     public function hasDefaultNotificationFactory()
     {
-        return !is_null($this->getDefaultNotificationFactory());
+        $default = $this->getDefaultNotificationFactory();
+        return isset($default);
     }
 }

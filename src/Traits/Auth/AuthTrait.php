@@ -80,10 +80,7 @@ trait AuthTrait
      */
     public function hasAuth()
     {
-        if (!is_null($this->auth)) {
-            return true;
-        }
-        return false;
+        return isset($this->auth);
     }
 
     /**
@@ -93,9 +90,7 @@ trait AuthTrait
      */
     public function hasDefaultAuth()
     {
-        if (!is_null($this->getDefaultAuth())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultAuth();
+        return isset($default);
     }
 }

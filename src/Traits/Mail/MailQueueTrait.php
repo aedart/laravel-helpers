@@ -70,10 +70,7 @@ trait MailQueueTrait
      */
     public function hasMailQueue()
     {
-        if (!is_null($this->mailQueue)) {
-            return true;
-        }
-        return false;
+        return isset($this->mailQueue);
     }
 
     /**
@@ -83,9 +80,7 @@ trait MailQueueTrait
      */
     public function hasDefaultMailQueue()
     {
-        if (!is_null($this->getDefaultMailQueue())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultMailQueue();
+        return isset($default);
     }
 }

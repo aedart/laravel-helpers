@@ -70,10 +70,7 @@ trait QueueManagerTrait
      */
     public function hasQueueManager()
     {
-        if (!is_null($this->queueManager)) {
-            return true;
-        }
-        return false;
+        return isset($this->queueManager);
     }
 
     /**
@@ -83,9 +80,7 @@ trait QueueManagerTrait
      */
     public function hasDefaultQueueManager()
     {
-        if (!is_null($this->getDefaultQueueManager())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultQueueManager();
+        return isset($default);
     }
 }

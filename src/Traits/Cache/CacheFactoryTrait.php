@@ -70,10 +70,7 @@ trait CacheFactoryTrait
      */
     public function hasCacheFactory()
     {
-        if (!is_null($this->cacheFactory)) {
-            return true;
-        }
-        return false;
+        return isset($this->cacheFactory);
     }
 
     /**
@@ -83,9 +80,7 @@ trait CacheFactoryTrait
      */
     public function hasDefaultCacheFactory()
     {
-        if (!is_null($this->getDefaultCacheFactory())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultCacheFactory();
+        return isset($default);
     }
 }

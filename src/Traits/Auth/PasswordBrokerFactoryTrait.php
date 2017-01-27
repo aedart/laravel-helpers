@@ -68,7 +68,7 @@ trait PasswordBrokerFactoryTrait
      */
     public function hasPasswordBrokerFactory()
     {
-        return !is_null($this->passwordBrokerFactory);
+        return isset($this->passwordBrokerFactory);
     }
 
     /**
@@ -78,6 +78,7 @@ trait PasswordBrokerFactoryTrait
      */
     public function hasDefaultPasswordBrokerFactory()
     {
-        return !is_null($this->getDefaultPasswordBrokerFactory());
+        $default = $this->getDefaultPasswordBrokerFactory();
+        return isset($default);
     }
 }

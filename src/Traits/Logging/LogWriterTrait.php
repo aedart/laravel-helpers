@@ -70,10 +70,7 @@ trait LogWriterTrait
      */
     public function hasLogWriter()
     {
-        if (!is_null($this->logWriter)) {
-            return true;
-        }
-        return false;
+        return isset($this->logWriter);
     }
 
     /**
@@ -83,9 +80,7 @@ trait LogWriterTrait
      */
     public function hasDefaultLogWriter()
     {
-        if (!is_null($this->getDefaultLogWriter())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultLogWriter();
+        return isset($default);
     }
 }

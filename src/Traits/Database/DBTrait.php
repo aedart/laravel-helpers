@@ -80,10 +80,7 @@ trait DBTrait
      */
     public function hasDb()
     {
-        if (!is_null($this->db)) {
-            return true;
-        }
-        return false;
+        return isset($this->db);
     }
 
     /**
@@ -93,9 +90,7 @@ trait DBTrait
      */
     public function hasDefaultDb()
     {
-        if (!is_null($this->getDefaultDb())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultDb();
+        return isset($default);
     }
 }

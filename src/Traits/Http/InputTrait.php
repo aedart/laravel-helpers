@@ -70,10 +70,7 @@ trait InputTrait
      */
     public function hasInput()
     {
-        if (!is_null($this->input)) {
-            return true;
-        }
-        return false;
+        return isset($this->input);
     }
 
     /**
@@ -83,10 +80,8 @@ trait InputTrait
      */
     public function hasDefaultInput()
     {
-        if (!is_null($this->getDefaultInput())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultInput();
+        return isset($default);
     }
 
     /**

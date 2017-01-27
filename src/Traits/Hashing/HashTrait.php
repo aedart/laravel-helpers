@@ -70,10 +70,7 @@ trait HashTrait
      */
     public function hasHash()
     {
-        if (!is_null($this->hash)) {
-            return true;
-        }
-        return false;
+        return isset($this->hash);
     }
 
     /**
@@ -83,9 +80,7 @@ trait HashTrait
      */
     public function hasDefaultHash()
     {
-        if (!is_null($this->getDefaultHash())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultHash();
+        return isset($default);
     }
 }

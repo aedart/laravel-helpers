@@ -70,10 +70,7 @@ trait PsrLogTrait
      */
     public function hasPsrLog()
     {
-        if (!is_null($this->psrLog)) {
-            return true;
-        }
-        return false;
+        return isset($this->psrLog);
     }
 
     /**
@@ -83,9 +80,7 @@ trait PsrLogTrait
      */
     public function hasDefaultPsrLog()
     {
-        if (!is_null($this->getDefaultPsrLog())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultPsrLog();
+        return isset($default);
     }
 }

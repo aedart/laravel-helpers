@@ -71,10 +71,7 @@ trait CookieTrait
      */
     public function hasCookie()
     {
-        if (!is_null($this->cookie)) {
-            return true;
-        }
-        return false;
+        return isset($this->cookie);
     }
 
     /**
@@ -84,10 +81,8 @@ trait CookieTrait
      */
     public function hasDefaultCookie()
     {
-        if (!is_null($this->getDefaultCookie())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultCookie();
+        return isset($default);
     }
 
     /**

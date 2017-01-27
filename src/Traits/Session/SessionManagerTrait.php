@@ -70,10 +70,7 @@ trait SessionManagerTrait
      */
     public function hasSessionManager()
     {
-        if (!is_null($this->sessionManager)) {
-            return true;
-        }
-        return false;
+        return isset($this->sessionManager);
     }
 
     /**
@@ -83,9 +80,7 @@ trait SessionManagerTrait
      */
     public function hasDefaultSessionManager()
     {
-        if (!is_null($this->getDefaultSessionManager())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultSessionManager();
+        return isset($default);
     }
 }

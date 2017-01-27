@@ -70,10 +70,7 @@ trait AuthManagerTrait
      */
     public function hasAuthManager()
     {
-        if (!is_null($this->authManager)) {
-            return true;
-        }
-        return false;
+        return isset($this->authManager);
     }
 
     /**
@@ -83,9 +80,7 @@ trait AuthManagerTrait
      */
     public function hasDefaultAuthManager()
     {
-        if (!is_null($this->getDefaultAuthManager())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultAuthManager();
+        return isset($default);
     }
 }

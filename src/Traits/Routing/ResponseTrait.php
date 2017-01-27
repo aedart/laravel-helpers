@@ -70,10 +70,7 @@ trait ResponseTrait
      */
     public function hasResponse()
     {
-        if (!is_null($this->response)) {
-            return true;
-        }
-        return false;
+        return isset($this->response);
     }
 
     /**
@@ -83,9 +80,7 @@ trait ResponseTrait
      */
     public function hasDefaultResponse()
     {
-        if (!is_null($this->getDefaultResponse())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultResponse();
+        return isset($default);
     }
 }

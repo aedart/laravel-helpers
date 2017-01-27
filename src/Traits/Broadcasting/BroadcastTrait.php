@@ -80,7 +80,7 @@ trait BroadcastTrait
      */
     public function hasBroadcast()
     {
-        return !is_null($this->broadcast);
+        return isset($this->broadcast);
     }
 
     /**
@@ -90,6 +90,7 @@ trait BroadcastTrait
      */
     public function hasDefaultBroadcast()
     {
-        return !is_null($this->getDefaultBroadcast());
+        $default = $this->getDefaultBroadcast();
+        return isset($default);
     }
 }

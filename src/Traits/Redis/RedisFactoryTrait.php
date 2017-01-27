@@ -70,7 +70,7 @@ trait RedisFactoryTrait
      */
     public function hasRedisFactory()
     {
-        return !is_null($this->redisFactory);
+        return isset($this->redisFactory);
     }
 
     /**
@@ -80,6 +80,7 @@ trait RedisFactoryTrait
      */
     public function hasDefaultRedisFactory()
     {
-        return !is_null($this->getDefaultRedisFactory());
+        $default = $this->getDefaultRedisFactory();
+        return isset($default);
     }
 }

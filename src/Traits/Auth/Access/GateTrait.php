@@ -70,10 +70,7 @@ trait GateTrait
      */
     public function hasGate()
     {
-        if (!is_null($this->gate)) {
-            return true;
-        }
-        return false;
+        return isset($this->gate);
     }
 
     /**
@@ -83,9 +80,7 @@ trait GateTrait
      */
     public function hasDefaultGate()
     {
-        if (!is_null($this->getDefaultGate())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultGate();
+        return isset($default);
     }
 }

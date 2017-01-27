@@ -70,10 +70,7 @@ trait EventTrait
      */
     public function hasEvent()
     {
-        if (!is_null($this->event)) {
-            return true;
-        }
-        return false;
+        return isset($this->event);
     }
 
     /**
@@ -83,9 +80,7 @@ trait EventTrait
      */
     public function hasDefaultEvent()
     {
-        if (!is_null($this->getDefaultEvent())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultEvent();
+        return isset($default);
     }
 }

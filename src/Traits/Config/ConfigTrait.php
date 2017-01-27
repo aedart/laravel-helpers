@@ -70,10 +70,7 @@ trait ConfigTrait
      */
     public function hasConfig()
     {
-        if (!is_null($this->config)) {
-            return true;
-        }
-        return false;
+        return isset($this->config);
     }
 
     /**
@@ -83,9 +80,7 @@ trait ConfigTrait
      */
     public function hasDefaultConfig()
     {
-        if (!is_null($this->getDefaultConfig())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultConfig();
+        return isset($default);
     }
 }

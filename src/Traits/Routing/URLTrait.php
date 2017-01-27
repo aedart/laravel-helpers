@@ -70,10 +70,7 @@ trait URLTrait
      */
     public function hasURL()
     {
-        if (!is_null($this->URL)) {
-            return true;
-        }
-        return false;
+        return isset($this->URL);
     }
 
     /**
@@ -83,9 +80,7 @@ trait URLTrait
      */
     public function hasDefaultURL()
     {
-        if (!is_null($this->getDefaultURL())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultURL();
+        return isset($default);
     }
 }

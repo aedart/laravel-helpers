@@ -70,10 +70,7 @@ trait MailTrait
      */
     public function hasMail()
     {
-        if (!is_null($this->mail)) {
-            return true;
-        }
-        return false;
+        return isset($this->mail);
     }
 
     /**
@@ -83,9 +80,7 @@ trait MailTrait
      */
     public function hasDefaultMail()
     {
-        if (!is_null($this->getDefaultMail())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultMail();
+        return isset($default);
     }
 }

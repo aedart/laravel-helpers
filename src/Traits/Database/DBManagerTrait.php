@@ -70,10 +70,7 @@ trait DBManagerTrait
      */
     public function hasDbManager()
     {
-        if (!is_null($this->dbManager)) {
-            return true;
-        }
-        return false;
+        return isset($this->dbManager);
     }
 
     /**
@@ -83,9 +80,7 @@ trait DBManagerTrait
      */
     public function hasDefaultDbManager()
     {
-        if (!is_null($this->getDefaultDbManager())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultDbManager();
+        return isset($default);
     }
 }

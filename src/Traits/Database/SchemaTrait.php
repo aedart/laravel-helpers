@@ -79,10 +79,7 @@ trait SchemaTrait
      */
     public function hasSchema()
     {
-        if (!is_null($this->schema)) {
-            return true;
-        }
-        return false;
+        return isset($this->schema);
     }
 
     /**
@@ -92,10 +89,8 @@ trait SchemaTrait
      */
     public function hasDefaultSchema()
     {
-        if (!is_null($this->getDefaultSchema())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultSchema();
+        return isset($default);
     }
 
     /**
@@ -110,7 +105,7 @@ trait SchemaTrait
     {
         // We do this check to ensure that a connection is available
         $manager = DB::getFacadeRoot();
-        if (!is_null($manager) && !is_null($manager->connection())) {
+        if (isset($manager) && !is_null($manager->connection())) {
             return Schema::connection($name);
         }
         return $manager;

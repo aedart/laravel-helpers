@@ -70,10 +70,7 @@ trait QueueFactoryTrait
      */
     public function hasQueueFactory()
     {
-        if (!is_null($this->queueFactory)) {
-            return true;
-        }
-        return false;
+        return isset($this->queueFactory);
     }
 
     /**
@@ -83,9 +80,7 @@ trait QueueFactoryTrait
      */
     public function hasDefaultQueueFactory()
     {
-        if (!is_null($this->getDefaultQueueFactory())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultQueueFactory();
+        return isset($default);
     }
 }

@@ -80,10 +80,7 @@ trait SessionTrait
      */
     public function hasSession()
     {
-        if (!is_null($this->session)) {
-            return true;
-        }
-        return false;
+        return isset($this->session);
     }
 
     /**
@@ -93,9 +90,7 @@ trait SessionTrait
      */
     public function hasDefaultSession()
     {
-        if (!is_null($this->getDefaultSession())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultSession();
+        return isset($default);
     }
 }

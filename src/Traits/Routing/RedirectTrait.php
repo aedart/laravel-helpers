@@ -70,10 +70,7 @@ trait RedirectTrait
      */
     public function hasRedirect()
     {
-        if (!is_null($this->redirect)) {
-            return true;
-        }
-        return false;
+        return isset($this->redirect);
     }
 
     /**
@@ -83,9 +80,7 @@ trait RedirectTrait
      */
     public function hasDefaultRedirect()
     {
-        if (!is_null($this->getDefaultRedirect())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultRedirect();
+        return isset($default);
     }
 }

@@ -70,10 +70,7 @@ trait ArtisanTrait
      */
     public function hasArtisan()
     {
-        if (!is_null($this->artisan)) {
-            return true;
-        }
-        return false;
+        return isset($this->artisan);
     }
 
     /**
@@ -83,10 +80,8 @@ trait ArtisanTrait
      */
     public function hasDefaultArtisan()
     {
-        if (!is_null($this->getDefaultArtisan())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultArtisan();
+        return isset($default);
     }
 
 }

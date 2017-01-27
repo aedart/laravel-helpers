@@ -70,10 +70,7 @@ trait ViewTrait
      */
     public function hasView()
     {
-        if (!is_null($this->view)) {
-            return true;
-        }
-        return false;
+        return isset($this->view);
     }
 
     /**
@@ -83,9 +80,7 @@ trait ViewTrait
      */
     public function hasDefaultView()
     {
-        if (!is_null($this->getDefaultView())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultView();
+        return isset($default);
     }
 }

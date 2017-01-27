@@ -70,10 +70,7 @@ trait RequestTrait
      */
     public function hasRequest()
     {
-        if (!is_null($this->request)) {
-            return true;
-        }
-        return false;
+        return isset($this->request);
     }
 
     /**
@@ -83,9 +80,7 @@ trait RequestTrait
      */
     public function hasDefaultRequest()
     {
-        if (!is_null($this->getDefaultRequest())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultRequest();
+        return isset($default);
     }
 }

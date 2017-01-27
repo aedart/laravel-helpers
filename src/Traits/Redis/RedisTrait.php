@@ -78,10 +78,7 @@ trait RedisTrait
      */
     public function hasRedis()
     {
-        if (!is_null($this->redis)) {
-            return true;
-        }
-        return false;
+        return isset($this->redis);
     }
 
     /**
@@ -91,9 +88,7 @@ trait RedisTrait
      */
     public function hasDefaultRedis()
     {
-        if (!is_null($this->getDefaultRedis())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultRedis();
+        return isset($default);
     }
 }

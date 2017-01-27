@@ -80,10 +80,7 @@ trait BaseQueueTrait
      */
     public function hasBaseQueue()
     {
-        if (!is_null($this->baseQueue)) {
-            return true;
-        }
-        return false;
+        return isset($this->baseQueue);
     }
 
     /**
@@ -93,9 +90,7 @@ trait BaseQueueTrait
      */
     public function hasDefaultBaseQueue()
     {
-        if (!is_null($this->getDefaultBaseQueue())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultBaseQueue();
+        return isset($default);
     }
 }

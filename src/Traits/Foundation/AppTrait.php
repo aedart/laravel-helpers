@@ -70,10 +70,7 @@ trait AppTrait
      */
     public function hasApp()
     {
-        if (!is_null($this->app)) {
-            return true;
-        }
-        return false;
+        return isset($this->app);
     }
 
     /**
@@ -83,9 +80,7 @@ trait AppTrait
      */
     public function hasDefaultApp()
     {
-        if (!is_null($this->getDefaultApp())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultApp();
+        return isset($default);
     }
 }

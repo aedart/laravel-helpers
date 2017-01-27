@@ -80,10 +80,7 @@ trait CacheTrait
      */
     public function hasCache()
     {
-        if (!is_null($this->cache)) {
-            return true;
-        }
-        return false;
+        return isset($this->cache);
     }
 
     /**
@@ -93,9 +90,7 @@ trait CacheTrait
      */
     public function hasDefaultCache()
     {
-        if (!is_null($this->getDefaultCache())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultCache();
+        return isset($default);
     }
 }

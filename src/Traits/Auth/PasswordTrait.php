@@ -80,10 +80,7 @@ trait PasswordTrait
      */
     public function hasPassword()
     {
-        if (!is_null($this->password)) {
-            return true;
-        }
-        return false;
+        return isset($this->password);
     }
 
     /**
@@ -93,9 +90,7 @@ trait PasswordTrait
      */
     public function hasDefaultPassword()
     {
-        if (!is_null($this->getDefaultPassword())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultPassword();
+        return isset($default);
     }
 }

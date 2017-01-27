@@ -80,10 +80,7 @@ trait StorageTrait
      */
     public function hasStorage()
     {
-        if (!is_null($this->storage)) {
-            return true;
-        }
-        return false;
+        return isset($this->storage);
     }
 
     /**
@@ -93,9 +90,7 @@ trait StorageTrait
      */
     public function hasDefaultStorage()
     {
-        if (!is_null($this->getDefaultStorage())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultStorage();
+        return isset($default);
     }
 }

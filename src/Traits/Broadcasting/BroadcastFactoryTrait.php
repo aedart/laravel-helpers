@@ -70,7 +70,7 @@ trait BroadcastFactoryTrait
      */
     public function hasBroadcastFactory()
     {
-        return !is_null($this->broadcastFactory);
+        return isset($this->broadcastFactory);
     }
 
     /**
@@ -80,6 +80,7 @@ trait BroadcastFactoryTrait
      */
     public function hasDefaultBroadcastFactory()
     {
-        return !is_null($this->getDefaultBroadcastFactory());
+        $default = $this->getDefaultBroadcastFactory();
+        return isset($default);
     }
 }

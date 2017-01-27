@@ -70,10 +70,7 @@ trait StorageFactoryTrait
      */
     public function hasStorageFactory()
     {
-        if (!is_null($this->storageFactory)) {
-            return true;
-        }
-        return false;
+        return isset($this->storageFactory);
     }
 
     /**
@@ -83,9 +80,7 @@ trait StorageFactoryTrait
      */
     public function hasDefaultStorageFactory()
     {
-        if (!is_null($this->getDefaultStorageFactory())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultStorageFactory();
+        return isset($default);
     }
 }

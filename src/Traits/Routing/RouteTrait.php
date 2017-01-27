@@ -70,10 +70,7 @@ trait RouteTrait
      */
     public function hasRoute()
     {
-        if (!is_null($this->route)) {
-            return true;
-        }
-        return false;
+        return isset($this->route);
     }
 
     /**
@@ -83,9 +80,7 @@ trait RouteTrait
      */
     public function hasDefaultRoute()
     {
-        if (!is_null($this->getDefaultRoute())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultRoute();
+        return isset($default);
     }
 }

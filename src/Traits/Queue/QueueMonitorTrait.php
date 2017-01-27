@@ -70,10 +70,7 @@ trait QueueMonitorTrait
      */
     public function hasQueueMonitor()
     {
-        if (!is_null($this->queueMonitor)) {
-            return true;
-        }
-        return false;
+        return isset($this->queueMonitor);
     }
 
     /**
@@ -83,9 +80,7 @@ trait QueueMonitorTrait
      */
     public function hasDefaultQueueMonitor()
     {
-        if (!is_null($this->getDefaultQueueMonitor())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultQueueMonitor();
+        return isset($default);
     }
 }

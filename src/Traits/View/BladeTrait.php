@@ -80,10 +80,7 @@ trait BladeTrait
      */
     public function hasBlade()
     {
-        if (!is_null($this->blade)) {
-            return true;
-        }
-        return false;
+        return isset($this->blade);
     }
 
     /**
@@ -93,9 +90,7 @@ trait BladeTrait
      */
     public function hasDefaultBlade()
     {
-        if (!is_null($this->getDefaultBlade())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultBlade();
+        return isset($default);
     }
 }

@@ -70,10 +70,7 @@ trait ValidatorTrait
      */
     public function hasValidator()
     {
-        if (!is_null($this->validator)) {
-            return true;
-        }
-        return false;
+        return isset($this->validator);
     }
 
     /**
@@ -83,9 +80,7 @@ trait ValidatorTrait
      */
     public function hasDefaultValidator()
     {
-        if (!is_null($this->getDefaultValidator())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultValidator();
+        return isset($default);
     }
 }

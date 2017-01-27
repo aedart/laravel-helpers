@@ -70,10 +70,7 @@ trait BusTrait
      */
     public function hasBus()
     {
-        if (!is_null($this->bus)) {
-            return true;
-        }
-        return false;
+        return isset($this->bus);
     }
 
     /**
@@ -83,9 +80,7 @@ trait BusTrait
      */
     public function hasDefaultBus()
     {
-        if (!is_null($this->getDefaultBus())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultBus();
+        return isset($default);
     }
 }

@@ -70,7 +70,7 @@ trait PasswordBrokerManagerTrait
      */
     public function hasPasswordBrokerManager()
     {
-        return !is_null($this->passwordBrokerManager);
+        return isset($this->passwordBrokerManager);
     }
 
     /**
@@ -80,6 +80,7 @@ trait PasswordBrokerManagerTrait
      */
     public function hasDefaultPasswordBrokerManager()
     {
-        return !is_null($this->getDefaultPasswordBrokerManager());
+        $default = $this->getDefaultPasswordBrokerManager();
+        return isset($default);
     }
 }

@@ -70,10 +70,7 @@ trait LangTrait
      */
     public function hasLang()
     {
-        if (!is_null($this->lang)) {
-            return true;
-        }
-        return false;
+        return isset($this->lang);
     }
 
     /**
@@ -83,9 +80,7 @@ trait LangTrait
      */
     public function hasDefaultLang()
     {
-        if (!is_null($this->getDefaultLang())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultLang();
+        return isset($default);
     }
 }

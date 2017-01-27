@@ -70,10 +70,7 @@ trait LogTrait
      */
     public function hasLog()
     {
-        if (!is_null($this->log)) {
-            return true;
-        }
-        return false;
+        return isset($this->log);
     }
 
     /**
@@ -83,9 +80,7 @@ trait LogTrait
      */
     public function hasDefaultLog()
     {
-        if (!is_null($this->getDefaultLog())) {
-            return true;
-        }
-        return false;
+        $default = $this->getDefaultLog();
+        return isset($default);
     }
 }
