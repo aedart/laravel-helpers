@@ -72,12 +72,11 @@ use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Contracts\Mail\Mailer as MailerInterface;
 use Illuminate\Contracts\Mail\MailQueue;
-use Illuminate\Contracts\Notifications\Dispatcher as NotificaitonDispatcher;
+use Illuminate\Contracts\Notifications\Dispatcher as NotificationDispatcher;
 use Illuminate\Contracts\Notifications\Factory as NotificationFactory;
 use Illuminate\Contracts\Queue\Factory as QueueFactory;
 use Illuminate\Contracts\Queue\Monitor;
 use Illuminate\Contracts\Queue\Queue as QueueInterface;
-use Illuminate\Contracts\Redis\Database as RedisDatabase;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\Routing\UrlGenerator;
@@ -93,6 +92,7 @@ use Illuminate\Log\Writer;
 use Illuminate\Mail\Mailer;
 use Illuminate\Queue\Queue;
 use Illuminate\Queue\QueueManager;
+use Illuminate\Redis\Connections\Connection;
 use Illuminate\Routing\Redirector;
 use Illuminate\Session\SessionInterface;
 use Illuminate\Session\SessionManager;
@@ -239,7 +239,7 @@ class TraitsTest extends TraitTestCase
 
             // Notifications
             'NotificationFactoryTrait'      => [NotificationFactoryTrait::class, NotificationFactory::class, NotificationFactory::class],
-            'NotificationDispatcherTrait'   => [NotificationDispatcherTrait::class, NotificaitonDispatcher::class, NotificaitonDispatcher::class],
+            'NotificationDispatcherTrait'   => [NotificationDispatcherTrait::class, NotificationDispatcher::class, NotificationDispatcher::class],
 
             // Queue
             'BaseQueueTrait'                => [BaseQueueTrait::class, Queue::class, Queue::class],
@@ -249,7 +249,7 @@ class TraitsTest extends TraitTestCase
             'QueueTrait'                    => [QueueTrait::class, QueueInterface::class, QueueInterface::class],
 
             // Redis
-            'RedisTrait'                    => [RedisTrait::class, RedisDatabase::class, RedisDatabase::class],
+            'RedisTrait'                    => [RedisTrait::class, Connection::class, Connection::class],
 
             // Routing
             'RedirectTrait'                 => [RedirectTrait::class, Redirector::class, Redirector::class],

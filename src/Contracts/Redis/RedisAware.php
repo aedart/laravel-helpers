@@ -1,6 +1,8 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Redis;
+<?php
 
-use Illuminate\Contracts\Redis\Database;
+namespace Aedart\Laravel\Helpers\Contracts\Redis;
+
+use Illuminate\Redis\Connections\Connection;
 
 /**
  * <h1>Redis Aware</h1>
@@ -8,21 +10,21 @@ use Illuminate\Contracts\Redis\Database;
  * Components are able to specify and obtain a Redis Database
  * utility component.
  *
- * @see \Illuminate\Contracts\Redis\Database
+ * @see \Illuminate\Redis\Connections\Connection
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Redis
  */
-interface RedisAware {
-
+interface RedisAware
+{
     /**
      * Set the given redis
      *
-     * @param Database $database Instance of a Redis Database
+     * @param Connection $connection Instance of a Redis Connection
      *
      * @return void
      */
-    public function setRedis(Database $database);
+    public function setRedis(Connection $connection);
 
     /**
      * Get the given redis
@@ -33,14 +35,14 @@ interface RedisAware {
      *
      * @see getDefaultRedis()
      *
-     * @return Database|null redis or null if none redis has been set
+     * @return Connection|null redis or null if none redis has been set
      */
     public function getRedis();
 
     /**
      * Get a default redis value, if any is available
      *
-     * @return Database|null A default redis value or Null if no default value is available
+     * @return Connection|null A default redis value or Null if no default value is available
      */
     public function getDefaultRedis();
 

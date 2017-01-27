@@ -1,6 +1,6 @@
 <?php namespace Aedart\Laravel\Helpers\Traits\Redis;
 
-use Illuminate\Contracts\Redis\Database;
+use Illuminate\Redis\Connections\Connection;
 use Illuminate\Support\Facades\Redis;
 
 /**
@@ -11,24 +11,24 @@ use Illuminate\Support\Facades\Redis;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Redis
  */
-trait RedisTrait {
-
+trait RedisTrait
+{
     /**
-     * Instance of a Redis Database
+     * Instance of a Redis Connection
      *
-     * @var Database|null
+     * @var Connection|null
      */
     protected $redis = null;
 
     /**
      * Set the given redis
      *
-     * @param Database $database Instance of a Redis Database
+     * @param Connection $connection Instance of a Redis Connection
      *
      * @return void
      */
-    public function setRedis(Database $database) {
-        $this->redis = $database;
+    public function setRedis(Connection $connection) {
+        $this->redis = $connection;
     }
 
     /**
@@ -40,7 +40,7 @@ trait RedisTrait {
      *
      * @see getDefaultRedis()
      *
-     * @return Database|null redis or null if none redis has been set
+     * @return Connection|null redis or null if none redis has been set
      */
     public function getRedis() {
         if (!$this->hasRedis() && $this->hasDefaultRedis()) {
@@ -52,10 +52,20 @@ trait RedisTrait {
     /**
      * Get a default redis value, if any is available
      *
-     * @return Database|null A default redis value or Null if no default value is available
+     * @return Connection|null A default redis value or Null if no default value is available
      */
     public function getDefaultRedis() {
-        return Redis::getFacadeRoot();
+
+        // From Laravel 5.4, the redis facade now returns the
+        // Redis Manager, which is why we must use it to obtain
+        // the default Redis connection. Thus, the
+        // "Illuminate\Contracts\Redis\Database" interface is no
+        // longer used.
+        $factory = Redis::getFacadeRoot();
+        if(!is_null($factory)){
+            return $factory->connection();
+        }
+        return $factory;
     }
 
     /**
