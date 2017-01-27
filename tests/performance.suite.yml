@@ -1,0 +1,5 @@
+class_name: PerformanceTester
+modules:
+    enabled:
+        - Asserts
+        - \Helper\Performance
