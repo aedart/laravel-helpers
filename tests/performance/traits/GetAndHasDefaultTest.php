@@ -32,9 +32,20 @@ class GetAndHasDefaultTest extends PerformanceTestCase
      * Helpers
      *****************************************************/
 
+    /**
+     * @return AwareOfDummy
+     */
     public function makeAwareOfComponent()
     {
         return new AwareOfDummy();
+    }
+
+    /**
+     * @return AwareOfDummyB
+     */
+    public function makeAwareOfComponentB()
+    {
+        return new AwareOfDummyB();
     }
 
     /******************************************************
@@ -56,8 +67,11 @@ class GetAndHasDefaultTest extends PerformanceTestCase
 
     /**
      * @test
+     *
+     * For a component where a "factory" is returned and
+     * a connection, profile, store... etc, needs to be returned
      */
-    public function hasDefaultCheck()
+    public function hasDefaultCheckForFactoryComponent()
     {
         $i = $this->iterations;
         while($i--){
@@ -71,13 +85,50 @@ class GetAndHasDefaultTest extends PerformanceTestCase
 
     /**
      * @test
+     *
+     * For a component where a "factory" is returned and
+     * a connection, profile, store... etc, needs to be returned
      */
-    public function getPropertyFirstTimeCheck()
+    public function getPropertyFirstTimeCheckForFactoryComponent()
     {
         $i = $this->iterations;
         while($i--){
             $component = $this->makeAwareOfComponent();
             $property = $component->getCache();
+
+            // Just to ensure return is correct
+            $this->assertTrue(isset($property));
+        }
+    }
+
+    /**
+     * @test
+     *
+     * For a component where the "facade root" is just returned
+     */
+    public function hasDefaultCheckForFacadeRoot()
+    {
+        $i = $this->iterations;
+        while($i--){
+            $component = $this->makeAwareOfComponentB();
+            $hasDefault = $component->hasDefaultCacheFactory();
+
+            // Just to ensure return is correct
+            $this->assertTrue($hasDefault);
+        }
+    }
+
+    /**
+     * @test
+     *
+     * For a component where the "facade root" is just returned
+     */
+    public function getPropertyFirstTimeCheckForFacadeRoot()
+    {
+        $i = $this->iterations;
+        while($i--){
+            $component = $this->makeAwareOfComponentB();
+            $property = $component->getCacheFactory();
 
             // Just to ensure return is correct
             $this->assertTrue(isset($property));
