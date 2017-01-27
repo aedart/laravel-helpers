@@ -22,7 +22,7 @@
     "illuminate/support": "5.4.*"
   },
   "require-dev": {
-    "aedart/testing-laravel": "~2.0",
+    "aedart/testing-laravel": "~2.0@dev",
     "aedart/testing-gst": "~1.2",
     "aedart/license": "1.*",
     "aedart/license-file-manager": "~1.7",
@@ -38,7 +38,7 @@
       "tests/testCases"
     ]
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true,
   "scripts": {
     "post-update-cmd": "vendor/bin/license-manager license:copy vendor/aedart/license/aedart/BSD-3-Clause"
