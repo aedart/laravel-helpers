@@ -60,6 +60,11 @@ trait AuthTrait
      */
     public function getDefaultAuth()
     {
+        static $auth;
+        if(isset($auth)){
+            return $auth;
+        }
+
         // By default, the Auth Facade does not return the
         // any actual authentication guard, but rather an
         // instance of \Illuminate\Auth\AuthManager.
@@ -68,7 +73,7 @@ trait AuthTrait
         // instance that we obtain.
         $manager = Auth::getFacadeRoot();
         if (!is_null($manager)) {
-            return $manager->guard();
+            return $auth = $manager->guard();
         }
         return $manager;
     }

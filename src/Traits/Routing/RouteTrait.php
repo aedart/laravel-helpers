@@ -60,7 +60,8 @@ trait RouteTrait
      */
     public function getDefaultRoute()
     {
-        return Route::getFacadeRoot();
+        static $route;
+        return isset($route) ? $route : $route = Route::getFacadeRoot();
     }
 
     /**

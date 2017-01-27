@@ -61,6 +61,9 @@ trait CacheTrait
     public function getDefaultCache()
     {
         static $cache;
+        if(isset($cache)){
+            return $cache;
+        }
 
         // By default, the Cache Facade does not return the
         // any actual cache repository, but rather an
@@ -68,10 +71,6 @@ trait CacheTrait
         // Therefore, we make sure only to obtain its
         // "store", to make sure that its only the cache repository
         // instance that we obtain.
-        if(isset($cache)){
-            return $cache;
-        }
-
         $manager = Cache::getFacadeRoot();
         if (isset($manager)) {
             return $cache = $manager->store();

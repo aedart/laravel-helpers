@@ -58,7 +58,8 @@ trait PasswordBrokerFactoryTrait
      */
     public function getDefaultPasswordBrokerFactory()
     {
-        return Password::getFacadeRoot();
+        static $passwordBrokerFactory;
+        return isset($passwordBrokerFactory) ? $passwordBrokerFactory : $passwordBrokerFactory = Password::getFacadeRoot();
     }
 
     /**

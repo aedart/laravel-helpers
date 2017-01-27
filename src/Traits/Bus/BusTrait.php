@@ -60,7 +60,8 @@ trait BusTrait
      */
     public function getDefaultBus()
     {
-        return Bus::getFacadeRoot();
+        static $bus;
+        return isset($bus) ? $bus : $bus = Bus::getFacadeRoot();
     }
 
     /**

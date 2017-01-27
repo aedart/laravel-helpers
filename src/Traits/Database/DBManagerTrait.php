@@ -60,7 +60,8 @@ trait DBManagerTrait
      */
     public function getDefaultDbManager()
     {
-        return DB::getFacadeRoot();
+        static $dbManager;
+        return isset($dbManager) ? $dbManager : $dbManager = DB::getFacadeRoot();
     }
 
     /**

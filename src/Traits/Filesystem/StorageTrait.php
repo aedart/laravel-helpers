@@ -60,6 +60,11 @@ trait StorageTrait
      */
     public function getDefaultStorage()
     {
+        static $storage;
+        if(isset($storage)){
+            return $storage;
+        }
+
         // By default, the Storage Facade does not return the
         // any actual storage fisk, but rather an
         // instance of \Illuminate\Filesystem\FilesystemManager.
@@ -68,7 +73,7 @@ trait StorageTrait
         // instance that we obtain.
         $manager = Storage::getFacadeRoot();
         if (!is_null($manager)) {
-            return $manager->disk();
+            return $storage = $manager->disk();
         }
         return $manager;
     }

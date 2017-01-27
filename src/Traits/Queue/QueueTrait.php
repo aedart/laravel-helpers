@@ -60,6 +60,11 @@ trait QueueTrait
      */
     public function getDefaultQueue()
     {
+        static $queue;
+        if(isset($queue)){
+            return $queue;
+        }
+
         // By default, the Queue Facade does not return the
         // any actual database connection, but rather an
         // instance of \Illuminate\Queue\QueueManager.
@@ -68,7 +73,7 @@ trait QueueTrait
         // instance that we obtain.
         $manager = QueueFacade::getFacadeRoot();
         if (!is_null($manager)) {
-            return $manager->connection();
+            return $queue = $manager->connection();
         }
         return $manager;
     }

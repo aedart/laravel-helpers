@@ -61,13 +61,18 @@ trait SchemaTrait
      */
     public function getDefaultSchema()
     {
+        static $schema;
+        if(isset($schema)){
+            return $schema;
+        }
+
         // By default, the schema facade depends upon a
         // database connection being available. Therefore,
         // we need to ensure that this is true, before
         // attempting to return the facade-root
         $manager = DB::getFacadeRoot();
         if (!is_null($manager) && !is_null($manager->connection())) {
-            return Schema::getFacadeRoot();
+            return $schema = Schema::getFacadeRoot();
         }
         return $manager;
     }

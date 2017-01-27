@@ -59,7 +59,8 @@ trait NotificationDispatcherTrait
      */
     public function getDefaultNotificationDispatcher()
     {
-        return Notification::getFacadeRoot();
+        static $dispatcher;
+        return isset($dispatcher) ? $dispatcher : $dispatcher = Notification::getFacadeRoot();
     }
 
     /**

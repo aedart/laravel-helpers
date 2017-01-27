@@ -60,7 +60,8 @@ trait MailTrait
      */
     public function getDefaultMail()
     {
-        return Mail::getFacadeRoot();
+        static $mail;
+        return isset($mail) ? $mail : $mail = Mail::getFacadeRoot();
     }
 
     /**

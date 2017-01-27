@@ -60,7 +60,8 @@ trait MailQueueTrait
      */
     public function getDefaultMailQueue()
     {
-        return Mail::getFacadeRoot();
+        static $mailQueue;
+        return isset($mailQueue) ? $mailQueue : $mailQueue = Mail::getFacadeRoot();
     }
 
     /**

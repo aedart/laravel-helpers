@@ -60,7 +60,8 @@ trait QueueFactoryTrait
      */
     public function getDefaultQueueFactory()
     {
-        return Queue::getFacadeRoot();
+        static $factory;
+        return isset($factory) ? $factory : $factory = Queue::getFacadeRoot();
     }
 
     /**

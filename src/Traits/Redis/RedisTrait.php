@@ -58,6 +58,10 @@ trait RedisTrait
      */
     public function getDefaultRedis()
     {
+        static $redis;
+        if(isset($redis)){
+            return $redis;
+        }
 
         // From Laravel 5.4, the redis facade now returns the
         // Redis Manager, which is why we must use it to obtain
@@ -66,7 +70,7 @@ trait RedisTrait
         // longer used.
         $factory = Redis::getFacadeRoot();
         if (!is_null($factory)) {
-            return $factory->connection();
+            return $redis = $factory->connection();
         }
         return $factory;
     }

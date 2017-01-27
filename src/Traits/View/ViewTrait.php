@@ -60,7 +60,8 @@ trait ViewTrait
      */
     public function getDefaultView()
     {
-        return View::getFacadeRoot();
+        static $view;
+        return isset($view) ? $view : $view = View::getFacadeRoot();
     }
 
     /**

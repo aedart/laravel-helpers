@@ -59,7 +59,8 @@ trait NotificationFactoryTrait
      */
     public function getDefaultNotificationFactory()
     {
-        return Notification::getFacadeRoot();
+        static $factory;
+        return isset($factory) ? $factory : $factory = Notification::getFacadeRoot();
     }
 
     /**

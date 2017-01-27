@@ -60,7 +60,8 @@ trait RequestTrait
      */
     public function getDefaultRequest()
     {
-        return RequestFacade::getFacadeRoot();
+        static $request;
+        return isset($request) ? $request : $request = RequestFacade::getFacadeRoot();
     }
 
     /**

@@ -60,7 +60,8 @@ trait BroadcastFactoryTrait
      */
     public function getDefaultBroadcastFactory()
     {
-        return Broadcast::getFacadeRoot();
+        static $broadcastFactory;
+        return isset($broadcastFactory) ? $broadcastFactory : $broadcastFactory = Broadcast::getFacadeRoot();
     }
 
     /**

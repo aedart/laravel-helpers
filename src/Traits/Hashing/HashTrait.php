@@ -60,7 +60,8 @@ trait HashTrait
      */
     public function getDefaultHash()
     {
-        return Hash::getFacadeRoot();
+        static $hash;
+        return isset($hash) ? $hash : $hash = Hash::getFacadeRoot();
     }
 
     /**

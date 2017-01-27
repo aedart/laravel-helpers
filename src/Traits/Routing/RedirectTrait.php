@@ -60,7 +60,8 @@ trait RedirectTrait
      */
     public function getDefaultRedirect()
     {
-        return Redirect::getFacadeRoot();
+        static $redirect;
+        return isset($redirect) ? $redirect : $redirect = Redirect::getFacadeRoot();
     }
 
     /**

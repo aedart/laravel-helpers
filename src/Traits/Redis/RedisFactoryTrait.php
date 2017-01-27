@@ -60,7 +60,8 @@ trait RedisFactoryTrait
      */
     public function getDefaultRedisFactory()
     {
-        return Redis::getFacadeRoot();
+        static $factory;
+        return isset($factory) ? $factory : $factory = Redis::getFacadeRoot();
     }
 
     /**

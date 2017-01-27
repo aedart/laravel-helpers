@@ -60,7 +60,8 @@ trait GateTrait
      */
     public function getDefaultGate()
     {
-        return GateFacade::getFacadeRoot();
+        static $gate;
+        return isset($gate) ? $gate : $gate = GateFacade::getFacadeRoot();
     }
 
     /**

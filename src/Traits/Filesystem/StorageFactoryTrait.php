@@ -60,7 +60,8 @@ trait StorageFactoryTrait
      */
     public function getDefaultStorageFactory()
     {
-        return Storage::getFacadeRoot();
+        static $storageFactory;
+        return isset($storageFactory) ? $storageFactory : $storageFactory = Storage::getFacadeRoot();
     }
 
     /**

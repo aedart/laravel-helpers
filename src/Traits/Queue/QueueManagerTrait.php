@@ -60,7 +60,8 @@ trait QueueManagerTrait
      */
     public function getDefaultQueueManager()
     {
-        return Queue::getFacadeRoot();
+        static $manager;
+        return isset($manager) ? $manager : $manager = Queue::getFacadeRoot();
     }
 
     /**

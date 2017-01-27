@@ -60,7 +60,8 @@ trait CryptTrait
      */
     public function getDefaultCrypt()
     {
-        return Crypt::getFacadeRoot();
+        static $crypt;
+        return isset($crypt) ? $crypt : $crypt = Crypt::getFacadeRoot();
     }
 
     /**
