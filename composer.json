@@ -19,10 +19,10 @@
   ],
   "require": {
     "php": ">=5.6.4",
-    "illuminate/support": "5.3.*"
+    "illuminate/support": "5.4.*"
   },
   "require-dev": {
-    "aedart/testing-laravel": "1.8.*",
+    "aedart/testing-laravel": "~2.0",
     "aedart/testing-gst": "~1.2",
     "aedart/license": "1.*",
     "aedart/license-file-manager": "~1.7",
@@ -38,13 +38,14 @@
       "tests/testCases"
     ]
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "scripts": {
     "post-update-cmd": "vendor/bin/license-manager license:copy vendor/aedart/license/aedart/BSD-3-Clause"
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "2.2.x-dev"
+      "dev-master": "3.0.x-dev"
     }
   }
 }
