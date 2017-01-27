@@ -1,7 +1,7 @@
 <?php namespace Aedart\Laravel\Helpers\Traits\Translation;
 
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Translation\Translator;
+use Illuminate\Contracts\Translation\Translator;
 
 /**
  * <h1>Lang Trait</h1>

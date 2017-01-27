@@ -1,6 +1,6 @@
 <?php namespace Aedart\Laravel\Helpers\Contracts\Translation;
 
-use Illuminate\Translation\Translator;
+use Illuminate\Contracts\Translation\Translator;
 
 /**
  * <h1>Lang Aware</h1>
@@ -8,7 +8,7 @@ use Illuminate\Translation\Translator;
  * Components are able to specify and obtain a Laravel Translator
  * utility component.
  *
- * @see \Illuminate\Translation\Translator
+ * @see \Illuminate\Contracts\Translation\Translator
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
