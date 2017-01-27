@@ -1,29 +1,30 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Translation;
+<?php
 
-use Symfony\Component\Translation\TranslatorInterface;
+namespace Aedart\Laravel\Helpers\Contracts\Translation;
+
+use Illuminate\Translation\Translator;
 
 /**
  * <h1>Lang Translator Aware</h1>
  *
- * Components are able to specify and obtain a Symfony Translator
+ * Components are able to specify and obtain a Translator
  * utility component.
  *
- * @see \Aedart\Laravel\Helpers\Contracts\LangAware
- * @see \Symfony\Component\Translation\TranslatorInterface
+ * @see \Illuminate\Translation\Translator
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface LangTranslatorAware {
-
+interface LangTranslatorAware
+{
     /**
      * Set the given lang translator
      *
-     * @param TranslatorInterface $translator Instance of a translator
+     * @param Translator $translator Instance of a translator
      *
      * @return void
      */
-    public function setLangTranslator(TranslatorInterface $translator);
+    public function setLangTranslator(Translator $translator);
 
     /**
      * Get the given lang translator
@@ -34,14 +35,14 @@ interface LangTranslatorAware {
      *
      * @see getDefaultLangTranslator()
      *
-     * @return TranslatorInterface|null lang translator or null if none lang translator has been set
+     * @return Translator|null lang translator or null if none lang translator has been set
      */
     public function getLangTranslator();
 
     /**
      * Get a default lang translator value, if any is available
      *
-     * @return TranslatorInterface|null A default lang translator value or Null if no default value is available
+     * @return Translator|null A default lang translator value or Null if no default value is available
      */
     public function getDefaultLangTranslator();
 

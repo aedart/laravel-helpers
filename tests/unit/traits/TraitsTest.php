@@ -83,7 +83,7 @@ use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Session\Session;
-use Illuminate\Contracts\Translation\Translator;
+use Illuminate\Contracts\Translation\Translator as TranslatorInterface;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Cookie\CookieJar;
@@ -102,9 +102,9 @@ use Illuminate\Session\SessionManager;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config as ConfigFacade;
 use Illuminate\Support\Str;
+use Illuminate\Translation\Translator;
 use Illuminate\View\Compilers\BladeCompiler;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\Translation\TranslatorInterface;
 use Faker\Factory as FakerFactory;
 use \Mockery as m;
 
@@ -265,8 +265,8 @@ class TraitsTest extends TraitTestCase
             'SessionTrait'                  => [SessionTrait::class, Session::class, Session::class],
 
             // Translation
-            'LangTrait'                     => [LangTrait::class, Translator::class, Translator::class],
-            'LangTranslatorTrait'           => [LangTranslatorTrait::class, TranslatorInterface::class, TranslatorInterface::class],
+            'LangTrait'                     => [LangTrait::class, TranslatorInterface::class, TranslatorInterface::class],
+            'LangTranslatorTrait'           => [LangTranslatorTrait::class, Translator::class, Translator::class],
 
             // Validation
             'ValidatorTrait'                => [ValidatorTrait::class, ValidationFactory::class, ValidationFactory::class],
