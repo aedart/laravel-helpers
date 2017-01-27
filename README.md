@@ -7,7 +7,7 @@
 
 [Getters and Setters](https://en.wikipedia.org/wiki/Mutator_method) utility package for some of [Laravel's](http://laravel.com/) core packages. 
 
-This package make use of Laravel's native [Facades](http://laravel.com/docs/5.1/facades), as a fallback, when no custom instances are provided.
+This package make use of Laravel's native [Facades](http://laravel.com/docs/5.4/facades), as a fallback, when no custom instances are provided.
 
 ## Contents
 
@@ -54,7 +54,8 @@ Furthermore, a default implementation is available, via the `ConfigTrait` trait.
 use Aedart\Laravel\Helpers\Contracts\Config\ConfigAware;
 use Aedart\Laravel\Helpers\Traits\Config\ConfigTrait;
 
-class MyComponent implements ConfigAware {
+class MyComponent implements ConfigAware
+{
     use ConfigTrait;
 }
 ```
@@ -112,10 +113,12 @@ use Aedart\Laravel\Helpers\Contracts\Config\ConfigAware;
 use Aedart\Laravel\Helpers\Traits\Config\ConfigTrait;
 use Illuminate\Config\Repository;
 
-class MyComponent implements ConfigAware {
+class MyComponent implements ConfigAware
+{
     use ConfigTrait;
     
-    public function getDefaultConfig() {
+    public function getDefaultConfig()
+    {
         return new Repository(); // Please note that this repository will NOT store values statically!
     }
 }
