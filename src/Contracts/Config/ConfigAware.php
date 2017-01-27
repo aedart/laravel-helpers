@@ -1,4 +1,6 @@
-<?php  namespace Aedart\Laravel\Helpers\Contracts\Config;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Config;
 
 use Illuminate\Contracts\Config\Repository;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Config\Repository;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface ConfigAware {
-
+interface ConfigAware
+{
     /**
      * Set the given config
      *

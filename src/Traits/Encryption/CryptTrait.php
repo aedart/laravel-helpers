@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Encryption;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Encryption;
 
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Support\Facades\Crypt;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Crypt;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait CryptTrait {
-
+trait CryptTrait
+{
     /**
      * Instance of an encrypter
      *
@@ -27,7 +29,8 @@ trait CryptTrait {
      *
      * @return void
      */
-    public function setCrypt(Encrypter $encrypter) {
+    public function setCrypt(Encrypter $encrypter)
+    {
         $this->crypt = $encrypter;
     }
 
@@ -42,7 +45,8 @@ trait CryptTrait {
      *
      * @return Encrypter|null crypt or null if none crypt has been set
      */
-    public function getCrypt() {
+    public function getCrypt()
+    {
         if (!$this->hasCrypt() && $this->hasDefaultCrypt()) {
             $this->setCrypt($this->getDefaultCrypt());
         }
@@ -54,7 +58,8 @@ trait CryptTrait {
      *
      * @return Encrypter|null A default crypt value or Null if no default value is available
      */
-    public function getDefaultCrypt() {
+    public function getDefaultCrypt()
+    {
         return Crypt::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait CryptTrait {
      *
      * @return bool True if crypt has been set, false if not
      */
-    public function hasCrypt() {
+    public function hasCrypt()
+    {
         if (!is_null($this->crypt)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait CryptTrait {
      *
      * @return bool True of a default crypt is available, false if not
      */
-    public function hasDefaultCrypt() {
+    public function hasDefaultCrypt()
+    {
         if (!is_null($this->getDefaultCrypt())) {
             return true;
         }

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Bus;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Bus;
 
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\Bus;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Bus;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait BusTrait {
-
+trait BusTrait
+{
     /**
      * Instance of a Command Bus Dispatcher
      *
@@ -27,7 +29,8 @@ trait BusTrait {
      *
      * @return void
      */
-    public function setBus(Dispatcher $dispatcher) {
+    public function setBus(Dispatcher $dispatcher)
+    {
         $this->bus = $dispatcher;
     }
 
@@ -42,7 +45,8 @@ trait BusTrait {
      *
      * @return Dispatcher|null bus or null if none bus has been set
      */
-    public function getBus() {
+    public function getBus()
+    {
         if (!$this->hasBus() && $this->hasDefaultBus()) {
             $this->setBus($this->getDefaultBus());
         }
@@ -54,7 +58,8 @@ trait BusTrait {
      *
      * @return Dispatcher|null A default bus value or Null if no default value is available
      */
-    public function getDefaultBus() {
+    public function getDefaultBus()
+    {
         return Bus::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait BusTrait {
      *
      * @return bool True if bus has been set, false if not
      */
-    public function hasBus() {
+    public function hasBus()
+    {
         if (!is_null($this->bus)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait BusTrait {
      *
      * @return bool True of a default bus is available, false if not
      */
-    public function hasDefaultBus() {
+    public function hasDefaultBus()
+    {
         if (!is_null($this->getDefaultBus())) {
             return true;
         }

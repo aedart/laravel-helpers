@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Events;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Events;
 
 use Illuminate\Contracts\Events\Dispatcher;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Events\Dispatcher;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface EventAware {
-
+interface EventAware
+{
     /**
      * Set the given event
      *

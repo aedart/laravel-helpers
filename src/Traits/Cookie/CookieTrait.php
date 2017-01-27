@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Cookie;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Cookie;
 
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Support\Facades\Cookie;
@@ -12,8 +14,8 @@ use Illuminate\Support\Facades\Request;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait CookieTrait {
-
+trait CookieTrait
+{
     /**
      * Instance of a cookie jar
      *
@@ -28,7 +30,8 @@ trait CookieTrait {
      *
      * @return void
      */
-    public function setCookie($jar) {
+    public function setCookie($jar)
+    {
         $this->cookie = $jar;
     }
 
@@ -43,7 +46,8 @@ trait CookieTrait {
      *
      * @return CookieJar|null cookie or null if none cookie has been set
      */
-    public function getCookie() {
+    public function getCookie()
+    {
         if (!$this->hasCookie() && $this->hasDefaultCookie()) {
             $this->setCookie($this->getDefaultCookie());
         }
@@ -55,7 +59,8 @@ trait CookieTrait {
      *
      * @return CookieJar|null A default cookie value or Null if no default value is available
      */
-    public function getDefaultCookie() {
+    public function getDefaultCookie()
+    {
         return Cookie::getFacadeRoot();
     }
 
@@ -64,7 +69,8 @@ trait CookieTrait {
      *
      * @return bool True if cookie has been set, false if not
      */
-    public function hasCookie() {
+    public function hasCookie()
+    {
         if (!is_null($this->cookie)) {
             return true;
         }
@@ -76,7 +82,8 @@ trait CookieTrait {
      *
      * @return bool True of a default cookie is available, false if not
      */
-    public function hasDefaultCookie() {
+    public function hasDefaultCookie()
+    {
         if (!is_null($this->getDefaultCookie())) {
             return true;
         }
@@ -93,7 +100,8 @@ trait CookieTrait {
      * @see \Illuminate\Support\Facades\Cookie::has
      * @see \Illuminate\Http\Request::cookie
      */
-    public function hasCookieKey($key){
+    public function hasCookieKey($key)
+    {
         return !is_null($this->getRequest()->cookie($key, null));
     }
 
@@ -108,7 +116,8 @@ trait CookieTrait {
      * @see \Illuminate\Support\Facades\Cookie::get
      * @see \Illuminate\Http\Request::cookie
      */
-    public function getCookieValue($key = null, $default = null){
+    public function getCookieValue($key = null, $default = null)
+    {
         return $this->getRequest()->cookie($key, $default);
     }
 
@@ -117,7 +126,8 @@ trait CookieTrait {
      *
      * @return bool
      */
-    public function hasRequest(){
+    public function hasRequest()
+    {
         return !is_null($this->getRequest());
     }
 
@@ -126,7 +136,8 @@ trait CookieTrait {
      *
      * @return \Illuminate\Http\Request|null Request or null if not available
      */
-    public function getRequest(){
+    public function getRequest()
+    {
         return Request::getFacadeRoot();
     }
 }

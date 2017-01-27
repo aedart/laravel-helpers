@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\View;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\View;
 
 use Illuminate\Contracts\View\Factory;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\View\Factory;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\View
  */
-interface ViewAware {
-
+interface ViewAware
+{
     /**
      * Set the given view
      *

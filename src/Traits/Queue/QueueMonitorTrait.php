@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Queue;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Queue;
 
 use Illuminate\Contracts\Queue\Monitor;
 use Illuminate\Support\Facades\Queue;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Queue;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait QueueMonitorTrait {
-
+trait QueueMonitorTrait
+{
     /**
      * Instance of a Queue-Monitor
      *
@@ -27,7 +29,8 @@ trait QueueMonitorTrait {
      *
      * @return void
      */
-    public function setQueueMonitor(Monitor $monitor) {
+    public function setQueueMonitor(Monitor $monitor)
+    {
         $this->queueMonitor = $monitor;
     }
 
@@ -42,7 +45,8 @@ trait QueueMonitorTrait {
      *
      * @return Monitor|null queue monitor or null if none queue monitor has been set
      */
-    public function getQueueMonitor() {
+    public function getQueueMonitor()
+    {
         if (!$this->hasQueueMonitor() && $this->hasDefaultQueueMonitor()) {
             $this->setQueueMonitor($this->getDefaultQueueMonitor());
         }
@@ -54,7 +58,8 @@ trait QueueMonitorTrait {
      *
      * @return Monitor|null A default queue monitor value or Null if no default value is available
      */
-    public function getDefaultQueueMonitor() {
+    public function getDefaultQueueMonitor()
+    {
         return Queue::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait QueueMonitorTrait {
      *
      * @return bool True if queue monitor has been set, false if not
      */
-    public function hasQueueMonitor() {
+    public function hasQueueMonitor()
+    {
         if (!is_null($this->queueMonitor)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait QueueMonitorTrait {
      *
      * @return bool True of a default queue monitor is available, false if not
      */
-    public function hasDefaultQueueMonitor() {
+    public function hasDefaultQueueMonitor()
+    {
         if (!is_null($this->getDefaultQueueMonitor())) {
             return true;
         }

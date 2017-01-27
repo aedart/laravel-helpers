@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Logging;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Logging;
 
 use Illuminate\Log\Writer;
 use Illuminate\Support\Facades\Log;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Log;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait LogWriterTrait {
-
+trait LogWriterTrait
+{
     /**
      * Instance of the Laravel Log Writer
      *
@@ -27,7 +29,8 @@ trait LogWriterTrait {
      *
      * @return void
      */
-    public function setLogWriter(Writer $writer) {
+    public function setLogWriter(Writer $writer)
+    {
         $this->logWriter = $writer;
     }
 
@@ -42,7 +45,8 @@ trait LogWriterTrait {
      *
      * @return Writer|null log writer or null if none log writer has been set
      */
-    public function getLogWriter() {
+    public function getLogWriter()
+    {
         if (!$this->hasLogWriter() && $this->hasDefaultLogWriter()) {
             $this->setLogWriter($this->getDefaultLogWriter());
         }
@@ -54,7 +58,8 @@ trait LogWriterTrait {
      *
      * @return Writer|null A default log writer value or Null if no default value is available
      */
-    public function getDefaultLogWriter() {
+    public function getDefaultLogWriter()
+    {
         return Log::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait LogWriterTrait {
      *
      * @return bool True if log writer has been set, false if not
      */
-    public function hasLogWriter() {
+    public function hasLogWriter()
+    {
         if (!is_null($this->logWriter)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait LogWriterTrait {
      *
      * @return bool True of a default log writer is available, false if not
      */
-    public function hasDefaultLogWriter() {
+    public function hasDefaultLogWriter()
+    {
         if (!is_null($this->getDefaultLogWriter())) {
             return true;
         }

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Queue;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Queue;
 
 use Illuminate\Contracts\Queue\Queue;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\Queue\Queue;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface QueueAware {
-
+interface QueueAware
+{
     /**
      * Set the given queue
      *

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Hashing;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Hashing;
 
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Support\Facades\Hash;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Hash;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait HashTrait {
-
+trait HashTrait
+{
     /**
      * Instance of Hasher
      *
@@ -27,7 +29,8 @@ trait HashTrait {
      *
      * @return void
      */
-    public function setHash(Hasher $hasher) {
+    public function setHash(Hasher $hasher)
+    {
         $this->hash = $hasher;
     }
 
@@ -42,7 +45,8 @@ trait HashTrait {
      *
      * @return Hasher|null hash or null if none hash has been set
      */
-    public function getHash() {
+    public function getHash()
+    {
         if (!$this->hasHash() && $this->hasDefaultHash()) {
             $this->setHash($this->getDefaultHash());
         }
@@ -54,7 +58,8 @@ trait HashTrait {
      *
      * @return Hasher|null A default hash value or Null if no default value is available
      */
-    public function getDefaultHash() {
+    public function getDefaultHash()
+    {
         return Hash::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait HashTrait {
      *
      * @return bool True if hash has been set, false if not
      */
-    public function hasHash() {
+    public function hasHash()
+    {
         if (!is_null($this->hash)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait HashTrait {
      *
      * @return bool True of a default hash is available, false if not
      */
-    public function hasDefaultHash() {
+    public function hasDefaultHash()
+    {
         if (!is_null($this->getDefaultHash())) {
             return true;
         }

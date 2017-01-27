@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Logging;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Logging;
 
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Support\Facades\Log as LogFacade;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Log as LogFacade;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait LogTrait{
-
+trait LogTrait
+{
     /**
      * Instance of the Laravel Logger
      *
@@ -27,7 +29,8 @@ trait LogTrait{
      *
      * @return void
      */
-    public function setLog(Log $logger) {
+    public function setLog(Log $logger)
+    {
         $this->log = $logger;
     }
 
@@ -42,7 +45,8 @@ trait LogTrait{
      *
      * @return Log|null log or null if none log has been set
      */
-    public function getLog() {
+    public function getLog()
+    {
         if (!$this->hasLog() && $this->hasDefaultLog()) {
             $this->setLog($this->getDefaultLog());
         }
@@ -54,7 +58,8 @@ trait LogTrait{
      *
      * @return Log|null A default log value or Null if no default value is available
      */
-    public function getDefaultLog() {
+    public function getDefaultLog()
+    {
         return LogFacade::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait LogTrait{
      *
      * @return bool True if log has been set, false if not
      */
-    public function hasLog() {
+    public function hasLog()
+    {
         if (!is_null($this->log)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait LogTrait{
      *
      * @return bool True of a default log is available, false if not
      */
-    public function hasDefaultLog() {
+    public function hasDefaultLog()
+    {
         if (!is_null($this->getDefaultLog())) {
             return true;
         }

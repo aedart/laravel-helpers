@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Session;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Session;
 
 use Illuminate\Session\SessionManager;
 
@@ -12,8 +14,8 @@ use Illuminate\Session\SessionManager;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Session
  */
-interface SessionManagerAware {
-
+interface SessionManagerAware
+{
     /**
      * Set the given session manager
      *

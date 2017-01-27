@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Logging;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Logging;
 
 use Illuminate\Contracts\Logging\Log;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\Logging\Log;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface LogAware {
-
+interface LogAware
+{
     /**
      * Set the given log
      *

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Filesystem;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Filesystem;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Storage;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Filesystem
  */
-trait StorageTrait{
-
+trait StorageTrait
+{
     /**
      * Instance of a Storage Disk (a Filesystem instance)
      *
@@ -27,7 +29,8 @@ trait StorageTrait{
      *
      * @return void
      */
-    public function setStorage(Filesystem $disk) {
+    public function setStorage(Filesystem $disk)
+    {
         $this->storage = $disk;
     }
 
@@ -42,7 +45,8 @@ trait StorageTrait{
      *
      * @return Filesystem|null storage or null if none storage has been set
      */
-    public function getStorage() {
+    public function getStorage()
+    {
         if (!$this->hasStorage() && $this->hasDefaultStorage()) {
             $this->setStorage($this->getDefaultStorage());
         }
@@ -54,7 +58,8 @@ trait StorageTrait{
      *
      * @return Filesystem|null A default storage value or Null if no default value is available
      */
-    public function getDefaultStorage() {
+    public function getDefaultStorage()
+    {
         // By default, the Storage Facade does not return the
         // any actual storage fisk, but rather an
         // instance of \Illuminate\Filesystem\FilesystemManager.
@@ -62,7 +67,7 @@ trait StorageTrait{
         // "disk", to make sure that its the correct
         // instance that we obtain.
         $manager = Storage::getFacadeRoot();
-        if(!is_null($manager)){
+        if (!is_null($manager)) {
             return $manager->disk();
         }
         return $manager;
@@ -73,7 +78,8 @@ trait StorageTrait{
      *
      * @return bool True if storage has been set, false if not
      */
-    public function hasStorage() {
+    public function hasStorage()
+    {
         if (!is_null($this->storage)) {
             return true;
         }
@@ -85,7 +91,8 @@ trait StorageTrait{
      *
      * @return bool True of a default storage is available, false if not
      */
-    public function hasDefaultStorage() {
+    public function hasDefaultStorage()
+    {
         if (!is_null($this->getDefaultStorage())) {
             return true;
         }

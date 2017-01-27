@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Mail;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Mail;
 
 use Illuminate\Contracts\Mail\Mailer;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\Mail\Mailer;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface MailAware {
-
+interface MailAware
+{
     /**
      * Set the given mail
      *

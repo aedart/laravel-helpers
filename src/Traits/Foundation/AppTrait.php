@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Foundation;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Foundation;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\App;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\App;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait AppTrait {
-
+trait AppTrait
+{
     /**
      * Instance of Application
      *
@@ -27,7 +29,8 @@ trait AppTrait {
      *
      * @return void
      */
-    public function setApp(Application $application) {
+    public function setApp(Application $application)
+    {
         $this->app = $application;
     }
 
@@ -42,7 +45,8 @@ trait AppTrait {
      *
      * @return Application|null app or null if none app has been set
      */
-    public function getApp() {
+    public function getApp()
+    {
         if (!$this->hasApp() && $this->hasDefaultApp()) {
             $this->setApp($this->getDefaultApp());
         }
@@ -54,7 +58,8 @@ trait AppTrait {
      *
      * @return Application|null A default app value or Null if no default value is available
      */
-    public function getDefaultApp() {
+    public function getDefaultApp()
+    {
         return App::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait AppTrait {
      *
      * @return bool True if app has been set, false if not
      */
-    public function hasApp() {
+    public function hasApp()
+    {
         if (!is_null($this->app)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait AppTrait {
      *
      * @return bool True of a default app is available, false if not
      */
-    public function hasDefaultApp() {
+    public function hasDefaultApp()
+    {
         if (!is_null($this->getDefaultApp())) {
             return true;
         }

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Mail;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Mail;
 
 use Illuminate\Contracts\Mail\MailQueue;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\Mail\MailQueue;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface MailQueueAware {
-
+interface MailQueueAware
+{
     /**
      * Set the given mail queue
      *

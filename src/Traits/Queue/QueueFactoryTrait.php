@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Queue;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Queue;
 
 use Illuminate\Contracts\Queue\Factory;
 use Illuminate\Support\Facades\Queue;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Queue;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait QueueFactoryTrait {
-
+trait QueueFactoryTrait
+{
     /**
      * Instance of a Queue Factory
      *
@@ -27,7 +29,8 @@ trait QueueFactoryTrait {
      *
      * @return void
      */
-    public function setQueueFactory(Factory $factory) {
+    public function setQueueFactory(Factory $factory)
+    {
         $this->queueFactory = $factory;
     }
 
@@ -42,7 +45,8 @@ trait QueueFactoryTrait {
      *
      * @return Factory|null queue factory or null if none queue factory has been set
      */
-    public function getQueueFactory() {
+    public function getQueueFactory()
+    {
         if (!$this->hasQueueFactory() && $this->hasDefaultQueueFactory()) {
             $this->setQueueFactory($this->getDefaultQueueFactory());
         }
@@ -54,7 +58,8 @@ trait QueueFactoryTrait {
      *
      * @return Factory|null A default queue factory value or Null if no default value is available
      */
-    public function getDefaultQueueFactory() {
+    public function getDefaultQueueFactory()
+    {
         return Queue::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait QueueFactoryTrait {
      *
      * @return bool True if queue factory has been set, false if not
      */
-    public function hasQueueFactory() {
+    public function hasQueueFactory()
+    {
         if (!is_null($this->queueFactory)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait QueueFactoryTrait {
      *
      * @return bool True of a default queue factory is available, false if not
      */
-    public function hasDefaultQueueFactory() {
+    public function hasDefaultQueueFactory()
+    {
         if (!is_null($this->getDefaultQueueFactory())) {
             return true;
         }

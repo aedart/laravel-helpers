@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Translation;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Translation;
 
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Contracts\Translation\Translator;
@@ -11,8 +13,8 @@ use Illuminate\Contracts\Translation\Translator;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait LangTrait {
-
+trait LangTrait
+{
     /**
      * Instance of a Laravel Translator
      *
@@ -27,7 +29,8 @@ trait LangTrait {
      *
      * @return void
      */
-    public function setLang(Translator $translator) {
+    public function setLang(Translator $translator)
+    {
         $this->lang = $translator;
     }
 
@@ -42,7 +45,8 @@ trait LangTrait {
      *
      * @return Translator|null lang or null if none lang has been set
      */
-    public function getLang() {
+    public function getLang()
+    {
         if (!$this->hasLang() && $this->hasDefaultLang()) {
             $this->setLang($this->getDefaultLang());
         }
@@ -54,7 +58,8 @@ trait LangTrait {
      *
      * @return Translator|null A default lang value or Null if no default value is available
      */
-    public function getDefaultLang() {
+    public function getDefaultLang()
+    {
         return Lang::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait LangTrait {
      *
      * @return bool True if lang has been set, false if not
      */
-    public function hasLang() {
+    public function hasLang()
+    {
         if (!is_null($this->lang)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait LangTrait {
      *
      * @return bool True of a default lang is available, false if not
      */
-    public function hasDefaultLang() {
+    public function hasDefaultLang()
+    {
         if (!is_null($this->getDefaultLang())) {
             return true;
         }

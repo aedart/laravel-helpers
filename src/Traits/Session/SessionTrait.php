@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Session as SessionFacade;
  */
 trait SessionTrait
 {
-
     /**
      * Instance of a Session
      *
@@ -30,7 +29,8 @@ trait SessionTrait
      *
      * @return void
      */
-    public function setSession(Session $session) {
+    public function setSession(Session $session)
+    {
         $this->session = $session;
     }
 
@@ -45,7 +45,8 @@ trait SessionTrait
      *
      * @return Session|null session or null if none session has been set
      */
-    public function getSession() {
+    public function getSession()
+    {
         if (!$this->hasSession() && $this->hasDefaultSession()) {
             $this->setSession($this->getDefaultSession());
         }
@@ -57,7 +58,8 @@ trait SessionTrait
      *
      * @return Session|null A default session value or Null if no default value is available
      */
-    public function getDefaultSession() {
+    public function getDefaultSession()
+    {
         // By default, the Session Facade does not return the
         // any actual session instance, but rather an
         // instance of \Illuminate\Session\SessionManager.
@@ -65,7 +67,7 @@ trait SessionTrait
         // "driver", to make sure that its only the connection
         // instance that we obtain.
         $manager = SessionFacade::getFacadeRoot();
-        if(!is_null($manager)){
+        if (!is_null($manager)) {
             return $manager->driver();
         }
         return $manager;
@@ -76,7 +78,8 @@ trait SessionTrait
      *
      * @return bool True if session has been set, false if not
      */
-    public function hasSession() {
+    public function hasSession()
+    {
         if (!is_null($this->session)) {
             return true;
         }
@@ -88,7 +91,8 @@ trait SessionTrait
      *
      * @return bool True of a default session is available, false if not
      */
-    public function hasDefaultSession() {
+    public function hasDefaultSession()
+    {
         if (!is_null($this->getDefaultSession())) {
             return true;
         }

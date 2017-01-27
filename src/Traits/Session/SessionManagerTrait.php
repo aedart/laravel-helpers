@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Session;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Session;
 
 use Illuminate\Session\SessionManager;
 use Illuminate\Support\Facades\Session;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Session;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Session
  */
-trait SessionManagerTrait {
-
+trait SessionManagerTrait
+{
     /**
      * Instance of Laravel's Session Manager
      *
@@ -27,7 +29,8 @@ trait SessionManagerTrait {
      *
      * @return void
      */
-    public function setSessionManager(SessionManager $manager) {
+    public function setSessionManager(SessionManager $manager)
+    {
         $this->sessionManager = $manager;
     }
 
@@ -42,7 +45,8 @@ trait SessionManagerTrait {
      *
      * @return SessionManager|null session manager or null if none session manager has been set
      */
-    public function getSessionManager() {
+    public function getSessionManager()
+    {
         if (!$this->hasSessionManager() && $this->hasDefaultSessionManager()) {
             $this->setSessionManager($this->getDefaultSessionManager());
         }
@@ -54,7 +58,8 @@ trait SessionManagerTrait {
      *
      * @return SessionManager|null A default session manager value or Null if no default value is available
      */
-    public function getDefaultSessionManager() {
+    public function getDefaultSessionManager()
+    {
         return Session::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait SessionManagerTrait {
      *
      * @return bool True if session manager has been set, false if not
      */
-    public function hasSessionManager() {
+    public function hasSessionManager()
+    {
         if (!is_null($this->sessionManager)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait SessionManagerTrait {
      *
      * @return bool True of a default session manager is available, false if not
      */
-    public function hasDefaultSessionManager() {
+    public function hasDefaultSessionManager()
+    {
         if (!is_null($this->getDefaultSessionManager())) {
             return true;
         }

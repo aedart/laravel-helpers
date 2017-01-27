@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Queue;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Queue;
 
 use Illuminate\Queue\QueueManager;
 use Illuminate\Support\Facades\Queue;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Queue;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait QueueManagerTrait {
-
+trait QueueManagerTrait
+{
     /**
      * Instance of Laravel's Queue Manager
      *
@@ -27,7 +29,8 @@ trait QueueManagerTrait {
      *
      * @return void
      */
-    public function setQueueManager(QueueManager $manager) {
+    public function setQueueManager(QueueManager $manager)
+    {
         $this->queueManager = $manager;
     }
 
@@ -42,7 +45,8 @@ trait QueueManagerTrait {
      *
      * @return QueueManager|null queue manager or null if none queue manager has been set
      */
-    public function getQueueManager() {
+    public function getQueueManager()
+    {
         if (!$this->hasQueueManager() && $this->hasDefaultQueueManager()) {
             $this->setQueueManager($this->getDefaultQueueManager());
         }
@@ -54,7 +58,8 @@ trait QueueManagerTrait {
      *
      * @return QueueManager|null A default queue manager value or Null if no default value is available
      */
-    public function getDefaultQueueManager() {
+    public function getDefaultQueueManager()
+    {
         return Queue::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait QueueManagerTrait {
      *
      * @return bool True if queue manager has been set, false if not
      */
-    public function hasQueueManager() {
+    public function hasQueueManager()
+    {
         if (!is_null($this->queueManager)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait QueueManagerTrait {
      *
      * @return bool True of a default queue manager is available, false if not
      */
-    public function hasDefaultQueueManager() {
+    public function hasDefaultQueueManager()
+    {
         if (!is_null($this->getDefaultQueueManager())) {
             return true;
         }

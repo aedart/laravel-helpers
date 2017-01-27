@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Cache;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Cache;
 
 use Illuminate\Contracts\Cache\Factory;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Cache\Factory;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface CacheFactoryAware {
-
+interface CacheFactoryAware
+{
     /**
      * Set the given cache factory
      *

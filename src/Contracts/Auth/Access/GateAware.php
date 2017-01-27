@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Auth\Access;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Auth\Access;
 
 use Illuminate\Contracts\Auth\Access\Gate;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\Auth\Access\Gate;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface GateAware {
-
+interface GateAware
+{
     /**
      * Set the given gate
      *

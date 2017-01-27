@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Console;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Console;
 
 use Illuminate\Contracts\Console\Kernel;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Console\Kernel;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface ArtisanAware {
-
+interface ArtisanAware
+{
     /**
      * Set the given artisan
      *

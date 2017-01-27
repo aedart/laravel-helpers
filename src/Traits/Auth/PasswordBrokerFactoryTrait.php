@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Auth;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Auth;
 
 use Illuminate\Contracts\Auth\PasswordBrokerFactory;
 use Illuminate\Support\Facades\Password;
@@ -9,8 +11,8 @@ use Illuminate\Support\Facades\Password;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Auth
  */
-trait PasswordBrokerFactoryTrait {
-
+trait PasswordBrokerFactoryTrait
+{
     /**
      * Instance of a password broker factory
      *
@@ -25,7 +27,8 @@ trait PasswordBrokerFactoryTrait {
      *
      * @return void
      */
-    public function setPasswordBrokerFactory(PasswordBrokerFactory $factory) {
+    public function setPasswordBrokerFactory(PasswordBrokerFactory $factory)
+    {
         $this->passwordBrokerFactory = $factory;
     }
 
@@ -40,7 +43,8 @@ trait PasswordBrokerFactoryTrait {
      *
      * @return PasswordBrokerFactory|null password broker factory or null if none password broker factory has been set
      */
-    public function getPasswordBrokerFactory() {
+    public function getPasswordBrokerFactory()
+    {
         if (!$this->hasPasswordBrokerFactory() && $this->hasDefaultPasswordBrokerFactory()) {
             $this->setPasswordBrokerFactory($this->getDefaultPasswordBrokerFactory());
         }
@@ -52,7 +56,8 @@ trait PasswordBrokerFactoryTrait {
      *
      * @return PasswordBrokerFactory|null A default password broker factory value or Null if no default value is available
      */
-    public function getDefaultPasswordBrokerFactory() {
+    public function getDefaultPasswordBrokerFactory()
+    {
         return Password::getFacadeRoot();
     }
 
@@ -61,7 +66,8 @@ trait PasswordBrokerFactoryTrait {
      *
      * @return bool True if password broker factory has been set, false if not
      */
-    public function hasPasswordBrokerFactory() {
+    public function hasPasswordBrokerFactory()
+    {
         return !is_null($this->passwordBrokerFactory);
     }
 
@@ -70,7 +76,8 @@ trait PasswordBrokerFactoryTrait {
      *
      * @return bool True of a default password broker factory is available, false if not
      */
-    public function hasDefaultPasswordBrokerFactory() {
+    public function hasDefaultPasswordBrokerFactory()
+    {
         return !is_null($this->getDefaultPasswordBrokerFactory());
     }
 }

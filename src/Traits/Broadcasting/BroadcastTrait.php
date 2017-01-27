@@ -1,4 +1,5 @@
 <?php
+
 namespace Aedart\Laravel\Helpers\Traits\Broadcasting;
 
 use Illuminate\Contracts\Broadcasting\Broadcaster;
@@ -66,7 +67,7 @@ trait BroadcastTrait
         // "broadcaster", to make sure that its only the
         // connection is obtained!
         $manager = Broadcast::getFacadeRoot();
-        if(!is_null($manager)){
+        if (!is_null($manager)) {
             return $manager->connection();
         }
         return $manager;

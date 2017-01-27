@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Routing;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Routing;
 
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Support\Facades\Route;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Route;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Routing
  */
-trait RouteTrait {
-
+trait RouteTrait
+{
     /**
      * Instance of a Route Registrar
      *
@@ -27,7 +29,8 @@ trait RouteTrait {
      *
      * @return void
      */
-    public function setRoute(Registrar $registrar) {
+    public function setRoute(Registrar $registrar)
+    {
         $this->route = $registrar;
     }
 
@@ -42,7 +45,8 @@ trait RouteTrait {
      *
      * @return Registrar|null route or null if none route has been set
      */
-    public function getRoute() {
+    public function getRoute()
+    {
         if (!$this->hasRoute() && $this->hasDefaultRoute()) {
             $this->setRoute($this->getDefaultRoute());
         }
@@ -54,7 +58,8 @@ trait RouteTrait {
      *
      * @return Registrar|null A default route value or Null if no default value is available
      */
-    public function getDefaultRoute() {
+    public function getDefaultRoute()
+    {
         return Route::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait RouteTrait {
      *
      * @return bool True if route has been set, false if not
      */
-    public function hasRoute() {
+    public function hasRoute()
+    {
         if (!is_null($this->route)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait RouteTrait {
      *
      * @return bool True of a default route is available, false if not
      */
-    public function hasDefaultRoute() {
+    public function hasDefaultRoute()
+    {
         if (!is_null($this->getDefaultRoute())) {
             return true;
         }

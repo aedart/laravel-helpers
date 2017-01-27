@@ -1,4 +1,5 @@
 <?php
+
 namespace Aedart\Laravel\Helpers\Traits\Broadcasting;
 
 use Illuminate\Contracts\Broadcasting\Factory;

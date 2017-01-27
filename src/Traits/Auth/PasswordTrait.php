@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Auth;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Auth;
 
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Support\Facades\Password;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Password;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait PasswordTrait {
-
+trait PasswordTrait
+{
     /**
      * Instance of a Password Broker
      *
@@ -27,7 +29,8 @@ trait PasswordTrait {
      *
      * @return void
      */
-    public function setPassword(PasswordBroker $broker) {
+    public function setPassword(PasswordBroker $broker)
+    {
         $this->password = $broker;
     }
 
@@ -42,7 +45,8 @@ trait PasswordTrait {
      *
      * @return PasswordBroker|null password or null if none password has been set
      */
-    public function getPassword() {
+    public function getPassword()
+    {
         if (!$this->hasPassword() && $this->hasDefaultPassword()) {
             $this->setPassword($this->getDefaultPassword());
         }
@@ -54,7 +58,8 @@ trait PasswordTrait {
      *
      * @return PasswordBroker|null A default password value or Null if no default value is available
      */
-    public function getDefaultPassword() {
+    public function getDefaultPassword()
+    {
         // By default, the Password Facade does not return the
         // any actual password broker, but rather an
         // instance of \Illuminate\Auth\Passwords\PasswordBrokerManager.
@@ -62,7 +67,7 @@ trait PasswordTrait {
         // "default broker", to make sure that its only the guard
         // instance that we obtain.
         $manager = Password::getFacadeRoot();
-        if(!is_null($manager)){
+        if (!is_null($manager)) {
             return $manager->broker();
         }
         return $manager;
@@ -73,7 +78,8 @@ trait PasswordTrait {
      *
      * @return bool True if password has been set, false if not
      */
-    public function hasPassword() {
+    public function hasPassword()
+    {
         if (!is_null($this->password)) {
             return true;
         }
@@ -85,7 +91,8 @@ trait PasswordTrait {
      *
      * @return bool True of a default password is available, false if not
      */
-    public function hasDefaultPassword() {
+    public function hasDefaultPassword()
+    {
         if (!is_null($this->getDefaultPassword())) {
             return true;
         }

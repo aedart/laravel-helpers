@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Cache;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Cache;
 
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Cache;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Cache;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait CacheTrait {
-
+trait CacheTrait
+{
     /**
      * Instance of a cache repository
      *
@@ -27,7 +29,8 @@ trait CacheTrait {
      *
      * @return void
      */
-    public function setCache(Repository $repository) {
+    public function setCache(Repository $repository)
+    {
         $this->cache = $repository;
     }
 
@@ -42,7 +45,8 @@ trait CacheTrait {
      *
      * @return Repository|null cache or null if none cache has been set
      */
-    public function getCache() {
+    public function getCache()
+    {
         if (!$this->hasCache() && $this->hasDefaultCache()) {
             $this->setCache($this->getDefaultCache());
         }
@@ -54,7 +58,8 @@ trait CacheTrait {
      *
      * @return Repository|null A default cache value or Null if no default value is available
      */
-    public function getDefaultCache() {
+    public function getDefaultCache()
+    {
         // By default, the Cache Facade does not return the
         // any actual cache repository, but rather an
         // instance of \Illuminate\Cache\CacheManager.
@@ -62,7 +67,7 @@ trait CacheTrait {
         // "store", to make sure that its only the cache repository
         // instance that we obtain.
         $manager = Cache::getFacadeRoot();
-        if(!is_null($manager)){
+        if (!is_null($manager)) {
             return $manager->store();
         }
         return $manager;
@@ -73,7 +78,8 @@ trait CacheTrait {
      *
      * @return bool True if cache has been set, false if not
      */
-    public function hasCache() {
+    public function hasCache()
+    {
         if (!is_null($this->cache)) {
             return true;
         }
@@ -85,7 +91,8 @@ trait CacheTrait {
      *
      * @return bool True of a default cache is available, false if not
      */
-    public function hasDefaultCache() {
+    public function hasDefaultCache()
+    {
         if (!is_null($this->getDefaultCache())) {
             return true;
         }

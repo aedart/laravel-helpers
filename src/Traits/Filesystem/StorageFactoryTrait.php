@@ -1,6 +1,7 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Filesystem;
+<?php
 
-use Aedart\Laravel\Helpers\Contracts\Filesystem\StorageFactoryAware;
+namespace Aedart\Laravel\Helpers\Traits\Filesystem;
+
 use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,8 +13,8 @@ use Illuminate\Support\Facades\Storage;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Filesystem
  */
-trait StorageFactoryTrait {
-
+trait StorageFactoryTrait
+{
     /**
      * Instance of a Filesystem Factory - cloud storage
      *
@@ -28,7 +29,8 @@ trait StorageFactoryTrait {
      *
      * @return void
      */
-    public function setStorageFactory(Factory $factory) {
+    public function setStorageFactory(Factory $factory)
+    {
         $this->storageFactory = $factory;
     }
 
@@ -43,7 +45,8 @@ trait StorageFactoryTrait {
      *
      * @return Factory|null storage factory or null if none storage factory has been set
      */
-    public function getStorageFactory() {
+    public function getStorageFactory()
+    {
         if (!$this->hasStorageFactory() && $this->hasDefaultStorageFactory()) {
             $this->setStorageFactory($this->getDefaultStorageFactory());
         }
@@ -55,7 +58,8 @@ trait StorageFactoryTrait {
      *
      * @return Factory|null A default storage factory value or Null if no default value is available
      */
-    public function getDefaultStorageFactory() {
+    public function getDefaultStorageFactory()
+    {
         return Storage::getFacadeRoot();
     }
 
@@ -64,7 +68,8 @@ trait StorageFactoryTrait {
      *
      * @return bool True if storage factory has been set, false if not
      */
-    public function hasStorageFactory() {
+    public function hasStorageFactory()
+    {
         if (!is_null($this->storageFactory)) {
             return true;
         }
@@ -76,7 +81,8 @@ trait StorageFactoryTrait {
      *
      * @return bool True of a default storage factory is available, false if not
      */
-    public function hasDefaultStorageFactory() {
+    public function hasDefaultStorageFactory()
+    {
         if (!is_null($this->getDefaultStorageFactory())) {
             return true;
         }

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Database;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Database;
 
 use Illuminate\Database\DatabaseManager;
 
@@ -12,8 +14,8 @@ use Illuminate\Database\DatabaseManager;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface DBManagerAware {
-
+interface DBManagerAware
+{
     /**
      * Set the given db manager
      *

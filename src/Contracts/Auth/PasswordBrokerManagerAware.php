@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Auth;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Auth;
 
 use Illuminate\Auth\Passwords\PasswordBrokerManager;
 
@@ -12,8 +14,8 @@ use Illuminate\Auth\Passwords\PasswordBrokerManager;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Auth
  */
-interface PasswordBrokerManagerAware {
-
+interface PasswordBrokerManagerAware
+{
     /**
      * Set the given password broker manager
      *

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Auth\Access;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Auth\Access;
 
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\Gate as GateFacade;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Gate as GateFacade;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait GateTrait{
-
+trait GateTrait
+{
     /**
      * Instance of the Access Gate
      *
@@ -27,7 +29,8 @@ trait GateTrait{
      *
      * @return void
      */
-    public function setGate(Gate $gate) {
+    public function setGate(Gate $gate)
+    {
         $this->gate = $gate;
     }
 
@@ -42,7 +45,8 @@ trait GateTrait{
      *
      * @return Gate|null gate or null if none gate has been set
      */
-    public function getGate() {
+    public function getGate()
+    {
         if (!$this->hasGate() && $this->hasDefaultGate()) {
             $this->setGate($this->getDefaultGate());
         }
@@ -54,7 +58,8 @@ trait GateTrait{
      *
      * @return Gate|null A default gate value or Null if no default value is available
      */
-    public function getDefaultGate() {
+    public function getDefaultGate()
+    {
         return GateFacade::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait GateTrait{
      *
      * @return bool True if gate has been set, false if not
      */
-    public function hasGate() {
+    public function hasGate()
+    {
         if (!is_null($this->gate)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait GateTrait{
      *
      * @return bool True of a default gate is available, false if not
      */
-    public function hasDefaultGate() {
+    public function hasDefaultGate()
+    {
         if (!is_null($this->getDefaultGate())) {
             return true;
         }

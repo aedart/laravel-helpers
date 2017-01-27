@@ -1,7 +1,8 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Bus;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Bus;
 
 use Illuminate\Contracts\Bus\Dispatcher;
-
 
 /**
  * <h1>Bus Aware</h1>
@@ -13,8 +14,8 @@ use Illuminate\Contracts\Bus\Dispatcher;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface BusAware {
-
+interface BusAware
+{
     /**
      * Set the given bus
      *

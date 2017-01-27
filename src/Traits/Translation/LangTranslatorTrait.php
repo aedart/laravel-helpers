@@ -29,7 +29,8 @@ trait LangTranslatorTrait
      *
      * @return void
      */
-    public function setLangTranslator(Translator $translator) {
+    public function setLangTranslator(Translator $translator)
+    {
         $this->langTranslator = $translator;
     }
 
@@ -44,7 +45,8 @@ trait LangTranslatorTrait
      *
      * @return Translator|null lang translator or null if none lang translator has been set
      */
-    public function getLangTranslator() {
+    public function getLangTranslator()
+    {
         if (!$this->hasLangTranslator() && $this->hasDefaultLangTranslator()) {
             $this->setLangTranslator($this->getDefaultLangTranslator());
         }
@@ -56,7 +58,8 @@ trait LangTranslatorTrait
      *
      * @return Translator|null A default lang translator value or Null if no default value is available
      */
-    public function getDefaultLangTranslator() {
+    public function getDefaultLangTranslator()
+    {
         return Lang::getFacadeRoot();
     }
 
@@ -65,7 +68,8 @@ trait LangTranslatorTrait
      *
      * @return bool True if lang translator has been set, false if not
      */
-    public function hasLangTranslator() {
+    public function hasLangTranslator()
+    {
         if (!is_null($this->langTranslator)) {
             return true;
         }
@@ -77,7 +81,8 @@ trait LangTranslatorTrait
      *
      * @return bool True of a default lang translator is available, false if not
      */
-    public function hasDefaultLangTranslator() {
+    public function hasDefaultLangTranslator()
+    {
         if (!is_null($this->getDefaultLangTranslator())) {
             return true;
         }

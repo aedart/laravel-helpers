@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Queue;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Queue;
 
 use Illuminate\Contracts\Queue\Monitor;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\Queue\Monitor;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface QueueMonitorAware {
-
+interface QueueMonitorAware
+{
     /**
      * Set the given queue monitor
      *

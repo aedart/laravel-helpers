@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Http;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Http;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Input;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait InputTrait {
-
+trait InputTrait
+{
     /**
      * Instance of a request (input)
      *
@@ -27,7 +29,8 @@ trait InputTrait {
      *
      * @return void
      */
-    public function setInput(Request $request) {
+    public function setInput(Request $request)
+    {
         $this->input = $request;
     }
 
@@ -42,7 +45,8 @@ trait InputTrait {
      *
      * @return Request|null input or null if none input has been set
      */
-    public function getInput() {
+    public function getInput()
+    {
         if (!$this->hasInput() && $this->hasDefaultInput()) {
             $this->setInput($this->getDefaultInput());
         }
@@ -54,7 +58,8 @@ trait InputTrait {
      *
      * @return Request|null A default input value or Null if no default value is available
      */
-    public function getDefaultInput() {
+    public function getDefaultInput()
+    {
         return Input::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait InputTrait {
      *
      * @return bool True if input has been set, false if not
      */
-    public function hasInput() {
+    public function hasInput()
+    {
         if (!is_null($this->input)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait InputTrait {
      *
      * @return bool True of a default input is available, false if not
      */
-    public function hasDefaultInput() {
+    public function hasDefaultInput()
+    {
         if (!is_null($this->getDefaultInput())) {
             return true;
         }
@@ -92,7 +99,8 @@ trait InputTrait {
      *
      * @return mixed
      */
-    public function get($key = null, $default = null){
+    public function get($key = null, $default = null)
+    {
         return $this->getInput()->input($key, $default);
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Cache;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Cache;
 
 use Illuminate\Contracts\Cache\Repository;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Cache\Repository;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface CacheAware {
-
+interface CacheAware
+{
     /**
      * Set the given cache
      *

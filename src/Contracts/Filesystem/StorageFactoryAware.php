@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
 
 use Illuminate\Contracts\Filesystem\Factory;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Filesystem\Factory;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Filesystem
  */
-interface StorageFactoryAware {
-
+interface StorageFactoryAware
+{
     /**
      * Set the given storage factory
      *

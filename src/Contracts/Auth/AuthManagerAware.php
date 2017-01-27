@@ -1,4 +1,6 @@
-<?php  namespace Aedart\Laravel\Helpers\Contracts\Auth;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Auth;
 
 use Illuminate\Auth\AuthManager;
 
@@ -12,8 +14,8 @@ use Illuminate\Auth\AuthManager;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface AuthManagerAware {
-
+interface AuthManagerAware
+{
     /**
      * Set the given auth manager
      *

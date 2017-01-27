@@ -27,7 +27,8 @@ trait RedisTrait
      *
      * @return void
      */
-    public function setRedis(Connection $connection) {
+    public function setRedis(Connection $connection)
+    {
         $this->redis = $connection;
     }
 
@@ -42,7 +43,8 @@ trait RedisTrait
      *
      * @return Connection|null redis or null if none redis has been set
      */
-    public function getRedis() {
+    public function getRedis()
+    {
         if (!$this->hasRedis() && $this->hasDefaultRedis()) {
             $this->setRedis($this->getDefaultRedis());
         }
@@ -54,7 +56,8 @@ trait RedisTrait
      *
      * @return Connection|null A default redis value or Null if no default value is available
      */
-    public function getDefaultRedis() {
+    public function getDefaultRedis()
+    {
 
         // From Laravel 5.4, the redis facade now returns the
         // Redis Manager, which is why we must use it to obtain
@@ -62,7 +65,7 @@ trait RedisTrait
         // "Illuminate\Contracts\Redis\Database" interface is no
         // longer used.
         $factory = Redis::getFacadeRoot();
-        if(!is_null($factory)){
+        if (!is_null($factory)) {
             return $factory->connection();
         }
         return $factory;
@@ -73,7 +76,8 @@ trait RedisTrait
      *
      * @return bool True if redis has been set, false if not
      */
-    public function hasRedis() {
+    public function hasRedis()
+    {
         if (!is_null($this->redis)) {
             return true;
         }
@@ -85,7 +89,8 @@ trait RedisTrait
      *
      * @return bool True of a default redis is available, false if not
      */
-    public function hasDefaultRedis() {
+    public function hasDefaultRedis()
+    {
         if (!is_null($this->getDefaultRedis())) {
             return true;
         }

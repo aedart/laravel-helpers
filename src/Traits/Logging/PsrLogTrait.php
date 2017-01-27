@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Logging;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Logging;
 
 use Illuminate\Support\Facades\Log;
 use Psr\Log\LoggerInterface;
@@ -11,8 +13,8 @@ use Psr\Log\LoggerInterface;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait PsrLogTrait {
-
+trait PsrLogTrait
+{
     /**
      * Instance of a Psr Logger
      *
@@ -27,7 +29,8 @@ trait PsrLogTrait {
      *
      * @return void
      */
-    public function setPsrLog(LoggerInterface $logger) {
+    public function setPsrLog(LoggerInterface $logger)
+    {
         $this->psrLog = $logger;
     }
 
@@ -42,7 +45,8 @@ trait PsrLogTrait {
      *
      * @return LoggerInterface|null psr log or null if none psr log has been set
      */
-    public function getPsrLog() {
+    public function getPsrLog()
+    {
         if (!$this->hasPsrLog() && $this->hasDefaultPsrLog()) {
             $this->setPsrLog($this->getDefaultPsrLog());
         }
@@ -54,7 +58,8 @@ trait PsrLogTrait {
      *
      * @return LoggerInterface|null A default psr log value or Null if no default value is available
      */
-    public function getDefaultPsrLog() {
+    public function getDefaultPsrLog()
+    {
         return Log::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait PsrLogTrait {
      *
      * @return bool True if psr log has been set, false if not
      */
-    public function hasPsrLog() {
+    public function hasPsrLog()
+    {
         if (!is_null($this->psrLog)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait PsrLogTrait {
      *
      * @return bool True of a default psr log is available, false if not
      */
-    public function hasDefaultPsrLog() {
+    public function hasDefaultPsrLog()
+    {
         if (!is_null($this->getDefaultPsrLog())) {
             return true;
         }

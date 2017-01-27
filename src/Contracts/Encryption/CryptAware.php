@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Encryption;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Encryption;
 
 use Illuminate\Contracts\Encryption\Encrypter;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Encryption\Encrypter;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface CryptAware {
-
+interface CryptAware
+{
     /**
      * Set the given crypt
      *

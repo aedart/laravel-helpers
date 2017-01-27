@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Logging;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Logging;
 
 use Illuminate\Log\Writer;
 
@@ -13,8 +15,8 @@ use Illuminate\Log\Writer;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface LogWriterAware {
-
+interface LogWriterAware
+{
     /**
      * Set the given log writer
      *

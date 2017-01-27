@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Cache;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Cache;
 
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Support\Facades\Cache;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Cache;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait CacheFactoryTrait{
-
+trait CacheFactoryTrait
+{
     /**
      * Instance of the Cache Factory
      *
@@ -27,7 +29,8 @@ trait CacheFactoryTrait{
      *
      * @return void
      */
-    public function setCacheFactory(Factory $factory) {
+    public function setCacheFactory(Factory $factory)
+    {
         $this->cacheFactory = $factory;
     }
 
@@ -42,7 +45,8 @@ trait CacheFactoryTrait{
      *
      * @return Factory|null cache factory or null if none cache factory has been set
      */
-    public function getCacheFactory() {
+    public function getCacheFactory()
+    {
         if (!$this->hasCacheFactory() && $this->hasDefaultCacheFactory()) {
             $this->setCacheFactory($this->getDefaultCacheFactory());
         }
@@ -54,7 +58,8 @@ trait CacheFactoryTrait{
      *
      * @return Factory|null A default cache factory value or Null if no default value is available
      */
-    public function getDefaultCacheFactory() {
+    public function getDefaultCacheFactory()
+    {
         return Cache::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait CacheFactoryTrait{
      *
      * @return bool True if cache factory has been set, false if not
      */
-    public function hasCacheFactory() {
+    public function hasCacheFactory()
+    {
         if (!is_null($this->cacheFactory)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait CacheFactoryTrait{
      *
      * @return bool True of a default cache factory is available, false if not
      */
-    public function hasDefaultCacheFactory() {
+    public function hasDefaultCacheFactory()
+    {
         if (!is_null($this->getDefaultCacheFactory())) {
             return true;
         }

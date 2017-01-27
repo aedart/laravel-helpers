@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Auth;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Auth;
 
 use Illuminate\Contracts\Auth\PasswordBrokerFactory;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Auth\PasswordBrokerFactory;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Auth
  */
-interface PasswordBrokerFactoryAware {
-
+interface PasswordBrokerFactoryAware
+{
     /**
      * Set the given password broker factory
      *

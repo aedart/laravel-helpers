@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Auth;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Auth;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Auth;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait AuthTrait {
-
+trait AuthTrait
+{
     /**
      * Instance of the authentication guard
      *
@@ -27,7 +29,8 @@ trait AuthTrait {
      *
      * @return void
      */
-    public function setAuth(Guard $guard) {
+    public function setAuth(Guard $guard)
+    {
         $this->auth = $guard;
     }
 
@@ -42,7 +45,8 @@ trait AuthTrait {
      *
      * @return Guard|null auth or null if none auth has been set
      */
-    public function getAuth() {
+    public function getAuth()
+    {
         if (!$this->hasAuth() && $this->hasDefaultAuth()) {
             $this->setAuth($this->getDefaultAuth());
         }
@@ -54,7 +58,8 @@ trait AuthTrait {
      *
      * @return Guard|null A default auth value or Null if no default value is available
      */
-    public function getDefaultAuth() {
+    public function getDefaultAuth()
+    {
         // By default, the Auth Facade does not return the
         // any actual authentication guard, but rather an
         // instance of \Illuminate\Auth\AuthManager.
@@ -62,7 +67,7 @@ trait AuthTrait {
         // "default guard", to make sure that its only the guard
         // instance that we obtain.
         $manager = Auth::getFacadeRoot();
-        if(!is_null($manager)){
+        if (!is_null($manager)) {
             return $manager->guard();
         }
         return $manager;
@@ -73,7 +78,8 @@ trait AuthTrait {
      *
      * @return bool True if auth has been set, false if not
      */
-    public function hasAuth() {
+    public function hasAuth()
+    {
         if (!is_null($this->auth)) {
             return true;
         }
@@ -85,7 +91,8 @@ trait AuthTrait {
      *
      * @return bool True of a default auth is available, false if not
      */
-    public function hasDefaultAuth() {
+    public function hasDefaultAuth()
+    {
         if (!is_null($this->getDefaultAuth())) {
             return true;
         }

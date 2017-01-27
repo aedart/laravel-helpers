@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Filesystem;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Filesystem;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\File;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait FileTrait {
-
+trait FileTrait
+{
     /**
      * Instance of the filesystem utility
      *
@@ -27,7 +29,8 @@ trait FileTrait {
      *
      * @return void
      */
-    public function setFile(Filesystem $filesystem) {
+    public function setFile(Filesystem $filesystem)
+    {
         $this->file = $filesystem;
     }
 
@@ -42,7 +45,8 @@ trait FileTrait {
      *
      * @return Filesystem|null file or null if none file has been set
      */
-    public function getFile() {
+    public function getFile()
+    {
         if (!$this->hasFile() && $this->hasDefaultFile()) {
             $this->setFile($this->getDefaultFile());
         }
@@ -54,7 +58,8 @@ trait FileTrait {
      *
      * @return Filesystem|null A default file value or Null if no default value is available
      */
-    public function getDefaultFile() {
+    public function getDefaultFile()
+    {
         return File::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait FileTrait {
      *
      * @return bool True if file has been set, false if not
      */
-    public function hasFile() {
+    public function hasFile()
+    {
         if (!is_null($this->file)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait FileTrait {
      *
      * @return bool True of a default file is available, false if not
      */
-    public function hasDefaultFile() {
+    public function hasDefaultFile()
+    {
         if (!is_null($this->getDefaultFile())) {
             return true;
         }

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Routing;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Routing;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Response;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Response;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Routing
  */
-trait ResponseTrait {
-
+trait ResponseTrait
+{
     /**
      * Instance of a Response Factory
      *
@@ -27,7 +29,8 @@ trait ResponseTrait {
      *
      * @return void
      */
-    public function setResponse(ResponseFactory $factory) {
+    public function setResponse(ResponseFactory $factory)
+    {
         $this->response = $factory;
     }
 
@@ -42,7 +45,8 @@ trait ResponseTrait {
      *
      * @return ResponseFactory|null response or null if none response has been set
      */
-    public function getResponse() {
+    public function getResponse()
+    {
         if (!$this->hasResponse() && $this->hasDefaultResponse()) {
             $this->setResponse($this->getDefaultResponse());
         }
@@ -54,7 +58,8 @@ trait ResponseTrait {
      *
      * @return ResponseFactory|null A default response value or Null if no default value is available
      */
-    public function getDefaultResponse() {
+    public function getDefaultResponse()
+    {
         return Response::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait ResponseTrait {
      *
      * @return bool True if response has been set, false if not
      */
-    public function hasResponse() {
+    public function hasResponse()
+    {
         if (!is_null($this->response)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait ResponseTrait {
      *
      * @return bool True of a default response is available, false if not
      */
-    public function hasDefaultResponse() {
+    public function hasDefaultResponse()
+    {
         if (!is_null($this->getDefaultResponse())) {
             return true;
         }

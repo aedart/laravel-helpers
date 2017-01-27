@@ -1,6 +1,7 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\View;
+<?php
 
-use Aedart\Laravel\Helpers\Contracts\View\ViewAware;
+namespace Aedart\Laravel\Helpers\Traits\View;
+
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\View;
 
@@ -12,8 +13,8 @@ use Illuminate\Support\Facades\View;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\View
  */
-trait ViewTrait {
-
+trait ViewTrait
+{
     /**
      * Instance of a View Factory
      *
@@ -28,7 +29,8 @@ trait ViewTrait {
      *
      * @return void
      */
-    public function setView(Factory $factory) {
+    public function setView(Factory $factory)
+    {
         $this->view = $factory;
     }
 
@@ -43,7 +45,8 @@ trait ViewTrait {
      *
      * @return Factory|null view or null if none view has been set
      */
-    public function getView() {
+    public function getView()
+    {
         if (!$this->hasView() && $this->hasDefaultView()) {
             $this->setView($this->getDefaultView());
         }
@@ -55,7 +58,8 @@ trait ViewTrait {
      *
      * @return Factory|null A default view value or Null if no default value is available
      */
-    public function getDefaultView() {
+    public function getDefaultView()
+    {
         return View::getFacadeRoot();
     }
 
@@ -64,7 +68,8 @@ trait ViewTrait {
      *
      * @return bool True if view has been set, false if not
      */
-    public function hasView() {
+    public function hasView()
+    {
         if (!is_null($this->view)) {
             return true;
         }
@@ -76,7 +81,8 @@ trait ViewTrait {
      *
      * @return bool True of a default view is available, false if not
      */
-    public function hasDefaultView() {
+    public function hasDefaultView()
+    {
         if (!is_null($this->getDefaultView())) {
             return true;
         }

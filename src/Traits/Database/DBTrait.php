@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Database;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Database;
 
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Facades\DB;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\DB;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait DBTrait{
-
+trait DBTrait
+{
     /**
      * Instance of a database connection
      *
@@ -27,7 +29,8 @@ trait DBTrait{
      *
      * @return void
      */
-    public function setDb(ConnectionInterface $connection) {
+    public function setDb(ConnectionInterface $connection)
+    {
         $this->db = $connection;
     }
 
@@ -42,7 +45,8 @@ trait DBTrait{
      *
      * @return ConnectionInterface|null db or null if none db has been set
      */
-    public function getDb() {
+    public function getDb()
+    {
         if (!$this->hasDb() && $this->hasDefaultDb()) {
             $this->setDb($this->getDefaultDb());
         }
@@ -54,7 +58,8 @@ trait DBTrait{
      *
      * @return ConnectionInterface|null A default db value or Null if no default value is available
      */
-    public function getDefaultDb() {
+    public function getDefaultDb()
+    {
         // By default, the DB Facade does not return the
         // any actual database connection, but rather an
         // instance of \Illuminate\Database\DatabaseManager.
@@ -62,7 +67,7 @@ trait DBTrait{
         // "connection", to make sure that its only the connection
         // instance that we obtain.
         $manager = DB::getFacadeRoot();
-        if(!is_null($manager)){
+        if (!is_null($manager)) {
             return $manager->connection();
         }
         return $manager;
@@ -73,7 +78,8 @@ trait DBTrait{
      *
      * @return bool True if db has been set, false if not
      */
-    public function hasDb() {
+    public function hasDb()
+    {
         if (!is_null($this->db)) {
             return true;
         }
@@ -85,7 +91,8 @@ trait DBTrait{
      *
      * @return bool True of a default db is available, false if not
      */
-    public function hasDefaultDb() {
+    public function hasDefaultDb()
+    {
         if (!is_null($this->getDefaultDb())) {
             return true;
         }

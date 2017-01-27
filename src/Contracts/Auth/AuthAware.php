@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Auth;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Auth;
 
 use Illuminate\Contracts\Auth\Guard;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Auth\Guard;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface AuthAware {
-
+interface AuthAware
+{
     /**
      * Set the given auth
      *

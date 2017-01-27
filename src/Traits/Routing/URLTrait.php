@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Routing;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Routing;
 
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\Facades\URL;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\URL;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Routing
  */
-trait URLTrait {
-
+trait URLTrait
+{
     /**
      * Instance of a Url Generator
      *
@@ -27,7 +29,8 @@ trait URLTrait {
      *
      * @return void
      */
-    public function setURL(UrlGenerator $generator) {
+    public function setURL(UrlGenerator $generator)
+    {
         $this->URL = $generator;
     }
 
@@ -42,7 +45,8 @@ trait URLTrait {
      *
      * @return UrlGenerator|null url or null if none url has been set
      */
-    public function getURL() {
+    public function getURL()
+    {
         if (!$this->hasURL() && $this->hasDefaultURL()) {
             $this->setURL($this->getDefaultURL());
         }
@@ -54,7 +58,8 @@ trait URLTrait {
      *
      * @return UrlGenerator|null A default url value or Null if no default value is available
      */
-    public function getDefaultURL() {
+    public function getDefaultURL()
+    {
         return URL::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait URLTrait {
      *
      * @return bool True if url has been set, false if not
      */
-    public function hasURL() {
+    public function hasURL()
+    {
         if (!is_null($this->URL)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait URLTrait {
      *
      * @return bool True of a default url is available, false if not
      */
-    public function hasDefaultURL() {
+    public function hasDefaultURL()
+    {
         if (!is_null($this->getDefaultURL())) {
             return true;
         }

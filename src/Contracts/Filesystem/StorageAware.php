@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Filesystem\Filesystem;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Filesystem
  */
-interface StorageAware {
-
+interface StorageAware
+{
     /**
      * Set the given storage
      *

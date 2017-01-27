@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Validation;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Validation;
 
 use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Support\Facades\Validator;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Validator;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Validation
  */
-trait ValidatorTrait {
-
+trait ValidatorTrait
+{
     /**
      * Instance of a validator factory
      *
@@ -27,7 +29,8 @@ trait ValidatorTrait {
      *
      * @return void
      */
-    public function setValidator(Factory $factory) {
+    public function setValidator(Factory $factory)
+    {
         $this->validator = $factory;
     }
 
@@ -42,7 +45,8 @@ trait ValidatorTrait {
      *
      * @return Factory|null validator or null if none validator has been set
      */
-    public function getValidator() {
+    public function getValidator()
+    {
         if (!$this->hasValidator() && $this->hasDefaultValidator()) {
             $this->setValidator($this->getDefaultValidator());
         }
@@ -54,7 +58,8 @@ trait ValidatorTrait {
      *
      * @return Factory|null A default validator value or Null if no default value is available
      */
-    public function getDefaultValidator() {
+    public function getDefaultValidator()
+    {
         return Validator::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait ValidatorTrait {
      *
      * @return bool True if validator has been set, false if not
      */
-    public function hasValidator() {
+    public function hasValidator()
+    {
         if (!is_null($this->validator)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait ValidatorTrait {
      *
      * @return bool True of a default validator is available, false if not
      */
-    public function hasDefaultValidator() {
+    public function hasDefaultValidator()
+    {
         if (!is_null($this->getDefaultValidator())) {
             return true;
         }

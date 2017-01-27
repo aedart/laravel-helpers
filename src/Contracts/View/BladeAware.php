@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\View;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\View;
 
 use Illuminate\View\Compilers\BladeCompiler;
 
@@ -12,8 +14,8 @@ use Illuminate\View\Compilers\BladeCompiler;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface BladeAware {
-
+interface BladeAware
+{
     /**
      * Set the given blade
      *

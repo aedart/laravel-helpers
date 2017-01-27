@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Config;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Config;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Facades\Config;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Config;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait ConfigTrait {
-
+trait ConfigTrait
+{
     /**
      * Instance of the Configuration Repository
      *
@@ -27,7 +29,8 @@ trait ConfigTrait {
      *
      * @return void
      */
-    public function setConfig(Repository $repository) {
+    public function setConfig(Repository $repository)
+    {
         $this->config = $repository;
     }
 
@@ -42,7 +45,8 @@ trait ConfigTrait {
      *
      * @return Repository|null config or null if none config has been set
      */
-    public function getConfig() {
+    public function getConfig()
+    {
         if (!$this->hasConfig() && $this->hasDefaultConfig()) {
             $this->setConfig($this->getDefaultConfig());
         }
@@ -54,7 +58,8 @@ trait ConfigTrait {
      *
      * @return Repository|null A default config value or Null if no default value is available
      */
-    public function getDefaultConfig() {
+    public function getDefaultConfig()
+    {
         return Config::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait ConfigTrait {
      *
      * @return bool True if config has been set, false if not
      */
-    public function hasConfig() {
+    public function hasConfig()
+    {
         if (!is_null($this->config)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait ConfigTrait {
      *
      * @return bool True of a default config is available, false if not
      */
-    public function hasDefaultConfig() {
+    public function hasDefaultConfig()
+    {
         if (!is_null($this->getDefaultConfig())) {
             return true;
         }

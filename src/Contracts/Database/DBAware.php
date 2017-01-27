@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Database;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Database;
 
 use Illuminate\Database\ConnectionInterface;
 
@@ -12,8 +14,8 @@ use Illuminate\Database\ConnectionInterface;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface DBAware {
-
+interface DBAware
+{
     /**
      * Set the given db
      *

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Logging;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Logging;
 
 use Psr\Log\LoggerInterface;
 
@@ -13,8 +15,8 @@ use Psr\Log\LoggerInterface;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface PsrLogAware {
-
+interface PsrLogAware
+{
     /**
      * Set the given psr log
      *

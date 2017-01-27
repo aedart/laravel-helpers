@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
 
 use Illuminate\Filesystem\Filesystem;
 
@@ -19,8 +21,8 @@ use Illuminate\Filesystem\Filesystem;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface FileAware {
-
+interface FileAware
+{
     /**
      * Set the given file
      *

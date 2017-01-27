@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Validation;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Validation;
 
 use Illuminate\Contracts\Validation\Factory;
 
@@ -14,8 +16,8 @@ use Illuminate\Contracts\Validation\Factory;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Validation
  */
-interface ValidatorAware {
-
+interface ValidatorAware
+{
     /**
      * Set the given validator
      *

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Auth;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Auth;
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Auth;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait AuthManagerTrait {
-
+trait AuthManagerTrait
+{
     /**
      * Instance of the Authentication Manager
      *
@@ -27,7 +29,8 @@ trait AuthManagerTrait {
      *
      * @return void
      */
-    public function setAuthManager(AuthManager $manager) {
+    public function setAuthManager(AuthManager $manager)
+    {
         $this->authManager = $manager;
     }
 
@@ -42,7 +45,8 @@ trait AuthManagerTrait {
      *
      * @return AuthManager|null auth manager or null if none auth manager has been set
      */
-    public function getAuthManager() {
+    public function getAuthManager()
+    {
         if (!$this->hasAuthManager() && $this->hasDefaultAuthManager()) {
             $this->setAuthManager($this->getDefaultAuthManager());
         }
@@ -54,7 +58,8 @@ trait AuthManagerTrait {
      *
      * @return AuthManager|null A default auth manager value or Null if no default value is available
      */
-    public function getDefaultAuthManager() {
+    public function getDefaultAuthManager()
+    {
         return Auth::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait AuthManagerTrait {
      *
      * @return bool True if auth manager has been set, false if not
      */
-    public function hasAuthManager() {
+    public function hasAuthManager()
+    {
         if (!is_null($this->authManager)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait AuthManagerTrait {
      *
      * @return bool True of a default auth manager is available, false if not
      */
-    public function hasDefaultAuthManager() {
+    public function hasDefaultAuthManager()
+    {
         if (!is_null($this->getDefaultAuthManager())) {
             return true;
         }

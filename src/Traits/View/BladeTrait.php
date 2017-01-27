@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\View;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\View;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
@@ -12,8 +14,8 @@ use Illuminate\View\Compilers\BladeCompiler;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait BladeTrait {
-
+trait BladeTrait
+{
     /**
      * Instance of the Blade Compiler
      *
@@ -28,7 +30,8 @@ trait BladeTrait {
      *
      * @return void
      */
-    public function setBlade(BladeCompiler $compiler) {
+    public function setBlade(BladeCompiler $compiler)
+    {
         $this->blade = $compiler;
     }
 
@@ -43,7 +46,8 @@ trait BladeTrait {
      *
      * @return BladeCompiler|null blade or null if none blade has been set
      */
-    public function getBlade() {
+    public function getBlade()
+    {
         if (!$this->hasBlade() && $this->hasDefaultBlade()) {
             $this->setBlade($this->getDefaultBlade());
         }
@@ -55,14 +59,15 @@ trait BladeTrait {
      *
      * @return BladeCompiler|null A default blade value or Null if no default value is available
      */
-    public function getDefaultBlade() {
+    public function getDefaultBlade()
+    {
         // The blade compiler is usually only available, once
         // Laravel's view service provider has been initialised.
         // Thus, before just returning the Blade Facade's root
         // instance, we must make sure that the view facade
         // actually returns something
         $view = View::getFacadeRoot();
-        if(!is_null($view)){
+        if (!is_null($view)) {
             return Blade::getFacadeRoot();
         }
         return $view;
@@ -73,7 +78,8 @@ trait BladeTrait {
      *
      * @return bool True if blade has been set, false if not
      */
-    public function hasBlade() {
+    public function hasBlade()
+    {
         if (!is_null($this->blade)) {
             return true;
         }
@@ -85,7 +91,8 @@ trait BladeTrait {
      *
      * @return bool True of a default blade is available, false if not
      */
-    public function hasDefaultBlade() {
+    public function hasDefaultBlade()
+    {
         if (!is_null($this->getDefaultBlade())) {
             return true;
         }

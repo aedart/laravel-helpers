@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Http;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Http;
 
 use Illuminate\Http\Request;
 
@@ -13,8 +15,8 @@ use Illuminate\Http\Request;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Http
  */
-interface RequestAware {
-
+interface RequestAware
+{
     /**
      * Set the given request
      *

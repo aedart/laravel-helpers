@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Events;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Events;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\Event;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Event;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait EventTrait {
-
+trait EventTrait
+{
     /**
      * Instance of a event dispatcher
      *
@@ -27,7 +29,8 @@ trait EventTrait {
      *
      * @return void
      */
-    public function setEvent(Dispatcher $dispatcher) {
+    public function setEvent(Dispatcher $dispatcher)
+    {
         $this->event = $dispatcher;
     }
 
@@ -42,7 +45,8 @@ trait EventTrait {
      *
      * @return Dispatcher|null event or null if none event has been set
      */
-    public function getEvent() {
+    public function getEvent()
+    {
         if (!$this->hasEvent() && $this->hasDefaultEvent()) {
             $this->setEvent($this->getDefaultEvent());
         }
@@ -54,7 +58,8 @@ trait EventTrait {
      *
      * @return Dispatcher|null A default event value or Null if no default value is available
      */
-    public function getDefaultEvent() {
+    public function getDefaultEvent()
+    {
         return Event::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait EventTrait {
      *
      * @return bool True if event has been set, false if not
      */
-    public function hasEvent() {
+    public function hasEvent()
+    {
         if (!is_null($this->event)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait EventTrait {
      *
      * @return bool True of a default event is available, false if not
      */
-    public function hasDefaultEvent() {
+    public function hasDefaultEvent()
+    {
         if (!is_null($this->getDefaultEvent())) {
             return true;
         }

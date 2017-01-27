@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Cookie;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Cookie;
 
 use Illuminate\Cookie\CookieJar;
 
@@ -17,8 +19,8 @@ use Illuminate\Cookie\CookieJar;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface CookieAware {
-
+interface CookieAware
+{
     /**
      * Set the given cookie
      *

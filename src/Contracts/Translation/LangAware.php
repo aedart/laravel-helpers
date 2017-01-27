@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Translation;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Translation;
 
 use Illuminate\Contracts\Translation\Translator;
 
@@ -13,7 +15,8 @@ use Illuminate\Contracts\Translation\Translator;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface LangAware {
+interface LangAware
+{
 
     /**
      * Set the given lang

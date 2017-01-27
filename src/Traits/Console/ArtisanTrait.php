@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Console;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Console;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Artisan;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-trait ArtisanTrait {
-
+trait ArtisanTrait
+{
     /**
      * Instance of Artisan
      *
@@ -27,7 +29,8 @@ trait ArtisanTrait {
      *
      * @return void
      */
-    public function setArtisan(Kernel $artisan) {
+    public function setArtisan(Kernel $artisan)
+    {
         $this->artisan = $artisan;
     }
 
@@ -42,7 +45,8 @@ trait ArtisanTrait {
      *
      * @return Kernel|null artisan or null if none artisan has been set
      */
-    public function getArtisan() {
+    public function getArtisan()
+    {
         if (!$this->hasArtisan() && $this->hasDefaultArtisan()) {
             $this->setArtisan($this->getDefaultArtisan());
         }
@@ -54,7 +58,8 @@ trait ArtisanTrait {
      *
      * @return Kernel|null A default artisan value or Null if no default value is available
      */
-    public function getDefaultArtisan() {
+    public function getDefaultArtisan()
+    {
         return Artisan::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait ArtisanTrait {
      *
      * @return bool True if artisan has been set, false if not
      */
-    public function hasArtisan() {
+    public function hasArtisan()
+    {
         if (!is_null($this->artisan)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait ArtisanTrait {
      *
      * @return bool True of a default artisan is available, false if not
      */
-    public function hasDefaultArtisan() {
+    public function hasDefaultArtisan()
+    {
         if (!is_null($this->getDefaultArtisan())) {
             return true;
         }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Aedart\Laravel\Helpers\Contracts\Notifications;
 
 use Illuminate\Contracts\Notifications\Dispatcher;

@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Mail;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Mail;
 
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Facades\Mail;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Mail;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait MailTrait {
-
+trait MailTrait
+{
     /**
      * Instance of a Mail-sender component
      *
@@ -27,7 +29,8 @@ trait MailTrait {
      *
      * @return void
      */
-    public function setMail(Mailer $mailer) {
+    public function setMail(Mailer $mailer)
+    {
         $this->mail = $mailer;
     }
 
@@ -42,7 +45,8 @@ trait MailTrait {
      *
      * @return Mailer|null mail or null if none mail has been set
      */
-    public function getMail() {
+    public function getMail()
+    {
         if (!$this->hasMail() && $this->hasDefaultMail()) {
             $this->setMail($this->getDefaultMail());
         }
@@ -54,7 +58,8 @@ trait MailTrait {
      *
      * @return Mailer|null A default mail value or Null if no default value is available
      */
-    public function getDefaultMail() {
+    public function getDefaultMail()
+    {
         return Mail::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait MailTrait {
      *
      * @return bool True if mail has been set, false if not
      */
-    public function hasMail() {
+    public function hasMail()
+    {
         if (!is_null($this->mail)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait MailTrait {
      *
      * @return bool True of a default mail is available, false if not
      */
-    public function hasDefaultMail() {
+    public function hasDefaultMail()
+    {
         if (!is_null($this->getDefaultMail())) {
             return true;
         }

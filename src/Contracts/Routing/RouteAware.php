@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Routing;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Routing;
 
 use Illuminate\Contracts\Routing\Registrar;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\Routing\Registrar;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Routing
  */
-interface RouteAware {
-
+interface RouteAware
+{
     /**
      * Set the given route
      *

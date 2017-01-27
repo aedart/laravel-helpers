@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Hashing;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Hashing;
 
 use Illuminate\Contracts\Hashing\Hasher;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\Hashing\Hasher;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-interface HashAware {
-
+interface HashAware
+{
     /**
      * Set the given hash
      *

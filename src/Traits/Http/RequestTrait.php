@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Http;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Http;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as RequestFacade;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Request as RequestFacade;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Http
  */
-trait RequestTrait {
-
+trait RequestTrait
+{
     /**
      * Instance of Laravel's Request
      *
@@ -27,7 +29,8 @@ trait RequestTrait {
      *
      * @return void
      */
-    public function setRequest(Request $request) {
+    public function setRequest(Request $request)
+    {
         $this->request = $request;
     }
 
@@ -42,7 +45,8 @@ trait RequestTrait {
      *
      * @return Request|null request or null if none request has been set
      */
-    public function getRequest() {
+    public function getRequest()
+    {
         if (!$this->hasRequest() && $this->hasDefaultRequest()) {
             $this->setRequest($this->getDefaultRequest());
         }
@@ -54,7 +58,8 @@ trait RequestTrait {
      *
      * @return Request|null A default request value or Null if no default value is available
      */
-    public function getDefaultRequest() {
+    public function getDefaultRequest()
+    {
         return RequestFacade::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait RequestTrait {
      *
      * @return bool True if request has been set, false if not
      */
-    public function hasRequest() {
+    public function hasRequest()
+    {
         if (!is_null($this->request)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait RequestTrait {
      *
      * @return bool True of a default request is available, false if not
      */
-    public function hasDefaultRequest() {
+    public function hasDefaultRequest()
+    {
         if (!is_null($this->getDefaultRequest())) {
             return true;
         }

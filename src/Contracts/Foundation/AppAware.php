@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Foundation;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Foundation;
 
 use Illuminate\Contracts\Foundation\Application;
 
@@ -12,8 +14,8 @@ use Illuminate\Contracts\Foundation\Application;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Facade\Helpers\Traits
  */
-interface AppAware {
-
+interface AppAware
+{
     /**
      * Set the given app
      *

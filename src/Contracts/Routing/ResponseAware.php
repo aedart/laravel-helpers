@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Routing;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Routing;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 
@@ -13,8 +15,8 @@ use Illuminate\Contracts\Routing\ResponseFactory;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Routing
  */
-interface ResponseAware {
-
+interface ResponseAware
+{
     /**
      * Set the given response
      *

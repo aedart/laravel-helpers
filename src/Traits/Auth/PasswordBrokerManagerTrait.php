@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Auth;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Auth;
 
 use Illuminate\Auth\Passwords\PasswordBrokerManager;
 use Illuminate\Support\Facades\Password;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Password;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Auth
  */
-trait PasswordBrokerManagerTrait {
-
+trait PasswordBrokerManagerTrait
+{
     /**
      * Instance of the Password Broker Manager
      *
@@ -27,7 +29,8 @@ trait PasswordBrokerManagerTrait {
      *
      * @return void
      */
-    public function setPasswordBrokerManager(PasswordBrokerManager $manager) {
+    public function setPasswordBrokerManager(PasswordBrokerManager $manager)
+    {
         $this->passwordBrokerManager = $manager;
     }
 
@@ -42,7 +45,8 @@ trait PasswordBrokerManagerTrait {
      *
      * @return PasswordBrokerManager|null password broker manager or null if none password broker manager has been set
      */
-    public function getPasswordBrokerManager() {
+    public function getPasswordBrokerManager()
+    {
         if (!$this->hasPasswordBrokerManager() && $this->hasDefaultPasswordBrokerManager()) {
             $this->setPasswordBrokerManager($this->getDefaultPasswordBrokerManager());
         }
@@ -54,7 +58,8 @@ trait PasswordBrokerManagerTrait {
      *
      * @return PasswordBrokerManager|null A default password broker manager value or Null if no default value is available
      */
-    public function getDefaultPasswordBrokerManager() {
+    public function getDefaultPasswordBrokerManager()
+    {
         return Password::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait PasswordBrokerManagerTrait {
      *
      * @return bool True if password broker manager has been set, false if not
      */
-    public function hasPasswordBrokerManager() {
+    public function hasPasswordBrokerManager()
+    {
         return !is_null($this->passwordBrokerManager);
     }
 
@@ -72,7 +78,8 @@ trait PasswordBrokerManagerTrait {
      *
      * @return bool True of a default password broker manager is available, false if not
      */
-    public function hasDefaultPasswordBrokerManager() {
+    public function hasDefaultPasswordBrokerManager()
+    {
         return !is_null($this->getDefaultPasswordBrokerManager());
     }
 }

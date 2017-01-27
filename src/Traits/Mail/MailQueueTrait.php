@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Mail;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Mail;
 
 use Illuminate\Contracts\Mail\MailQueue;
 use Illuminate\Support\Facades\Mail;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Mail;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait MailQueueTrait {
-
+trait MailQueueTrait
+{
     /**
      * Instance of a Mail-Queue
      *
@@ -27,7 +29,8 @@ trait MailQueueTrait {
      *
      * @return void
      */
-    public function setMailQueue(MailQueue $queue) {
+    public function setMailQueue(MailQueue $queue)
+    {
         $this->mailQueue = $queue;
     }
 
@@ -42,7 +45,8 @@ trait MailQueueTrait {
      *
      * @return MailQueue|null mail queue or null if none mail queue has been set
      */
-    public function getMailQueue() {
+    public function getMailQueue()
+    {
         if (!$this->hasMailQueue() && $this->hasDefaultMailQueue()) {
             $this->setMailQueue($this->getDefaultMailQueue());
         }
@@ -54,7 +58,8 @@ trait MailQueueTrait {
      *
      * @return MailQueue|null A default mail queue value or Null if no default value is available
      */
-    public function getDefaultMailQueue() {
+    public function getDefaultMailQueue()
+    {
         return Mail::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait MailQueueTrait {
      *
      * @return bool True if mail queue has been set, false if not
      */
-    public function hasMailQueue() {
+    public function hasMailQueue()
+    {
         if (!is_null($this->mailQueue)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait MailQueueTrait {
      *
      * @return bool True of a default mail queue is available, false if not
      */
-    public function hasDefaultMailQueue() {
+    public function hasDefaultMailQueue()
+    {
         if (!is_null($this->getDefaultMailQueue())) {
             return true;
         }

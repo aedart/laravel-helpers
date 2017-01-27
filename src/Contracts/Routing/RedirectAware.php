@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Routing;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Routing;
 
 use Illuminate\Routing\Redirector;
 
@@ -13,8 +15,8 @@ use Illuminate\Routing\Redirector;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Routing
  */
-interface RedirectAware {
-
+interface RedirectAware
+{
     /**
      * Set the given redirect
      *

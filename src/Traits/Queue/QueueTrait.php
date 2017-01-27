@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Queue;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Queue;
 
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Support\Facades\Queue as QueueFacade;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Queue as QueueFacade;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits
  */
-trait QueueTrait {
-
+trait QueueTrait
+{
     /**
      * Instance of a queue
      *
@@ -27,7 +29,8 @@ trait QueueTrait {
      *
      * @return void
      */
-    public function setQueue(Queue $queue) {
+    public function setQueue(Queue $queue)
+    {
         $this->queue = $queue;
     }
 
@@ -42,7 +45,8 @@ trait QueueTrait {
      *
      * @return Queue|null queue or null if none queue has been set
      */
-    public function getQueue() {
+    public function getQueue()
+    {
         if (!$this->hasQueue() && $this->hasDefaultQueue()) {
             $this->setQueue($this->getDefaultQueue());
         }
@@ -54,7 +58,8 @@ trait QueueTrait {
      *
      * @return Queue|null A default queue value or Null if no default value is available
      */
-    public function getDefaultQueue() {
+    public function getDefaultQueue()
+    {
         // By default, the Queue Facade does not return the
         // any actual database connection, but rather an
         // instance of \Illuminate\Queue\QueueManager.
@@ -62,7 +67,7 @@ trait QueueTrait {
         // "connection", to make sure that its only the connection
         // instance that we obtain.
         $manager = QueueFacade::getFacadeRoot();
-        if(!is_null($manager)){
+        if (!is_null($manager)) {
             return $manager->connection();
         }
         return $manager;
@@ -73,7 +78,8 @@ trait QueueTrait {
      *
      * @return bool True if queue has been set, false if not
      */
-    public function hasQueue() {
+    public function hasQueue()
+    {
         if (!is_null($this->queue)) {
             return true;
         }
@@ -85,7 +91,8 @@ trait QueueTrait {
      *
      * @return bool True of a default queue is available, false if not
      */
-    public function hasDefaultQueue() {
+    public function hasDefaultQueue()
+    {
         if (!is_null($this->getDefaultQueue())) {
             return true;
         }

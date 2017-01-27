@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Routing;
+<?php
+
+namespace Aedart\Laravel\Helpers\Traits\Routing;
 
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redirect;
@@ -11,8 +13,8 @@ use Illuminate\Support\Facades\Redirect;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Routing
  */
-trait RedirectTrait {
-
+trait RedirectTrait
+{
     /**
      * Instance of Laravel's Redirector
      *
@@ -27,7 +29,8 @@ trait RedirectTrait {
      *
      * @return void
      */
-    public function setRedirect(Redirector $redirector) {
+    public function setRedirect(Redirector $redirector)
+    {
         $this->redirect = $redirector;
     }
 
@@ -42,7 +45,8 @@ trait RedirectTrait {
      *
      * @return Redirector|null redirect or null if none redirect has been set
      */
-    public function getRedirect() {
+    public function getRedirect()
+    {
         if (!$this->hasRedirect() && $this->hasDefaultRedirect()) {
             $this->setRedirect($this->getDefaultRedirect());
         }
@@ -54,7 +58,8 @@ trait RedirectTrait {
      *
      * @return Redirector|null A default redirect value or Null if no default value is available
      */
-    public function getDefaultRedirect() {
+    public function getDefaultRedirect()
+    {
         return Redirect::getFacadeRoot();
     }
 
@@ -63,7 +68,8 @@ trait RedirectTrait {
      *
      * @return bool True if redirect has been set, false if not
      */
-    public function hasRedirect() {
+    public function hasRedirect()
+    {
         if (!is_null($this->redirect)) {
             return true;
         }
@@ -75,7 +81,8 @@ trait RedirectTrait {
      *
      * @return bool True of a default redirect is available, false if not
      */
-    public function hasDefaultRedirect() {
+    public function hasDefaultRedirect()
+    {
         if (!is_null($this->getDefaultRedirect())) {
             return true;
         }

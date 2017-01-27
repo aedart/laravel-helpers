@@ -1,4 +1,6 @@
-<?php namespace Aedart\Laravel\Helpers\Contracts\Database;
+<?php
+
+namespace Aedart\Laravel\Helpers\Contracts\Database;
 
 use Illuminate\Database\Schema\Builder;
 
@@ -13,8 +15,8 @@ use Illuminate\Database\Schema\Builder;
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Database
  */
-interface SchemaAware {
-
+interface SchemaAware
+{
     /**
      * Set the given schema
      *
