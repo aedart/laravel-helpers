@@ -61,8 +61,7 @@ trait CookieTrait
      */
     public function getDefaultCookie()
     {
-        static $cookie;
-        return isset($cookie) ? $cookie : $cookie = Cookie::getFacadeRoot();
+        return Cookie::getFacadeRoot();
     }
 
     /**

@@ -60,8 +60,7 @@ trait ValidatorTrait
      */
     public function getDefaultValidator()
     {
-        static $validator;
-        return isset($validator) ? $validator : $validator = Validator::getFacadeRoot();
+        return Validator::getFacadeRoot();
     }
 
     /**

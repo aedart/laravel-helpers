@@ -60,8 +60,7 @@ trait FileTrait
      */
     public function getDefaultFile()
     {
-        static $file;
-        return isset($file) ? $file : $file = File::getFacadeRoot();
+        return File::getFacadeRoot();
     }
 
     /**

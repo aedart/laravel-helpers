@@ -60,8 +60,7 @@ trait EventTrait
      */
     public function getDefaultEvent()
     {
-        static $event;
-        return isset($event) ? $event : $event = Event::getFacadeRoot();
+        return Event::getFacadeRoot();
     }
 
     /**

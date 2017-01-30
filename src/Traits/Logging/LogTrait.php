@@ -60,8 +60,7 @@ trait LogTrait
      */
     public function getDefaultLog()
     {
-        static $log;
-        return isset($log) ? $log : $log = LogFacade::getFacadeRoot();
+        return LogFacade::getFacadeRoot();
     }
 
     /**

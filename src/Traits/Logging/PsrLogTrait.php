@@ -60,8 +60,7 @@ trait PsrLogTrait
      */
     public function getDefaultPsrLog()
     {
-        static $psrLog;
-        return isset($psrLog) ? $psrLog : $psrLog = Log::getFacadeRoot();
+        return Log::getFacadeRoot();
     }
 
     /**

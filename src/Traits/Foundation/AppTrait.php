@@ -60,8 +60,7 @@ trait AppTrait
      */
     public function getDefaultApp()
     {
-        static $app;
-        return isset($app) ? $app : $app = App::getFacadeRoot();
+        return App::getFacadeRoot();
     }
 
     /**

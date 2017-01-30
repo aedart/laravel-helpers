@@ -60,8 +60,7 @@ trait URLTrait
      */
     public function getDefaultURL()
     {
-        static $url;
-        return isset($url) ? $url : $url = URL::getFacadeRoot();
+        return URL::getFacadeRoot();
     }
 
     /**

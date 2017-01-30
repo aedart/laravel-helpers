@@ -60,8 +60,7 @@ trait InputTrait
      */
     public function getDefaultInput()
     {
-        static $input;
-        return isset($input) ? $input : $input = Input::getFacadeRoot();
+        return Input::getFacadeRoot();
     }
 
     /**

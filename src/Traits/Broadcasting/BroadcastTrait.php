@@ -60,11 +60,6 @@ trait BroadcastTrait
      */
     public function getDefaultBroadcast()
     {
-        static $broadcast;
-        if(isset($broadcast)){
-            return $broadcast;
-        }
-
         // By default, the Broadcast Facade does not return the
         // any actual broadcaster, but rather an
         // instance of a manager.
@@ -73,7 +68,7 @@ trait BroadcastTrait
         // connection is obtained!
         $manager = Broadcast::getFacadeRoot();
         if (!is_null($manager)) {
-            return $broadcast = $manager->connection();
+            return $manager->connection();
         }
         return $manager;
     }

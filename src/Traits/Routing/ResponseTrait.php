@@ -60,8 +60,7 @@ trait ResponseTrait
      */
     public function getDefaultResponse()
     {
-        static $response;
-        return isset($response) ? $response : $response = Response::getFacadeRoot();
+        return Response::getFacadeRoot();
     }
 
     /**

@@ -60,11 +60,6 @@ trait PasswordTrait
      */
     public function getDefaultPassword()
     {
-        static $password;
-        if(isset($password)){
-            return $password;
-        }
-
         // By default, the Password Facade does not return the
         // any actual password broker, but rather an
         // instance of \Illuminate\Auth\Passwords\PasswordBrokerManager.
@@ -73,7 +68,7 @@ trait PasswordTrait
         // instance that we obtain.
         $manager = Password::getFacadeRoot();
         if (!is_null($manager)) {
-            return $password = $manager->broker();
+            return $manager->broker();
         }
         return $manager;
     }

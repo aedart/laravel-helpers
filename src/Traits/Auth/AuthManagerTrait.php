@@ -60,8 +60,7 @@ trait AuthManagerTrait
      */
     public function getDefaultAuthManager()
     {
-        static $authManager;
-        return isset($authManager) ? $authManager : $authManager = Auth::getFacadeRoot();
+        return Auth::getFacadeRoot();
     }
 
     /**

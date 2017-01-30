@@ -60,8 +60,7 @@ trait ConfigTrait
      */
     public function getDefaultConfig()
     {
-        static $config;
-        return isset($config) ? $config : $config = Config::getFacadeRoot();
+        return Config::getFacadeRoot();
     }
 
     /**

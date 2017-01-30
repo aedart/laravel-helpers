@@ -60,11 +60,6 @@ trait SessionTrait
      */
     public function getDefaultSession()
     {
-        static $session;
-        if(isset($session)){
-            return $session;
-        }
-
         // By default, the Session Facade does not return the
         // any actual session instance, but rather an
         // instance of \Illuminate\Session\SessionManager.
@@ -73,7 +68,7 @@ trait SessionTrait
         // instance that we obtain.
         $manager = SessionFacade::getFacadeRoot();
         if (!is_null($manager)) {
-            return $session = $manager->driver();
+            return $manager->driver();
         }
         return $manager;
     }

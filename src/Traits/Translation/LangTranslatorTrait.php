@@ -60,8 +60,7 @@ trait LangTranslatorTrait
      */
     public function getDefaultLangTranslator()
     {
-        static $lang;
-        return isset($lang) ? $lang : $lang = Lang::getFacadeRoot();
+        return Lang::getFacadeRoot();
     }
 
     /**

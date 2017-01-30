@@ -61,7 +61,11 @@ trait CacheFactoryTrait
     public function getDefaultCacheFactory()
     {
         static $cacheFactory;
-        return isset($cacheFactory) ? $cacheFactory : $cacheFactory = Cache::getFacadeRoot();
+        if(isset($cacheFactory)){
+            return $cacheFactory;
+        }
+
+        return $cacheFactory = Cache::getFacadeRoot();
     }
 
     /**

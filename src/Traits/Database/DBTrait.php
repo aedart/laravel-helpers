@@ -60,11 +60,6 @@ trait DBTrait
      */
     public function getDefaultDb()
     {
-        static $db;
-        if(isset($db)){
-            return $db;
-        }
-
         // By default, the DB Facade does not return the
         // any actual database connection, but rather an
         // instance of \Illuminate\Database\DatabaseManager.
@@ -73,7 +68,7 @@ trait DBTrait
         // instance that we obtain.
         $manager = DB::getFacadeRoot();
         if (!is_null($manager)) {
-            return $db = $manager->connection();
+            return $manager->connection();
         }
         return $manager;
     }

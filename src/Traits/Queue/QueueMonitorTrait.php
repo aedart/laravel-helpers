@@ -60,8 +60,7 @@ trait QueueMonitorTrait
      */
     public function getDefaultQueueMonitor()
     {
-        static $monitor;
-        return isset($monitor) ? $monitor : $monitor = Queue::getFacadeRoot();
+        return Queue::getFacadeRoot();
     }
 
     /**

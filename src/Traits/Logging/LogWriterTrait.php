@@ -60,8 +60,7 @@ trait LogWriterTrait
      */
     public function getDefaultLogWriter()
     {
-        static $logWriter;
-        return isset($logWriter) ? $logWriter : $logWriter = Log::getFacadeRoot();
+        return Log::getFacadeRoot();
     }
 
     /**

@@ -61,11 +61,6 @@ trait BladeTrait
      */
     public function getDefaultBlade()
     {
-        static $blade;
-        if(isset($blade)){
-            return $blade;
-        }
-
         // The blade compiler is usually only available, once
         // Laravel's view service provider has been initialised.
         // Thus, before just returning the Blade Facade's root
@@ -73,7 +68,7 @@ trait BladeTrait
         // actually returns something
         $view = View::getFacadeRoot();
         if (!is_null($view)) {
-            return $blade = Blade::getFacadeRoot();
+            return Blade::getFacadeRoot();
         }
         return $view;
     }

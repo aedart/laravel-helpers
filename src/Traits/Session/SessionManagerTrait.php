@@ -60,8 +60,7 @@ trait SessionManagerTrait
      */
     public function getDefaultSessionManager()
     {
-        static $manager;
-        return isset($manager) ? $manager : $manager = Session::getFacadeRoot();
+        return Session::getFacadeRoot();
     }
 
     /**

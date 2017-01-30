@@ -60,8 +60,7 @@ trait ArtisanTrait
      */
     public function getDefaultArtisan()
     {
-        static $artisan;
-        return isset($artisan) ? $artisan : $artisan = Artisan::getFacadeRoot();
+        return Artisan::getFacadeRoot();
     }
 
     /**

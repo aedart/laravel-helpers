@@ -60,8 +60,7 @@ trait PasswordBrokerManagerTrait
      */
     public function getDefaultPasswordBrokerManager()
     {
-        static $passwordBrokerManager;
-        return isset($passwordBrokerManager) ? $passwordBrokerManager : $passwordBrokerManager = Password::getFacadeRoot();
+        return Password::getFacadeRoot();
     }
 
     /**
