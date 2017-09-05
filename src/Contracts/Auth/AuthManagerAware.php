@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Auth\AuthManager;
 
 /**
- * <h1>Auth Manager Aware</h1>
- *
- * Components are able to specify and obtain the authentication manager
+ * Auth Manager Aware
  *
  * @see \Illuminate\Auth\AuthManager
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Auth
  */
 interface AuthManagerAware
 {
     /**
-     * Set the given auth manager
+     * Set auth manager
      *
-     * @param AuthManager $manager Instance of the Authentication Manager
+     * @param AuthManager|null $manager Auth Manager instance
      *
-     * @return void
+     * @return self
      */
-    public function setAuthManager(AuthManager $manager);
+    public function setAuthManager(?AuthManager $manager);
 
     /**
-     * Get the given auth manager
+     * Get auth manager
      *
      * If no auth manager has been set, this method will
      * set and return a default auth manager, if any such
@@ -36,26 +34,19 @@ interface AuthManagerAware
      *
      * @return AuthManager|null auth manager or null if none auth manager has been set
      */
-    public function getAuthManager();
-
-    /**
-     * Get a default auth manager value, if any is available
-     *
-     * @return AuthManager|null A default auth manager value or Null if no default value is available
-     */
-    public function getDefaultAuthManager();
+    public function getAuthManager(): ?AuthManager;
 
     /**
      * Check if auth manager has been set
      *
      * @return bool True if auth manager has been set, false if not
      */
-    public function hasAuthManager();
+    public function hasAuthManager(): bool;
 
     /**
-     * Check if a default auth manager is available or not
+     * Get a default auth manager value, if any is available
      *
-     * @return bool True of a default auth manager is available, false if not
+     * @return AuthManager|null A default auth manager value or Null if no default value is available
      */
-    public function hasDefaultAuthManager();
+    public function getDefaultAuthManager(): ?AuthManager;
 }
