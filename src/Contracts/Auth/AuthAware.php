@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Contracts\Auth\Guard;
 
 /**
- * <h1>Auth Aware</h1>
- *
- * Components are able to specify and obtain an authentication guard
+ * Auth Aware
  *
  * @see \Illuminate\Contracts\Auth\Guard
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Auth
  */
 interface AuthAware
 {
     /**
-     * Set the given auth
+     * Set auth
      *
-     * @param Guard $guard Instance of the authentication guard
+     * @param Guard|null $guard Access Guard Instance
      *
-     * @return void
+     * @return self
      */
-    public function setAuth(Guard $guard);
+    public function setAuth(?Guard $guard);
 
     /**
-     * Get the given auth
+     * Get auth
      *
      * If no auth has been set, this method will
      * set and return a default auth, if any such
@@ -36,26 +34,19 @@ interface AuthAware
      *
      * @return Guard|null auth or null if none auth has been set
      */
-    public function getAuth();
-
-    /**
-     * Get a default auth value, if any is available
-     *
-     * @return Guard|null A default auth value or Null if no default value is available
-     */
-    public function getDefaultAuth();
+    public function getAuth(): ?Guard;
 
     /**
      * Check if auth has been set
      *
      * @return bool True if auth has been set, false if not
      */
-    public function hasAuth();
+    public function hasAuth(): bool;
 
     /**
-     * Check if a default auth is available or not
+     * Get a default auth value, if any is available
      *
-     * @return bool True of a default auth is available, false if not
+     * @return Guard|null A default auth value or Null if no default value is available
      */
-    public function hasDefaultAuth();
+    public function getDefaultAuth(): ?Guard;
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Auth;
 
@@ -6,36 +7,38 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * <h1>Auth Trait</h1>
+ * Auth Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\AuthAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Auth
  */
 trait AuthTrait
 {
     /**
-     * Instance of the authentication guard
+     * Access Guard Instance
      *
      * @var Guard|null
      */
     protected $auth = null;
 
     /**
-     * Set the given auth
+     * Set auth
      *
-     * @param Guard $guard Instance of the authentication guard
+     * @param Guard|null $guard Access Guard Instance
      *
-     * @return void
+     * @return self
      */
-    public function setAuth(Guard $guard)
+    public function setAuth(?Guard $guard)
     {
         $this->auth = $guard;
+
+        return $this;
     }
 
     /**
-     * Get the given auth
+     * Get auth
      *
      * If no auth has been set, this method will
      * set and return a default auth, if any such
@@ -45,12 +48,22 @@ trait AuthTrait
      *
      * @return Guard|null auth or null if none auth has been set
      */
-    public function getAuth()
+    public function getAuth(): ?Guard
     {
-        if (!$this->hasAuth() && $this->hasDefaultAuth()) {
+        if (!$this->hasAuth()) {
             $this->setAuth($this->getDefaultAuth());
         }
         return $this->auth;
+    }
+
+    /**
+     * Check if auth has been set
+     *
+     * @return bool True if auth has been set, false if not
+     */
+    public function hasAuth(): bool
+    {
+        return isset($this->auth);
     }
 
     /**
@@ -58,7 +71,7 @@ trait AuthTrait
      *
      * @return Guard|null A default auth value or Null if no default value is available
      */
-    public function getDefaultAuth()
+    public function getDefaultAuth(): ?Guard
     {
         // By default, the Auth Facade does not return the
         // any actual authentication guard, but rather an
@@ -67,30 +80,9 @@ trait AuthTrait
         // "default guard", to make sure that its only the guard
         // instance that we obtain.
         $manager = Auth::getFacadeRoot();
-        if (!is_null($manager)) {
+        if (isset($manager)) {
             return $manager->guard();
         }
         return $manager;
-    }
-
-    /**
-     * Check if auth has been set
-     *
-     * @return bool True if auth has been set, false if not
-     */
-    public function hasAuth()
-    {
-        return isset($this->auth);
-    }
-
-    /**
-     * Check if a default auth is available or not
-     *
-     * @return bool True of a default auth is available, false if not
-     */
-    public function hasDefaultAuth()
-    {
-        $default = $this->getDefaultAuth();
-        return isset($default);
     }
 }
