@@ -1,8 +1,8 @@
 <?php
+declare(strict_types=1);
 
 use Aedart\Testing\GST\GetterSetterTraitTester;
 use Aedart\Testing\Laravel\TestCases\unit\UnitWithLaravelTestCase;
-use Illuminate\Support\Facades\Facade;
 use \Mockery as m;
 
 /**
@@ -49,21 +49,37 @@ abstract class TraitTestCase extends UnitWithLaravelTestCase{
     /**
      * Assert trait
      *
-     * @param string $traitClassPath
-     * @param string $expectedDefaultClass
-     * @param string $customDefaultClass
+     * @param string $traitClassPath The trait to test
+     * @param string $interfaceClassPath The interface to adhere
+     * @param string $expectedDefaultClass The expected default to return
+     * @param string|null $customDefaultClass [optional] Defaults to the $expectedDefaultClass if none provided
      */
-    public function assertTrait($traitClassPath, $expectedDefaultClass, $customDefaultClass)
-    {
+    public function assertTrait(
+        string $traitClassPath,
+        string $interfaceClassPath,
+        string $expectedDefaultClass,
+        ?string $customDefaultClass = null
+    ) {
+        // Output
         $this->output(sprintf('Asserting "%s"', $traitClassPath));
 
+        // Assert trait interface compatibility
+        $this->assertTraitCompatibility($traitClassPath, $interfaceClassPath);
+
+        // Default to expected default class
+        $customDefaultClass = $customDefaultClass ?? $expectedDefaultClass;
+
+        // Guess the property name
         $this->guessPropertyNameFor($traitClassPath);
 
+        // Make the mock
         $traitMock = $this->makeTraitMock($traitClassPath);
 
+        // Get get getter and setter names
         $setterName =  $this->setPropertyMethodName();
         $getterName = $this->getPropertyMethodName();
 
+        // Assert default
         $this->assertInstanceOf($expectedDefaultClass, $traitMock->$getterName(), sprintf('Incorrect default in %s (get default method)', $traitClassPath));
 
         // Ensures that a value can be set and retrieved
