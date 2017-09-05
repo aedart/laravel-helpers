@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Auth\Access;
 
@@ -6,36 +7,38 @@ use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\Gate as GateFacade;
 
 /**
- * <h1>Gate Trait</h1>
+ * GateTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\Access\GateAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Auth\Access
  */
 trait GateTrait
 {
     /**
-     * Instance of the Access Gate
+     * Access Gate instance
      *
      * @var Gate|null
      */
     protected $gate = null;
 
     /**
-     * Set the given gate
+     * Set gate
      *
-     * @param Gate $gate Instance of the Access Gate
+     * @param Gate|null $gate Access Gate instance
      *
-     * @return void
+     * @return self
      */
-    public function setGate(Gate $gate)
+    public function setGate(?Gate $gate)
     {
         $this->gate = $gate;
+
+        return $this;
     }
 
     /**
-     * Get the given gate
+     * Get gate
      *
      * If no gate has been set, this method will
      * set and return a default gate, if any such
@@ -45,22 +48,12 @@ trait GateTrait
      *
      * @return Gate|null gate or null if none gate has been set
      */
-    public function getGate()
+    public function getGate(): ?Gate
     {
-        if (!$this->hasGate() && $this->hasDefaultGate()) {
+        if (!$this->hasGate()) {
             $this->setGate($this->getDefaultGate());
         }
         return $this->gate;
-    }
-
-    /**
-     * Get a default gate value, if any is available
-     *
-     * @return Gate|null A default gate value or Null if no default value is available
-     */
-    public function getDefaultGate()
-    {
-        return GateFacade::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait GateTrait
      *
      * @return bool True if gate has been set, false if not
      */
-    public function hasGate()
+    public function hasGate(): bool
     {
         return isset($this->gate);
     }
 
     /**
-     * Check if a default gate is available or not
+     * Get a default gate value, if any is available
      *
-     * @return bool True of a default gate is available, false if not
+     * @return Gate|null A default gate value or Null if no default value is available
      */
-    public function hasDefaultGate()
+    public function getDefaultGate(): ?Gate
     {
-        $default = $this->getDefaultGate();
-        return isset($default);
+        return GateFacade::getFacadeRoot();
     }
 }

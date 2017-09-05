@@ -5,29 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth\Access;
 use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
- * <h1>Gate Aware</h1>
- *
- * Components are able to specify and obtain an Access Gate
- * utility component.
+ * Gate Aware
  *
  * @see \Illuminate\Contracts\Auth\Access\Gate
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Auth\Access
  */
 interface GateAware
 {
     /**
-     * Set the given gate
+     * Set gate
      *
-     * @param Gate $gate Instance of the Access Gate
+     * @param Gate|null $gate Access Gate instance
      *
-     * @return void
+     * @return self
      */
-    public function setGate(Gate $gate);
+    public function setGate(?Gate $gate);
 
     /**
-     * Get the given gate
+     * Get gate
      *
      * If no gate has been set, this method will
      * set and return a default gate, if any such
@@ -37,26 +34,19 @@ interface GateAware
      *
      * @return Gate|null gate or null if none gate has been set
      */
-    public function getGate();
-
-    /**
-     * Get a default gate value, if any is available
-     *
-     * @return Gate|null A default gate value or Null if no default value is available
-     */
-    public function getDefaultGate();
+    public function getGate(): ?Gate;
 
     /**
      * Check if gate has been set
      *
      * @return bool True if gate has been set, false if not
      */
-    public function hasGate();
+    public function hasGate(): bool;
 
     /**
-     * Check if a default gate is available or not
+     * Get a default gate value, if any is available
      *
-     * @return bool True of a default gate is available, false if not
+     * @return Gate|null A default gate value or Null if no default value is available
      */
-    public function hasDefaultGate();
+    public function getDefaultGate(): ?Gate;
 }
