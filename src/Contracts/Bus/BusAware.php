@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Bus;
 use Illuminate\Contracts\Bus\Dispatcher;
 
 /**
- * <h1>Bus Aware</h1>
- *
- * Components are able to specify and obtain a Command Bus Dispatcher
+ * Bus Aware
  *
  * @see \Illuminate\Contracts\Bus\Dispatcher
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Bus
  */
 interface BusAware
 {
     /**
-     * Set the given bus
+     * Set bus
      *
-     * @param Dispatcher $dispatcher Instance of a Command Bus Dispatcher
+     * @param Dispatcher|null $dispatcher Bus Dispatcher instance
      *
-     * @return void
+     * @return self
      */
-    public function setBus(Dispatcher $dispatcher);
+    public function setBus(?Dispatcher $dispatcher);
 
     /**
-     * Get the given bus
+     * Get bus
      *
      * If no bus has been set, this method will
      * set and return a default bus, if any such
@@ -36,26 +34,19 @@ interface BusAware
      *
      * @return Dispatcher|null bus or null if none bus has been set
      */
-    public function getBus();
-
-    /**
-     * Get a default bus value, if any is available
-     *
-     * @return Dispatcher|null A default bus value or Null if no default value is available
-     */
-    public function getDefaultBus();
+    public function getBus(): ?Dispatcher;
 
     /**
      * Check if bus has been set
      *
      * @return bool True if bus has been set, false if not
      */
-    public function hasBus();
+    public function hasBus(): bool;
 
     /**
-     * Check if a default bus is available or not
+     * Get a default bus value, if any is available
      *
-     * @return bool True of a default bus is available, false if not
+     * @return Dispatcher|null A default bus value or Null if no default value is available
      */
-    public function hasDefaultBus();
+    public function getDefaultBus(): ?Dispatcher;
 }

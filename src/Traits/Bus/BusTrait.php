@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Bus;
 
@@ -6,36 +7,38 @@ use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\Bus;
 
 /**
- * <h1>Bus Trait</h1>
+ * BusTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Bus\BusAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Bus
  */
 trait BusTrait
 {
     /**
-     * Instance of a Command Bus Dispatcher
+     * Bus Dispatcher instance
      *
      * @var Dispatcher|null
      */
     protected $bus = null;
 
     /**
-     * Set the given bus
+     * Set bus
      *
-     * @param Dispatcher $dispatcher Instance of a Command Bus Dispatcher
+     * @param Dispatcher|null $dispatcher Bus Dispatcher instance
      *
-     * @return void
+     * @return self
      */
-    public function setBus(Dispatcher $dispatcher)
+    public function setBus(?Dispatcher $dispatcher)
     {
         $this->bus = $dispatcher;
+
+        return $this;
     }
 
     /**
-     * Get the given bus
+     * Get bus
      *
      * If no bus has been set, this method will
      * set and return a default bus, if any such
@@ -45,22 +48,12 @@ trait BusTrait
      *
      * @return Dispatcher|null bus or null if none bus has been set
      */
-    public function getBus()
+    public function getBus(): ?Dispatcher
     {
-        if (!$this->hasBus() && $this->hasDefaultBus()) {
+        if (!$this->hasBus()) {
             $this->setBus($this->getDefaultBus());
         }
         return $this->bus;
-    }
-
-    /**
-     * Get a default bus value, if any is available
-     *
-     * @return Dispatcher|null A default bus value or Null if no default value is available
-     */
-    public function getDefaultBus()
-    {
-        return Bus::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait BusTrait
      *
      * @return bool True if bus has been set, false if not
      */
-    public function hasBus()
+    public function hasBus(): bool
     {
         return isset($this->bus);
     }
 
     /**
-     * Check if a default bus is available or not
+     * Get a default bus value, if any is available
      *
-     * @return bool True of a default bus is available, false if not
+     * @return Dispatcher|null A default bus value or Null if no default value is available
      */
-    public function hasDefaultBus()
+    public function getDefaultBus(): ?Dispatcher
     {
-        $default = $this->getDefaultBus();
-        return isset($default);
+        return Bus::getFacadeRoot();
     }
 }
