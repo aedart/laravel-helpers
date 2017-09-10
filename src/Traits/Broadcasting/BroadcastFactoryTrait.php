@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Broadcasting;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Broadcasting\Factory;
 use Illuminate\Support\Facades\Broadcast;
 
 /**
- * <h1>Broadcast Factory Trait</h1>
+ * Broadcast Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Broadcasting\BroadcastFactoryAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Broadcast;
 trait BroadcastFactoryTrait
 {
     /**
-     * Instance of a Broadcast Factory
+     * Broadcast Factory instance
      *
      * @var Factory|null
      */
     protected $broadcastFactory = null;
 
     /**
-     * Set the given broadcast factory
+     * Set broadcast factory
      *
-     * @param Factory $factory Instance of a Broadcast Factory
+     * @param Factory|null $factory Broadcast Factory instance
      *
-     * @return void
+     * @return self
      */
-    public function setBroadcastFactory(Factory $factory)
+    public function setBroadcastFactory(?Factory $factory)
     {
         $this->broadcastFactory = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given broadcast factory
+     * Get broadcast factory
      *
      * If no broadcast factory has been set, this method will
      * set and return a default broadcast factory, if any such
@@ -45,22 +48,12 @@ trait BroadcastFactoryTrait
      *
      * @return Factory|null broadcast factory or null if none broadcast factory has been set
      */
-    public function getBroadcastFactory()
+    public function getBroadcastFactory(): ?Factory
     {
-        if (!$this->hasBroadcastFactory() && $this->hasDefaultBroadcastFactory()) {
+        if (!$this->hasBroadcastFactory()) {
             $this->setBroadcastFactory($this->getDefaultBroadcastFactory());
         }
         return $this->broadcastFactory;
-    }
-
-    /**
-     * Get a default broadcast factory value, if any is available
-     *
-     * @return Factory|null A default broadcast factory value or Null if no default value is available
-     */
-    public function getDefaultBroadcastFactory()
-    {
-        return Broadcast::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait BroadcastFactoryTrait
      *
      * @return bool True if broadcast factory has been set, false if not
      */
-    public function hasBroadcastFactory()
+    public function hasBroadcastFactory(): bool
     {
         return isset($this->broadcastFactory);
     }
 
     /**
-     * Check if a default broadcast factory is available or not
+     * Get a default broadcast factory value, if any is available
      *
-     * @return bool True of a default broadcast factory is available, false if not
+     * @return Factory|null A default broadcast factory value or Null if no default value is available
      */
-    public function hasDefaultBroadcastFactory()
+    public function getDefaultBroadcastFactory(): ?Factory
     {
-        $default = $this->getDefaultBroadcastFactory();
-        return isset($default);
+        return Broadcast::getFacadeRoot();
     }
 }
