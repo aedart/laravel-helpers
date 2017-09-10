@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Contracts\Auth\PasswordBrokerFactory;
 
 /**
- * <h1>Password Broker Factory Aware</h1>
- *
- * Components are able to specify and obtain the password broker manager
+ * Password Broker Factory Aware
  *
  * @see \Illuminate\Contracts\Auth\PasswordBrokerFactory
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits\Auth
+ * @package Aedart\Laravel\Helpers\Contracts\Auth
  */
 interface PasswordBrokerFactoryAware
 {
     /**
-     * Set the given password broker factory
+     * Set password broker factory
      *
-     * @param PasswordBrokerFactory $factory Instance of a password broker factory
+     * @param PasswordBrokerFactory|null $factory Password Broker Factory instance
      *
-     * @return void
+     * @return self
      */
-    public function setPasswordBrokerFactory(PasswordBrokerFactory $factory);
+    public function setPasswordBrokerFactory(?PasswordBrokerFactory $factory);
 
     /**
-     * Get the given password broker factory
+     * Get password broker factory
      *
      * If no password broker factory has been set, this method will
      * set and return a default password broker factory, if any such
@@ -36,26 +34,19 @@ interface PasswordBrokerFactoryAware
      *
      * @return PasswordBrokerFactory|null password broker factory or null if none password broker factory has been set
      */
-    public function getPasswordBrokerFactory();
-
-    /**
-     * Get a default password broker factory value, if any is available
-     *
-     * @return PasswordBrokerFactory|null A default password broker factory value or Null if no default value is available
-     */
-    public function getDefaultPasswordBrokerFactory();
+    public function getPasswordBrokerFactory(): ?PasswordBrokerFactory;
 
     /**
      * Check if password broker factory has been set
      *
      * @return bool True if password broker factory has been set, false if not
      */
-    public function hasPasswordBrokerFactory();
+    public function hasPasswordBrokerFactory(): bool;
 
     /**
-     * Check if a default password broker factory is available or not
+     * Get a default password broker factory value, if any is available
      *
-     * @return bool True of a default password broker factory is available, false if not
+     * @return PasswordBrokerFactory|null A default password broker factory value or Null if no default value is available
      */
-    public function hasDefaultPasswordBrokerFactory();
+    public function getDefaultPasswordBrokerFactory(): ?PasswordBrokerFactory;
 }

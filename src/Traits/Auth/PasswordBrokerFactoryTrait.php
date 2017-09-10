@@ -6,7 +6,9 @@ use Illuminate\Contracts\Auth\PasswordBrokerFactory;
 use Illuminate\Support\Facades\Password;
 
 /**
- * <h1>Password Broker Factory Trait</h1>
+ * PasswordBrokerFactoryTrait
+ *
+ * @see \Aedart\Laravel\Helpers\Contracts\Auth\PasswordBrokerFactoryAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  * @package Aedart\Laravel\Helpers\Traits\Auth
@@ -14,26 +16,28 @@ use Illuminate\Support\Facades\Password;
 trait PasswordBrokerFactoryTrait
 {
     /**
-     * Instance of a password broker factory
+     * Password Broker Factory instance
      *
      * @var PasswordBrokerFactory|null
      */
     protected $passwordBrokerFactory = null;
 
     /**
-     * Set the given password broker factory
+     * Set password broker factory
      *
-     * @param PasswordBrokerFactory $factory Instance of a password broker factory
+     * @param PasswordBrokerFactory|null $factory Password Broker Factory instance
      *
-     * @return void
+     * @return self
      */
-    public function setPasswordBrokerFactory(PasswordBrokerFactory $factory)
+    public function setPasswordBrokerFactory(?PasswordBrokerFactory $factory)
     {
         $this->passwordBrokerFactory = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given password broker factory
+     * Get password broker factory
      *
      * If no password broker factory has been set, this method will
      * set and return a default password broker factory, if any such
@@ -43,22 +47,12 @@ trait PasswordBrokerFactoryTrait
      *
      * @return PasswordBrokerFactory|null password broker factory or null if none password broker factory has been set
      */
-    public function getPasswordBrokerFactory()
+    public function getPasswordBrokerFactory(): ?PasswordBrokerFactory
     {
-        if (!$this->hasPasswordBrokerFactory() && $this->hasDefaultPasswordBrokerFactory()) {
+        if (!$this->hasPasswordBrokerFactory()) {
             $this->setPasswordBrokerFactory($this->getDefaultPasswordBrokerFactory());
         }
         return $this->passwordBrokerFactory;
-    }
-
-    /**
-     * Get a default password broker factory value, if any is available
-     *
-     * @return PasswordBrokerFactory|null A default password broker factory value or Null if no default value is available
-     */
-    public function getDefaultPasswordBrokerFactory()
-    {
-        return Password::getFacadeRoot();
     }
 
     /**
@@ -66,19 +60,18 @@ trait PasswordBrokerFactoryTrait
      *
      * @return bool True if password broker factory has been set, false if not
      */
-    public function hasPasswordBrokerFactory()
+    public function hasPasswordBrokerFactory(): bool
     {
         return isset($this->passwordBrokerFactory);
     }
 
     /**
-     * Check if a default password broker factory is available or not
+     * Get a default password broker factory value, if any is available
      *
-     * @return bool True of a default password broker factory is available, false if not
+     * @return PasswordBrokerFactory|null A default password broker factory value or Null if no default value is available
      */
-    public function hasDefaultPasswordBrokerFactory()
+    public function getDefaultPasswordBrokerFactory(): ?PasswordBrokerFactory
     {
-        $default = $this->getDefaultPasswordBrokerFactory();
-        return isset($default);
+        return Password::getFacadeRoot();
     }
 }
