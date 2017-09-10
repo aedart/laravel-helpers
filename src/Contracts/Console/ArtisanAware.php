@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Console;
 use Illuminate\Contracts\Console\Kernel;
 
 /**
- * <h1>Artisan Aware</h1>
- *
- * Components are able to specify and obtain an artisan console kernel instance
+ * Artisan Aware
  *
  * @see \Illuminate\Contracts\Console\Kernel
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Console
  */
 interface ArtisanAware
 {
     /**
-     * Set the given artisan
+     * Set artisan
      *
-     * @param Kernel $artisan Instance of Artisan
+     * @param Kernel|null $kernel Artisan Kernel instance
      *
-     * @return void
+     * @return self
      */
-    public function setArtisan(Kernel $artisan);
+    public function setArtisan(?Kernel $kernel);
 
     /**
-     * Get the given artisan
+     * Get artisan
      *
      * If no artisan has been set, this method will
      * set and return a default artisan, if any such
@@ -36,26 +34,19 @@ interface ArtisanAware
      *
      * @return Kernel|null artisan or null if none artisan has been set
      */
-    public function getArtisan();
-
-    /**
-     * Get a default artisan value, if any is available
-     *
-     * @return Kernel|null A default artisan value or Null if no default value is available
-     */
-    public function getDefaultArtisan();
+    public function getArtisan(): ?Kernel;
 
     /**
      * Check if artisan has been set
      *
      * @return bool True if artisan has been set, false if not
      */
-    public function hasArtisan();
+    public function hasArtisan(): bool;
 
     /**
-     * Check if a default artisan is available or not
+     * Get a default artisan value, if any is available
      *
-     * @return bool True of a default artisan is available, false if not
+     * @return Kernel|null A default artisan value or Null if no default value is available
      */
-    public function hasDefaultArtisan();
+    public function getDefaultArtisan(): ?Kernel;
 }
