@@ -19,7 +19,7 @@ interface CookieAware
      *
      * @param Factory|null $factory Cookie Factory instance
      *
-     * @return \Aedart\Laravel\Helpers\Traits\Cookie\CookieTrait
+     * @return self
      */
     public function setCookie(?Factory $factory);
 
