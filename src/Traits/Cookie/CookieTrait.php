@@ -1,42 +1,44 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Cookie;
 
-use Illuminate\Cookie\CookieJar;
+use Illuminate\Contracts\Cookie\Factory;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Request;
 
 /**
- * <h1>Cookie Trait</h1>
+ * Cookie Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Cookie\CookieAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Cookie
  */
 trait CookieTrait
 {
     /**
-     * Instance of a cookie jar
+     * Cookie Factory instance
      *
-     * @var CookieJar|null
+     * @var Factory|null
      */
     protected $cookie = null;
 
     /**
-     * Set the given cookie
+     * Set cookie
      *
-     * @param CookieJar $jar Instance of a cookie jar
+     * @param Factory|null $factory Cookie Factory instance
      *
-     * @return void
+     * @return self
      */
-    public function setCookie($jar)
+    public function setCookie(?Factory $factory)
     {
-        $this->cookie = $jar;
+        $this->cookie = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given cookie
+     * Get cookie
      *
      * If no cookie has been set, this method will
      * set and return a default cookie, if any such
@@ -44,24 +46,14 @@ trait CookieTrait
      *
      * @see getDefaultCookie()
      *
-     * @return CookieJar|null cookie or null if none cookie has been set
+     * @return Factory|null cookie or null if none cookie has been set
      */
-    public function getCookie()
+    public function getCookie(): ?Factory
     {
-        if (!$this->hasCookie() && $this->hasDefaultCookie()) {
+        if (!$this->hasCookie()) {
             $this->setCookie($this->getDefaultCookie());
         }
         return $this->cookie;
-    }
-
-    /**
-     * Get a default cookie value, if any is available
-     *
-     * @return CookieJar|null A default cookie value or Null if no default value is available
-     */
-    public function getDefaultCookie()
-    {
-        return Cookie::getFacadeRoot();
     }
 
     /**
@@ -69,70 +61,18 @@ trait CookieTrait
      *
      * @return bool True if cookie has been set, false if not
      */
-    public function hasCookie()
+    public function hasCookie(): bool
     {
         return isset($this->cookie);
     }
 
     /**
-     * Check if a default cookie is available or not
+     * Get a default cookie value, if any is available
      *
-     * @return bool True of a default cookie is available, false if not
+     * @return Factory|null A default cookie value or Null if no default value is available
      */
-    public function hasDefaultCookie()
+    public function getDefaultCookie(): ?Factory
     {
-        $default = $this->getDefaultCookie();
-        return isset($default);
-    }
-
-    /**
-     * Check if a cookie exists on the current request
-     *
-     * @param string $key
-     *
-     * @return bool
-     *
-     * @see \Illuminate\Support\Facades\Cookie::has
-     * @see \Illuminate\Http\Request::cookie
-     */
-    public function hasCookieKey($key)
-    {
-        return !is_null($this->getRequest()->cookie($key, null));
-    }
-
-    /**
-     * Fetch a cookie from the current request
-     *
-     * @param string $key [optional]
-     * @param mixed $default [optional]
-     *
-     * @return array|string|null
-     *
-     * @see \Illuminate\Support\Facades\Cookie::get
-     * @see \Illuminate\Http\Request::cookie
-     */
-    public function getCookieValue($key = null, $default = null)
-    {
-        return $this->getRequest()->cookie($key, $default);
-    }
-
-    /**
-     * Check if a request instance is available
-     *
-     * @return bool
-     */
-    public function hasRequest()
-    {
-        return !is_null($this->getRequest());
-    }
-
-    /**
-     * Returns an instance of the current request
-     *
-     * @return \Illuminate\Http\Request|null Request or null if not available
-     */
-    public function getRequest()
-    {
-        return Request::getFacadeRoot();
+        return Cookie::getFacadeRoot();
     }
 }

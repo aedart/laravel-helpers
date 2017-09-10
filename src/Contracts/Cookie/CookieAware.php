@@ -2,36 +2,29 @@
 
 namespace Aedart\Laravel\Helpers\Contracts\Cookie;
 
-use Illuminate\Cookie\CookieJar;
+use Illuminate\Contracts\Cookie\Factory;
 
 /**
- * <h1>Cookie Aware</h1>
+ * Cookie Aware
  *
- * Components are able to specify and obtain a cookie jar.
- * In addition to this, components are also able to check if a
- * given cookie (in the current request) contains a specific
- * entry / get and obtain its value
- *
- * @see \Illuminate\Cookie\CookieJar
- * @see \Illuminate\Support\Facades\Cookie
- * @see \Illuminate\Http\Request::cookie
+ * @see \Illuminate\Contracts\Cookie\Factory
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Cookie
  */
 interface CookieAware
 {
     /**
-     * Set the given cookie
+     * Set cookie
      *
-     * @param CookieJar $jar Instance of a cookie jar
+     * @param Factory|null $factory Cookie Factory instance
      *
-     * @return void
+     * @return \Aedart\Laravel\Helpers\Traits\Cookie\CookieTrait
      */
-    public function setCookie($jar);
+    public function setCookie(?Factory $factory);
 
     /**
-     * Get the given cookie
+     * Get cookie
      *
      * If no cookie has been set, this method will
      * set and return a default cookie, if any such
@@ -39,67 +32,21 @@ interface CookieAware
      *
      * @see getDefaultCookie()
      *
-     * @return CookieJar|null cookie or null if none cookie has been set
+     * @return Factory|null cookie or null if none cookie has been set
      */
-    public function getCookie();
-
-    /**
-     * Get a default cookie value, if any is available
-     *
-     * @return CookieJar|null A default cookie value or Null if no default value is available
-     */
-    public function getDefaultCookie();
+    public function getCookie(): ?Factory;
 
     /**
      * Check if cookie has been set
      *
      * @return bool True if cookie has been set, false if not
      */
-    public function hasCookie();
+    public function hasCookie(): bool;
 
     /**
-     * Check if a default cookie is available or not
+     * Get a default cookie value, if any is available
      *
-     * @return bool True of a default cookie is available, false if not
+     * @return Factory|null A default cookie value or Null if no default value is available
      */
-    public function hasDefaultCookie();
-
-    /**
-     * Check if a cookie exists on the current request
-     *
-     * @param string $key
-     *
-     * @return bool
-     *
-     * @see \Illuminate\Support\Facades\Cookie::has
-     * @see \Illuminate\Http\Request::cookie
-     */
-    public function hasCookieKey($key);
-
-    /**
-     * Fetch a cookie from the current request
-     *
-     * @param string $key [optional]
-     * @param mixed $default [optional]
-     *
-     * @return array|string|null
-     *
-     * @see \Illuminate\Support\Facades\Cookie::get
-     * @see \Illuminate\Http\Request::cookie
-     */
-    public function getCookieValue($key = null, $default = null);
-
-    /**
-     * Check if a request instance is available
-     *
-     * @return bool
-     */
-    public function hasRequest();
-
-    /**
-     * Returns an instance of the current request
-     *
-     * @return \Illuminate\Http\Request|null Request or null if not available
-     */
-    public function getRequest();
+    public function getDefaultCookie(): ?Factory;
 }
