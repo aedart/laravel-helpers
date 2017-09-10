@@ -5,9 +5,7 @@ namespace Aedart\Laravel\Helpers\Contracts\Broadcasting;
 use Illuminate\Contracts\Broadcasting\Broadcaster;
 
 /**
- * <h1>Broadcast Aware</h1>
- *
- * Component is aware of a broadcaster, which can also be specified
+ * Broadcast Aware
  *
  * @see \Illuminate\Contracts\Broadcasting\Broadcaster
  *
@@ -17,16 +15,16 @@ use Illuminate\Contracts\Broadcasting\Broadcaster;
 interface BroadcastAware
 {
     /**
-     * Set the given broadcast
+     * Set broadcast
      *
-     * @param Broadcaster $broadcaster Instance of a Broadcaster
+     * @param Broadcaster|null $broadcaster Broadcaster instance
      *
-     * @return void
+     * @return self
      */
-    public function setBroadcast(Broadcaster $broadcaster);
+    public function setBroadcast(?Broadcaster $broadcaster);
 
     /**
-     * Get the given broadcast
+     * Get broadcast
      *
      * If no broadcast has been set, this method will
      * set and return a default broadcast, if any such
@@ -36,26 +34,19 @@ interface BroadcastAware
      *
      * @return Broadcaster|null broadcast or null if none broadcast has been set
      */
-    public function getBroadcast();
-
-    /**
-     * Get a default broadcast value, if any is available
-     *
-     * @return Broadcaster|null A default broadcast value or Null if no default value is available
-     */
-    public function getDefaultBroadcast();
+    public function getBroadcast(): ?Broadcaster;
 
     /**
      * Check if broadcast has been set
      *
      * @return bool True if broadcast has been set, false if not
      */
-    public function hasBroadcast();
+    public function hasBroadcast(): bool;
 
     /**
-     * Check if a default broadcast is available or not
+     * Get a default broadcast value, if any is available
      *
-     * @return bool True of a default broadcast is available, false if not
+     * @return Broadcaster|null A default broadcast value or Null if no default value is available
      */
-    public function hasDefaultBroadcast();
+    public function getDefaultBroadcast(): ?Broadcaster;
 }

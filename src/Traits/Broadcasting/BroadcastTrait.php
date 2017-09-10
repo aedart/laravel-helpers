@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Broadcasting;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Broadcasting\Broadcaster;
 use Illuminate\Support\Facades\Broadcast;
 
 /**
- * <h1>Broadcast Trait</h1>
+ * Broadcast Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Broadcasting\BroadcastAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Broadcast;
 trait BroadcastTrait
 {
     /**
-     * Instance of a Broadcaster
+     * Broadcaster instance
      *
      * @var Broadcaster|null
      */
     protected $broadcast = null;
 
     /**
-     * Set the given broadcast
+     * Set broadcast
      *
-     * @param Broadcaster $broadcaster Instance of a Broadcaster
+     * @param Broadcaster|null $broadcaster Broadcaster instance
      *
-     * @return void
+     * @return self
      */
-    public function setBroadcast(Broadcaster $broadcaster)
+    public function setBroadcast(?Broadcaster $broadcaster)
     {
         $this->broadcast = $broadcaster;
+
+        return $this;
     }
 
     /**
-     * Get the given broadcast
+     * Get broadcast
      *
      * If no broadcast has been set, this method will
      * set and return a default broadcast, if any such
@@ -45,12 +48,22 @@ trait BroadcastTrait
      *
      * @return Broadcaster|null broadcast or null if none broadcast has been set
      */
-    public function getBroadcast()
+    public function getBroadcast(): ?Broadcaster
     {
-        if (!$this->hasBroadcast() && $this->hasDefaultBroadcast()) {
+        if (!$this->hasBroadcast()) {
             $this->setBroadcast($this->getDefaultBroadcast());
         }
         return $this->broadcast;
+    }
+
+    /**
+     * Check if broadcast has been set
+     *
+     * @return bool True if broadcast has been set, false if not
+     */
+    public function hasBroadcast(): bool
+    {
+        return isset($this->broadcast);
     }
 
     /**
@@ -58,7 +71,7 @@ trait BroadcastTrait
      *
      * @return Broadcaster|null A default broadcast value or Null if no default value is available
      */
-    public function getDefaultBroadcast()
+    public function getDefaultBroadcast(): ?Broadcaster
     {
         // By default, the Broadcast Facade does not return the
         // any actual broadcaster, but rather an
@@ -67,30 +80,9 @@ trait BroadcastTrait
         // "broadcaster", to make sure that its only the
         // connection is obtained!
         $manager = Broadcast::getFacadeRoot();
-        if (!is_null($manager)) {
+        if (isset($manager)) {
             return $manager->connection();
         }
         return $manager;
-    }
-
-    /**
-     * Check if broadcast has been set
-     *
-     * @return bool True if broadcast has been set, false if not
-     */
-    public function hasBroadcast()
-    {
-        return isset($this->broadcast);
-    }
-
-    /**
-     * Check if a default broadcast is available or not
-     *
-     * @return bool True of a default broadcast is available, false if not
-     */
-    public function hasDefaultBroadcast()
-    {
-        $default = $this->getDefaultBroadcast();
-        return isset($default);
     }
 }
