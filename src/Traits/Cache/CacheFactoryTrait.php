@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Cache;
 
@@ -6,36 +7,38 @@ use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * <h1>Cache Factory Trait</h1>
+ * CacheFactoryTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Cache\CacheFactoryAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Cache
  */
 trait CacheFactoryTrait
 {
     /**
-     * Instance of the Cache Factory
+     * Cache Factory instance
      *
      * @var Factory|null
      */
     protected $cacheFactory = null;
 
     /**
-     * Set the given cache factory
+     * Set cache factory
      *
-     * @param Factory $factory Instance of the Cache Factory
+     * @param Factory|null $factory Cache Factory instance
      *
-     * @return void
+     * @return self
      */
-    public function setCacheFactory(Factory $factory)
+    public function setCacheFactory(?Factory $factory)
     {
         $this->cacheFactory = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given cache factory
+     * Get cache factory
      *
      * If no cache factory has been set, this method will
      * set and return a default cache factory, if any such
@@ -45,27 +48,12 @@ trait CacheFactoryTrait
      *
      * @return Factory|null cache factory or null if none cache factory has been set
      */
-    public function getCacheFactory()
+    public function getCacheFactory(): ?Factory
     {
-        if (!$this->hasCacheFactory() && $this->hasDefaultCacheFactory()) {
+        if (!$this->hasCacheFactory()) {
             $this->setCacheFactory($this->getDefaultCacheFactory());
         }
         return $this->cacheFactory;
-    }
-
-    /**
-     * Get a default cache factory value, if any is available
-     *
-     * @return Factory|null A default cache factory value or Null if no default value is available
-     */
-    public function getDefaultCacheFactory()
-    {
-        static $cacheFactory;
-        if(isset($cacheFactory)){
-            return $cacheFactory;
-        }
-
-        return $cacheFactory = Cache::getFacadeRoot();
     }
 
     /**
@@ -73,19 +61,18 @@ trait CacheFactoryTrait
      *
      * @return bool True if cache factory has been set, false if not
      */
-    public function hasCacheFactory()
+    public function hasCacheFactory(): bool
     {
         return isset($this->cacheFactory);
     }
 
     /**
-     * Check if a default cache factory is available or not
+     * Get a default cache factory value, if any is available
      *
-     * @return bool True of a default cache factory is available, false if not
+     * @return Factory|null A default cache factory value or Null if no default value is available
      */
-    public function hasDefaultCacheFactory()
+    public function getDefaultCacheFactory(): ?Factory
     {
-        $default = $this->getDefaultCacheFactory();
-        return isset($default);
+        return Cache::getFacadeRoot();
     }
 }

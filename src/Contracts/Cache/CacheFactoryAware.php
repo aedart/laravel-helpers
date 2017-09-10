@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Cache;
 use Illuminate\Contracts\Cache\Factory;
 
 /**
- * <h1>Cache Factory Aware</h1>
- *
- * Components are able to specify and obtain a cache factory
+ * Cache Factory Aware
  *
  * @see \Illuminate\Contracts\Cache\Factory
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Cache
  */
 interface CacheFactoryAware
 {
     /**
-     * Set the given cache factory
+     * Set cache factory
      *
-     * @param Factory $factory Instance of the Cache Factory
+     * @param Factory|null $factory Cache Factory instance
      *
-     * @return void
+     * @return self
      */
-    public function setCacheFactory(Factory $factory);
+    public function setCacheFactory(?Factory $factory);
 
     /**
-     * Get the given cache factory
+     * Get cache factory
      *
      * If no cache factory has been set, this method will
      * set and return a default cache factory, if any such
@@ -36,26 +34,19 @@ interface CacheFactoryAware
      *
      * @return Factory|null cache factory or null if none cache factory has been set
      */
-    public function getCacheFactory();
-
-    /**
-     * Get a default cache factory value, if any is available
-     *
-     * @return Factory|null A default cache factory value or Null if no default value is available
-     */
-    public function getDefaultCacheFactory();
+    public function getCacheFactory(): ?Factory;
 
     /**
      * Check if cache factory has been set
      *
      * @return bool True if cache factory has been set, false if not
      */
-    public function hasCacheFactory();
+    public function hasCacheFactory(): bool;
 
     /**
-     * Check if a default cache factory is available or not
+     * Get a default cache factory value, if any is available
      *
-     * @return bool True of a default cache factory is available, false if not
+     * @return Factory|null A default cache factory value or Null if no default value is available
      */
-    public function hasDefaultCacheFactory();
+    public function getDefaultCacheFactory(): ?Factory;
 }
