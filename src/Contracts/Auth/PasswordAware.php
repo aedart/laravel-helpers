@@ -5,29 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Contracts\Auth\PasswordBroker;
 
 /**
- * <h1>Psr Log Aware</h1>
- *
- * Components are able to specify and obtain a Password Broker
- * utility component.
+ * Password Aware
  *
  * @see \Illuminate\Contracts\Auth\PasswordBroker
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Auth
  */
 interface PasswordAware
 {
     /**
-     * Set the given password
+     * Set password
      *
-     * @param PasswordBroker $broker Instance of a Password Broker
+     * @param PasswordBroker|null $broker Password Broker instance
      *
-     * @return void
+     * @return self
      */
-    public function setPassword(PasswordBroker $broker);
+    public function setPassword(?PasswordBroker $broker);
 
     /**
-     * Get the given password
+     * Get password
      *
      * If no password has been set, this method will
      * set and return a default password, if any such
@@ -37,26 +34,19 @@ interface PasswordAware
      *
      * @return PasswordBroker|null password or null if none password has been set
      */
-    public function getPassword();
-
-    /**
-     * Get a default password value, if any is available
-     *
-     * @return PasswordBroker|null A default password value or Null if no default value is available
-     */
-    public function getDefaultPassword();
+    public function getPassword(): ?PasswordBroker;
 
     /**
      * Check if password has been set
      *
      * @return bool True if password has been set, false if not
      */
-    public function hasPassword();
+    public function hasPassword(): bool;
 
     /**
-     * Check if a default password is available or not
+     * Get a default password value, if any is available
      *
-     * @return bool True of a default password is available, false if not
+     * @return PasswordBroker|null A default password value or Null if no default value is available
      */
-    public function hasDefaultPassword();
+    public function getDefaultPassword(): ?PasswordBroker;
 }

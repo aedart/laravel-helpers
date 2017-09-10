@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Auth;
 
@@ -6,36 +7,38 @@ use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Support\Facades\Password;
 
 /**
- * <h1>Password Trait</h1>
+ * Password Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\PasswordAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Auth
  */
 trait PasswordTrait
 {
     /**
-     * Instance of a Password Broker
+     * Password Broker instance
      *
      * @var PasswordBroker|null
      */
     protected $password = null;
 
     /**
-     * Set the given password
+     * Set password
      *
-     * @param PasswordBroker $broker Instance of a Password Broker
+     * @param PasswordBroker|null $broker Password Broker instance
      *
-     * @return void
+     * @return self
      */
-    public function setPassword(PasswordBroker $broker)
+    public function setPassword(?PasswordBroker $broker)
     {
         $this->password = $broker;
+
+        return $this;
     }
 
     /**
-     * Get the given password
+     * Get password
      *
      * If no password has been set, this method will
      * set and return a default password, if any such
@@ -45,12 +48,22 @@ trait PasswordTrait
      *
      * @return PasswordBroker|null password or null if none password has been set
      */
-    public function getPassword()
+    public function getPassword(): ?PasswordBroker
     {
-        if (!$this->hasPassword() && $this->hasDefaultPassword()) {
+        if (!$this->hasPassword()) {
             $this->setPassword($this->getDefaultPassword());
         }
         return $this->password;
+    }
+
+    /**
+     * Check if password has been set
+     *
+     * @return bool True if password has been set, false if not
+     */
+    public function hasPassword(): bool
+    {
+        return isset($this->password);
     }
 
     /**
@@ -58,7 +71,7 @@ trait PasswordTrait
      *
      * @return PasswordBroker|null A default password value or Null if no default value is available
      */
-    public function getDefaultPassword()
+    public function getDefaultPassword(): ?PasswordBroker
     {
         // By default, the Password Facade does not return the
         // any actual password broker, but rather an
@@ -67,30 +80,9 @@ trait PasswordTrait
         // "default broker", to make sure that its only the guard
         // instance that we obtain.
         $manager = Password::getFacadeRoot();
-        if (!is_null($manager)) {
+        if (isset($manager)) {
             return $manager->broker();
         }
         return $manager;
-    }
-
-    /**
-     * Check if password has been set
-     *
-     * @return bool True if password has been set, false if not
-     */
-    public function hasPassword()
-    {
-        return isset($this->password);
-    }
-
-    /**
-     * Check if a default password is available or not
-     *
-     * @return bool True of a default password is available, false if not
-     */
-    public function hasDefaultPassword()
-    {
-        $default = $this->getDefaultPassword();
-        return isset($default);
     }
 }
