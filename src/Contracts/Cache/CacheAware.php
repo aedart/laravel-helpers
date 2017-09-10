@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Cache;
 use Illuminate\Contracts\Cache\Repository;
 
 /**
- * <h1>Cache Aware</h1>
- *
- * Components are able to specify and obtain a cache repository
+ * Cache Aware
  *
  * @see \Illuminate\Contracts\Cache\Repository
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Cache
  */
 interface CacheAware
 {
     /**
-     * Set the given cache
+     * Set cache
      *
-     * @param Repository $repository Instance of a cache repository
+     * @param Repository|null $repository Cache Repository instance
      *
-     * @return void
+     * @return self
      */
-    public function setCache(Repository $repository);
+    public function setCache(?Repository $repository);
 
     /**
-     * Get the given cache
+     * Get cache
      *
      * If no cache has been set, this method will
      * set and return a default cache, if any such
@@ -36,26 +34,19 @@ interface CacheAware
      *
      * @return Repository|null cache or null if none cache has been set
      */
-    public function getCache();
-
-    /**
-     * Get a default cache value, if any is available
-     *
-     * @return Repository|null A default cache value or Null if no default value is available
-     */
-    public function getDefaultCache();
+    public function getCache(): ?Repository;
 
     /**
      * Check if cache has been set
      *
      * @return bool True if cache has been set, false if not
      */
-    public function hasCache();
+    public function hasCache(): bool;
 
     /**
-     * Check if a default cache is available or not
+     * Get a default cache value, if any is available
      *
-     * @return bool True of a default cache is available, false if not
+     * @return Repository|null A default cache value or Null if no default value is available
      */
-    public function hasDefaultCache();
+    public function getDefaultCache(): ?Repository;
 }

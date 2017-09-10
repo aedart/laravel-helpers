@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Cache;
 
@@ -6,36 +7,38 @@ use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * <h1>Cache Trait</h1>
+ * Cache Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Cache\CacheAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Cache
  */
 trait CacheTrait
 {
     /**
-     * Instance of a cache repository
+     * Cache Repository instance
      *
      * @var Repository|null
      */
     protected $cache = null;
 
     /**
-     * Set the given cache
+     * Set cache
      *
-     * @param Repository $repository Instance of a cache repository
+     * @param Repository|null $repository Cache Repository instance
      *
-     * @return void
+     * @return self
      */
-    public function setCache(Repository $repository)
+    public function setCache(?Repository $repository)
     {
         $this->cache = $repository;
+
+        return $this;
     }
 
     /**
-     * Get the given cache
+     * Get cache
      *
      * If no cache has been set, this method will
      * set and return a default cache, if any such
@@ -45,38 +48,12 @@ trait CacheTrait
      *
      * @return Repository|null cache or null if none cache has been set
      */
-    public function getCache()
+    public function getCache(): ?Repository
     {
-        if (!$this->hasCache() && $this->hasDefaultCache()) {
+        if (!$this->hasCache()) {
             $this->setCache($this->getDefaultCache());
         }
         return $this->cache;
-    }
-
-    /**
-     * Get a default cache value, if any is available
-     *
-     * @return Repository|null A default cache value or Null if no default value is available
-     */
-    public function getDefaultCache()
-    {
-        static $cache;
-
-        // By default, the Cache Facade does not return the
-        // any actual cache repository, but rather an
-        // instance of \Illuminate\Cache\CacheManager.
-        // Therefore, we make sure only to obtain its
-        // "store", to make sure that its only the cache repository
-        // instance that we obtain.
-        if(isset($cache)){
-            return $cache;
-        }
-
-        $manager = Cache::getFacadeRoot();
-        if (isset($manager)) {
-            return $cache = $manager->store();
-        }
-        return $manager;
     }
 
     /**
@@ -84,19 +61,28 @@ trait CacheTrait
      *
      * @return bool True if cache has been set, false if not
      */
-    public function hasCache()
+    public function hasCache(): bool
     {
         return isset($this->cache);
     }
 
     /**
-     * Check if a default cache is available or not
+     * Get a default cache value, if any is available
      *
-     * @return bool True of a default cache is available, false if not
+     * @return Repository|null A default cache value or Null if no default value is available
      */
-    public function hasDefaultCache()
+    public function getDefaultCache(): ?Repository
     {
-        $default = $this->getDefaultCache();
-        return isset($default);
+        // By default, the Cache Facade does not return the
+        // any actual cache repository, but rather an
+        // instance of \Illuminate\Cache\CacheManager.
+        // Therefore, we make sure only to obtain its
+        // "store", to make sure that its only the cache repository
+        // instance that we obtain.
+        $manager = Cache::getFacadeRoot();
+        if (isset($manager)) {
+            return $cache = $manager->store();
+        }
+        return $manager;
     }
 }
