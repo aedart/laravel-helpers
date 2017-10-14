@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\View;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\View;
 
 /**
- * <h1>View Trait</h1>
+ * View Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\View\ViewAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\View;
 trait ViewTrait
 {
     /**
-     * Instance of a View Factory
+     * View Factory
      *
      * @var Factory|null
      */
     protected $view = null;
 
     /**
-     * Set the given view
+     * Set view
      *
-     * @param Factory $factory Instance of a View Factory
+     * @param Factory|null $factory View Factory
      *
-     * @return void
+     * @return self
      */
-    public function setView(Factory $factory)
+    public function setView(?Factory $factory)
     {
         $this->view = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given view
+     * Get view
      *
      * If no view has been set, this method will
      * set and return a default view, if any such
@@ -45,22 +48,12 @@ trait ViewTrait
      *
      * @return Factory|null view or null if none view has been set
      */
-    public function getView()
+    public function getView(): ?Factory
     {
-        if (!$this->hasView() && $this->hasDefaultView()) {
+        if (!$this->hasView()) {
             $this->setView($this->getDefaultView());
         }
         return $this->view;
-    }
-
-    /**
-     * Get a default view value, if any is available
-     *
-     * @return Factory|null A default view value or Null if no default value is available
-     */
-    public function getDefaultView()
-    {
-        return View::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait ViewTrait
      *
      * @return bool True if view has been set, false if not
      */
-    public function hasView()
+    public function hasView(): bool
     {
         return isset($this->view);
     }
 
     /**
-     * Check if a default view is available or not
+     * Get a default view value, if any is available
      *
-     * @return bool True of a default view is available, false if not
+     * @return Factory|null A default view value or Null if no default value is available
      */
-    public function hasDefaultView()
+    public function getDefaultView(): ?Factory
     {
-        $default = $this->getDefaultView();
-        return isset($default);
+        return View::getFacadeRoot();
     }
 }
