@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Routing;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Response;
 
 /**
- * <h1>Response Trait</h1>
+ * Response Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Routing\ResponseAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Response;
 trait ResponseTrait
 {
     /**
-     * Instance of a Response Factory
+     * Response Factory Instance
      *
      * @var ResponseFactory|null
      */
     protected $response = null;
 
     /**
-     * Set the given response
+     * Set response
      *
-     * @param ResponseFactory $factory Instance of a Response Factory
+     * @param ResponseFactory|null $factory Response Factory Instance
      *
-     * @return void
+     * @return self
      */
-    public function setResponse(ResponseFactory $factory)
+    public function setResponse(?ResponseFactory $factory)
     {
         $this->response = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given response
+     * Get response
      *
      * If no response has been set, this method will
      * set and return a default response, if any such
@@ -45,22 +48,12 @@ trait ResponseTrait
      *
      * @return ResponseFactory|null response or null if none response has been set
      */
-    public function getResponse()
+    public function getResponse(): ?ResponseFactory
     {
-        if (!$this->hasResponse() && $this->hasDefaultResponse()) {
+        if (!$this->hasResponse()) {
             $this->setResponse($this->getDefaultResponse());
         }
         return $this->response;
-    }
-
-    /**
-     * Get a default response value, if any is available
-     *
-     * @return ResponseFactory|null A default response value or Null if no default value is available
-     */
-    public function getDefaultResponse()
-    {
-        return Response::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait ResponseTrait
      *
      * @return bool True if response has been set, false if not
      */
-    public function hasResponse()
+    public function hasResponse(): bool
     {
         return isset($this->response);
     }
 
     /**
-     * Check if a default response is available or not
+     * Get a default response value, if any is available
      *
-     * @return bool True of a default response is available, false if not
+     * @return ResponseFactory|null A default response value or Null if no default value is available
      */
-    public function hasDefaultResponse()
+    public function getDefaultResponse(): ?ResponseFactory
     {
-        $default = $this->getDefaultResponse();
-        return isset($default);
+        return Response::getFacadeRoot();
     }
 }
