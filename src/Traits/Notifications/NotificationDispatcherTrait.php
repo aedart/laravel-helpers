@@ -1,11 +1,13 @@
 <?php
+declare(strict_types=1);
+
 namespace Aedart\Laravel\Helpers\Traits\Notifications;
 
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Support\Facades\Notification;
 
 /**
- * <h1>Notification Dispatcher Trait</h1>
+ * Notification Dispatcher Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Notifications\NotificationDispatcherAware
  *
@@ -15,26 +17,28 @@ use Illuminate\Support\Facades\Notification;
 trait NotificationDispatcherTrait
 {
     /**
-     * Instance of a Notification Dispatcher
+     * Notification Dispatcher Instance
      *
      * @var Dispatcher|null
      */
     protected $notificationDispatcher = null;
 
     /**
-     * Set the given notification dispatcher
+     * Set notification dispatcher
      *
-     * @param Dispatcher $dispatcher Instance of a Notification Dispatcher
+     * @param Dispatcher|null $dispatcher Notification Dispatcher Instance
      *
-     * @return void
+     * @return self
      */
-    public function setNotificationDispatcher(Dispatcher $dispatcher)
+    public function setNotificationDispatcher(?Dispatcher $dispatcher)
     {
         $this->notificationDispatcher = $dispatcher;
+
+        return $this;
     }
 
     /**
-     * Get the given notification dispatcher
+     * Get notification dispatcher
      *
      * If no notification dispatcher has been set, this method will
      * set and return a default notification dispatcher, if any such
@@ -44,22 +48,12 @@ trait NotificationDispatcherTrait
      *
      * @return Dispatcher|null notification dispatcher or null if none notification dispatcher has been set
      */
-    public function getNotificationDispatcher()
+    public function getNotificationDispatcher(): ?Dispatcher
     {
-        if (!$this->hasNotificationDispatcher() && $this->hasDefaultNotificationDispatcher()) {
+        if (!$this->hasNotificationDispatcher()) {
             $this->setNotificationDispatcher($this->getDefaultNotificationDispatcher());
         }
         return $this->notificationDispatcher;
-    }
-
-    /**
-     * Get a default notification dispatcher value, if any is available
-     *
-     * @return Dispatcher|null A default notification dispatcher value or Null if no default value is available
-     */
-    public function getDefaultNotificationDispatcher()
-    {
-        return Notification::getFacadeRoot();
     }
 
     /**
@@ -67,19 +61,18 @@ trait NotificationDispatcherTrait
      *
      * @return bool True if notification dispatcher has been set, false if not
      */
-    public function hasNotificationDispatcher()
+    public function hasNotificationDispatcher(): bool
     {
         return isset($this->notificationDispatcher);
     }
 
     /**
-     * Check if a default notification dispatcher is available or not
+     * Get a default notification dispatcher value, if any is available
      *
-     * @return bool True of a default notification dispatcher is available, false if not
+     * @return Dispatcher|null A default notification dispatcher value or Null if no default value is available
      */
-    public function hasDefaultNotificationDispatcher()
+    public function getDefaultNotificationDispatcher(): ?Dispatcher
     {
-        $default = $this->getDefaultNotificationDispatcher();
-        return isset($default);
+        return Notification::getFacadeRoot();
     }
 }

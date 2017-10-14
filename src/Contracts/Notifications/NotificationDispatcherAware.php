@@ -5,10 +5,7 @@ namespace Aedart\Laravel\Helpers\Contracts\Notifications;
 use Illuminate\Contracts\Notifications\Dispatcher;
 
 /**
- * <h1>Notification Dispatcher Aware></h1>
- *
- * Components is aware of a notification dispatcher, which can also
- * be specified
+ * Notification Dispatcher Aware
  *
  * @see \Illuminate\Contracts\Notifications\Dispatcher
  *
@@ -18,16 +15,16 @@ use Illuminate\Contracts\Notifications\Dispatcher;
 interface NotificationDispatcherAware
 {
     /**
-     * Set the given notification dispatcher
+     * Set notification dispatcher
      *
-     * @param Dispatcher $dispatcher Instance of a Notification Dispatcher
+     * @param Dispatcher|null $dispatcher Notification Dispatcher Instance
      *
-     * @return void
+     * @return self
      */
-    public function setNotificationDispatcher(Dispatcher $dispatcher);
+    public function setNotificationDispatcher(?Dispatcher $dispatcher);
 
     /**
-     * Get the given notification dispatcher
+     * Get notification dispatcher
      *
      * If no notification dispatcher has been set, this method will
      * set and return a default notification dispatcher, if any such
@@ -37,26 +34,19 @@ interface NotificationDispatcherAware
      *
      * @return Dispatcher|null notification dispatcher or null if none notification dispatcher has been set
      */
-    public function getNotificationDispatcher();
-
-    /**
-     * Get a default notification dispatcher value, if any is available
-     *
-     * @return Dispatcher|null A default notification dispatcher value or Null if no default value is available
-     */
-    public function getDefaultNotificationDispatcher();
+    public function getNotificationDispatcher(): ?Dispatcher;
 
     /**
      * Check if notification dispatcher has been set
      *
      * @return bool True if notification dispatcher has been set, false if not
      */
-    public function hasNotificationDispatcher();
+    public function hasNotificationDispatcher(): bool;
 
     /**
-     * Check if a default notification dispatcher is available or not
+     * Get a default notification dispatcher value, if any is available
      *
-     * @return bool True of a default notification dispatcher is available, false if not
+     * @return Dispatcher|null A default notification dispatcher value or Null if no default value is available
      */
-    public function hasDefaultNotificationDispatcher();
+    public function getDefaultNotificationDispatcher(): ?Dispatcher;
 }
