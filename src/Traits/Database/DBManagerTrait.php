@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Database;
 
@@ -6,36 +7,38 @@ use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\Facades\DB;
 
 /**
- * <h1>DB Manager Trait</h1>
+ * DB Manager Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Database\DBManagerAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Database
  */
 trait DBManagerTrait
 {
     /**
-     * Instance of the Database Manager
+     * DB Manager Instance
      *
      * @var DatabaseManager|null
      */
     protected $dbManager = null;
 
     /**
-     * Set the given db manager
+     * Set db manager
      *
-     * @param DatabaseManager $manager Instance of the Database Manager
+     * @param DatabaseManager|null $manager DB Manager Instance
      *
-     * @return void
+     * @return self
      */
-    public function setDbManager(DatabaseManager $manager)
+    public function setDbManager(?DatabaseManager $manager)
     {
         $this->dbManager = $manager;
+
+        return $this;
     }
 
     /**
-     * Get the given db manager
+     * Get db manager
      *
      * If no db manager has been set, this method will
      * set and return a default db manager, if any such
@@ -45,22 +48,12 @@ trait DBManagerTrait
      *
      * @return DatabaseManager|null db manager or null if none db manager has been set
      */
-    public function getDbManager()
+    public function getDbManager(): ?DatabaseManager
     {
-        if (!$this->hasDbManager() && $this->hasDefaultDbManager()) {
+        if (!$this->hasDbManager()) {
             $this->setDbManager($this->getDefaultDbManager());
         }
         return $this->dbManager;
-    }
-
-    /**
-     * Get a default db manager value, if any is available
-     *
-     * @return DatabaseManager|null A default db manager value or Null if no default value is available
-     */
-    public function getDefaultDbManager()
-    {
-        return DB::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait DBManagerTrait
      *
      * @return bool True if db manager has been set, false if not
      */
-    public function hasDbManager()
+    public function hasDbManager(): bool
     {
         return isset($this->dbManager);
     }
 
     /**
-     * Check if a default db manager is available or not
+     * Get a default db manager value, if any is available
      *
-     * @return bool True of a default db manager is available, false if not
+     * @return DatabaseManager|null A default db manager value or Null if no default value is available
      */
-    public function hasDefaultDbManager()
+    public function getDefaultDbManager(): ?DatabaseManager
     {
-        $default = $this->getDefaultDbManager();
-        return isset($default);
+        return DB::getFacadeRoot();
     }
 }

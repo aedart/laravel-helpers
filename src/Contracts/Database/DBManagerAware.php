@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Database;
 use Illuminate\Database\DatabaseManager;
 
 /**
- * <h1>DB Manager Aware</h1>
- *
- * Components are able to specify and obtain a database manager
+ * DB Manager Aware
  *
  * @see \Illuminate\Database\DatabaseManager
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Database
  */
 interface DBManagerAware
 {
     /**
-     * Set the given db manager
+     * Set db manager
      *
-     * @param DatabaseManager $manager Instance of the Database Manager
+     * @param DatabaseManager|null $manager DB Manager Instance
      *
-     * @return void
+     * @return self
      */
-    public function setDbManager(DatabaseManager $manager);
+    public function setDbManager(?DatabaseManager $manager);
 
     /**
-     * Get the given db manager
+     * Get db manager
      *
      * If no db manager has been set, this method will
      * set and return a default db manager, if any such
@@ -36,26 +34,19 @@ interface DBManagerAware
      *
      * @return DatabaseManager|null db manager or null if none db manager has been set
      */
-    public function getDbManager();
-
-    /**
-     * Get a default db manager value, if any is available
-     *
-     * @return DatabaseManager|null A default db manager value or Null if no default value is available
-     */
-    public function getDefaultDbManager();
+    public function getDbManager(): ?DatabaseManager;
 
     /**
      * Check if db manager has been set
      *
      * @return bool True if db manager has been set, false if not
      */
-    public function hasDbManager();
+    public function hasDbManager(): bool;
 
     /**
-     * Check if a default db manager is available or not
+     * Get a default db manager value, if any is available
      *
-     * @return bool True of a default db manager is available, false if not
+     * @return DatabaseManager|null A default db manager value or Null if no default value is available
      */
-    public function hasDefaultDbManager();
+    public function getDefaultDbManager(): ?DatabaseManager;
 }
