@@ -5,30 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Validation;
 use Illuminate\Contracts\Validation\Factory;
 
 /**
- * <h1>Validator Aware</h1>
- *
- * Components are able to specify and obtain a validator factory,
- * able of making various validation instances
+ * Validator Aware
  *
  * @see \Illuminate\Contracts\Validation\Factory
- * @see \Illuminate\Contracts\Validation\Validator
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits\Validation
+ * @package Aedart\Laravel\Helpers\Contracts\Validation
  */
 interface ValidatorAware
 {
     /**
-     * Set the given validator
+     * Set validator
      *
-     * @param Factory $factory Instance of a validator factory
+     * @param Factory|null $factory Validator Factory Instance
      *
-     * @return void
+     * @return self
      */
-    public function setValidator(Factory $factory);
+    public function setValidator(?Factory $factory);
 
     /**
-     * Get the given validator
+     * Get validator
      *
      * If no validator has been set, this method will
      * set and return a default validator, if any such
@@ -38,26 +34,19 @@ interface ValidatorAware
      *
      * @return Factory|null validator or null if none validator has been set
      */
-    public function getValidator();
-
-    /**
-     * Get a default validator value, if any is available
-     *
-     * @return Factory|null A default validator value or Null if no default value is available
-     */
-    public function getDefaultValidator();
+    public function getValidator(): ?Factory;
 
     /**
      * Check if validator has been set
      *
      * @return bool True if validator has been set, false if not
      */
-    public function hasValidator();
+    public function hasValidator(): bool;
 
     /**
-     * Check if a default validator is available or not
+     * Get a default validator value, if any is available
      *
-     * @return bool True of a default validator is available, false if not
+     * @return Factory|null A default validator value or Null if no default value is available
      */
-    public function hasDefaultValidator();
+    public function getDefaultValidator(): ?Factory;
 }

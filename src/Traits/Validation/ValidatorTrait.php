@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Validation;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * <h1>Validator Trait</h1>
+ * Validator Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Validation\ValidatorAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Validator;
 trait ValidatorTrait
 {
     /**
-     * Instance of a validator factory
+     * Validator Factory Instance
      *
      * @var Factory|null
      */
     protected $validator = null;
 
     /**
-     * Set the given validator
+     * Set validator
      *
-     * @param Factory $factory Instance of a validator factory
+     * @param Factory|null $factory Validator Factory Instance
      *
-     * @return void
+     * @return self
      */
-    public function setValidator(Factory $factory)
+    public function setValidator(?Factory $factory)
     {
         $this->validator = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given validator
+     * Get validator
      *
      * If no validator has been set, this method will
      * set and return a default validator, if any such
@@ -45,22 +48,12 @@ trait ValidatorTrait
      *
      * @return Factory|null validator or null if none validator has been set
      */
-    public function getValidator()
+    public function getValidator(): ?Factory
     {
-        if (!$this->hasValidator() && $this->hasDefaultValidator()) {
+        if (!$this->hasValidator()) {
             $this->setValidator($this->getDefaultValidator());
         }
         return $this->validator;
-    }
-
-    /**
-     * Get a default validator value, if any is available
-     *
-     * @return Factory|null A default validator value or Null if no default value is available
-     */
-    public function getDefaultValidator()
-    {
-        return Validator::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait ValidatorTrait
      *
      * @return bool True if validator has been set, false if not
      */
-    public function hasValidator()
+    public function hasValidator(): bool
     {
         return isset($this->validator);
     }
 
     /**
-     * Check if a default validator is available or not
+     * Get a default validator value, if any is available
      *
-     * @return bool True of a default validator is available, false if not
+     * @return Factory|null A default validator value or Null if no default value is available
      */
-    public function hasDefaultValidator()
+    public function getDefaultValidator(): ?Factory
     {
-        $default = $this->getDefaultValidator();
-        return isset($default);
+        return Validator::getFacadeRoot();
     }
 }
