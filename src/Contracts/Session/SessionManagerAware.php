@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Session;
 use Illuminate\Session\SessionManager;
 
 /**
- * <h1>Session manager Aware</h1>
- *
- * Components are able to specify and obtain Laravel's Session Manager
+ * Session Manager Aware
  *
  * @see \Illuminate\Session\SessionManager
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits\Session
+ * @package Aedart\Laravel\Helpers\Contracts\Session
  */
 interface SessionManagerAware
 {
     /**
-     * Set the given session manager
+     * Set session manager
      *
-     * @param SessionManager $manager Instance of Laravel's Session Manager
+     * @param SessionManager|null $manager Session Manager Instance
      *
-     * @return void
+     * @return self
      */
-    public function setSessionManager(SessionManager $manager);
+    public function setSessionManager(?SessionManager $manager);
 
     /**
-     * Get the given session manager
+     * Get session manager
      *
      * If no session manager has been set, this method will
      * set and return a default session manager, if any such
@@ -36,26 +34,19 @@ interface SessionManagerAware
      *
      * @return SessionManager|null session manager or null if none session manager has been set
      */
-    public function getSessionManager();
-
-    /**
-     * Get a default session manager value, if any is available
-     *
-     * @return SessionManager|null A default session manager value or Null if no default value is available
-     */
-    public function getDefaultSessionManager();
+    public function getSessionManager(): ?SessionManager;
 
     /**
      * Check if session manager has been set
      *
      * @return bool True if session manager has been set, false if not
      */
-    public function hasSessionManager();
+    public function hasSessionManager(): bool;
 
     /**
-     * Check if a default session manager is available or not
+     * Get a default session manager value, if any is available
      *
-     * @return bool True of a default session manager is available, false if not
+     * @return SessionManager|null A default session manager value or Null if no default value is available
      */
-    public function hasDefaultSessionManager();
+    public function getDefaultSessionManager(): ?SessionManager;
 }

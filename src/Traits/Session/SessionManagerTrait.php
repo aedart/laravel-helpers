@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Session;
 
@@ -6,7 +7,7 @@ use Illuminate\Session\SessionManager;
 use Illuminate\Support\Facades\Session;
 
 /**
- * <h1>Session Manager Trait</h1>
+ * Session Manager Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Session\SessionManagerAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Session;
 trait SessionManagerTrait
 {
     /**
-     * Instance of Laravel's Session Manager
+     * Session Manager Instance
      *
      * @var SessionManager|null
      */
     protected $sessionManager = null;
 
     /**
-     * Set the given session manager
+     * Set session manager
      *
-     * @param SessionManager $manager Instance of Laravel's Session Manager
+     * @param SessionManager|null $manager Session Manager Instance
      *
-     * @return void
+     * @return self
      */
-    public function setSessionManager(SessionManager $manager)
+    public function setSessionManager(?SessionManager $manager)
     {
         $this->sessionManager = $manager;
+
+        return $this;
     }
 
     /**
-     * Get the given session manager
+     * Get session manager
      *
      * If no session manager has been set, this method will
      * set and return a default session manager, if any such
@@ -45,22 +48,12 @@ trait SessionManagerTrait
      *
      * @return SessionManager|null session manager or null if none session manager has been set
      */
-    public function getSessionManager()
+    public function getSessionManager(): ?SessionManager
     {
-        if (!$this->hasSessionManager() && $this->hasDefaultSessionManager()) {
+        if (!$this->hasSessionManager()) {
             $this->setSessionManager($this->getDefaultSessionManager());
         }
         return $this->sessionManager;
-    }
-
-    /**
-     * Get a default session manager value, if any is available
-     *
-     * @return SessionManager|null A default session manager value or Null if no default value is available
-     */
-    public function getDefaultSessionManager()
-    {
-        return Session::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait SessionManagerTrait
      *
      * @return bool True if session manager has been set, false if not
      */
-    public function hasSessionManager()
+    public function hasSessionManager(): bool
     {
         return isset($this->sessionManager);
     }
 
     /**
-     * Check if a default session manager is available or not
+     * Get a default session manager value, if any is available
      *
-     * @return bool True of a default session manager is available, false if not
+     * @return SessionManager|null A default session manager value or Null if no default value is available
      */
-    public function hasDefaultSessionManager()
+    public function getDefaultSessionManager(): ?SessionManager
     {
-        $default = $this->getDefaultSessionManager();
-        return isset($default);
+        return Session::getFacadeRoot();
     }
 }
