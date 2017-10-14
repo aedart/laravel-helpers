@@ -1,10 +1,13 @@
-<?php namespace Aedart\Laravel\Helpers\Traits\Redis;
+<?php
+declare(strict_types=1);
+
+namespace Aedart\Laravel\Helpers\Traits\Redis;
 
 use Illuminate\Redis\Connections\Connection;
 use Illuminate\Support\Facades\Redis;
 
 /**
- * <h1>Redis Trait</h1>
+ * Redis Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Redis\RedisAware
  *
@@ -14,26 +17,28 @@ use Illuminate\Support\Facades\Redis;
 trait RedisTrait
 {
     /**
-     * Instance of a Redis Connection
+     * Redis Connection Instance
      *
      * @var Connection|null
      */
     protected $redis = null;
 
     /**
-     * Set the given redis
+     * Set redis
      *
-     * @param Connection $connection Instance of a Redis Connection
+     * @param Connection|null $connection Redis Connection Instance
      *
-     * @return void
+     * @return self
      */
-    public function setRedis(Connection $connection)
+    public function setRedis(?Connection $connection)
     {
         $this->redis = $connection;
+
+        return $this;
     }
 
     /**
-     * Get the given redis
+     * Get redis
      *
      * If no redis has been set, this method will
      * set and return a default redis, if any such
@@ -43,32 +48,12 @@ trait RedisTrait
      *
      * @return Connection|null redis or null if none redis has been set
      */
-    public function getRedis()
+    public function getRedis(): ?Connection
     {
-        if (!$this->hasRedis() && $this->hasDefaultRedis()) {
+        if (!$this->hasRedis()) {
             $this->setRedis($this->getDefaultRedis());
         }
         return $this->redis;
-    }
-
-    /**
-     * Get a default redis value, if any is available
-     *
-     * @return Connection|null A default redis value or Null if no default value is available
-     */
-    public function getDefaultRedis()
-    {
-
-        // From Laravel 5.4, the redis facade now returns the
-        // Redis Manager, which is why we must use it to obtain
-        // the default Redis connection. Thus, the
-        // "Illuminate\Contracts\Redis\Database" interface is no
-        // longer used.
-        $factory = Redis::getFacadeRoot();
-        if (!is_null($factory)) {
-            return $factory->connection();
-        }
-        return $factory;
     }
 
     /**
@@ -76,19 +61,27 @@ trait RedisTrait
      *
      * @return bool True if redis has been set, false if not
      */
-    public function hasRedis()
+    public function hasRedis(): bool
     {
         return isset($this->redis);
     }
 
     /**
-     * Check if a default redis is available or not
+     * Get a default redis value, if any is available
      *
-     * @return bool True of a default redis is available, false if not
+     * @return Connection|null A default redis value or Null if no default value is available
      */
-    public function hasDefaultRedis()
+    public function getDefaultRedis(): ?Connection
     {
-        $default = $this->getDefaultRedis();
-        return isset($default);
+        // From Laravel 5.4, the redis facade now returns the
+        // Redis Manager, which is why we must use it to obtain
+        // the default Redis connection. Thus, the
+        // "Illuminate\Contracts\Redis\Database" interface is no
+        // longer used.
+        $factory = Redis::getFacadeRoot();
+        if (isset($factory)) {
+            return $factory->connection();
+        }
+        return $factory;
     }
 }

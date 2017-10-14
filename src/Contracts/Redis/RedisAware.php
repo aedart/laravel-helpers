@@ -5,29 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Redis;
 use Illuminate\Redis\Connections\Connection;
 
 /**
- * <h1>Redis Aware</h1>
- *
- * Components are able to specify and obtain a Redis Database
- * utility component.
+ * Redis Aware
  *
  * @see \Illuminate\Redis\Connections\Connection
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits\Redis
+ * @package Aedart\Laravel\Helpers\Contracts\Redis
  */
 interface RedisAware
 {
     /**
-     * Set the given redis
+     * Set redis
      *
-     * @param Connection $connection Instance of a Redis Connection
+     * @param Connection|null $connection Redis Connection Instance
      *
-     * @return void
+     * @return self
      */
-    public function setRedis(Connection $connection);
+    public function setRedis(?Connection $connection);
 
     /**
-     * Get the given redis
+     * Get redis
      *
      * If no redis has been set, this method will
      * set and return a default redis, if any such
@@ -37,26 +34,19 @@ interface RedisAware
      *
      * @return Connection|null redis or null if none redis has been set
      */
-    public function getRedis();
-
-    /**
-     * Get a default redis value, if any is available
-     *
-     * @return Connection|null A default redis value or Null if no default value is available
-     */
-    public function getDefaultRedis();
+    public function getRedis(): ?Connection;
 
     /**
      * Check if redis has been set
      *
      * @return bool True if redis has been set, false if not
      */
-    public function hasRedis();
+    public function hasRedis(): bool;
 
     /**
-     * Check if a default redis is available or not
+     * Get a default redis value, if any is available
      *
-     * @return bool True of a default redis is available, false if not
+     * @return Connection|null A default redis value or Null if no default value is available
      */
-    public function hasDefaultRedis();
+    public function getDefaultRedis(): ?Connection;
 }
