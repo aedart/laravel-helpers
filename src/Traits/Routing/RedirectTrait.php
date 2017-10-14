@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Routing;
 
@@ -6,7 +7,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redirect;
 
 /**
- * <h1>Redirect Trait</h1>
+ * Redirect Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Routing\RedirectAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Redirect;
 trait RedirectTrait
 {
     /**
-     * Instance of Laravel's Redirector
+     * Redirector Instance
      *
      * @var Redirector|null
      */
     protected $redirect = null;
 
     /**
-     * Set the given redirect
+     * Set redirect
      *
-     * @param Redirector $redirector Instance of Laravel's Redirector
+     * @param Redirector|null $redirector Redirector Instance
      *
-     * @return void
+     * @return self
      */
-    public function setRedirect(Redirector $redirector)
+    public function setRedirect(?Redirector $redirector)
     {
         $this->redirect = $redirector;
+
+        return $this;
     }
 
     /**
-     * Get the given redirect
+     * Get redirect
      *
      * If no redirect has been set, this method will
      * set and return a default redirect, if any such
@@ -45,22 +48,12 @@ trait RedirectTrait
      *
      * @return Redirector|null redirect or null if none redirect has been set
      */
-    public function getRedirect()
+    public function getRedirect(): ?Redirector
     {
-        if (!$this->hasRedirect() && $this->hasDefaultRedirect()) {
+        if (!$this->hasRedirect()) {
             $this->setRedirect($this->getDefaultRedirect());
         }
         return $this->redirect;
-    }
-
-    /**
-     * Get a default redirect value, if any is available
-     *
-     * @return Redirector|null A default redirect value or Null if no default value is available
-     */
-    public function getDefaultRedirect()
-    {
-        return Redirect::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait RedirectTrait
      *
      * @return bool True if redirect has been set, false if not
      */
-    public function hasRedirect()
+    public function hasRedirect(): bool
     {
         return isset($this->redirect);
     }
 
     /**
-     * Check if a default redirect is available or not
+     * Get a default redirect value, if any is available
      *
-     * @return bool True of a default redirect is available, false if not
+     * @return Redirector|null A default redirect value or Null if no default value is available
      */
-    public function hasDefaultRedirect()
+    public function getDefaultRedirect(): ?Redirector
     {
-        $default = $this->getDefaultRedirect();
-        return isset($default);
+        return Redirect::getFacadeRoot();
     }
 }

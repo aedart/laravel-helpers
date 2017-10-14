@@ -5,29 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Routing;
 use Illuminate\Routing\Redirector;
 
 /**
- * <h1>Redirect Aware</h1>
- *
- * Components are able to specify and obtain a Laravel Redirector
- * utility component.
+ * Redirect Aware
  *
  * @see \Illuminate\Routing\Redirector
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits\Routing
+ * @package Aedart\Laravel\Helpers\Contracts\Routing
  */
 interface RedirectAware
 {
     /**
-     * Set the given redirect
+     * Set redirect
      *
-     * @param Redirector $redirector Instance of Laravel's Redirector
+     * @param Redirector|null $redirector Redirector Instance
      *
-     * @return void
+     * @return self
      */
-    public function setRedirect(Redirector $redirector);
+    public function setRedirect(?Redirector $redirector);
 
     /**
-     * Get the given redirect
+     * Get redirect
      *
      * If no redirect has been set, this method will
      * set and return a default redirect, if any such
@@ -37,26 +34,19 @@ interface RedirectAware
      *
      * @return Redirector|null redirect or null if none redirect has been set
      */
-    public function getRedirect();
-
-    /**
-     * Get a default redirect value, if any is available
-     *
-     * @return Redirector|null A default redirect value or Null if no default value is available
-     */
-    public function getDefaultRedirect();
+    public function getRedirect(): ?Redirector;
 
     /**
      * Check if redirect has been set
      *
      * @return bool True if redirect has been set, false if not
      */
-    public function hasRedirect();
+    public function hasRedirect(): bool;
 
     /**
-     * Check if a default redirect is available or not
+     * Get a default redirect value, if any is available
      *
-     * @return bool True of a default redirect is available, false if not
+     * @return Redirector|null A default redirect value or Null if no default value is available
      */
-    public function hasDefaultRedirect();
+    public function getDefaultRedirect(): ?Redirector;
 }
