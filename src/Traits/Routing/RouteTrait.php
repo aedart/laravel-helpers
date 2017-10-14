@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Routing;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Support\Facades\Route;
 
 /**
- * <h1>Route Trait</h1>
+ * Route Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Routing\RouteAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Route;
 trait RouteTrait
 {
     /**
-     * Instance of a Route Registrar
+     * Route Registrar Instance
      *
      * @var Registrar|null
      */
     protected $route = null;
 
     /**
-     * Set the given route
+     * Set route
      *
-     * @param Registrar $registrar Instance of a Route Registrar
+     * @param Registrar|null $registrar Route Registrar Instance
      *
-     * @return void
+     * @return self
      */
-    public function setRoute(Registrar $registrar)
+    public function setRoute(?Registrar $registrar)
     {
         $this->route = $registrar;
+
+        return $this;
     }
 
     /**
-     * Get the given route
+     * Get route
      *
      * If no route has been set, this method will
      * set and return a default route, if any such
@@ -45,22 +48,12 @@ trait RouteTrait
      *
      * @return Registrar|null route or null if none route has been set
      */
-    public function getRoute()
+    public function getRoute(): ?Registrar
     {
-        if (!$this->hasRoute() && $this->hasDefaultRoute()) {
+        if (!$this->hasRoute()) {
             $this->setRoute($this->getDefaultRoute());
         }
         return $this->route;
-    }
-
-    /**
-     * Get a default route value, if any is available
-     *
-     * @return Registrar|null A default route value or Null if no default value is available
-     */
-    public function getDefaultRoute()
-    {
-        return Route::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait RouteTrait
      *
      * @return bool True if route has been set, false if not
      */
-    public function hasRoute()
+    public function hasRoute(): bool
     {
         return isset($this->route);
     }
 
     /**
-     * Check if a default route is available or not
+     * Get a default route value, if any is available
      *
-     * @return bool True of a default route is available, false if not
+     * @return Registrar|null A default route value or Null if no default value is available
      */
-    public function hasDefaultRoute()
+    public function getDefaultRoute(): ?Registrar
     {
-        $default = $this->getDefaultRoute();
-        return isset($default);
+        return Route::getFacadeRoot();
     }
 }
