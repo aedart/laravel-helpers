@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Database;
 
@@ -6,36 +7,38 @@ use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Facades\DB;
 
 /**
- * <h1>DB Trait</h1>
+ * DB Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Database\DBAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Database
  */
 trait DBTrait
 {
     /**
-     * Instance of a database connection
+     * Database Connection Instance
      *
      * @var ConnectionInterface|null
      */
     protected $db = null;
 
     /**
-     * Set the given db
+     * Set db
      *
-     * @param ConnectionInterface $connection Instance of a database connection
+     * @param ConnectionInterface|null $connection Database Connection Instance
      *
-     * @return void
+     * @return self
      */
-    public function setDb(ConnectionInterface $connection)
+    public function setDb(?ConnectionInterface $connection)
     {
         $this->db = $connection;
+
+        return $this;
     }
 
     /**
-     * Get the given db
+     * Get db
      *
      * If no db has been set, this method will
      * set and return a default db, if any such
@@ -45,12 +48,22 @@ trait DBTrait
      *
      * @return ConnectionInterface|null db or null if none db has been set
      */
-    public function getDb()
+    public function getDb(): ?ConnectionInterface
     {
-        if (!$this->hasDb() && $this->hasDefaultDb()) {
+        if (!$this->hasDb()) {
             $this->setDb($this->getDefaultDb());
         }
         return $this->db;
+    }
+
+    /**
+     * Check if db has been set
+     *
+     * @return bool True if db has been set, false if not
+     */
+    public function hasDb(): bool
+    {
+        return isset($this->db);
     }
 
     /**
@@ -58,7 +71,7 @@ trait DBTrait
      *
      * @return ConnectionInterface|null A default db value or Null if no default value is available
      */
-    public function getDefaultDb()
+    public function getDefaultDb(): ?ConnectionInterface
     {
         // By default, the DB Facade does not return the
         // any actual database connection, but rather an
@@ -67,30 +80,9 @@ trait DBTrait
         // "connection", to make sure that its only the connection
         // instance that we obtain.
         $manager = DB::getFacadeRoot();
-        if (!is_null($manager)) {
+        if (isset($manager)) {
             return $manager->connection();
         }
         return $manager;
-    }
-
-    /**
-     * Check if db has been set
-     *
-     * @return bool True if db has been set, false if not
-     */
-    public function hasDb()
-    {
-        return isset($this->db);
-    }
-
-    /**
-     * Check if a default db is available or not
-     *
-     * @return bool True of a default db is available, false if not
-     */
-    public function hasDefaultDb()
-    {
-        $default = $this->getDefaultDb();
-        return isset($default);
     }
 }
