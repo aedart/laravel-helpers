@@ -5,29 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Logging;
 use Psr\Log\LoggerInterface;
 
 /**
- * <h1>Psr Log Aware</h1>
- *
- * Components are able to specify and obtain a Psr logger
- * utility component.
+ * Psr Logger Aware
  *
  * @see \Psr\Log\LoggerInterface
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Logging
  */
 interface PsrLogAware
 {
     /**
-     * Set the given psr log
+     * Set psr log
      *
-     * @param LoggerInterface $logger Instance of a Psr Logger
+     * @param LoggerInterface|null $logger Prs Logger
      *
-     * @return void
+     * @return \Aedart\Laravel\Helpers\Traits\Logging\PsrLogTrait
      */
-    public function setPsrLog(LoggerInterface $logger);
+    public function setPsrLog(?LoggerInterface $logger);
 
     /**
-     * Get the given psr log
+     * Get psr log
      *
      * If no psr log has been set, this method will
      * set and return a default psr log, if any such
@@ -37,26 +34,19 @@ interface PsrLogAware
      *
      * @return LoggerInterface|null psr log or null if none psr log has been set
      */
-    public function getPsrLog();
-
-    /**
-     * Get a default psr log value, if any is available
-     *
-     * @return LoggerInterface|null A default psr log value or Null if no default value is available
-     */
-    public function getDefaultPsrLog();
+    public function getPsrLog(): ?LoggerInterface;
 
     /**
      * Check if psr log has been set
      *
      * @return bool True if psr log has been set, false if not
      */
-    public function hasPsrLog();
+    public function hasPsrLog(): bool;
 
     /**
-     * Check if a default psr log is available or not
+     * Get a default psr log value, if any is available
      *
-     * @return bool True of a default psr log is available, false if not
+     * @return LoggerInterface|null A default psr log value or Null if no default value is available
      */
-    public function hasDefaultPsrLog();
+    public function getDefaultPsrLog(): ?LoggerInterface;
 }
