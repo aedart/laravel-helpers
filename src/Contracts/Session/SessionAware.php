@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Session;
 use Illuminate\Contracts\Session\Session;
 
 /**
- * <h1>Session Aware</h1>
- *
- * Components are able to specify and obtain a session instance
+ * Session Aware
  *
  * @see \Illuminate\Contracts\Session\Session
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits\Session
+ * @package Aedart\Laravel\Helpers\Contracts\Session
  */
 interface SessionAware
 {
     /**
-     * Set the given session
+     * Set session
      *
-     * @param Session $session Instance of a Session
+     * @param Session|null $session Session Instance
      *
-     * @return void
+     * @return self
      */
-    public function setSession(Session $session);
+    public function setSession(?Session $session);
 
     /**
-     * Get the given session
+     * Get session
      *
      * If no session has been set, this method will
      * set and return a default session, if any such
@@ -36,26 +34,19 @@ interface SessionAware
      *
      * @return Session|null session or null if none session has been set
      */
-    public function getSession();
-
-    /**
-     * Get a default session value, if any is available
-     *
-     * @return Session|null A default session value or Null if no default value is available
-     */
-    public function getDefaultSession();
+    public function getSession(): ?Session;
 
     /**
      * Check if session has been set
      *
      * @return bool True if session has been set, false if not
      */
-    public function hasSession();
+    public function hasSession(): bool;
 
     /**
-     * Check if a default session is available or not
+     * Get a default session value, if any is available
      *
-     * @return bool True of a default session is available, false if not
+     * @return Session|null A default session value or Null if no default value is available
      */
-    public function hasDefaultSession();
+    public function getDefaultSession(): ?Session;
 }
