@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Filesystem;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * <h1>Storage (Disk) Trait</h1>
+ * Cloud Storage Filesystem Disk Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Filesystem\StorageAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Storage;
 trait StorageTrait
 {
     /**
-     * Instance of a Storage Disk (a Filesystem instance)
+     * Storage Disk Instance (Cloud Storage Filesystem disk)
      *
      * @var Filesystem|null
      */
     protected $storage = null;
 
     /**
-     * Set the given storage
+     * Set storage
      *
-     * @param Filesystem $disk Instance of a Storage Disk (a Filesystem instance)
+     * @param Filesystem|null $disk Storage Disk Instance (Cloud Storage Filesystem disk)
      *
-     * @return void
+     * @return self
      */
-    public function setStorage(Filesystem $disk)
+    public function setStorage(?Filesystem $disk)
     {
         $this->storage = $disk;
+
+        return $this;
     }
 
     /**
-     * Get the given storage
+     * Get storage
      *
      * If no storage has been set, this method will
      * set and return a default storage, if any such
@@ -45,12 +48,22 @@ trait StorageTrait
      *
      * @return Filesystem|null storage or null if none storage has been set
      */
-    public function getStorage()
+    public function getStorage(): ?Filesystem
     {
-        if (!$this->hasStorage() && $this->hasDefaultStorage()) {
+        if (!$this->hasStorage()) {
             $this->setStorage($this->getDefaultStorage());
         }
         return $this->storage;
+    }
+
+    /**
+     * Check if storage has been set
+     *
+     * @return bool True if storage has been set, false if not
+     */
+    public function hasStorage(): bool
+    {
+        return isset($this->storage);
     }
 
     /**
@@ -58,7 +71,7 @@ trait StorageTrait
      *
      * @return Filesystem|null A default storage value or Null if no default value is available
      */
-    public function getDefaultStorage()
+    public function getDefaultStorage(): ?Filesystem
     {
         // By default, the Storage Facade does not return the
         // any actual storage fisk, but rather an
@@ -67,30 +80,9 @@ trait StorageTrait
         // "disk", to make sure that its the correct
         // instance that we obtain.
         $manager = Storage::getFacadeRoot();
-        if (!is_null($manager)) {
+        if (isset($manager)) {
             return $manager->disk();
         }
         return $manager;
-    }
-
-    /**
-     * Check if storage has been set
-     *
-     * @return bool True if storage has been set, false if not
-     */
-    public function hasStorage()
-    {
-        return isset($this->storage);
-    }
-
-    /**
-     * Check if a default storage is available or not
-     *
-     * @return bool True of a default storage is available, false if not
-     */
-    public function hasDefaultStorage()
-    {
-        $default = $this->getDefaultStorage();
-        return isset($default);
     }
 }

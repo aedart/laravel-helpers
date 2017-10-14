@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
 use Illuminate\Contracts\Filesystem\Filesystem;
 
 /**
- * <h1>Storage (Disk) Aware</h1>
- *
- * Components are able to specify and obtain a storage disk - a filesystem instance
+ * Cloud Storage Filesystem disk Aware
  *
  * @see \Illuminate\Contracts\Filesystem\Filesystem
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits\Filesystem
+ * @package Aedart\Laravel\Helpers\Contracts\Filesystem
  */
 interface StorageAware
 {
     /**
-     * Set the given storage
+     * Set storage
      *
-     * @param Filesystem $disk Instance of a Storage Disk (a Filesystem instance)
+     * @param Filesystem|null $disk Storage Disk Instance (Cloud Storage Filesystem disk)
      *
-     * @return void
+     * @return self
      */
-    public function setStorage(Filesystem $disk);
+    public function setStorage(?Filesystem $disk);
 
     /**
-     * Get the given storage
+     * Get storage
      *
      * If no storage has been set, this method will
      * set and return a default storage, if any such
@@ -36,26 +34,19 @@ interface StorageAware
      *
      * @return Filesystem|null storage or null if none storage has been set
      */
-    public function getStorage();
-
-    /**
-     * Get a default storage value, if any is available
-     *
-     * @return Filesystem|null A default storage value or Null if no default value is available
-     */
-    public function getDefaultStorage();
+    public function getStorage(): ?Filesystem;
 
     /**
      * Check if storage has been set
      *
      * @return bool True if storage has been set, false if not
      */
-    public function hasStorage();
+    public function hasStorage(): bool;
 
     /**
-     * Check if a default storage is available or not
+     * Get a default storage value, if any is available
      *
-     * @return bool True of a default storage is available, false if not
+     * @return Filesystem|null A default storage value or Null if no default value is available
      */
-    public function hasDefaultStorage();
+    public function getDefaultStorage(): ?Filesystem;
 }
