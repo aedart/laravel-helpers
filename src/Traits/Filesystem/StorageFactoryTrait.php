@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Filesystem;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * <h1>Storage Factory Trait</h1>
+ * Cloud Storage Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Filesystem\StorageFactoryAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Storage;
 trait StorageFactoryTrait
 {
     /**
-     * Instance of a Filesystem Factory - cloud storage
+     * Cloud Storage Factory Instance
      *
      * @var Factory|null
      */
     protected $storageFactory = null;
 
     /**
-     * Set the given storage factory
+     * Set storage factory
      *
-     * @param Factory $factory Instance of a Filesystem Factory - cloud storage
+     * @param Factory|null $factory Cloud Storage Factory Instance
      *
-     * @return void
+     * @return self
      */
-    public function setStorageFactory(Factory $factory)
+    public function setStorageFactory(?Factory $factory)
     {
         $this->storageFactory = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given storage factory
+     * Get storage factory
      *
      * If no storage factory has been set, this method will
      * set and return a default storage factory, if any such
@@ -45,22 +48,12 @@ trait StorageFactoryTrait
      *
      * @return Factory|null storage factory or null if none storage factory has been set
      */
-    public function getStorageFactory()
+    public function getStorageFactory(): ?Factory
     {
-        if (!$this->hasStorageFactory() && $this->hasDefaultStorageFactory()) {
+        if (!$this->hasStorageFactory()) {
             $this->setStorageFactory($this->getDefaultStorageFactory());
         }
         return $this->storageFactory;
-    }
-
-    /**
-     * Get a default storage factory value, if any is available
-     *
-     * @return Factory|null A default storage factory value or Null if no default value is available
-     */
-    public function getDefaultStorageFactory()
-    {
-        return Storage::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait StorageFactoryTrait
      *
      * @return bool True if storage factory has been set, false if not
      */
-    public function hasStorageFactory()
+    public function hasStorageFactory(): bool
     {
         return isset($this->storageFactory);
     }
 
     /**
-     * Check if a default storage factory is available or not
+     * Get a default storage factory value, if any is available
      *
-     * @return bool True of a default storage factory is available, false if not
+     * @return Factory|null A default storage factory value or Null if no default value is available
      */
-    public function hasDefaultStorageFactory()
+    public function getDefaultStorageFactory(): ?Factory
     {
-        $default = $this->getDefaultStorageFactory();
-        return isset($default);
+        return Storage::getFacadeRoot();
     }
 }

@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
 use Illuminate\Contracts\Filesystem\Factory;
 
 /**
- * <h1>Storage Factory Aware</h1>
- *
- * Components are able to specify and obtain a Filesystem Factory
+ * Cloud Storage Factory Aware
  *
  * @see \Illuminate\Contracts\Filesystem\Factory
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits\Filesystem
+ * @package Aedart\Laravel\Helpers\Contracts\Filesystem
  */
 interface StorageFactoryAware
 {
     /**
-     * Set the given storage factory
+     * Set storage factory
      *
-     * @param Factory $factory Instance of a Filesystem Factory - cloud storage
+     * @param Factory|null $factory Cloud Storage Factory Instance
      *
-     * @return void
+     * @return self
      */
-    public function setStorageFactory(Factory $factory);
+    public function setStorageFactory(?Factory $factory);
 
     /**
-     * Get the given storage factory
+     * Get storage factory
      *
      * If no storage factory has been set, this method will
      * set and return a default storage factory, if any such
@@ -36,26 +34,19 @@ interface StorageFactoryAware
      *
      * @return Factory|null storage factory or null if none storage factory has been set
      */
-    public function getStorageFactory();
-
-    /**
-     * Get a default storage factory value, if any is available
-     *
-     * @return Factory|null A default storage factory value or Null if no default value is available
-     */
-    public function getDefaultStorageFactory();
+    public function getStorageFactory(): ?Factory;
 
     /**
      * Check if storage factory has been set
      *
      * @return bool True if storage factory has been set, false if not
      */
-    public function hasStorageFactory();
+    public function hasStorageFactory(): bool;
 
     /**
-     * Check if a default storage factory is available or not
+     * Get a default storage factory value, if any is available
      *
-     * @return bool True of a default storage factory is available, false if not
+     * @return Factory|null A default storage factory value or Null if no default value is available
      */
-    public function hasDefaultStorageFactory();
+    public function getDefaultStorageFactory(): ?Factory;
 }
