@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Hashing;
 
@@ -6,36 +7,38 @@ use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * <h1>Hash Trait</h1>
+ * Hash Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Hashing\HashAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Hashing
  */
 trait HashTrait
 {
     /**
-     * Instance of Hasher
+     * Hasher Instance
      *
      * @var Hasher|null
      */
     protected $hash = null;
 
     /**
-     * Set the given hash
+     * Set hash
      *
-     * @param Hasher $hasher Instance of Hasher
+     * @param Hasher|null $hasher Hasher Instance
      *
-     * @return void
+     * @return self
      */
-    public function setHash(Hasher $hasher)
+    public function setHash(?Hasher $hasher)
     {
         $this->hash = $hasher;
+
+        return $this;
     }
 
     /**
-     * Get the given hash
+     * Get hash
      *
      * If no hash has been set, this method will
      * set and return a default hash, if any such
@@ -45,22 +48,12 @@ trait HashTrait
      *
      * @return Hasher|null hash or null if none hash has been set
      */
-    public function getHash()
+    public function getHash(): ?Hasher
     {
-        if (!$this->hasHash() && $this->hasDefaultHash()) {
+        if (!$this->hasHash()) {
             $this->setHash($this->getDefaultHash());
         }
         return $this->hash;
-    }
-
-    /**
-     * Get a default hash value, if any is available
-     *
-     * @return Hasher|null A default hash value or Null if no default value is available
-     */
-    public function getDefaultHash()
-    {
-        return Hash::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait HashTrait
      *
      * @return bool True if hash has been set, false if not
      */
-    public function hasHash()
+    public function hasHash(): bool
     {
         return isset($this->hash);
     }
 
     /**
-     * Check if a default hash is available or not
+     * Get a default hash value, if any is available
      *
-     * @return bool True of a default hash is available, false if not
+     * @return Hasher|null A default hash value or Null if no default value is available
      */
-    public function hasDefaultHash()
+    public function getDefaultHash(): ?Hasher
     {
-        $default = $this->getDefaultHash();
-        return isset($default);
+        return Hash::getFacadeRoot();
     }
 }
