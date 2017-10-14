@@ -5,58 +5,48 @@ namespace Aedart\Laravel\Helpers\Contracts\Routing;
 use Illuminate\Contracts\Routing\UrlGenerator;
 
 /**
- * <h1>URL Aware</h1>
- *
- * Components are able to specify and obtain a Url generator
- * utility component
+ * URL Aware
  *
  * @see \Illuminate\Contracts\Routing\UrlGenerator
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits\Routing
+ * @package Aedart\Laravel\Helpers\Contracts\Routing
  */
 interface URLAware
 {
     /**
-     * Set the given url
+     * Set url
      *
-     * @param UrlGenerator $generator Instance of a Url Generator
+     * @param UrlGenerator|null $generator Url Generator Instance
      *
-     * @return void
+     * @return self
      */
-    public function setURL(UrlGenerator $generator);
+    public function setUrl(?UrlGenerator $generator);
 
     /**
-     * Get the given url
+     * Get url
      *
      * If no url has been set, this method will
      * set and return a default url, if any such
      * value is available
      *
-     * @see getDefaultURL()
+     * @see getDefaultUrl()
      *
      * @return UrlGenerator|null url or null if none url has been set
      */
-    public function getURL();
-
-    /**
-     * Get a default url value, if any is available
-     *
-     * @return UrlGenerator|null A default url value or Null if no default value is available
-     */
-    public function getDefaultURL();
+    public function getUrl(): ?UrlGenerator;
 
     /**
      * Check if url has been set
      *
      * @return bool True if url has been set, false if not
      */
-    public function hasURL();
+    public function hasUrl(): bool;
 
     /**
-     * Check if a default url is available or not
+     * Get a default url value, if any is available
      *
-     * @return bool True of a default url is available, false if not
+     * @return UrlGenerator|null A default url value or Null if no default value is available
      */
-    public function hasDefaultURL();
+    public function getDefaultUrl(): ?UrlGenerator;
 }

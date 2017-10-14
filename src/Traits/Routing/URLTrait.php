@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Routing;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\Facades\URL;
 
 /**
- * <h1>URL Trait</h1>
+ * URL Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Routing\URLAware
  *
@@ -16,51 +17,43 @@ use Illuminate\Support\Facades\URL;
 trait URLTrait
 {
     /**
-     * Instance of a Url Generator
+     * Url Generator Instance
      *
      * @var UrlGenerator|null
      */
-    protected $URL = null;
+    protected $url = null;
 
     /**
-     * Set the given url
+     * Set url
      *
-     * @param UrlGenerator $generator Instance of a Url Generator
+     * @param UrlGenerator|null $generator Url Generator Instance
      *
-     * @return void
+     * @return self
      */
-    public function setURL(UrlGenerator $generator)
+    public function setUrl(?UrlGenerator $generator)
     {
-        $this->URL = $generator;
+        $this->url = $generator;
+
+        return $this;
     }
 
     /**
-     * Get the given url
+     * Get url
      *
      * If no url has been set, this method will
      * set and return a default url, if any such
      * value is available
      *
-     * @see getDefaultURL()
+     * @see getDefaultUrl()
      *
      * @return UrlGenerator|null url or null if none url has been set
      */
-    public function getURL()
+    public function getUrl(): ?UrlGenerator
     {
-        if (!$this->hasURL() && $this->hasDefaultURL()) {
-            $this->setURL($this->getDefaultURL());
+        if (!$this->hasUrl()) {
+            $this->setUrl($this->getDefaultUrl());
         }
-        return $this->URL;
-    }
-
-    /**
-     * Get a default url value, if any is available
-     *
-     * @return UrlGenerator|null A default url value or Null if no default value is available
-     */
-    public function getDefaultURL()
-    {
-        return URL::getFacadeRoot();
+        return $this->url;
     }
 
     /**
@@ -68,19 +61,18 @@ trait URLTrait
      *
      * @return bool True if url has been set, false if not
      */
-    public function hasURL()
+    public function hasUrl(): bool
     {
-        return isset($this->URL);
+        return isset($this->url);
     }
 
     /**
-     * Check if a default url is available or not
+     * Get a default url value, if any is available
      *
-     * @return bool True of a default url is available, false if not
+     * @return UrlGenerator|null A default url value or Null if no default value is available
      */
-    public function hasDefaultURL()
+    public function getDefaultUrl(): ?UrlGenerator
     {
-        $default = $this->getDefaultURL();
-        return isset($default);
+        return URL::getFacadeRoot();
     }
 }
