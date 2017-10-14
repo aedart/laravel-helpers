@@ -5,29 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Queue;
 use Illuminate\Contracts\Queue\Queue;
 
 /**
- * <h1>Queue Aware</h1>
- *
- * Components are able to specify and obtain a queue
- * utility component.
+ * Queue Aware
  *
  * @see \Illuminate\Contracts\Queue\Queue
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Queue
  */
 interface QueueAware
 {
     /**
-     * Set the given queue
+     * Set queue
      *
-     * @param Queue $queue Instance of a queue
+     * @param Queue|null $queue Queue Instance
      *
-     * @return void
+     * @return self
      */
-    public function setQueue(Queue $queue);
+    public function setQueue(?Queue $queue);
 
     /**
-     * Get the given queue
+     * Get queue
      *
      * If no queue has been set, this method will
      * set and return a default queue, if any such
@@ -37,26 +34,19 @@ interface QueueAware
      *
      * @return Queue|null queue or null if none queue has been set
      */
-    public function getQueue();
-
-    /**
-     * Get a default queue value, if any is available
-     *
-     * @return Queue|null A default queue value or Null if no default value is available
-     */
-    public function getDefaultQueue();
+    public function getQueue(): ?Queue;
 
     /**
      * Check if queue has been set
      *
      * @return bool True if queue has been set, false if not
      */
-    public function hasQueue();
+    public function hasQueue(): bool;
 
     /**
-     * Check if a default queue is available or not
+     * Get a default queue value, if any is available
      *
-     * @return bool True of a default queue is available, false if not
+     * @return Queue|null A default queue value or Null if no default value is available
      */
-    public function hasDefaultQueue();
+    public function getDefaultQueue(): ?Queue;
 }
