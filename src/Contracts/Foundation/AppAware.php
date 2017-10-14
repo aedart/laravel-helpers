@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Foundation;
 use Illuminate\Contracts\Foundation\Application;
 
 /**
- * <h1>App Aware</h1>
- *
- * Components are able to specify and obtain an application instance
+ * App Aware
  *
  * @see \Illuminate\Contracts\Foundation\Application
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Foundation
  */
 interface AppAware
 {
     /**
-     * Set the given app
+     * Set app
      *
-     * @param Application $application Instance of Application
+     * @param Application|null $application Application Instance
      *
-     * @return void
+     * @return self
      */
-    public function setApp(Application $application);
+    public function setApp(?Application $application);
 
     /**
-     * Get the given app
+     * Get app
      *
      * If no app has been set, this method will
      * set and return a default app, if any such
@@ -36,26 +34,19 @@ interface AppAware
      *
      * @return Application|null app or null if none app has been set
      */
-    public function getApp();
-
-    /**
-     * Get a default app value, if any is available
-     *
-     * @return Application|null A default app value or Null if no default value is available
-     */
-    public function getDefaultApp();
+    public function getApp(): ?Application;
 
     /**
      * Check if app has been set
      *
      * @return bool True if app has been set, false if not
      */
-    public function hasApp();
+    public function hasApp(): bool;
 
     /**
-     * Check if a default app is available or not
+     * Get a default app value, if any is available
      *
-     * @return bool True of a default app is available, false if not
+     * @return Application|null A default app value or Null if no default value is available
      */
-    public function hasDefaultApp();
+    public function getDefaultApp(): ?Application;
 }
