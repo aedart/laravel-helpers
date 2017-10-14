@@ -5,30 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Translation;
 use Illuminate\Contracts\Translation\Translator;
 
 /**
- * <h1>Lang Aware</h1>
- *
- * Components are able to specify and obtain a Laravel Translator
- * utility component.
+ * Lang Aware
  *
  * @see \Illuminate\Contracts\Translation\Translator
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Translation
  */
 interface LangAware
 {
-
     /**
-     * Set the given lang
+     * Set lang
      *
-     * @param Translator $translator Instance of a Laravel Translator
+     * @param Translator|null $translator Translator Instance
      *
-     * @return void
+     * @return self
      */
-    public function setLang(Translator $translator);
+    public function setLang(?Translator $translator);
 
     /**
-     * Get the given lang
+     * Get lang
      *
      * If no lang has been set, this method will
      * set and return a default lang, if any such
@@ -38,26 +34,19 @@ interface LangAware
      *
      * @return Translator|null lang or null if none lang has been set
      */
-    public function getLang();
-
-    /**
-     * Get a default lang value, if any is available
-     *
-     * @return Translator|null A default lang value or Null if no default value is available
-     */
-    public function getDefaultLang();
+    public function getLang(): ?Translator;
 
     /**
      * Check if lang has been set
      *
      * @return bool True if lang has been set, false if not
      */
-    public function hasLang();
+    public function hasLang(): bool;
 
     /**
-     * Check if a default lang is available or not
+     * Get a default lang value, if any is available
      *
-     * @return bool True of a default lang is available, false if not
+     * @return Translator|null A default lang value or Null if no default value is available
      */
-    public function hasDefaultLang();
+    public function getDefaultLang(): ?Translator;
 }

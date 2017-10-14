@@ -1,41 +1,44 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Translation;
 
-use Illuminate\Support\Facades\Lang;
 use Illuminate\Contracts\Translation\Translator;
+use Illuminate\Support\Facades\Lang;
 
 /**
- * <h1>Lang Trait</h1>
+ * Lang Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Translation\LangAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Translation
  */
 trait LangTrait
 {
     /**
-     * Instance of a Laravel Translator
+     * Translator Instance
      *
      * @var Translator|null
      */
     protected $lang = null;
 
     /**
-     * Set the given lang
+     * Set lang
      *
-     * @param Translator $translator Instance of a Laravel Translator
+     * @param Translator|null $translator Translator Instance
      *
-     * @return void
+     * @return self
      */
-    public function setLang(Translator $translator)
+    public function setLang(?Translator $translator)
     {
         $this->lang = $translator;
+
+        return $this;
     }
 
     /**
-     * Get the given lang
+     * Get lang
      *
      * If no lang has been set, this method will
      * set and return a default lang, if any such
@@ -45,22 +48,12 @@ trait LangTrait
      *
      * @return Translator|null lang or null if none lang has been set
      */
-    public function getLang()
+    public function getLang(): ?Translator
     {
-        if (!$this->hasLang() && $this->hasDefaultLang()) {
+        if (!$this->hasLang()) {
             $this->setLang($this->getDefaultLang());
         }
         return $this->lang;
-    }
-
-    /**
-     * Get a default lang value, if any is available
-     *
-     * @return Translator|null A default lang value or Null if no default value is available
-     */
-    public function getDefaultLang()
-    {
-        return Lang::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait LangTrait
      *
      * @return bool True if lang has been set, false if not
      */
-    public function hasLang()
+    public function hasLang(): bool
     {
         return isset($this->lang);
     }
 
     /**
-     * Check if a default lang is available or not
+     * Get a default lang value, if any is available
      *
-     * @return bool True of a default lang is available, false if not
+     * @return Translator|null A default lang value or Null if no default value is available
      */
-    public function hasDefaultLang()
+    public function getDefaultLang(): ?Translator
     {
-        $default = $this->getDefaultLang();
-        return isset($default);
+        return Lang::getFacadeRoot();
     }
 }
