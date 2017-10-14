@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Http;
 
@@ -6,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as RequestFacade;
 
 /**
- * <h1>Request Trait</h1>
+ * Http Request Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Http\RequestAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Request as RequestFacade;
 trait RequestTrait
 {
     /**
-     * Instance of Laravel's Request
+     * Http Request Instance
      *
      * @var Request|null
      */
     protected $request = null;
 
     /**
-     * Set the given request
+     * Set request
      *
-     * @param Request $request Instance of Laravel's Request
+     * @param Request|null $request Http Request Instance
      *
-     * @return void
+     * @return self
      */
-    public function setRequest(Request $request)
+    public function setRequest(?Request $request)
     {
         $this->request = $request;
+
+        return $this;
     }
 
     /**
-     * Get the given request
+     * Get request
      *
      * If no request has been set, this method will
      * set and return a default request, if any such
@@ -45,22 +48,12 @@ trait RequestTrait
      *
      * @return Request|null request or null if none request has been set
      */
-    public function getRequest()
+    public function getRequest(): ?Request
     {
-        if (!$this->hasRequest() && $this->hasDefaultRequest()) {
+        if (!$this->hasRequest()) {
             $this->setRequest($this->getDefaultRequest());
         }
         return $this->request;
-    }
-
-    /**
-     * Get a default request value, if any is available
-     *
-     * @return Request|null A default request value or Null if no default value is available
-     */
-    public function getDefaultRequest()
-    {
-        return RequestFacade::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait RequestTrait
      *
      * @return bool True if request has been set, false if not
      */
-    public function hasRequest()
+    public function hasRequest(): bool
     {
         return isset($this->request);
     }
 
     /**
-     * Check if a default request is available or not
+     * Get a default request value, if any is available
      *
-     * @return bool True of a default request is available, false if not
+     * @return Request|null A default request value or Null if no default value is available
      */
-    public function hasDefaultRequest()
+    public function getDefaultRequest(): ?Request
     {
-        $default = $this->getDefaultRequest();
-        return isset($default);
+        return RequestFacade::getFacadeRoot();
     }
 }
