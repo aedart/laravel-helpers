@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Database;
 
@@ -7,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * <h1>Schema Trait</h1>
+ * Schema Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Database\SchemaAware
  *
@@ -17,26 +18,28 @@ use Illuminate\Support\Facades\Schema;
 trait SchemaTrait
 {
     /**
-     * Instance of Laravel's Database Schema Builder
+     * Database Schema Builder Instance
      *
      * @var Builder|null
      */
     protected $schema = null;
 
     /**
-     * Set the given schema
+     * Set schema
      *
-     * @param Builder $builder Instance of Laravel's Database Schema Builder
+     * @param Builder|null $builder Database Schema Builder Instance
      *
-     * @return void
+     * @return self
      */
-    public function setSchema(Builder $builder)
+    public function setSchema(?Builder $builder)
     {
         $this->schema = $builder;
+
+        return $this;
     }
 
     /**
-     * Get the given schema
+     * Get schema
      *
      * If no schema has been set, this method will
      * set and return a default schema, if any such
@@ -46,30 +49,12 @@ trait SchemaTrait
      *
      * @return Builder|null schema or null if none schema has been set
      */
-    public function getSchema()
+    public function getSchema(): ?Builder
     {
-        if (!$this->hasSchema() && $this->hasDefaultSchema()) {
+        if (!$this->hasSchema()) {
             $this->setSchema($this->getDefaultSchema());
         }
         return $this->schema;
-    }
-
-    /**
-     * Get a default schema value, if any is available
-     *
-     * @return Builder|null A default schema value or Null if no default value is available
-     */
-    public function getDefaultSchema()
-    {
-        // By default, the schema facade depends upon a
-        // database connection being available. Therefore,
-        // we need to ensure that this is true, before
-        // attempting to return the facade-root
-        $manager = DB::getFacadeRoot();
-        if (!is_null($manager) && !is_null($manager->connection())) {
-            return Schema::getFacadeRoot();
-        }
-        return $manager;
     }
 
     /**
@@ -77,36 +62,25 @@ trait SchemaTrait
      *
      * @return bool True if schema has been set, false if not
      */
-    public function hasSchema()
+    public function hasSchema(): bool
     {
         return isset($this->schema);
     }
 
     /**
-     * Check if a default schema is available or not
+     * Get a default schema value, if any is available
      *
-     * @return bool True of a default schema is available, false if not
+     * @return Builder|null A default schema value or Null if no default value is available
      */
-    public function hasDefaultSchema()
+    public function getDefaultSchema(): ?Builder
     {
-        $default = $this->getDefaultSchema();
-        return isset($default);
-    }
-
-    /**
-     * Get a database schema builder instance for the
-     * given connection.
-     *
-     * @param string $name
-     *
-     * @return \Illuminate\Database\Schema\Builder|null Returns null when no database connection is available
-     */
-    public function connection($name)
-    {
-        // We do this check to ensure that a connection is available
+        // By default, the schema facade depends upon a
+        // database connection being available. Therefore,
+        // we need to ensure that this is true, before
+        // attempting to return the facade-root
         $manager = DB::getFacadeRoot();
-        if (isset($manager) && !is_null($manager->connection())) {
-            return Schema::connection($name);
+        if (isset($manager) && ! is_null($manager->connection())) {
+            return Schema::getFacadeRoot();
         }
         return $manager;
     }
