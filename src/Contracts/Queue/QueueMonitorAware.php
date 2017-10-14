@@ -5,29 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Queue;
 use Illuminate\Contracts\Queue\Monitor;
 
 /**
- * <h1>Queue Manager Aware</h1>
- *
- * Components are able to specify and obtain a Queue-Monitor
- * utility component.
+ * Queue Monitor Aware
  *
  * @see \Illuminate\Contracts\Queue\Monitor
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Queue
  */
 interface QueueMonitorAware
 {
     /**
-     * Set the given queue monitor
+     * Set queue monitor
      *
-     * @param Monitor $monitor Instance of a Queue-Monitor
+     * @param Monitor|null $monitor Queue Monitor Instance
      *
-     * @return void
+     * @return self
      */
-    public function setQueueMonitor(Monitor $monitor);
+    public function setQueueMonitor(?Monitor $monitor);
 
     /**
-     * Get the given queue monitor
+     * Get queue monitor
      *
      * If no queue monitor has been set, this method will
      * set and return a default queue monitor, if any such
@@ -37,26 +34,19 @@ interface QueueMonitorAware
      *
      * @return Monitor|null queue monitor or null if none queue monitor has been set
      */
-    public function getQueueMonitor();
-
-    /**
-     * Get a default queue monitor value, if any is available
-     *
-     * @return Monitor|null A default queue monitor value or Null if no default value is available
-     */
-    public function getDefaultQueueMonitor();
+    public function getQueueMonitor(): ?Monitor;
 
     /**
      * Check if queue monitor has been set
      *
      * @return bool True if queue monitor has been set, false if not
      */
-    public function hasQueueMonitor();
+    public function hasQueueMonitor(): bool;
 
     /**
-     * Check if a default queue monitor is available or not
+     * Get a default queue monitor value, if any is available
      *
-     * @return bool True of a default queue monitor is available, false if not
+     * @return Monitor|null A default queue monitor value or Null if no default value is available
      */
-    public function hasDefaultQueueMonitor();
+    public function getDefaultQueueMonitor(): ?Monitor;
 }
