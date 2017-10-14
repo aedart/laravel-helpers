@@ -8,7 +8,7 @@
 
 [Getters and Setters](https://en.wikipedia.org/wiki/Mutator_method) utility package for some of [Laravel's](http://laravel.com/) core packages. 
 
-This package make use of Laravel's native [Facades](http://laravel.com/docs/5.4/facades), as a fallback, when no custom instances are provided.
+This package make use of Laravel's native [Facades](http://laravel.com/docs/5.5/facades), as a fallback, when no custom instances are provided.
 
 ## Contents
 
@@ -110,17 +110,19 @@ Should that be the case, then you can overwrite the `getDefaultXZY` methods, in 
 
 ```php
 <?php
+
 use Aedart\Laravel\Helpers\Contracts\Config\ConfigAware;
 use Aedart\Laravel\Helpers\Traits\Config\ConfigTrait;
-use Illuminate\Config\Repository;
+use Illuminate\Contracts\Config\Repository;
+use Illuminate\Config\Repository as ConfigRepo;
 
 class MyComponent implements ConfigAware
 {
     use ConfigTrait;
     
-    public function getDefaultConfig()
+    public function getDefaultConfig() : Repository
     {
-        return new Repository(); // Please note that this repository will NOT store values statically!
+        return new ConfigRepo(); // Please note that this repository will NOT store values statically!
     }
 }
 ```
