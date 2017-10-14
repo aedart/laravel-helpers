@@ -5,35 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
 use Illuminate\Filesystem\Filesystem;
 
 /**
- * <h1>File Aware</h1>
- *
- * Components are able to specify and obtain Laravel's native Filesystem
- * utility component.
- *
- * <br />
- *
- * Please do review the `Storage` Facade, if you need to work with multiple
- * storage units.
+ * File Aware
  *
  * @see \Illuminate\Filesystem\Filesystem
- * @see \Illuminate\Support\Facades\Storage
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Filesystem
  */
 interface FileAware
 {
     /**
-     * Set the given file
+     * Set file
      *
-     * @param Filesystem $filesystem Instance of the filesystem utility
+     * @param Filesystem|null $filesystem Filesystem Instance
      *
-     * @return void
+     * @return self
      */
-    public function setFile(Filesystem $filesystem);
+    public function setFile(?Filesystem $filesystem);
 
     /**
-     * Get the given file
+     * Get file
      *
      * If no file has been set, this method will
      * set and return a default file, if any such
@@ -43,26 +34,19 @@ interface FileAware
      *
      * @return Filesystem|null file or null if none file has been set
      */
-    public function getFile();
-
-    /**
-     * Get a default file value, if any is available
-     *
-     * @return Filesystem|null A default file value or Null if no default value is available
-     */
-    public function getDefaultFile();
+    public function getFile(): ?Filesystem;
 
     /**
      * Check if file has been set
      *
      * @return bool True if file has been set, false if not
      */
-    public function hasFile();
+    public function hasFile(): bool;
 
     /**
-     * Check if a default file is available or not
+     * Get a default file value, if any is available
      *
-     * @return bool True of a default file is available, false if not
+     * @return Filesystem|null A default file value or Null if no default value is available
      */
-    public function hasDefaultFile();
+    public function getDefaultFile(): ?Filesystem;
 }

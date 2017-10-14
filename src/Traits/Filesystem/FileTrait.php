@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Filesystem;
 
@@ -6,36 +7,38 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
 
 /**
- * <h1>File Trait</h1>
+ * File Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Filesystem\FileAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Filesystem
  */
 trait FileTrait
 {
     /**
-     * Instance of the filesystem utility
+     * Filesystem Instance
      *
      * @var Filesystem|null
      */
     protected $file = null;
 
     /**
-     * Set the given file
+     * Set file
      *
-     * @param Filesystem $filesystem Instance of the filesystem utility
+     * @param Filesystem|null $filesystem Filesystem Instance
      *
-     * @return void
+     * @return self
      */
-    public function setFile(Filesystem $filesystem)
+    public function setFile(?Filesystem $filesystem)
     {
         $this->file = $filesystem;
+
+        return $this;
     }
 
     /**
-     * Get the given file
+     * Get file
      *
      * If no file has been set, this method will
      * set and return a default file, if any such
@@ -45,22 +48,12 @@ trait FileTrait
      *
      * @return Filesystem|null file or null if none file has been set
      */
-    public function getFile()
+    public function getFile(): ?Filesystem
     {
-        if (!$this->hasFile() && $this->hasDefaultFile()) {
+        if (!$this->hasFile()) {
             $this->setFile($this->getDefaultFile());
         }
         return $this->file;
-    }
-
-    /**
-     * Get a default file value, if any is available
-     *
-     * @return Filesystem|null A default file value or Null if no default value is available
-     */
-    public function getDefaultFile()
-    {
-        return File::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait FileTrait
      *
      * @return bool True if file has been set, false if not
      */
-    public function hasFile()
+    public function hasFile(): bool
     {
         return isset($this->file);
     }
 
     /**
-     * Check if a default file is available or not
+     * Get a default file value, if any is available
      *
-     * @return bool True of a default file is available, false if not
+     * @return Filesystem|null A default file value or Null if no default value is available
      */
-    public function hasDefaultFile()
+    public function getDefaultFile(): ?Filesystem
     {
-        $default = $this->getDefaultFile();
-        return isset($default);
+        return File::getFacadeRoot();
     }
 }
