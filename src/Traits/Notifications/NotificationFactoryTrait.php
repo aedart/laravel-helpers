@@ -1,11 +1,13 @@
 <?php
+declare(strict_types=1);
+
 namespace Aedart\Laravel\Helpers\Traits\Notifications;
 
 use Illuminate\Contracts\Notifications\Factory;
 use Illuminate\Support\Facades\Notification;
 
 /**
- * <h1>Notification Factory Trait</h1>
+ * Notification Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Notifications\NotificationFactoryAware
  *
@@ -15,26 +17,28 @@ use Illuminate\Support\Facades\Notification;
 trait NotificationFactoryTrait
 {
     /**
-     * Instance of a Notification Factory
+     * Notification Factory Instance
      *
      * @var Factory|null
      */
     protected $notificationFactory = null;
 
     /**
-     * Set the given notification factory
+     * Set notification factory
      *
-     * @param Factory $factory Instance of a Notification Factory
+     * @param Factory|null $factory Notification Factory Instance
      *
-     * @return void
+     * @return self
      */
-    public function setNotificationFactory(Factory $factory)
+    public function setNotificationFactory(?Factory $factory)
     {
         $this->notificationFactory = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given notification factory
+     * Get notification factory
      *
      * If no notification factory has been set, this method will
      * set and return a default notification factory, if any such
@@ -44,22 +48,12 @@ trait NotificationFactoryTrait
      *
      * @return Factory|null notification factory or null if none notification factory has been set
      */
-    public function getNotificationFactory()
+    public function getNotificationFactory(): ?Factory
     {
-        if (!$this->hasNotificationFactory() && $this->hasDefaultNotificationFactory()) {
+        if (!$this->hasNotificationFactory()) {
             $this->setNotificationFactory($this->getDefaultNotificationFactory());
         }
         return $this->notificationFactory;
-    }
-
-    /**
-     * Get a default notification factory value, if any is available
-     *
-     * @return Factory|null A default notification factory value or Null if no default value is available
-     */
-    public function getDefaultNotificationFactory()
-    {
-        return Notification::getFacadeRoot();
     }
 
     /**
@@ -67,19 +61,18 @@ trait NotificationFactoryTrait
      *
      * @return bool True if notification factory has been set, false if not
      */
-    public function hasNotificationFactory()
+    public function hasNotificationFactory(): bool
     {
         return isset($this->notificationFactory);
     }
 
     /**
-     * Check if a default notification factory is available or not
+     * Get a default notification factory value, if any is available
      *
-     * @return bool True of a default notification factory is available, false if not
+     * @return Factory|null A default notification factory value or Null if no default value is available
      */
-    public function hasDefaultNotificationFactory()
+    public function getDefaultNotificationFactory(): ?Factory
     {
-        $default = $this->getDefaultNotificationFactory();
-        return isset($default);
+        return Notification::getFacadeRoot();
     }
 }
