@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Logging;
 
@@ -6,36 +7,38 @@ use Illuminate\Contracts\Logging\Log;
 use Illuminate\Support\Facades\Log as LogFacade;
 
 /**
- * <h1>Log Trait</h1>
+ * Log Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Logging\LogAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Logging
  */
 trait LogTrait
 {
     /**
-     * Instance of the Laravel Logger
+     * Logger Instance
      *
      * @var Log|null
      */
     protected $log = null;
 
     /**
-     * Set the given log
+     * Set log
      *
-     * @param Log $logger Instance of the Laravel Logger
+     * @param Log|null $logger Logger Instance
      *
-     * @return void
+     * @return self
      */
-    public function setLog(Log $logger)
+    public function setLog(?Log $logger)
     {
         $this->log = $logger;
+
+        return $this;
     }
 
     /**
-     * Get the given log
+     * Get log
      *
      * If no log has been set, this method will
      * set and return a default log, if any such
@@ -45,22 +48,12 @@ trait LogTrait
      *
      * @return Log|null log or null if none log has been set
      */
-    public function getLog()
+    public function getLog(): ?Log
     {
-        if (!$this->hasLog() && $this->hasDefaultLog()) {
+        if (!$this->hasLog()) {
             $this->setLog($this->getDefaultLog());
         }
         return $this->log;
-    }
-
-    /**
-     * Get a default log value, if any is available
-     *
-     * @return Log|null A default log value or Null if no default value is available
-     */
-    public function getDefaultLog()
-    {
-        return LogFacade::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait LogTrait
      *
      * @return bool True if log has been set, false if not
      */
-    public function hasLog()
+    public function hasLog(): bool
     {
         return isset($this->log);
     }
 
     /**
-     * Check if a default log is available or not
+     * Get a default log value, if any is available
      *
-     * @return bool True of a default log is available, false if not
+     * @return Log|null A default log value or Null if no default value is available
      */
-    public function hasDefaultLog()
+    public function getDefaultLog(): ?Log
     {
-        $default = $this->getDefaultLog();
-        return isset($default);
+        return LogFacade::getFacadeRoot();
     }
 }
