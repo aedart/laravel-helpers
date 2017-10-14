@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Redis;
 
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Redis\Factory;
 use Illuminate\Support\Facades\Redis;
 
 /**
- * <h1>Redis Factory Trait</h1>
+ * Redis Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Redis\RedisFactoryAware
  *
@@ -16,26 +17,28 @@ use Illuminate\Support\Facades\Redis;
 trait RedisFactoryTrait
 {
     /**
-     * Redis Factory
+     * Redis Factory Instance
      *
      * @var Factory|null
      */
     protected $redisFactory = null;
 
     /**
-     * Set the given redis factory
+     * Set redis factory
      *
-     * @param Factory $factory Redis Factory
+     * @param Factory|null $factory Redis Factory Instance
      *
-     * @return void
+     * @return self
      */
-    public function setRedisFactory(Factory $factory)
+    public function setRedisFactory(?Factory $factory)
     {
         $this->redisFactory = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given redis factory
+     * Get redis factory
      *
      * If no redis factory has been set, this method will
      * set and return a default redis factory, if any such
@@ -45,22 +48,12 @@ trait RedisFactoryTrait
      *
      * @return Factory|null redis factory or null if none redis factory has been set
      */
-    public function getRedisFactory()
+    public function getRedisFactory(): ?Factory
     {
-        if (!$this->hasRedisFactory() && $this->hasDefaultRedisFactory()) {
+        if (!$this->hasRedisFactory()) {
             $this->setRedisFactory($this->getDefaultRedisFactory());
         }
         return $this->redisFactory;
-    }
-
-    /**
-     * Get a default redis factory value, if any is available
-     *
-     * @return Factory|null A default redis factory value or Null if no default value is available
-     */
-    public function getDefaultRedisFactory()
-    {
-        return Redis::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait RedisFactoryTrait
      *
      * @return bool True if redis factory has been set, false if not
      */
-    public function hasRedisFactory()
+    public function hasRedisFactory(): bool
     {
         return isset($this->redisFactory);
     }
 
     /**
-     * Check if a default redis factory is available or not
+     * Get a default redis factory value, if any is available
      *
-     * @return bool True of a default redis factory is available, false if not
+     * @return Factory|null A default redis factory value or Null if no default value is available
      */
-    public function hasDefaultRedisFactory()
+    public function getDefaultRedisFactory(): ?Factory
     {
-        $default = $this->getDefaultRedisFactory();
-        return isset($default);
+        return Redis::getFacadeRoot();
     }
 }
