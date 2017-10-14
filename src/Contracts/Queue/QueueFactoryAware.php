@@ -5,29 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Queue;
 use Illuminate\Contracts\Queue\Factory;
 
 /**
- * <h1>Queue Factory Aware</h1>
- *
- * Components are able to specify and obtain a queue-factory
- * utility component.
+ * Queue Factory Aware
  *
  * @see \Illuminate\Contracts\Queue\Factory
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Queue
  */
 interface QueueFactoryAware
 {
     /**
-     * Set the given queue factory
+     * Set queue factory
      *
-     * @param Factory $factory Instance of a Queue Factory
+     * @param Factory|null $factory Queue Factory Instance
      *
-     * @return void
+     * @return self
      */
-    public function setQueueFactory(Factory $factory);
+    public function setQueueFactory(?Factory $factory);
 
     /**
-     * Get the given queue factory
+     * Get queue factory
      *
      * If no queue factory has been set, this method will
      * set and return a default queue factory, if any such
@@ -37,26 +34,19 @@ interface QueueFactoryAware
      *
      * @return Factory|null queue factory or null if none queue factory has been set
      */
-    public function getQueueFactory();
-
-    /**
-     * Get a default queue factory value, if any is available
-     *
-     * @return Factory|null A default queue factory value or Null if no default value is available
-     */
-    public function getDefaultQueueFactory();
+    public function getQueueFactory(): ?Factory;
 
     /**
      * Check if queue factory has been set
      *
      * @return bool True if queue factory has been set, false if not
      */
-    public function hasQueueFactory();
+    public function hasQueueFactory(): bool;
 
     /**
-     * Check if a default queue factory is available or not
+     * Get a default queue factory value, if any is available
      *
-     * @return bool True of a default queue factory is available, false if not
+     * @return Factory|null A default queue factory value or Null if no default value is available
      */
-    public function hasDefaultQueueFactory();
+    public function getDefaultQueueFactory(): ?Factory;
 }

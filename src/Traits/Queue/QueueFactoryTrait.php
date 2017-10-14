@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Queue;
 
@@ -6,36 +7,38 @@ use Illuminate\Contracts\Queue\Factory;
 use Illuminate\Support\Facades\Queue;
 
 /**
- * <h1>Queue Factory Trait</h1>
+ * Queue Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Queue\QueueFactoryAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Queue
  */
 trait QueueFactoryTrait
 {
     /**
-     * Instance of a Queue Factory
+     * Queue Factory Instance
      *
      * @var Factory|null
      */
     protected $queueFactory = null;
 
     /**
-     * Set the given queue factory
+     * Set queue factory
      *
-     * @param Factory $factory Instance of a Queue Factory
+     * @param Factory|null $factory Queue Factory Instance
      *
-     * @return void
+     * @return self
      */
-    public function setQueueFactory(Factory $factory)
+    public function setQueueFactory(?Factory $factory)
     {
         $this->queueFactory = $factory;
+
+        return $this;
     }
 
     /**
-     * Get the given queue factory
+     * Get queue factory
      *
      * If no queue factory has been set, this method will
      * set and return a default queue factory, if any such
@@ -45,22 +48,12 @@ trait QueueFactoryTrait
      *
      * @return Factory|null queue factory or null if none queue factory has been set
      */
-    public function getQueueFactory()
+    public function getQueueFactory(): ?Factory
     {
-        if (!$this->hasQueueFactory() && $this->hasDefaultQueueFactory()) {
+        if (!$this->hasQueueFactory()) {
             $this->setQueueFactory($this->getDefaultQueueFactory());
         }
         return $this->queueFactory;
-    }
-
-    /**
-     * Get a default queue factory value, if any is available
-     *
-     * @return Factory|null A default queue factory value or Null if no default value is available
-     */
-    public function getDefaultQueueFactory()
-    {
-        return Queue::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait QueueFactoryTrait
      *
      * @return bool True if queue factory has been set, false if not
      */
-    public function hasQueueFactory()
+    public function hasQueueFactory(): bool
     {
         return isset($this->queueFactory);
     }
 
     /**
-     * Check if a default queue factory is available or not
+     * Get a default queue factory value, if any is available
      *
-     * @return bool True of a default queue factory is available, false if not
+     * @return Factory|null A default queue factory value or Null if no default value is available
      */
-    public function hasDefaultQueueFactory()
+    public function getDefaultQueueFactory(): ?Factory
     {
-        $default = $this->getDefaultQueueFactory();
-        return isset($default);
+        return Queue::getFacadeRoot();
     }
 }
