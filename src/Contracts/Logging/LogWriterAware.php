@@ -5,29 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Logging;
 use Illuminate\Log\Writer;
 
 /**
- * <h1>Log Writer Aware</h1>
- *
- * Components are able to specify and obtain a laravel log-writer
- * utility component.
+ * Log Writer Aware
  *
  * @see \Illuminate\Log\Writer
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Logging
  */
 interface LogWriterAware
 {
     /**
-     * Set the given log writer
+     * Set log writer
      *
-     * @param Writer $writer Instance of the Laravel Log Writer
+     * @param Writer|null $writer Log Writer Instance (logger)
      *
-     * @return void
+     * @return self
      */
-    public function setLogWriter(Writer $writer);
+    public function setLogWriter(?Writer $writer);
 
     /**
-     * Get the given log writer
+     * Get log writer
      *
      * If no log writer has been set, this method will
      * set and return a default log writer, if any such
@@ -37,26 +34,19 @@ interface LogWriterAware
      *
      * @return Writer|null log writer or null if none log writer has been set
      */
-    public function getLogWriter();
-
-    /**
-     * Get a default log writer value, if any is available
-     *
-     * @return Writer|null A default log writer value or Null if no default value is available
-     */
-    public function getDefaultLogWriter();
+    public function getLogWriter(): ?Writer;
 
     /**
      * Check if log writer has been set
      *
      * @return bool True if log writer has been set, false if not
      */
-    public function hasLogWriter();
+    public function hasLogWriter(): bool;
 
     /**
-     * Check if a default log writer is available or not
+     * Get a default log writer value, if any is available
      *
-     * @return bool True of a default log writer is available, false if not
+     * @return Writer|null A default log writer value or Null if no default value is available
      */
-    public function hasDefaultLogWriter();
+    public function getDefaultLogWriter(): ?Writer;
 }

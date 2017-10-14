@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Logging;
 
@@ -6,36 +7,38 @@ use Illuminate\Log\Writer;
 use Illuminate\Support\Facades\Log;
 
 /**
- * <h1>Log Writer Trait</h1>
+ * Log Writer Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Logging\LogWriterAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\Logging
  */
 trait LogWriterTrait
 {
     /**
-     * Instance of the Laravel Log Writer
+     * Log Writer Instance (logger)
      *
      * @var Writer|null
      */
     protected $logWriter = null;
 
     /**
-     * Set the given log writer
+     * Set log writer
      *
-     * @param Writer $writer Instance of the Laravel Log Writer
+     * @param Writer|null $writer Log Writer Instance (logger)
      *
-     * @return void
+     * @return self
      */
-    public function setLogWriter(Writer $writer)
+    public function setLogWriter(?Writer $writer)
     {
         $this->logWriter = $writer;
+
+        return $this;
     }
 
     /**
-     * Get the given log writer
+     * Get log writer
      *
      * If no log writer has been set, this method will
      * set and return a default log writer, if any such
@@ -45,22 +48,12 @@ trait LogWriterTrait
      *
      * @return Writer|null log writer or null if none log writer has been set
      */
-    public function getLogWriter()
+    public function getLogWriter(): ?Writer
     {
-        if (!$this->hasLogWriter() && $this->hasDefaultLogWriter()) {
+        if (!$this->hasLogWriter()) {
             $this->setLogWriter($this->getDefaultLogWriter());
         }
         return $this->logWriter;
-    }
-
-    /**
-     * Get a default log writer value, if any is available
-     *
-     * @return Writer|null A default log writer value or Null if no default value is available
-     */
-    public function getDefaultLogWriter()
-    {
-        return Log::getFacadeRoot();
     }
 
     /**
@@ -68,19 +61,18 @@ trait LogWriterTrait
      *
      * @return bool True if log writer has been set, false if not
      */
-    public function hasLogWriter()
+    public function hasLogWriter(): bool
     {
         return isset($this->logWriter);
     }
 
     /**
-     * Check if a default log writer is available or not
+     * Get a default log writer value, if any is available
      *
-     * @return bool True of a default log writer is available, false if not
+     * @return Writer|null A default log writer value or Null if no default value is available
      */
-    public function hasDefaultLogWriter()
+    public function getDefaultLogWriter(): ?Writer
     {
-        $default = $this->getDefaultLogWriter();
-        return isset($default);
+        return Log::getFacadeRoot();
     }
 }
