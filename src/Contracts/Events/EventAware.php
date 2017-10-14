@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\Events;
 use Illuminate\Contracts\Events\Dispatcher;
 
 /**
- * <h1>Event Aware</h1>
- *
- * Components are able to specify and obtain an event dispatcher
+ * Event Dispatcher Aware
  *
  * @see \Illuminate\Contracts\Events\Dispatcher
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Laravel\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\Events
  */
 interface EventAware
 {
     /**
-     * Set the given event
+     * Set event
      *
-     * @param Dispatcher $dispatcher Instance of a event dispatcher
+     * @param Dispatcher|null $dispatcher Event Dispatcher Instance
      *
-     * @return void
+     * @return self
      */
-    public function setEvent(Dispatcher $dispatcher);
+    public function setEvent(?Dispatcher $dispatcher);
 
     /**
-     * Get the given event
+     * Get event
      *
      * If no event has been set, this method will
      * set and return a default event, if any such
@@ -36,26 +34,19 @@ interface EventAware
      *
      * @return Dispatcher|null event or null if none event has been set
      */
-    public function getEvent();
-
-    /**
-     * Get a default event value, if any is available
-     *
-     * @return Dispatcher|null A default event value or Null if no default value is available
-     */
-    public function getDefaultEvent();
+    public function getEvent(): ?Dispatcher;
 
     /**
      * Check if event has been set
      *
      * @return bool True if event has been set, false if not
      */
-    public function hasEvent();
+    public function hasEvent(): bool;
 
     /**
-     * Check if a default event is available or not
+     * Get a default event value, if any is available
      *
-     * @return bool True of a default event is available, false if not
+     * @return Dispatcher|null A default event value or Null if no default value is available
      */
-    public function hasDefaultEvent();
+    public function getDefaultEvent(): ?Dispatcher;
 }
