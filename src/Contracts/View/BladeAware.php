@@ -5,28 +5,26 @@ namespace Aedart\Laravel\Helpers\Contracts\View;
 use Illuminate\View\Compilers\BladeCompiler;
 
 /**
- * <h1>Blade Aware</h1>
- *
- * Components are able to specify and obtain the Blade Compiler
+ * Blade Aware
  *
  * @see \Illuminate\View\Compilers\BladeCompiler
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Contracts\View
  */
 interface BladeAware
 {
     /**
-     * Set the given blade
+     * Set blade
      *
-     * @param BladeCompiler $compiler Instance of the Blade Compiler
+     * @param BladeCompiler|null $compiler Blade Compiler Instance
      *
-     * @return void
+     * @return self
      */
-    public function setBlade(BladeCompiler $compiler);
+    public function setBlade(?BladeCompiler $compiler);
 
     /**
-     * Get the given blade
+     * Get blade
      *
      * If no blade has been set, this method will
      * set and return a default blade, if any such
@@ -36,26 +34,19 @@ interface BladeAware
      *
      * @return BladeCompiler|null blade or null if none blade has been set
      */
-    public function getBlade();
-
-    /**
-     * Get a default blade value, if any is available
-     *
-     * @return BladeCompiler|null A default blade value or Null if no default value is available
-     */
-    public function getDefaultBlade();
+    public function getBlade(): ?BladeCompiler;
 
     /**
      * Check if blade has been set
      *
      * @return bool True if blade has been set, false if not
      */
-    public function hasBlade();
+    public function hasBlade(): bool;
 
     /**
-     * Check if a default blade is available or not
+     * Get a default blade value, if any is available
      *
-     * @return bool True of a default blade is available, false if not
+     * @return BladeCompiler|null A default blade value or Null if no default value is available
      */
-    public function hasDefaultBlade();
+    public function getDefaultBlade(): ?BladeCompiler;
 }

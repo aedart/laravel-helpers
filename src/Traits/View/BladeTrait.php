@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\View;
 
@@ -7,36 +8,38 @@ use Illuminate\Support\Facades\View;
 use Illuminate\View\Compilers\BladeCompiler;
 
 /**
- * <h1>Blade Trait</h1>
+ * Blade Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\View\BladeAware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
- * @package Aedart\Facade\Helpers\Traits
+ * @package Aedart\Laravel\Helpers\Traits\View
  */
 trait BladeTrait
 {
     /**
-     * Instance of the Blade Compiler
+     * Blade Compiler Instance
      *
      * @var BladeCompiler|null
      */
     protected $blade = null;
 
     /**
-     * Set the given blade
+     * Set blade
      *
-     * @param BladeCompiler $compiler Instance of the Blade Compiler
+     * @param BladeCompiler|null $compiler Blade Compiler Instance
      *
-     * @return void
+     * @return self
      */
-    public function setBlade(BladeCompiler $compiler)
+    public function setBlade(?BladeCompiler $compiler)
     {
         $this->blade = $compiler;
+
+        return $this;
     }
 
     /**
-     * Get the given blade
+     * Get blade
      *
      * If no blade has been set, this method will
      * set and return a default blade, if any such
@@ -46,31 +49,12 @@ trait BladeTrait
      *
      * @return BladeCompiler|null blade or null if none blade has been set
      */
-    public function getBlade()
+    public function getBlade(): ?BladeCompiler
     {
-        if (!$this->hasBlade() && $this->hasDefaultBlade()) {
+        if (!$this->hasBlade()) {
             $this->setBlade($this->getDefaultBlade());
         }
         return $this->blade;
-    }
-
-    /**
-     * Get a default blade value, if any is available
-     *
-     * @return BladeCompiler|null A default blade value or Null if no default value is available
-     */
-    public function getDefaultBlade()
-    {
-        // The blade compiler is usually only available, once
-        // Laravel's view service provider has been initialised.
-        // Thus, before just returning the Blade Facade's root
-        // instance, we must make sure that the view facade
-        // actually returns something
-        $view = View::getFacadeRoot();
-        if (!is_null($view)) {
-            return Blade::getFacadeRoot();
-        }
-        return $view;
     }
 
     /**
@@ -78,19 +62,27 @@ trait BladeTrait
      *
      * @return bool True if blade has been set, false if not
      */
-    public function hasBlade()
+    public function hasBlade(): bool
     {
         return isset($this->blade);
     }
 
     /**
-     * Check if a default blade is available or not
+     * Get a default blade value, if any is available
      *
-     * @return bool True of a default blade is available, false if not
+     * @return BladeCompiler|null A default blade value or Null if no default value is available
      */
-    public function hasDefaultBlade()
+    public function getDefaultBlade(): ?BladeCompiler
     {
-        $default = $this->getDefaultBlade();
-        return isset($default);
+        // The blade compiler is usually only available, once
+        // Laravel's view service provider has been initialised.
+        // Thus, before just returning the Blade Facade's root
+        // instance, we must make sure that the view facade
+        // actually returns something
+        $view = View::getFacadeRoot();
+        if (isset($view)) {
+            return Blade::getFacadeRoot();
+        }
+        return $view;
     }
 }
