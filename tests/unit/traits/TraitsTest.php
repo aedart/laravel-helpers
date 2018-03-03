@@ -32,7 +32,7 @@ use Aedart\Laravel\Helpers\Contracts\Foundation\AppAware;
 use Aedart\Laravel\Helpers\Contracts\Hashing\HashAware;
 use Aedart\Laravel\Helpers\Contracts\Http\RequestAware;
 use Aedart\Laravel\Helpers\Contracts\Logging\LogAware;
-use Aedart\Laravel\Helpers\Contracts\Logging\LogWriterAware;
+use Aedart\Laravel\Helpers\Contracts\Logging\LogManagerAware;
 use Aedart\Laravel\Helpers\Contracts\Logging\PsrLogAware;
 use Aedart\Laravel\Helpers\Contracts\Mail\MailerAware;
 use Aedart\Laravel\Helpers\Contracts\Mail\MailQueueAware;
@@ -84,8 +84,8 @@ use Aedart\Laravel\Helpers\Traits\Filesystem\StorageTrait;
 use Aedart\Laravel\Helpers\Traits\Foundation\AppTrait;
 use Aedart\Laravel\Helpers\Traits\Hashing\HashTrait;
 use Aedart\Laravel\Helpers\Traits\Http\RequestTrait;
+use Aedart\Laravel\Helpers\Traits\Logging\LogManagerTrait;
 use Aedart\Laravel\Helpers\Traits\Logging\LogTrait;
-use Aedart\Laravel\Helpers\Traits\Logging\LogWriterTrait;
 use Aedart\Laravel\Helpers\Traits\Logging\PsrLogTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailerTrait;
 use Aedart\Laravel\Helpers\Traits\Mail\MailQueueTrait;
@@ -131,7 +131,8 @@ use Illuminate\Contracts\Filesystem\Factory as StorageFactory;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Hashing\Hasher;
-use Illuminate\Contracts\Logging\Log;
+use Illuminate\Log\LogManager;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Mail\MailQueue;
 use Illuminate\Contracts\Notifications\Dispatcher as NotificationDispatcher;
@@ -216,7 +217,12 @@ class TraitsTest extends TraitTestCase
     {
         return [
             // Auth
-            'GateTrait'                     => [GateTrait::class, GateAware::class, Gate::class],
+
+            // TODO: Unable to test the following via mocks...
+            // TODO: @see https://github.com/laravel/framework/issues/21987
+            // TODO: @see https://github.com/mockery/mockery/issues/861
+            //TODO: 'GateTrait'                     => [GateTrait::class, GateAware::class, Gate::class],
+
             'AuthManagerTrait'              => [AuthManagerTrait::class, AuthManagerAware::class, AuthManager::class],
             'AuthFactoryTrait'              => [AuthFactoryTrait::class, AuthFactoryAware::class, AuthManager::class],
             'AuthTrait'                     => [AuthTrait::class, AuthAware::class, Guard::class],
@@ -278,7 +284,7 @@ class TraitsTest extends TraitTestCase
 
             // Logging
             'LogTrait'                      => [LogTrait::class, LogAware::class, Log::class],
-            'LogWriterTrait'                => [LogWriterTrait::class, LogWriterAware::class, Writer::class],
+            'LogManagerTrait'               => [LogManagerTrait::class, LogManagerAware::class, LogManager::class],
             'PsrLogTrait'                   => [PsrLogTrait::class, PsrLogAware::class, LoggerInterface::class],
 
             // Mail
