@@ -2,7 +2,7 @@
 
 namespace Aedart\Laravel\Helpers\Contracts\Logging;
 
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 
 /**
  * Log Aware

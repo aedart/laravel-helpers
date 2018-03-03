@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Aedart\Laravel\Helpers\Traits\Logging;
 
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Support\Facades\Log as LogFacade;
 
 /**
