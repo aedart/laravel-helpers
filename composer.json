@@ -19,13 +19,13 @@
   ],
   "require": {
     "php": ">=7.1.0",
-    "illuminate/support": "5.5.*"
+    "illuminate/support": "5.6.*"
   },
   "require-dev": {
-    "aedart/testing-laravel": "~3.0",
+    "aedart/testing-laravel": "~4.0",
     "aedart/testing-gst": "~2.0",
     "aedart/license": "1.*",
-    "aedart/license-file-manager": "~1.7",
+    "aedart/license-file-manager": "~2.0",
     "predis/predis": "~1.1"
   },
   "autoload": {
@@ -45,7 +45,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "4.1.x-dev"
+      "dev-master": "5.0.x-dev"
     }
   }
 }
