@@ -4,7 +4,9 @@
 [![Latest Unstable Version](https://poser.pugx.org/aedart/laravel-helpers/v/unstable)](https://packagist.org/packages/aedart/laravel-helpers)
 [![License](https://poser.pugx.org/aedart/laravel-helpers/license)](https://packagist.org/packages/aedart/laravel-helpers)
 
-# Laravel Helpers
+# Deprecated - Laravel Helpers
+
+Package has been replaced by [aedart/athenaeum](https://github.com/aedart/athenaeum)
 
 [Getters and Setters](https://en.wikipedia.org/wiki/Mutator_method) utility package for some of [Laravel's](http://laravel.com/) core packages. 
 
