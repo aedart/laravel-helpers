@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Auth\AuthManager;
 
 /**
+ * @deprecated
+ *
  * Auth Manager Aware
  *
  * @see \Illuminate\Auth\AuthManager

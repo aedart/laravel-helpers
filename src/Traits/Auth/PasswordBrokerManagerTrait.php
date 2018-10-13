@@ -7,6 +7,8 @@ use Illuminate\Auth\Passwords\PasswordBrokerManager;
 use Illuminate\Support\Facades\Password;
 
 /**
+ * @deprecated
+ *
  * PasswordBrokerManagerTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\PasswordBrokerManagerAware

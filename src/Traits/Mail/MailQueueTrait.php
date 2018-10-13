@@ -7,6 +7,8 @@ use Illuminate\Contracts\Mail\MailQueue;
 use Illuminate\Support\Facades\Mail;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Mail\MailQueueTrait, in aedart/athenaeum package
+ *
  * Mail Queue Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Mail\MailQueueAware

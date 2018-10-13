@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Http;
 use Illuminate\Http\Request;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Http\RequestAware, in aedart/athenaeum package
+ *
  * Http Request Aware
  *
  * @see \Illuminate\Http\Request

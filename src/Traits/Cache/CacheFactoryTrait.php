@@ -7,6 +7,8 @@ use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Support\Facades\Cache;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Cache\CacheFactoryTrait, in aedart/athenaeum package
+ *
  * CacheFactoryTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Cache\CacheFactoryAware

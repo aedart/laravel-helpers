@@ -7,6 +7,8 @@ use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Facades\Config;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Config\ConfigTrait, in aedart/athenaeum package
+ *
  * Config Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Config\ConfigAware

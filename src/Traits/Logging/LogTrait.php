@@ -7,6 +7,8 @@ use Psr\Log\LoggerInterface as Log;
 use Illuminate\Support\Facades\Log as LogFacade;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Logging\LogTrait, in aedart/athenaeum package
+ *
  * Log Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Logging\LogAware

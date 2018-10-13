@@ -7,6 +7,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\View;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\View\ViewFactoryTrait, in aedart/athenaeum package
+ *
  * View Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\View\ViewAware

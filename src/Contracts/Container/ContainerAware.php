@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Container;
 use Illuminate\Contracts\Container\Container;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Container\ContainerAware, in aedart/athenaeum package
+ *
  * Container Aware
  *
  * @see \Illuminate\Contracts\Container\Container

@@ -7,6 +7,8 @@ use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Response;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Routing\ResponseFactoryTrait, in aedart/athenaeum package
+ *
  * Response Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Routing\ResponseAware

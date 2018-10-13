@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Notifications;
 use Illuminate\Contracts\Notifications\Dispatcher;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Notifications\NotificationDispatcherAware, in aedart/athenaeum package
+ *
  * Notification Dispatcher Aware
  *
  * @see \Illuminate\Contracts\Notifications\Dispatcher

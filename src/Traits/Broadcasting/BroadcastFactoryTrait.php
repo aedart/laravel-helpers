@@ -7,6 +7,9 @@ use Illuminate\Contracts\Broadcasting\Factory;
 use Illuminate\Support\Facades\Broadcast;
 
 /**
+ *
+ * @deprecated Use \Aedart\Support\Helpers\Broadcasting\BroadcastFactoryTrait, in aedart/athenaeum package
+ *
  * Broadcast Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Broadcasting\BroadcastFactoryAware

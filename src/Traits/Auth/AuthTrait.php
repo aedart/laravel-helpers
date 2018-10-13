@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Auth\AuthTrait, in aedart/athenaeum package
+ *
  * Auth Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\AuthAware

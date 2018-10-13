@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Translation;
 use Illuminate\Contracts\Translation\Translator;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Translation\TranslatorAware, in aedart/athenaeum package
+ *
  * Lang Aware
  *
  * @see \Illuminate\Contracts\Translation\Translator

@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Cache;
 use Illuminate\Contracts\Cache\Store;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Cache\CacheStoreAware, in aedart/athenaeum package
+ *
  * Cache Store Aware
  *
  * @see \Illuminate\Contracts\Cache\Store

@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Events;
 use Illuminate\Contracts\Events\Dispatcher;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Events\EventAware, in aedart/athenaeum package
+ *
  * Event Dispatcher Aware
  *
  * @see \Illuminate\Contracts\Events\Dispatcher

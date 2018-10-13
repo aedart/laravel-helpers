@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Mail;
 use Illuminate\Contracts\Mail\Mailer;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Mail\MailerAware, in aedart/athenaeum package
+ *
  * Mailer Aware
  *
  * @see \Illuminate\Contracts\Mail\Mailer

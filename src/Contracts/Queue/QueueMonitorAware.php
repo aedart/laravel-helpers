@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Queue;
 use Illuminate\Contracts\Queue\Monitor;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Queue\QueueMonitorAware, in aedart/athenaeum package
+ *
  * Queue Monitor Aware
  *
  * @see \Illuminate\Contracts\Queue\Monitor

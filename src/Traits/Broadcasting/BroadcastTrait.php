@@ -7,6 +7,8 @@ use Illuminate\Contracts\Broadcasting\Broadcaster;
 use Illuminate\Support\Facades\Broadcast;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Broadcasting\BroadcastTrait, in aedart/athenaeum package
+ *
  * Broadcast Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Broadcasting\BroadcastAware

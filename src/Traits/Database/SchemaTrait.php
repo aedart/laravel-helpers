@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Database\SchemaTrait, in aedart/athenaeum package
+ *
  * Schema Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Database\SchemaAware

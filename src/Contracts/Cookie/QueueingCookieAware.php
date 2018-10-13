@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Cookie;
 use Illuminate\Contracts\Cookie\QueueingFactory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Cookie\QueueingCookieAware, in aedart/athenaeum package
+ *
  * Queueing Cookie Aware
  *
  * @see \Illuminate\Contracts\Cookie\QueueingFactory

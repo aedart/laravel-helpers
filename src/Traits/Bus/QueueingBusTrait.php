@@ -7,6 +7,8 @@ use Illuminate\Contracts\Bus\QueueingDispatcher;
 use Illuminate\Support\Facades\Bus;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Bus\QueueingBusTrait, in aedart/athenaeum package
+ *
  * QueueingBusTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Bus\QueueingBusAware

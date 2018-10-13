@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Hashing;
 use Illuminate\Contracts\Hashing\Hasher;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Hashing\HashAware, in aedart/athenaeum package
+ *
  * Hash Aware
  *
  * @see \Illuminate\Contracts\Hashing\Hasher

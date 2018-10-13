@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Contracts\Auth\PasswordBrokerFactory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Auth\PasswordBrokerFactoryAware, in aedart/athenaeum package
+ *
  * Password Broker Factory Aware
  *
  * @see \Illuminate\Contracts\Auth\PasswordBrokerFactory

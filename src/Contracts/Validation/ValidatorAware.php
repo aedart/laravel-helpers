@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Validation;
 use Illuminate\Contracts\Validation\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Validation\ValidatorFactoryAware, in aedart/athenaeum package
+ *
  * Validator Aware
  *
  * @see \Illuminate\Contracts\Validation\Factory

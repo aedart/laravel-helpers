@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\Monitor;
 use Illuminate\Support\Facades\Queue;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Queue\QueueMonitorTrait, in aedart/athenaeum package
+ *
  * Queue Monitor Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Queue\QueueMonitorAware

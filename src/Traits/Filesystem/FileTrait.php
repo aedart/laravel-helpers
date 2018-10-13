@@ -7,6 +7,8 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Filesystem\FileTrait, in aedart/athenaeum package
+ *
  * File Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Filesystem\FileAware

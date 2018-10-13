@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Contracts\Auth\Guard;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Auth\AuthAware, in aedart/athenaeum package
+ *
  * Auth Aware
  *
  * @see \Illuminate\Contracts\Auth\Guard

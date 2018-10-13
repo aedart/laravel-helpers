@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Redis;
 use Illuminate\Contracts\Redis\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Redis\RedisFactoryAware, in aedart/athenaeum package
+ *
  * Redis Factory Aware
  *
  * @see \Illuminate\Contracts\Redis\Factory

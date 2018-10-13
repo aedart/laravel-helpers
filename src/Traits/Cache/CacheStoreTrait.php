@@ -8,6 +8,8 @@ use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Facades\Cache;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Cache\CacheStoreTrait, in aedart/athenaeum package
+ *
  * Cache Store Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Cache\CacheStoreAware

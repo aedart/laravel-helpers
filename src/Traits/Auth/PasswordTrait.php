@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Support\Facades\Password;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Auth\PasswordTrait, in aedart/athenaeum package
+ *
  * Password Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\PasswordAware

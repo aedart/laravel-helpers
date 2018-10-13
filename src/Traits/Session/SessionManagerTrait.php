@@ -7,6 +7,8 @@ use Illuminate\Session\SessionManager;
 use Illuminate\Support\Facades\Session;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Session\SessionManagerTrait, in aedart/athenaeum package
+ *
  * Session Manager Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Session\SessionManagerAware

@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Logging;
 use Illuminate\Log\LogManager;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Logging\LogManagerAware, in aedart/athenaeum package
+ *
  * Log Manager Aware
  *
  * @author Alin Eugen Deac <aedart@gmail.com>

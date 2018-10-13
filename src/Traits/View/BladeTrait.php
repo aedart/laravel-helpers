@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\View\Compilers\BladeCompiler;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\View\BladeTrait, in aedart/athenaeum package
+ *
  * Blade Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\View\BladeAware

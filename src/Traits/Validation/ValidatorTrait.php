@@ -7,6 +7,8 @@ use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Support\Facades\Validator;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Validation\ValidatorFactoryTrait, in aedart/athenaeum package
+ *
  * Validator Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Validation\ValidatorAware

@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Redis;
 use Illuminate\Redis\Connections\Connection;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Redis\RedisAware, in aedart/athenaeum package
+ *
  * Redis Aware
  *
  * @see \Illuminate\Redis\Connections\Connection

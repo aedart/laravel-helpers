@@ -7,6 +7,8 @@ use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Support\Facades\Storage;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Filesystem\StorageFactoryTrait, in aedart/athenaeum package
+ *
  * Cloud Storage Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Filesystem\StorageFactoryAware

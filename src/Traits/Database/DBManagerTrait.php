@@ -7,6 +7,8 @@ use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\Facades\DB;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Database\ConnectionResolverTrait, in aedart/athenaeum package
+ *
  * DB Manager Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Database\DBManagerAware

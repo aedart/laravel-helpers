@@ -7,6 +7,8 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redirect;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Routing\RedirectTrait, in aedart/athenaeum package
+ *
  * Redirect Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Routing\RedirectAware

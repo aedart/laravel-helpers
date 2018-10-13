@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\View;
 use Illuminate\Contracts\View\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\View\ViewFactoryAware, in aedart/athenaeum package
+ *
  * View Aware
  *
  * @see \Illuminate\Contracts\View\Factory

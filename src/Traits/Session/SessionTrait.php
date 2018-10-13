@@ -7,6 +7,8 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Session as SessionFacade;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Session\SessionTrait, in aedart/athenaeum package
+ *
  * Session Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Session\SessionAware

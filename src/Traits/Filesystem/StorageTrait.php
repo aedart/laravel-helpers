@@ -7,6 +7,8 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Filesystem\StorageTrait, in aedart/athenaeum package
+ *
  * Cloud Storage Filesystem Disk Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Filesystem\StorageAware

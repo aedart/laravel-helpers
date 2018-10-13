@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Mail;
 use Illuminate\Contracts\Mail\MailQueue;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Mail\MailQueueAware, in aedart/athenaeum package
+ *
  * Mail Queue Aware
  *
  * @see \Illuminate\Contracts\Mail\MailQueue

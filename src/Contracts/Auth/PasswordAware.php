@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Contracts\Auth\PasswordBroker;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Auth\PasswordAware, in aedart/athenaeum package
+ *
  * Password Aware
  *
  * @see \Illuminate\Contracts\Auth\PasswordBroker

@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth\Access;
 use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Auth\Access\GateAware, in aedart/athenaeum package
+ *
  * Gate Aware
  *
  * @see \Illuminate\Contracts\Auth\Access\Gate

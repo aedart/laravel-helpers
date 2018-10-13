@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
 use Illuminate\Contracts\Filesystem\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Filesystem\StorageFactoryAware, in aedart/athenaeum package
+ *
  * Cloud Storage Factory Aware
  *
  * @see \Illuminate\Contracts\Filesystem\Factory

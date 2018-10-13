@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Routing;
 use Illuminate\Contracts\Routing\ResponseFactory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Routing\ResponseFactoryAware, in aedart/athenaeum package
+ *
  * Response Aware
  *
  * @see \Illuminate\Contracts\Routing\ResponseFactory

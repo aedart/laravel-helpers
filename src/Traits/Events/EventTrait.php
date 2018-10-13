@@ -7,6 +7,8 @@ use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\Event;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Events\EventTrait, in aedart/athenaeum package
+ *
  * Event Dispatcher Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Events\EventAware

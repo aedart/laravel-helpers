@@ -6,6 +6,8 @@ use Illuminate\Log\LogManager;
 use Illuminate\Support\Facades\Log;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Logging\LogManagerTrait, in aedart/athenaeum package
+ *
  * Log Manager Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Logging\LogManagerAware

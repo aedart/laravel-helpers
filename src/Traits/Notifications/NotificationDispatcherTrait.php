@@ -7,6 +7,8 @@ use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Support\Facades\Notification;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Notifications\NotificationDispatcherTrait, in aedart/athenaeum package
+ *
  * Notification Dispatcher Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Notifications\NotificationDispatcherAware

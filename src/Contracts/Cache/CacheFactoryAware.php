@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Cache;
 use Illuminate\Contracts\Cache\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Cache\CacheFactoryAware, in aedart/athenaeum package
+ *
  * Cache Factory Aware
  *
  * @see \Illuminate\Contracts\Cache\Factory

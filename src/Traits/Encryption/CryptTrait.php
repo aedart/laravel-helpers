@@ -7,6 +7,8 @@ use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Support\Facades\Crypt;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Encryption\CryptTrait, in aedart/athenaeum package
+ *
  * Crypt Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Encryption\CryptAware

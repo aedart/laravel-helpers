@@ -7,6 +7,8 @@ use Illuminate\Contracts\Translation\Translator;
 use Illuminate\Support\Facades\Lang;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Translation\TranslatorTrait, in aedart/athenaeum package
+ *
  * Lang Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Translation\LangAware

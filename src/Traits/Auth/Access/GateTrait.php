@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\Gate as GateFacade;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Auth\Access\GateTrait, in aedart/athenaeum package
+ *
  * GateTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\Access\GateAware

@@ -7,6 +7,8 @@ use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\Bus;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Bus\BusTrait, in aedart/athenaeum package
+ *
  * BusTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Bus\BusAware

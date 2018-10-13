@@ -7,6 +7,8 @@ use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Console\ArtisanTrait, in aedart/athenaeum package
+ *
  * Artisan Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Console\ArtisanAware

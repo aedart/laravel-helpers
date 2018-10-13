@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Routing;
 use Illuminate\Contracts\Routing\UrlGenerator;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Routing\UrlGeneratorAware, in aedart/athenaeum package
+ *
  * URL Aware
  *
  * @see \Illuminate\Contracts\Routing\UrlGenerator

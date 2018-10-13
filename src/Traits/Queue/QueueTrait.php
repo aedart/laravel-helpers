@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Support\Facades\Queue as QueueFacade;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Queue\QueueTrait, in aedart/athenaeum package
+ *
  * Queue Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Queue\QueueAware

@@ -7,6 +7,8 @@ use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Facades\Mail;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Mail\MailerTrait, in aedart/athenaeum package
+ *
  * Mailer Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Mail\MailerAware

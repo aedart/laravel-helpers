@@ -7,6 +7,8 @@ use Illuminate\Auth\AuthManager;
 use Illuminate\Support\Facades\Auth;
 
 /**
+ * @deprecated
+ *
  * AuthManagerTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\AuthManagerAware

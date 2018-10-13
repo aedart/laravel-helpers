@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Logging;
 use Psr\Log\LoggerInterface as Log;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Logging\LogAware, in aedart/athenaeum package
+ *
  * Log Aware
  *
  * @see \Illuminate\Contracts\Logging\Log

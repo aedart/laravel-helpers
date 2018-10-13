@@ -7,6 +7,8 @@ use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Facades\DB;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Database\DbTrait, in aedart/athenaeum package
+ *
  * DB Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Database\DBAware

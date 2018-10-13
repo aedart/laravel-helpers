@@ -7,6 +7,8 @@ use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Support\Facades\Route;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Routing\RouteRegistrarTrait, in aedart/athenaeum package
+ *
  * Route Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Routing\RouteAware

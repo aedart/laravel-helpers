@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Database;
 use Illuminate\Database\DatabaseManager;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Database\ConnectionResolverAware, in aedart/athenaeum package
+ *
  * DB Manager Aware
  *
  * @see \Illuminate\Database\DatabaseManager

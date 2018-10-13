@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Routing;
 use Illuminate\Contracts\Routing\Registrar;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Routing\RouteRegistrarAware, in aedart/athenaeum package
+ *
  * Route Aware
  *
  * @see \Illuminate\Contracts\Routing\Registrar

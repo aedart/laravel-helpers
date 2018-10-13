@@ -7,6 +7,8 @@ use Illuminate\Contracts\Cookie\Factory;
 use Illuminate\Support\Facades\Cookie;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Cookie\CookieTrait, in aedart/athenaeum package
+ *
  * Cookie Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Cookie\CookieAware

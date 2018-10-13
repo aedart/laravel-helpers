@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
 use Illuminate\Contracts\Filesystem\Filesystem;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Filesystem\StorageAware, in aedart/athenaeum package
+ *
  * Cloud Storage Filesystem disk Aware
  *
  * @see \Illuminate\Contracts\Filesystem\Filesystem

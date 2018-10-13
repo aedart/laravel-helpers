@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Config;
 use Illuminate\Contracts\Config\Repository;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Config\ConfigAware, in aedart/athenaeum package
+ *
  * Config Aware
  *
  * @see \Illuminate\Contracts\Config\Repository

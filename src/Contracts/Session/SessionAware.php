@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Session;
 use Illuminate\Contracts\Session\Session;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Session\SessionAware, in aedart/athenaeum package
+ *
  * Session Aware
  *
  * @see \Illuminate\Contracts\Session\Session

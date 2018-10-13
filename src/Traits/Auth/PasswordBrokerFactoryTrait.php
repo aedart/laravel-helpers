@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\PasswordBrokerFactory;
 use Illuminate\Support\Facades\Password;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Auth\PasswordBrokerFactoryTrait, in aedart/athenaeum package
+ *
  * PasswordBrokerFactoryTrait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\PasswordBrokerFactoryAware

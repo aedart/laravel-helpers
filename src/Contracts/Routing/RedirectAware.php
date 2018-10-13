@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Routing;
 use Illuminate\Routing\Redirector;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Routing\RedirectAware, in aedart/athenaeum package
+ *
  * Redirect Aware
  *
  * @see \Illuminate\Routing\Redirector

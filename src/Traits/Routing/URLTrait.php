@@ -7,6 +7,8 @@ use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\Facades\URL;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Routing\UrlGeneratorTrait, in aedart/athenaeum package
+ *
  * URL Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Routing\URLAware

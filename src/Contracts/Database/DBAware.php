@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Database;
 use Illuminate\Database\ConnectionInterface;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Database\DbAware, in aedart/athenaeum package
+ *
  * DB Aware
  *
  * @see \Illuminate\Database\ConnectionInterface

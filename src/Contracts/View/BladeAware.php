@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\View;
 use Illuminate\View\Compilers\BladeCompiler;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\View\BladeAware, in aedart/athenaeum package
+ *
  * Blade Aware
  *
  * @see \Illuminate\View\Compilers\BladeCompiler

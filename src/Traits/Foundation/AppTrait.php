@@ -7,6 +7,8 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\App;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Foundation\AppTrait, in aedart/athenaeum package
+ *
  * App Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Foundation\AppAware

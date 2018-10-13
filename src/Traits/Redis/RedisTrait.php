@@ -7,6 +7,8 @@ use Illuminate\Redis\Connections\Connection;
 use Illuminate\Support\Facades\Redis;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Redis\RedisTrait, in aedart/athenaeum package
+ *
  * Redis Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Redis\RedisAware

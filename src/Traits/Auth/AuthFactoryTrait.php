@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Support\Facades\Auth;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Auth\AuthFactoryTrait, in aedart/athenaeum package
+ *
  * Auth Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Auth\AuthFactoryAware

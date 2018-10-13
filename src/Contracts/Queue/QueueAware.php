@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Queue;
 use Illuminate\Contracts\Queue\Queue;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Queue\QueueAware, in aedart/athenaeum package
+ *
  * Queue Aware
  *
  * @see \Illuminate\Contracts\Queue\Queue

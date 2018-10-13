@@ -7,6 +7,8 @@ use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Support\Facades\Hash;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Hashing\HashTrait, in aedart/athenaeum package
+ *
  * Hash Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Hashing\HashAware

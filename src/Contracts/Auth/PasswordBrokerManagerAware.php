@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Auth\Passwords\PasswordBrokerManager;
 
 /**
+ * @deprecated
+ *
  * Password Broker Manager Aware
  *
  * @see \Illuminate\Auth\Passwords\PasswordBrokerManager

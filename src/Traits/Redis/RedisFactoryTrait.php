@@ -7,6 +7,8 @@ use Illuminate\Contracts\Redis\Factory;
 use Illuminate\Support\Facades\Redis;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Redis\RedisFactoryTrait, in aedart/athenaeum package
+ *
  * Redis Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Redis\RedisFactoryAware

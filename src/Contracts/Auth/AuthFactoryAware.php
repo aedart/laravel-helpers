@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Auth;
 use Illuminate\Contracts\Auth\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Auth\AuthFactoryAware, in aedart/athenaeum package
+ *
  * Auth Factory Aware
  *
  * @see \Illuminate\Contracts\Auth\Factory

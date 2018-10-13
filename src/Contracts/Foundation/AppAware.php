@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Foundation;
 use Illuminate\Contracts\Foundation\Application;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Foundation\AppAware, in aedart/athenaeum package
+ *
  * App Aware
  *
  * @see \Illuminate\Contracts\Foundation\Application

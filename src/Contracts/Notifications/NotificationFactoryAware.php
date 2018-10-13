@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Notifications;
 use Illuminate\Contracts\Notifications\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Notifications\NotificationFactoryAware, in aedart/athenaeum package
+ *
  * Notification Factory Aware
  *
  * @see \Illuminate\Contracts\Notifications\Factory

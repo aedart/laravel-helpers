@@ -7,6 +7,8 @@ use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Container\ContainerTrait, in aedart/athenaeum package
+ *
  * Container Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Container\ContainerAware

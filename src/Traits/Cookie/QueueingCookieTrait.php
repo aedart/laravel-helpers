@@ -7,6 +7,8 @@ use Illuminate\Contracts\Cookie\QueueingFactory;
 use Illuminate\Support\Facades\Cookie;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Cookie\QueueingCookieTrait, in aedart/athenaeum package
+ *
  * Queueing Cookie Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Cookie\QueueingCookieAware

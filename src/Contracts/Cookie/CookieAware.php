@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Cookie;
 use Illuminate\Contracts\Cookie\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Cookie\CookieAware, in aedart/athenaeum package
+ *
  * Cookie Aware
  *
  * @see \Illuminate\Contracts\Cookie\Factory

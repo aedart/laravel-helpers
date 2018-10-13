@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Console;
 use Illuminate\Contracts\Console\Kernel;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Console\ArtisanAware, in aedart/athenaeum package
+ *
  * Artisan Aware
  *
  * @see \Illuminate\Contracts\Console\Kernel

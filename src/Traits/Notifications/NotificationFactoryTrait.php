@@ -7,6 +7,8 @@ use Illuminate\Contracts\Notifications\Factory;
 use Illuminate\Support\Facades\Notification;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Notifications\NotificationFactoryTrait, in aedart/athenaeum package
+ *
  * Notification Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Notifications\NotificationFactoryAware

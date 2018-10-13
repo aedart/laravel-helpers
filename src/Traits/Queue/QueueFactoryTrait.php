@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\Factory;
 use Illuminate\Support\Facades\Queue;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Queue\QueueFactoryTrait, in aedart/athenaeum package
+ *
  * Queue Factory Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Queue\QueueFactoryAware

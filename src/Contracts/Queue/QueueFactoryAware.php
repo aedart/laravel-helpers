@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Queue;
 use Illuminate\Contracts\Queue\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Queue\QueueFactoryAware, in aedart/athenaeum package
+ *
  * Queue Factory Aware
  *
  * @see \Illuminate\Contracts\Queue\Factory

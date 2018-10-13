@@ -7,6 +7,8 @@ use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Cache;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Cache\CacheTrait, in aedart/athenaeum package
+ *
  * Cache Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Cache\CacheAware

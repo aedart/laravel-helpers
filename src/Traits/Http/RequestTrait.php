@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as RequestFacade;
 
 /**
+ * @deprecated Use \Aedart\Support\Helpers\Http\RequestTrait, in aedart/athenaeum package
+ *
  * Http Request Trait
  *
  * @see \Aedart\Laravel\Helpers\Contracts\Http\RequestAware

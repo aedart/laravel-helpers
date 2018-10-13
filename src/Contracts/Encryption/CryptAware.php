@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Encryption;
 use Illuminate\Contracts\Encryption\Encrypter;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Encryption\CryptAware, in aedart/athenaeum package
+ *
  * Crypt Aware
  *
  * @see \Illuminate\Contracts\Encryption\Encrypter

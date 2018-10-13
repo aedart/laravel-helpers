@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Database;
 use Illuminate\Database\Schema\Builder;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Database\SchemaAware, in aedart/athenaeum package
+ *
  * Schema Aware
  *
  * @see \Illuminate\Database\Schema\Builder

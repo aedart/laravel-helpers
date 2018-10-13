@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Broadcasting;
 use Illuminate\Contracts\Broadcasting\Factory;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Broadcasting\BroadcastFactoryAware, in aedart/athenaeum package
+ *
  * Broadcast Factory Aware
  *
  * @see \Illuminate\Contracts\Broadcasting\Factory

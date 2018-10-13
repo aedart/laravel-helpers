@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Filesystem;
 use Illuminate\Filesystem\Filesystem;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Filesystem\FileAware, in aedart/athenaeum package
+ *
  * File Aware
  *
  * @see \Illuminate\Filesystem\Filesystem

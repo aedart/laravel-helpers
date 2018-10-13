@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Bus;
 use Illuminate\Contracts\Bus\QueueingDispatcher;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Bus\QueueingBusAware, in aedart/athenaeum package
+ *
  * Queueing Bus Aware
  *
  * @see \Illuminate\Contracts\Bus\QueueingDispatcher

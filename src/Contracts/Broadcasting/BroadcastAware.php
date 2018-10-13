@@ -5,6 +5,8 @@ namespace Aedart\Laravel\Helpers\Contracts\Broadcasting;
 use Illuminate\Contracts\Broadcasting\Broadcaster;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Support\Helpers\Broadcasting\BroadcastAware, in aedart/athenaeum package
+ *
  * Broadcast Aware
  *
  * @see \Illuminate\Contracts\Broadcasting\Broadcaster
